@@ -1,0 +1,81 @@
+@font-face{font-family:'Maven Pro';src:url('fonts/mavem-pro/MavenPro-Regular.ttf') format('truetype');}
+@font-face{font-family:'Maven Pro';font-weight:bold;src:url('fonts/mavem-pro/MavenPro-Bold.ttf') format('truetype');}
+@font-face{font-family:'Roboto';src:url('fonts/roboto/Roboto-Regular.ttf') format('truetype');}
+@font-face{font-family:'Roboto';font-weight:bold;src:url('fonts/roboto/Roboto-Bold.ttf') format('truetype');}
+body{font-family:'Roboto', sans-serif;font-size:18px;}
+label{font-size:14px;}
+h1, h2, h3, h4, h5, h6{font-family:'Maven Pro', sans-serif;}
+.section-how-it-works{overflow:hidden;max-height:660px;}
+.logo-heigth{height:40px;}
+.chat-logo{width:30px;height:30px;}
+.full-heigth{height:100%;min-height:100vh;}
+.footer-heigth{min-height:40vh;}
+.m-r-30{margin-right:30px;}
+.m-t-5{margin-top:5px;}
+.m-t-10{margin-top:10px;}
+.m-t-20{margin-top:20px;}
+.m-t-30{margin-top:30px;}
+.m-t-40{margin-top:40px;}
+.m-t-60{margin-top:60px;}
+.m-t-90{margin-top:90px;}
+.m-t-120{margin-top:120px;}
+.m-b-10{margin-bottom: 10px;}
+.p-t-10-p{padding-top:10%;}
+.p-t-15-p{padding-top:15%;}
+.p-t-0{padding-top: 0px !important;}
+.p-t-8{padding-top:8px;}
+.p-t-40{padding-top:40px;}
+.p-t-50{padding-top:50px;}
+.p-b-50{padding-bottom:50px;}
+.p-b-60{padding-bottom:60px;}
+.p-b-80{padding-bottom:80px;}
+.my-header{}
+.bg-purple{background:#534a83;color:#fff;}
+.bg-yellow{background:#fbd58a;color:#fff;}
+.bg-green{background:#67b7b4;color:#fff;}
+.bg-gray{background:#f1f1f1;color:#b1b1b0;}
+.bg-couple{background:url('imagens/backgrounds/banner-home-oficial.jpg') no-repeat center center;-webkit-background-size:content;-moz-background-size:cover;-o-background-size:cover;background-size:cover;}
+.bg-man{background:url('imagens/backgrounds/banner_purple.jpg') no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;}
+.bg-building{background:url('imagens/backgrounds/bn-anunciar-bottom.jpg') no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;}
+.bg-chair{background:url('imagens/backgrounds/bn-anunciar-top.jpg') no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;}
+.bg-thank-inquilino{background:url('imagens/backgrounds/Agradecimentos.jpg') no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;}
+.bg-thank-proprietario{background:url('imagens/backgrounds/Agradecimentos2.jpg') no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;}
+.text-yellow{color:#fbd58a;}
+.text-yellow:hover{color:#fbd58a; text-decoration:underline !important;}
+.text-white:visited{color:#fff; text-decoration:underline !important;}
+.text-purple{color:#534a83;}
+.text-green{color:#67b7b4;}
+.text-gray{color:#b1b1b0;}
+.text-white{color:#fff;}
+.text-white:hover{color:#fff; text-decoration:underline !important;}
+.text-white:visited{color:#fff; text-decoration:underline !important;}
+.bold{font-weight:bold;}
+.btn-purple{color:#fff;background-color:transparent;border-color:#fff;border:2px solid #fff;border-radius:2px;font-weight:bold;padding:10px 30px;}
+.btn-purple:hover{color:#fff;background:#4a4275;}
+.btn-yellow{color:#fff;background-color:transparent;border-color:#fff;border:2px solid #fff;border-radius:2px;font-weight:bold;padding:10px 30px;}
+.btn-yellow:hover{color:#67b7b4;background:#fff;}
+.btn-green{color:#fff;background-color:transparent;border-color:#fff;border:1px solid transparent;border-radius:0px;font-weight:bold;}
+.btn-green:hover{color:#fff;background:#5ca4a2;}
+.btn-green.login{background:#5ca4a2;}
+.l-h-1.7{line-height:1.7;}
+.ul-footer{list-style-type:none;-webkit-padding-start:0px;}
+.ul-footer > li{margin-bottom:10px;}
+.ul-footer > li > a{color:#fff;}
+.owl-theme .owl-dots, .owl-theme .owl-nav{text-align:left;}
+.owl-theme .owl-dots .owl-dot span{border:#b1b1b0 1px solid;background:#fff;}
+.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span{background:#fbd58a;}
+.nav>li>a:focus, .nav>li>a:hover{background-color:transparent;}
+.input-lg{border-radius:1px;}
+.btn{font-size:18px;}
+#background{position:fixed;top:50%;left:50%;min-width:100%;min-height:100%;width:auto;height:auto;z-index:-100;-webkit-transform: translateX(-50%) translateY(-50%);transform: translateX(-50%) translateY(-50%);background: url(polina.jpg) no-repeat;background-size: cover;}
+.m-a{margin: auto;}
+.container-video{display: flex; min-height: 100vh; flex-direction: column; padding-bottom: 20px;}
+.cursor-pointer{cursor:pointer;}
+input.search-home {
+  color: #fff;
+  border-radius: 0px;
+  border: none;
+  background-color: rgba(255,255,255,0.31);
+  height: 5rem;
+  font-size: 1.5em;
+}

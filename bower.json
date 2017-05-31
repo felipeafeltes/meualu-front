@@ -1,0 +1,16 @@
+{
+  "name": "meualu_front",
+  "authors": [
+    "Guilherme Cruz <guilherme.cruz@ubistart.com>"
+  ],
+  "description": "Frontend do meuAlu",
+  "main": "index.html",
+  "license": "MIT",
+  "homepage": "",
+  "devDependencies": {
+    "angular": "^1.6.4",
+    "angular-resource": "^1.6.4",
+    "angular-ui-router": "^1.0.3",
+    "angular-route": "^1.6.4"
+  }
+}
