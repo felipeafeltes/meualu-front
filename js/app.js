@@ -2,6 +2,7 @@ var app = angular
   .module('aluFrontApp', [
     'ui.router',
     'usersSessionServices',
+    'propertiesSearchServices',
     'oauthSessionsServices'
   ]);
 
@@ -29,6 +30,22 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
     .state('oauth_autenticate', {
       url: '/authenticate',
       controller: 'OauthSessionsAuthenticate'
+    })
+    .state('alu', {
+      url: '/alu',
+      templateUrl: 'views/default_layout.html',
+    })
+    .state('alu.properties', {
+      url: '/imoveis/:address_string?{filters:json}',
+      params: {
+        filters: {
+          value: null,
+          squash: true,
+        },
+        hiddenParam: 'YES'
+      },
+      templateUrl: 'views/properties/list.html',
+      controller: 'PropertiesSearchController'
     });
     // .state('admin', {
     //   url: '/admin',
