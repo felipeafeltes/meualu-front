@@ -1,22 +1,18 @@
 app.controller('OauthSessionsAuthenticate', OauthSessionsAuthenticate);
 
-function OauthSessionsAuthenticate($scope, OauthUser, $rootScope) {
+function OauthSessionsAuthenticate($scope, OauthUser, $rootScope, $auth) {
     $scope.user = new OauthUser();
 
-    $scope.authenticate = function (provider) {
-        // $auth.authenticate(provider,
-        $scope.user.$authenticate({ provider: provider },
-            // success
-            function (data) {
-                localStorage.setItem('token', data.auth_token)
-                $rootScope.current_user = data.user;
-                $('#modalLogin').modal('hide');
-            },
-            // error
-            function (error) {
-                _showValidationErrors($scope, error);
-            }
-        );
+    $scope.authenticate = function(provider) {
+      $auth.authenticate(provider)
+        .then(function(response) {
+          localStorage.setItem('token', response.data.auth_token)
+          $rootScope.current_user = response.data.user;
+          $('#modalLogin').modal('hide');
+        })
+        .catch(function(error) {
+          _showValidationErrors($scope, error);
+        });
     };
 }
 

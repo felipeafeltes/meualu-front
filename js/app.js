@@ -1,14 +1,22 @@
 var app = angular
   .module('aluFrontApp', [
     'ui.router',
+    'satellizer',
     'usersSessionServices',
     'propertiesSearchServices',
-    'oauthSessionsServices'
+    'oauthSessionsServices',
   ]);
 
-app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $authProvider) {
 
   $urlRouterProvider.otherwise('/');
+
+  $authProvider.facebook({
+    url: 'http://localhost:3000/auth/facebook/callback',
+    clientId: '914533272017680',
+    authorizationEndpoint: 'https://www.facebook.com/v2.6/dialog/oauth',
+    baseUrl: 'http://localhost:3000/'
+  });
 
   $stateProvider
     .state('template', {
