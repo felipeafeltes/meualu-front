@@ -9,6 +9,30 @@ var app = angular
 
 app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $authProvider) {
 
+    /**
+   * Helper auth functions
+   */
+  // var skipIfLoggedIn = ['$q', '$auth', function($q, $auth) {
+  //   var deferred = $q.defer();
+  //   if ($auth.isAuthenticated()) {
+  //     deferred.reject();
+  //   } else {
+  //     deferred.resolve();
+  //   }
+  //   return deferred.promise;
+  // }];
+
+  var loginRequired = ['$q', '$state', '$auth', function($q, $state, $auth) {
+    var deferred = $q.defer();
+    if ($auth.isAuthenticated()) {
+      deferred.resolve();
+    } else {
+      $state.go('home');
+      console.log('Não autorizado!')
+    }
+    return deferred.promise;
+  }];
+
   $urlRouterProvider.otherwise('/');
 
   $authProvider.facebook({
@@ -54,6 +78,9 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $auth
       },
       templateUrl: 'views/properties/list.html',
       controller: 'PropertiesSearchController'
+        // resolve: {
+        //   loginRequired: loginRequired
+        // }
     });
     // .state('admin', {
     //   url: '/admin',
