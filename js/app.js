@@ -2,9 +2,10 @@ var app = angular
   .module('aluFrontApp', [
     'ui.router',
     'satellizer',
+    'vsGoogleAutocomplete',
     'usersSessionServices',
     'propertiesSearchServices',
-    'oauthSessionsServices',
+    'oauthSessionsServices'
   ]);
 
 app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $authProvider) {

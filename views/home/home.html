@@ -18,11 +18,18 @@
       </div>
     </nav>
 
-    <div class="container text-center m-a">
+    <div class="container text-center m-a" ng-controller="searchController">
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
           <h1 class="bold">Você também acha o aluguel algo complicado? <br> Junte-se a nós.</h1>
-          <input type="text" class="form-control search-home m-t-30"></input>
+          <input vs-google-autocomplete
+                 ng-model="address.name"
+                 vs-place="address.place"
+                 vs-place-id="address.components.placeId"
+                 type="text"
+                 class="form-control search-home m-t-30"
+                 ng-keyup="$event.keyCode == 13 && search()">
+          </input>
           <a ui-sref="alu.properties({ address_string: 'Av Ipiranga 7000', filters: { total_area: '100,10000' } })">Listar</a>
         </div>
       </div>
