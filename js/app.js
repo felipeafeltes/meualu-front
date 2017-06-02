@@ -2,7 +2,7 @@ var app = angular
   .module('aluFrontApp', [
     'ui.router',
     'satellizer',
-    'vsGoogleAutocomplete',
+    'google.places',
     'usersSessionServices',
     'propertiesSearchServices',
     'oauthSessionsServices'

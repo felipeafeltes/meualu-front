@@ -1,6 +1,6 @@
 app.controller('searchController',
   function ($scope, $state) {
-    $scope.$watch('address.components.placeId', function() {
+    $scope.$watch('address', function() {
       searchProperties();
     });
 
@@ -10,8 +10,13 @@ app.controller('searchController',
 
     var searchProperties = function() {
       if($scope.address) {
-        $state.go('alu.properties', { address_string: $scope.address.name });
+        $state.go('alu.properties', { address_string: $scope.address.name, filters: { total_area: '100,100000' } });
       }
+    }
+
+    $scope.autocompleteOptions = {
+      componentRestrictions: { country: 'br' },
+      types: ['geocode']
     }
   }
 );
