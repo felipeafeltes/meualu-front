@@ -1,5 +1,8 @@
-app.controller('searchController',
-  function ($scope, $state) {
+(function(){
+    'use strict';
+  app.controller('searchController',searchController);
+
+  function searchController($scope, $state) {
     $scope.$watch('address', function() {
       searchProperties();
     });
@@ -19,4 +22,4 @@ app.controller('searchController',
       types: ['geocode']
     }
   }
-);
+})()
