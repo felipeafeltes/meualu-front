@@ -7,7 +7,10 @@
       $scope.properties = PropertySearch.query(
         {
           address_string: $stateParams.address_string,
-          filters: { total_area: filters.total_area }
+          filters: {
+            total_area: filters.total_area,
+            bedrooms: filters.bedrooms
+          }
         }
       );
   }

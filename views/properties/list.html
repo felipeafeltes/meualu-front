@@ -1,31 +1,38 @@
-<div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
-  <div class="row">
-    <div class="col-sm-12">
-      <table class="table table-bordered table-hover table-striped dataTable no-footer" role="grid">
-        <thead>
-          <tr role="row">
-            <th class="sorting_asc" tabindex="0" aria-controls="exampleAddRow" rowspan="1" colspan="1" aria-sort="ascending" style="width: 100px;">Id</th>
-            <th class="sorting" tabindex="0" aria-controls="exampleAddRow" aria-label="Descrição" rowspan="1" colspan="1" style="width: 365px;">Descrição</th>
-            <th class="sorting" tabindex="0" aria-controls="exampleAddRow" rowspan="1" colspan="1" style="width: 365px;">Endereço</th>
-            <th class="sorting" tabindex="0" aria-controls="exampleAddRow" rowspan="1" colspan="1" style="width: 150px;">Área Total</th>
-            <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Ações" style="width: 100px;">Ações</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="property in properties" ng-init="parentIndex = $index" class="gradeA odd" role="row">
-            <td class="sorting_1">{{property.id}}</td>
-            <td>{{property.description}}</td>
-            <td>{{property.full_address()}}</td>
-            <td>{{property.total_area}} m²</td>
-            <td class="actions">
-              <!-- <a href="#" class="btn btn-sm btn-icon btn-pure btn-default hidden on-editing save-row waves-effect waves-classic" data-toggle="tooltip" data-original-title="Save"><i class="icon md-wrench" aria-hidden="true"></i></a>
-              <a href="#" class="btn btn-sm btn-icon btn-pure btn-default hidden on-editing cancel-row waves-effect waves-classic" data-toggle="tooltip" data-original-title="Delete"><i class="icon md-close" aria-hidden="true"></i></a> -->
-              <!-- <a ui-sref="admin.editProperties({ id: property.id })" class="btn btn-sm btn-icon btn-pure btn-default on-default edit-row waves-effect waves-classic" data-toggle="tooltip" data-original-title="Editar"><i class="icon md-edit" aria-hidden="true"></i></a>
-              <a ui-sref="admin.deleteProperties({ id: property.id })" class="btn btn-sm btn-icon btn-pure btn-default on-default remove-row waves-effect waves-classic" data-toggle="tooltip" data-original-title="Remover"><i class="icon md-delete" aria-hidden="true"></i></a> -->
-            </td>
-          </tr>
-        </tbody>
-      </table>
+<section class="full-heigth">
+  <div class="container-video">
+    <nav class="navbar">
+      <div class="filters-container" ng-controller="searchController" ng-include="'views/properties/_filters.html'"></div>
+    </nav>
+    <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+      <div class="row">
+        <div class="col-sm-12">
+          <table class="table table-bordered table-hover table-striped dataTable no-footer" role="grid">
+            <thead>
+              <tr role="row">
+                <th class="sorting_asc" tabindex="0" aria-controls="exampleAddRow" rowspan="1" colspan="1" aria-sort="ascending" style="width: 100px;">Id</th>
+                <th class="sorting" tabindex="0" aria-controls="exampleAddRow" aria-label="Descrição" rowspan="1" colspan="1" style="width: 365px;">Descrição</th>
+                <th class="sorting" tabindex="0" aria-controls="exampleAddRow" rowspan="1" colspan="1" style="width: 365px;">Endereço</th>
+                <th class="sorting" tabindex="0" aria-controls="exampleAddRow" rowspan="1" colspan="1" style="width: 150px;">Área Total</th>
+                <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="Ações" style="width: 100px;">Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="property in properties" ng-init="parentIndex = $index" class="gradeA odd" role="row">
+                <td class="sorting_1">{{property.id}}</td>
+                <td>{{property.description}}</td>
+                <td>{{property.full_address()}}</td>
+                <td>{{property.total_area}} m²</td>
+                <td class="actions">
+                  <!-- <a href="#" class="btn btn-sm btn-icon btn-pure btn-default hidden on-editing save-row waves-effect waves-classic" data-toggle="tooltip" data-original-title="Save"><i class="icon md-wrench" aria-hidden="true"></i></a>
+                  <a href="#" class="btn btn-sm btn-icon btn-pure btn-default hidden on-editing cancel-row waves-effect waves-classic" data-toggle="tooltip" data-original-title="Delete"><i class="icon md-close" aria-hidden="true"></i></a> -->
+                  <!-- <a ui-sref="admin.editProperties({ id: property.id })" class="btn btn-sm btn-icon btn-pure btn-default on-default edit-row waves-effect waves-classic" data-toggle="tooltip" data-original-title="Editar"><i class="icon md-edit" aria-hidden="true"></i></a>
+                  <a ui-sref="admin.deleteProperties({ id: property.id })" class="btn btn-sm btn-icon btn-pure btn-default on-default remove-row waves-effect waves-classic" data-toggle="tooltip" data-original-title="Remover"><i class="icon md-delete" aria-hidden="true"></i></a> -->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>
