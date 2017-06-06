@@ -13,14 +13,14 @@
       }
     });
 
-    $scope.onBedroomsSelect = function(bedroom, filterName){
-      if(bedroom.selected) {
+    $scope.onFilterSelect = function(filterObj, filterName){
+      if(filterObj.selected) {
         if(!$rootScope.filters[filterName]) {
           $rootScope.filters[filterName] = []
         }
-        $rootScope.filters[filterName].push(bedroom.value);
+        $rootScope.filters[filterName].push(filterObj.value);
       } else {
-        var index = $rootScope.filters[filterName].indexOf(bedroom.value);
+        var index = $rootScope.filters[filterName].indexOf(filterObj.value);
         $rootScope.filters[filterName].splice(index, 1);
       }
       searchProperties($rootScope.address_string);
@@ -42,24 +42,36 @@
     }
   }
 
-  function _prepare_filters(filters) {
-    return {
-      bedrooms: filters.bedrooms.toString()
-    }
-  }
 
   function _setup_search_filters() {
-    return { bedrooms: [
-      { value: 1, label: "1", selected: false },
-      { value: 2, label: "2", selected: false },
-      { value: 3, label: "3", selected: false },
-      { value: 4, label: "4+", selected: false }]
-    }
+    return {
+      bedrooms:
+        [
+          { value: 1, label: "1", selected: false },
+          { value: 2, label: "2", selected: false },
+          { value: 3, label: "3", selected: false },
+          { value: 4, label: "4+", selected: false }
+        ],
+      bathrooms:
+        [
+          { value: 1, label: "1", selected: false },
+          { value: 2, label: "2", selected: false },
+          { value: 3, label: "3+", selected: false },
+        ],
+      }
   }
 
   function _setup_filters(){
     return {
-      bedrooms: ""
+      bedrooms: "",
+      bathrooms: ""
+    }
+  }
+
+  function _prepare_filters(filters) {
+    return {
+      bedrooms: filters.bedrooms.toString(),
+      bathrooms: filters.bathrooms.toString()
     }
   }
 

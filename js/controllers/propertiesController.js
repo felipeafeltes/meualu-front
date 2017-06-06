@@ -8,14 +8,21 @@
         {
           address_string: $stateParams.address_string,
           filters: {
-            total_area: filters.total_area,
-            bedrooms: filters.bedrooms
+            bedrooms: filters.bedrooms,
+            bathrooms: filters.bathrooms,
+            garages: filters.garages,
+            total_area: filters.total_area
           }
         }
       );
   }
 
   function _setup_filters() {
-    return { total_area: null }
+    return {
+             bedrooms: null,
+             bathrooms: null,
+             garages: null,
+             total_area: null
+           }
   }
 })()

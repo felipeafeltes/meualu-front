@@ -4,34 +4,31 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu">
-    <li ng-repeat="room in search_filters.bedrooms">
+    <li ng-repeat="bedroom in search_filters.bedrooms">
       <div class="form-check">
-        <input name="bedroomsFilter[]"
-               ng-init="filterName='bedrooms';"
+        <input ng-init="filterName='bedrooms';"
                id="{{bedroom.value}}_bedroom"
                type="checkbox"
-               ng-model="room.selected" ng-click="onBedroomsSelect(room, filterName)">
-        <label>{{room.label}} Dormitório</label>
+               ng-model="bedroom.selected" ng-click="onFilterSelect(bedroom, filterName)">
+        <label>{{bedroom.label}} Dormitório(s)</label>
       </div>
     </li>
   </ul>
-</div>
-<div class="btn-group">
+</div><div class="btn-group">
   <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
-    Dormitórios
+    Banheiros
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu">
-    <li ng-repeat="room in filters.bedrooms">
+    <li ng-repeat="bathroom in search_filters.bathrooms">
       <div class="form-check">
-        <input name="bedroomsFilter[]"
-               id="{{room.value}}_room"
+        <input ng-init="filterName='bathrooms';"
+               id="{{bathroom.value}}_bathroom"
                type="checkbox"
-               ng-model="filters.bedrooms"
-               value="false" checked="room.value">
-        <label>{{room.label}} Dormitório</label>
+               ng-model="bathroom.selected" ng-click="onFilterSelect(bathroom, filterName)">
+        <label>{{bathroom.label}} Banheiro(s)</label>
       </div>
     </li>
   </ul>
 </div>
-<pre>{{filters.rooms | json}}</pre>
+<pre>{{filters | json}}</pre>
