@@ -6,7 +6,7 @@
 
     $scope.$watch('address', function(address) {
       if(address) {
-        $rootScope.search_filters = _setup_search_filters();
+        _setup_search_filters($rootScope);
         $rootScope.filters = _setup_filters();
         $rootScope.address_string = address.formatted_address;
         searchProperties($rootScope.address_string);
@@ -40,38 +40,82 @@
       componentRestrictions: { country: 'br' },
       types: ['geocode']
     }
+
+    $scope.filter_translation = function(filterName) {
+      return _filter_name_translation(filterName)
+    }
   }
 
 
-  function _setup_search_filters() {
-    return {
-      bedrooms:
-        [
-          { value: 1, label: "1", selected: false },
-          { value: 2, label: "2", selected: false },
-          { value: 3, label: "3", selected: false },
-          { value: 4, label: "4+", selected: false }
-        ],
-      bathrooms:
-        [
-          { value: 1, label: "1", selected: false },
-          { value: 2, label: "2", selected: false },
-          { value: 3, label: "3+", selected: false },
-        ],
-      }
+  function _setup_search_filters($rootScope) {
+    _setup_simple_filters($rootScope);
+    _setup_boolean_filters($rootScope);
+  }
+
+  function _setup_simple_filters($rootScope) {
+    $rootScope.simple_filters = {
+                                   bedrooms: _simple_filter_component(4),
+                                   bathrooms: _simple_filter_component(3),
+                                   garages: _simple_filter_component(3)
+                                };
+  }
+
+  function _setup_boolean_filters($rootScope) {
+    $rootScope.boolean_filters = {
+                                    furnished: _boolean_filter_component(),
+                                    pets_allowed: _boolean_filter_component()
+                                 }
+  }
+
+  function _filter_name_translation(filterName) {
+    var filtersMap = {
+                        bedrooms: "dormitório",
+                        bathrooms: "banheiro",
+                        garages: "vaga",
+                        furnished: "mobiliado",
+                        pets_allowed: "pet"
+                     };
+    return filtersMap[filterName];
+  }
+
+  function _simple_filter_component(size) {
+    var filterComponent = [];
+    for (var i = 1; i <= size; i++) {
+      filterComponent.push(
+        {
+          value: i,
+          label: i != size ? i.toString() : i.toString() + "+",
+          selected: false
+        }
+      );
+    }
+    return filterComponent;
+  }
+
+  function _boolean_filter_component() {
+    return [
+        { value: true, label: "Sim", selected: false },
+        { value: false, label: "Não", selected: false }
+      ]
   }
 
   function _setup_filters(){
     return {
-      bedrooms: "",
-      bathrooms: ""
+      bedrooms: [],
+      bathrooms: [],
+      garages: [],
+      furnished: [],
+      pets_allowed: []
     }
   }
 
   function _prepare_filters(filters) {
     return {
       bedrooms: filters.bedrooms.toString(),
-      bathrooms: filters.bathrooms.toString()
+      bathrooms: filters.bathrooms.toString(),
+      garages: filters.garages.toString(),
+      furnished: filters.furnished.toString(),
+      pets_allowed: filters.pets_allowed.toString()
     }
   }
 

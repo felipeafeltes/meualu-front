@@ -11,6 +11,8 @@
             bedrooms: filters.bedrooms,
             bathrooms: filters.bathrooms,
             garages: filters.garages,
+            furnished: filters.furnished,
+            pets_allowed: filters.pets_allowed,
             total_area: filters.total_area
           }
         }

@@ -1,34 +1,40 @@
-<div class="btn-group">
+<div ng-repeat="(key, data) in simple_filters" class="btn-group">
   <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
-    Dormitórios
+    {{ filter_translation(key.toString()) | capitalize | pluralize }}
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu">
-    <li ng-repeat="bedroom in search_filters.bedrooms">
+    <li ng-repeat="filter in data">
       <div class="form-check">
-        <input ng-init="filterName='bedrooms';"
-               id="{{bedroom.value}}_bedroom"
+        <input id="{{filter.value}}_{{key}}"
                type="checkbox"
-               ng-model="bedroom.selected" ng-click="onFilterSelect(bedroom, filterName)">
-        <label>{{bedroom.label}} Dormitório(s)</label>
-      </div>
-    </li>
-  </ul>
-</div><div class="btn-group">
-  <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
-    Banheiros
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu">
-    <li ng-repeat="bathroom in search_filters.bathrooms">
-      <div class="form-check">
-        <input ng-init="filterName='bathrooms';"
-               id="{{bathroom.value}}_bathroom"
-               type="checkbox"
-               ng-model="bathroom.selected" ng-click="onFilterSelect(bathroom, filterName)">
-        <label>{{bathroom.label}} Banheiro(s)</label>
+               ng-model="filter.selected" ng-click="onFilterSelect(filter, key)">
+        <label>
+          <!-- INDEX: {{ $index }} -->
+          {{ filter.label }}
+          {{ $index == 0 ? filter_translation(key.toString()) : (filter_translation(key.toString()) | pluralize) }}
+        </label>
       </div>
     </li>
   </ul>
 </div>
-<pre>{{filters | json}}</pre>
+<div ng-repeat="(key, data) in boolean_filters" class="btn-group">
+  <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+    {{ filter_translation(key.toString()) | capitalize | pluralize }}
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+    <li ng-repeat="filter in data">
+      <div class="form-check">
+        <input id="{{filter.value}}_{{key}}"
+               type="checkbox"
+               ng-model="filter.selected" ng-click="onFilterSelect(filter, key)">
+        <label>
+          <!-- INDEX: {{ $index }} -->
+          {{ filter.label }}
+        </label>
+      </div>
+    </li>
+  </ul>
+</div>
+<pre>{{ filters | json }}</pre>
