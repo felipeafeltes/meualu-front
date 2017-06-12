@@ -16,7 +16,7 @@ var app = angular
 
   app.filter('pluralize', function() {
       return function(input) {
-        return (!!input) ? input + 's' : "";
+        return (input.charAt(input.length -1) != "#") ? input + 's' : input.slice(0, input.length -1);
       }
   });
 

@@ -13,6 +13,7 @@
             garages: filters.garages,
             furnished: filters.furnished,
             pets_allowed: filters.pets_allowed,
+            public_transportation: filters.public_transportation,
             total_area: filters.total_area
           }
         }

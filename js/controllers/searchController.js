@@ -63,7 +63,8 @@
   function _setup_boolean_filters($rootScope) {
     $rootScope.boolean_filters = {
                                     furnished: _boolean_filter_component(),
-                                    pets_allowed: _boolean_filter_component()
+                                    pets_allowed: _boolean_filter_component(),
+                                    public_transportation: _boolean_filter_component()
                                  }
   }
 
@@ -72,8 +73,9 @@
                         bedrooms: "dormitório",
                         bathrooms: "banheiro",
                         garages: "vaga",
-                        furnished: "mobiliado",
-                        pets_allowed: "pet"
+                        furnished: "mobília#",
+                        pets_allowed: "pet",
+                        public_transportation: "transporte público#"
                      };
     return filtersMap[filterName];
   }
@@ -105,7 +107,8 @@
       bathrooms: [],
       garages: [],
       furnished: [],
-      pets_allowed: []
+      pets_allowed: [],
+      public_transportation: []
     }
   }
 
@@ -115,7 +118,8 @@
       bathrooms: filters.bathrooms.toString(),
       garages: filters.garages.toString(),
       furnished: filters.furnished.toString(),
-      pets_allowed: filters.pets_allowed.toString()
+      pets_allowed: filters.pets_allowed.toString(),
+      public_transportation: filters.public_transportation.toString()
     }
   }
 
