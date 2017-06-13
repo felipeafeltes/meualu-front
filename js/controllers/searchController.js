@@ -3,10 +3,9 @@
   app.controller('searchController', searchController);
 
   function searchController($scope, $rootScope, $state) {
-
     $scope.$watch('address', function(address) {
       if(address) {
-        _setup_search_filters($rootScope);
+        setup_search_filters();
         $rootScope.filters = _setup_filters();
         $rootScope.address_string = address.formatted_address;
         searchProperties($rootScope.address_string);
@@ -36,6 +35,40 @@
       }
     }
 
+    var setup_search_filters = function() {
+      $rootScope.simple_filters = {
+                                      bedrooms: _simple_filter_component(4),
+                                      bathrooms: _simple_filter_component(3),
+                                      garages: _simple_filter_component(3)
+                                   };
+      $rootScope.boolean_filters = {
+                                      furnished: _boolean_filter_component(),
+                                      pets_allowed: _boolean_filter_component(),
+                                      public_transportation: _boolean_filter_component()
+                                   };
+      $rootScope.range_filters = {
+                                   total_area: setup_range_filters('total_area', 15, 500),
+                                   rental: setup_range_filters('rental', 500, 10000)
+                                };
+    }
+
+    var setup_range_filters = function(filterName, minValue, maxValue){
+      return {
+          minValue: minValue,
+          maxValue: maxValue,
+          options: {
+              floor: minValue,
+              ceil: maxValue,
+              step: 1,
+              onEnd: function () {
+                var rangeFilter = $rootScope.range_filters[filterName];
+                $rootScope.filters[filterName] = rangeFilter.minValue + "," + rangeFilter.maxValue;
+                searchProperties($rootScope.address_string);
+              }
+          },
+        }
+    }
+
     $scope.autocompleteOptions = {
       componentRestrictions: { country: 'br' },
       types: ['geocode']
@@ -46,28 +79,6 @@
     }
   }
 
-
-  function _setup_search_filters($rootScope) {
-    _setup_simple_filters($rootScope);
-    _setup_boolean_filters($rootScope);
-  }
-
-  function _setup_simple_filters($rootScope) {
-    $rootScope.simple_filters = {
-                                   bedrooms: _simple_filter_component(4),
-                                   bathrooms: _simple_filter_component(3),
-                                   garages: _simple_filter_component(3)
-                                };
-  }
-
-  function _setup_boolean_filters($rootScope) {
-    $rootScope.boolean_filters = {
-                                    furnished: _boolean_filter_component(),
-                                    pets_allowed: _boolean_filter_component(),
-                                    public_transportation: _boolean_filter_component()
-                                 }
-  }
-
   function _filter_name_translation(filterName) {
     var filtersMap = {
                         bedrooms: "dormitório",
@@ -75,7 +86,9 @@
                         garages: "vaga",
                         furnished: "mobília#",
                         pets_allowed: "pet",
-                        public_transportation: "transporte público#"
+                        public_transportation: "transporte público#",
+                        total_area: "área total#",
+                        rental: "valor#"
                      };
     return filtersMap[filterName];
   }
@@ -108,7 +121,9 @@
       garages: [],
       furnished: [],
       pets_allowed: [],
-      public_transportation: []
+      public_transportation: [],
+      total_area: "",
+      rental: ""
     }
   }
 
@@ -119,7 +134,9 @@
       garages: filters.garages.toString(),
       furnished: filters.furnished.toString(),
       pets_allowed: filters.pets_allowed.toString(),
-      public_transportation: filters.public_transportation.toString()
+      public_transportation: filters.public_transportation.toString(),
+      total_area: filters.total_area,
+      rental: filters.rental
     }
   }
 

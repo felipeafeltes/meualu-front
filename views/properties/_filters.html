@@ -37,4 +37,22 @@
     </li>
   </ul>
 </div>
-<pre>{{ filters | json }}</pre>
+<div ng-repeat="(key, filter) in range_filters" class="btn-group">
+  <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+    {{ filter_translation(key.toString()) | capitalize | pluralize }}
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" style="width: 300px !important;">
+    <li>
+      <div class="form-check">
+        <rzslider rz-slider-model="filter.minValue"
+                  rz-slider-high="filter.maxValue"
+                  rz-slider-options="filter.options"></rzslider>
+      </div>
+    </li>
+  </ul>
+</div>
+<pre>{{ filters | json }}
+  <!-- Min Value: <input type="number" ng-model="slider.minValue" class="ng-pristine ng-valid ng-not-empty ng-touched"><br>
+  Max Value: <input type="number" ng-model="slider.maxValue" class="ng-pristine ng-untouched ng-valid ng-not-empty"><br> -->
+</pre>

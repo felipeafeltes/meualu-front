@@ -3,6 +3,7 @@ var app = angular
     'ui.router',
     'satellizer',
     'google.places',
+    'rzModule',
     'usersSessionServices',
     'propertiesSearchServices',
     'oauthSessionsServices'
