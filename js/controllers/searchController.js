@@ -2,7 +2,7 @@
     'use strict';
   app.controller('searchController', searchController);
 
-  function searchController($scope, $rootScope, $state) {
+  function searchController($scope, $rootScope, $state, ExtraInfo) {
     $scope.$watch('address', function(address) {
       if(address) {
         setup_search_filters();
@@ -50,6 +50,13 @@
                                    total_area: setup_range_filters('total_area', 15, 500),
                                    rental: setup_range_filters('rental', 500, 10000)
                                 };
+      $rootScope.extra_info_filters = ExtraInfo.query();
+      $rootScope.$watch('extra_info_filters |filter:{selected:true}', function (nv) {
+          $rootScope.filters.extra_infos = nv.map(function (info) {
+            return info.id;
+          });
+          searchProperties($rootScope.address_string);
+      }, true);
     }
 
     var setup_range_filters = function(filterName, minValue, maxValue){
@@ -136,7 +143,8 @@
       pets_allowed: filters.pets_allowed.toString(),
       public_transportation: filters.public_transportation.toString(),
       total_area: filters.total_area,
-      rental: filters.rental
+      rental: filters.rental,
+      extra_infos: filters.extra_infos
     }
   }
 

@@ -8,8 +8,9 @@
       <div class="form-check">
         <input id="{{filter.value}}_{{key}}"
                type="checkbox"
-               ng-model="filter.selected" ng-click="onFilterSelect(filter, key)">
-        <label>
+               ng-model="filter.selected"
+               ng-click="onFilterSelect(filter, key)">
+        <label for="{{filter.value}}_{{key}}">
           <!-- INDEX: {{ $index }} -->
           {{ filter.label }}
           {{ $index == 0 ? filter_translation(key.toString()) : (filter_translation(key.toString()) | pluralize) }}
@@ -28,8 +29,9 @@
       <div class="form-check">
         <input id="{{filter.value}}_{{key}}"
                type="checkbox"
-               ng-model="filter.selected" ng-click="onFilterSelect(filter, key)">
-        <label>
+               ng-model="filter.selected"
+               ng-click="onFilterSelect(filter, key)">
+        <label for="{{filter.value}}_{{key}}">
           <!-- INDEX: {{ $index }} -->
           {{ filter.label }}
         </label>
@@ -48,6 +50,23 @@
         <rzslider rz-slider-model="filter.minValue"
                   rz-slider-high="filter.maxValue"
                   rz-slider-options="filter.options"></rzslider>
+      </div>
+    </li>
+  </ul>
+</div>
+<div class="btn-group">
+  <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+    Outros
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" style="width: 300px !important;">
+    <li ng-repeat="extra_info in extra_info_filters" class="list-inline-item">
+      <div class="checkbox-custom checkbox-primary" style="width: 290px;">
+        <input type="checkbox"
+               ng-model="extra_info.selected"
+               id="{{'div' + extra_info.id}}"
+               checked="">
+        <label for="{{'div' + extra_info.id}}">{{extra_info.description}}</label>
       </div>
     </li>
   </ul>

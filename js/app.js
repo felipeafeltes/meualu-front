@@ -6,7 +6,8 @@ var app = angular
     'rzModule',
     'usersSessionServices',
     'propertiesSearchServices',
-    'oauthSessionsServices'
+    'oauthSessionsServices',
+    'extraInfosServices'
   ]);
 
   app.filter('capitalize', function() {

@@ -15,7 +15,8 @@
             pets_allowed: filters.pets_allowed,
             public_transportation: filters.public_transportation,
             total_area: filters.total_area,
-            rental: filters.rental
+            rental: filters.rental,
+            extra_infos: filters.extra_infos
           }
         }
       );
