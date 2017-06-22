@@ -1,13 +1,17 @@
 var app = angular
   .module('aluFrontApp', [
+    'oc.lazyLoad',
     'ui.router',
     'satellizer',
+    'nemLogging',
+    'uiGmapgoogle-maps',
     'google.places',
     'rzModule',
     'usersSessionServices',
     'propertiesSearchServices',
     'oauthSessionsServices',
-    'extraInfosServices'
+    'extraInfosServices',
+    'ngMaterial'
   ]);
 
   app.filter('capitalize', function() {
@@ -22,7 +26,11 @@ var app = angular
       }
   });
 
-app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $authProvider) {
+app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $authProvider, $ocLazyLoadProvider) {
+
+  $ocLazyLoadProvider.config({
+    events: true
+  });
 
     /**
    * Helper auth functions
@@ -92,7 +100,12 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $auth
         hiddenParam: 'YES'
       },
       templateUrl: 'views/properties/list.html',
-      controller: 'PropertiesSearchController'
+      controller: 'PropertiesSearchController',
+      resolve: {
+        deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+          return $ocLazyLoad.load('js/directives/header/header.js');
+        }]
+      }
         // resolve: {
         //   loginRequired: loginRequired
         // }

@@ -1,0 +1,37 @@
+<nav class="navbar navbar-purple">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        <img src="assets/imagens/icones/logo_alu_amarelo.png" class="img-responsive logo-nav-puple">
+      </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1 m-l-20">
+      <form class="navbar-form navbar-left">
+        <div class="form-group">
+          <input g-places-autocomplete
+                 ng-model="address"
+                 options="autocompleteOptions"
+                 force-selection="true"
+                 type="text"
+                 class="form-control">
+          </input>
+        </div>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="bold text-uppercase"><a class="text-yellow" href="#">Anuncie aqui</a></li>
+        <li class="bold text-uppercase"><a class="text-white" href="#">Favoritos</a></li>
+        <li class="bold text-uppercase cursor-pointer" ng-hide="current_user"><a class="text-white" data-toggle="modal" data-target="#modalLogin"><i class="fa fa-user-o"></i> Entrar</a></li>
+        <li class="bold text-uppercase cursor-pointer" ng-show="current_user"><a class="text-white">{{current_user.name}}</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

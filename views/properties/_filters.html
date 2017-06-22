@@ -1,50 +1,41 @@
 <div ng-repeat="(key, data) in simple_filters" class="btn-group">
-  <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+  <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#">
+    <i class="fa {{data[1]}}"></i>
     {{ filter_translation(key.toString()) | capitalize | pluralize }}
     <span class="caret"></span>
   </a>
-  <ul class="dropdown-menu">
-    <li ng-repeat="filter in data">
+  <ul class="dropdown-menu filters">
+    <li ng-repeat="filter in data[0]">
       <div class="form-check">
-        <input id="{{filter.value}}_{{key}}"
-               type="checkbox"
-               ng-model="filter.selected"
-               ng-click="onFilterSelect(filter, key)">
-        <label for="{{filter.value}}_{{key}}">
-          <!-- INDEX: {{ $index }} -->
+        <md-checkbox ng-click="onFilterSelect(filter, key)" ng-model="filter.selected">
           {{ filter.label }}
           {{ $index == 0 ? filter_translation(key.toString()) : (filter_translation(key.toString()) | pluralize) }}
-        </label>
+        </md-checkbox>
       </div>
     </li>
   </ul>
 </div>
 <div ng-repeat="(key, data) in boolean_filters" class="btn-group">
-  <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+  <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#">
+    <i class="fa {{data[1]}}"></i>
     {{ filter_translation(key.toString()) | capitalize | pluralize }}
     <span class="caret"></span>
   </a>
-  <ul class="dropdown-menu">
-    <li ng-repeat="filter in data">
-      <div class="form-check">
-        <input id="{{filter.value}}_{{key}}"
-               type="checkbox"
-               ng-model="filter.selected"
-               ng-click="onFilterSelect(filter, key)">
-        <label for="{{filter.value}}_{{key}}">
-          <!-- INDEX: {{ $index }} -->
-          {{ filter.label }}
-        </label>
-      </div>
+  <ul class="dropdown-menu list-inline filters">
+    <li >
+      <md-radio-group>
+        <md-radio-button ng-repeat="filter in data[0]" ng-value="filter.value"> {{ filter.label }} </md-radio-button>
+      </md-radio-group>
     </li>
   </ul>
 </div>
 <div ng-repeat="(key, filter) in range_filters" class="btn-group">
-  <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+  <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#">
+    <i class="fa {{filter.icon}}"></i>
     {{ filter_translation(key.toString()) | capitalize | pluralize }}
     <span class="caret"></span>
   </a>
-  <ul class="dropdown-menu" style="width: 300px !important;">
+  <ul class="dropdown-menu filters" style="width: 300px !important;">
     <li>
       <div class="form-check">
         <rzslider rz-slider-model="filter.minValue"
@@ -55,11 +46,11 @@
   </ul>
 </div>
 <div class="btn-group">
-  <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+  <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#">
     Outros
     <span class="caret"></span>
   </a>
-  <ul class="dropdown-menu" style="width: 300px !important;">
+  <ul class="dropdown-menu filters" style="width: 300px !important;">
     <li ng-repeat="extra_info in extra_info_filters" class="list-inline-item">
       <div class="checkbox-custom checkbox-primary" style="width: 290px;">
         <input type="checkbox"
@@ -71,7 +62,7 @@
     </li>
   </ul>
 </div>
-<pre>{{ filters | json }}
-  <!-- Min Value: <input type="number" ng-model="slider.minValue" class="ng-pristine ng-valid ng-not-empty ng-touched"><br>
-  Max Value: <input type="number" ng-model="slider.maxValue" class="ng-pristine ng-untouched ng-valid ng-not-empty"><br> -->
-</pre>
+<!-- <pre>{{ filters | json }}
+  Min Value: <input type="number" ng-model="slider.minValue" class="ng-pristine ng-valid ng-not-empty ng-touched"><br>
+  Max Value: <input type="number" ng-model="slider.maxValue" class="ng-pristine ng-untouched ng-valid ng-not-empty"><br>
+</pre> -->

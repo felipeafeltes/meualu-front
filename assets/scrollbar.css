@@ -1,0 +1,13 @@
+.propertie-list::-webkit-scrollbar {
+  width: 0.6em;
+}
+
+.propertie-list::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px #fff;
+}
+
+.propertie-list::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+

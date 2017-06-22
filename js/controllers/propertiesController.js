@@ -2,7 +2,7 @@
     'use strict';
   app.controller('PropertiesSearchController', PropertiesSearchController);
 
-  function PropertiesSearchController($scope, PropertySearch, $stateParams) {
+  function PropertiesSearchController($scope, $rootScope, PropertySearch, $stateParams) {
       var filters = $stateParams.filters || _setup_filters();
       $scope.properties = PropertySearch.query(
         {
@@ -20,6 +20,50 @@
           }
         }
       );
+
+      $scope.map = { center: { latitude: $rootScope.lat, longitude: $rootScope.lng }, zoom: 11 };
+
+      $scope.properties = [
+        {
+          address:{
+            street: "Rua machado de Assis",
+            neighborhood: "Jardim Botanico"
+          },
+          rental: "800,00",
+          total: "920,00",
+          details:{
+            bedrooms: 2,
+            bathrooms: 4,
+            total_area: "86m²",
+          }
+        },
+        {
+          address:{
+            street: "Rua machado de Assis",
+            neighborhood: "Jardim Botanico"
+          },
+          rental: "800,00",
+          total: "920,00",
+          details:{
+            bedrooms: 2,
+            bathrooms: 4,
+            total_area: "86m²",
+          }
+        },
+        {
+          address:{
+            street: "Rua machado de Assis",
+            neighborhood: "Jardim Botanico"
+          },
+          rental: "800,00",
+          total: "920,00",
+          details:{
+            bedrooms: 2,
+            bathrooms: 4,
+            total_area: "86m²",
+          }
+        }
+      ]
   }
 
   function _setup_filters() {

@@ -8,6 +8,8 @@
         setup_search_filters();
         $rootScope.filters = _setup_filters();
         $rootScope.address_string = address.formatted_address;
+        $rootScope.lng = address.geometry.location.lng();
+        $rootScope.lat = address.geometry.location.lat();
         searchProperties($rootScope.address_string);
       }
     });
@@ -37,18 +39,18 @@
 
     var setup_search_filters = function() {
       $rootScope.simple_filters = {
-                                      bedrooms: _simple_filter_component(4),
-                                      bathrooms: _simple_filter_component(3),
-                                      garages: _simple_filter_component(3)
+                                      bedrooms: [_simple_filter_component(4), 'fa-bed'],
+                                      bathrooms: [_simple_filter_component(3), 'fa-bath'],
+                                      garages: [_simple_filter_component(3), 'fa-car']
                                    };
       $rootScope.boolean_filters = {
-                                      furnished: _boolean_filter_component(),
-                                      pets_allowed: _boolean_filter_component(),
-                                      public_transportation: _boolean_filter_component()
+                                      furnished: [_boolean_filter_component('furnished'), 'fa-tv'],
+                                      pets_allowed: [_boolean_filter_component('pets_allowed'), 'fa-paw'],
+                                      public_transportation: [_boolean_filter_component('public_transportation'), 'fa-bus']
                                    };
       $rootScope.range_filters = {
-                                   total_area: setup_range_filters('total_area', 15, 500),
-                                   rental: setup_range_filters('rental', 500, 10000)
+                                   total_area: setup_range_filters('total_area', 15, 500, 'fa-percent'),
+                                   rental: setup_range_filters('rental', 500, 10000, 'fa-usd')
                                 };
       $rootScope.extra_info_filters = ExtraInfo.query();
       $rootScope.$watch('extra_info_filters |filter:{selected:true}', function (nv) {
@@ -59,7 +61,7 @@
       }, true);
     }
 
-    var setup_range_filters = function(filterName, minValue, maxValue){
+    var setup_range_filters = function(filterName, minValue, maxValue, icon){
       return {
           minValue: minValue,
           maxValue: maxValue,
@@ -73,6 +75,7 @@
                 searchProperties($rootScope.address_string);
               }
           },
+          icon: icon
         }
     }
 
@@ -114,10 +117,10 @@
     return filterComponent;
   }
 
-  function _boolean_filter_component() {
+  function _boolean_filter_component(name) {
     return [
-        { value: true, label: "Sim", selected: false },
-        { value: false, label: "Não", selected: false }
+        { value: true, label: "Sim", selected: false, name: name },
+        { value: false, label: "Não", selected: false, name: name }
       ]
   }
 

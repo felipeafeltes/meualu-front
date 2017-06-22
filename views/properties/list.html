@@ -1,9 +1,55 @@
 <section class="full-heigth">
-  <div class="container-video">
-    <nav class="navbar">
+  <header></header>
+  <div class="container-fluid">
+    <nav class="navbar filters text-center">
       <div class="filters-container" ng-controller="searchController" ng-include="'views/properties/_filters.html'"></div>
     </nav>
-    <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+    <div class="row row-list-details text-gray">
+      <div class="col-md-5 font-14 propertie-list">
+        <h2>
+          <span class="text-green bold">Encontramos 14 apês</span>
+          <button type="button" class="btn btn-green-full btn-sm pull-right">Adicionar alerta</button>
+        </h2>
+        <p>Nos ajude a ser mais preciso, utilize os filtros acima.</p>
+
+        <div class="dropdown">
+          <span>Order por</span>
+          <a class="text-green dropdown-toggle" type="button" id="dropdownPreco" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            menor preço
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownPreco">
+            <li><a href="#">menor preço</a></li>
+            <li><a href="#">maior preço</a></li>
+          </ul>
+        </div>
+        <div class="panel panel-default" ng-repeat="propertie in properties">
+          <div class="panel-body imovel-desc">
+            <div class="col-md-5">
+              <h4 class="text-dark">{{propertie.address.street}}</h4>
+              <p>{{propertie.address.neighborhood}}</p>
+              <ul class="properties-details" >
+                <li ng-repeat="(key, detail) in propertie.details">{{detail}}</li>
+              </ul>
+              <hr />
+              <h4 class="text-green">
+                Aluguel: {{propertie.rental}}
+              </h4>
+              <h4 class="text-green">
+                Valor total: {{propertie.total}}
+              </h4>
+            </div>
+            <div class="col-md-7 no-padding">
+              <img src="assets/imagens/imovel.jpg" class="img-full" alt="Responsive image">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-7 no-padding">
+        <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
+      </div>
+    </div>
+    <!--<div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
       <div class="row">
         <div class="col-sm-12">
           <table class="table table-bordered table-hover table-striped dataTable no-footer" role="grid">
@@ -26,13 +72,13 @@
                   <!-- <a href="#" class="btn btn-sm btn-icon btn-pure btn-default hidden on-editing save-row waves-effect waves-classic" data-toggle="tooltip" data-original-title="Save"><i class="icon md-wrench" aria-hidden="true"></i></a>
                   <a href="#" class="btn btn-sm btn-icon btn-pure btn-default hidden on-editing cancel-row waves-effect waves-classic" data-toggle="tooltip" data-original-title="Delete"><i class="icon md-close" aria-hidden="true"></i></a> -->
                   <!-- <a ui-sref="admin.editProperties({ id: property.id })" class="btn btn-sm btn-icon btn-pure btn-default on-default edit-row waves-effect waves-classic" data-toggle="tooltip" data-original-title="Editar"><i class="icon md-edit" aria-hidden="true"></i></a>
-                  <a ui-sref="admin.deleteProperties({ id: property.id })" class="btn btn-sm btn-icon btn-pure btn-default on-default remove-row waves-effect waves-classic" data-toggle="tooltip" data-original-title="Remover"><i class="icon md-delete" aria-hidden="true"></i></a> -->
+                  <a ui-sref="admin.deleteProperties({ id: property.id })" class="btn btn-sm btn-icon btn-pure btn-default on-default remove-row waves-effect waves-classic" data-toggle="tooltip" data-original-title="Remover"><i class="icon md-delete" aria-hidden="true"></i></a>
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
-    </div>
+    </div>-->
   </div>
 </div>
