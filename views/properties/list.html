@@ -24,8 +24,8 @@
           </ul>
         </div>
         <div class="panel panel-default" ng-repeat="propertie in properties">
-          <div class="panel-body imovel-desc">
-            <div class="col-md-5">
+          <div class="panel-body imovel-desc" >
+            <div class="col-md-5" ng-click='details(13)'>
               <h4 class="text-dark">{{propertie.address.street}}</h4>
               <p>{{propertie.address.neighborhood}}</p>
               <ul class="properties-details" >
@@ -81,4 +81,4 @@
       </div>
     </div>-->
   </div>
-</div>
+</section>

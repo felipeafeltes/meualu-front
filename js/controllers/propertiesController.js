@@ -1,9 +1,10 @@
 (function(){
     'use strict';
   app.controller('PropertiesSearchController', PropertiesSearchController);
+  app.controller('PropertiesDetailsController', PropertiesDetailsController);
 
-  function PropertiesSearchController($scope, $rootScope, PropertySearch, $stateParams) {
-      var filters = $stateParams.filters || _setup_filters();
+  function PropertiesSearchController($scope, $rootScope, PropertySearch, $stateParams, $state) {
+      var filters = $stateParams.filters || {};
       $scope.properties = PropertySearch.query(
         {
           address_string: $stateParams.address_string,
@@ -20,6 +21,10 @@
           }
         }
       );
+
+      $scope.details = function(id) {
+        $state.go('alu.propertiesDetails', { id: id });
+      }
 
       $scope.map = { center: { latitude: $rootScope.lat, longitude: $rootScope.lng }, zoom: 11 };
 
@@ -66,12 +71,7 @@
       ]
   }
 
-  function _setup_filters() {
-    return {
-             bedrooms: null,
-             bathrooms: null,
-             garages: null,
-             total_area: null
-           }
+  function PropertiesDetailsController($scope, $stateParams, Property) {
+    $scope.property = Property.get({ id: $stateParams.id })
   }
 })()

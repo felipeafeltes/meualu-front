@@ -11,8 +11,10 @@ var app = angular
     'propertiesSearchServices',
     'oauthSessionsServices',
     'extraInfosServices',
+    'propertiesServices',
     'ngMaterial',
     'scrollToFixed'
+    'ngMaterial'
   ]);
 
   app.filter('capitalize', function() {
@@ -89,7 +91,7 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $auth
     })
     .state('alu', {
       url: '/alu',
-      templateUrl: 'views/default_layout.html',
+      templateUrl: 'views/default_layout.html'
     })
     .state('alu.properties', {
       url: '/imoveis/:address_string?{filters:json}',
@@ -117,6 +119,11 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $auth
           return $ocLazyLoad.load('js/directives/header/header.js');
         }]
       }
+    })
+    .state('alu.propertiesDetails', {
+      url: '/imoveis/:id',
+      templateUrl: 'views/properties/show.html',
+      controller: 'PropertiesDetailsController'
     });
     // .state('admin', {
     //   url: '/admin',
