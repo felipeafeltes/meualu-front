@@ -90,6 +90,10 @@ h1, h2, h3, h4, h5, h6{font-family:'Maven Pro', sans-serif;}
   height: calc(100vh - 130px);
   background-color: #f5f5f5;
 }
+div#pictures {
+  height: calc(100vh - 250px);
+  margin-bottom: -20px;
+}
 input.search-home {
   color: #fff;
   border-radius: 0px;
@@ -227,3 +231,13 @@ h1.rental {
 .panel-body.properties-related {
   padding: 0 15px;
 }
+
+.row-slider-full {
+  height:  200px;
+}
+
+#slide-nav {
+  height: 90px;
+  width: 90%;
+}
+

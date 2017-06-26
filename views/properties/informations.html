@@ -1,7 +1,7 @@
 <header></header>
 <section class="bg-gray">
   <div class="container-fluid">
-    <div id="pictures" class="row" style="height: calc(100vh - 250px); margin-bottom: -20px;">
+    <div id="pictures" class="row">
       <slick arrows="false" slides-to-show="1" id="slide-full" as-nav-for="#slide-nav" arrows="false" slides-to-scroll="1">
           <div ng-repeat="img in images">
             <img src="{{img.src}}" class="img-full" alt="Responsive image">
@@ -10,9 +10,9 @@
     </div>
   </div>
   <div class="container">
-    <div class="row" style="height:  200px;">
+    <div class="row row-slider-full">
       <div class="col-md-6">
-        <slick arrows="true" slides-to-show="4" style="height: 90px; width: 90%;" id="slide-nav" as-nav-for="#slide-full" slides-to-scroll="1" infinite="false">
+        <slick arrows="true" slides-to-show="4" id="slide-nav" as-nav-for="#slide-full" slides-to-scroll="1" infinite="false">
           <div class="image" ng-repeat="img in images">
             <img src="{{img.src}}" class="img-full" alt="Responsive image">
           </div>
