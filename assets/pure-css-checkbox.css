@@ -19,7 +19,7 @@
 .pure-radiobutton input[type="checkbox"]:hover + label:before,
 .pure-checkbox input[type="radio"]:hover + label:before,
 .pure-radiobutton input[type="radio"]:hover + label:before {
-  border-color: #4f8196;
+  border-color: #534a83;
   background-color: #f2f2f2;
 }
 .pure-checkbox input[type="checkbox"]:active + label:before,
@@ -51,7 +51,7 @@
   width: 14px;
   height: 14px;
   margin-top: -9px;
-  border: 2px solid #4f8196;
+  border: 2px solid #c3c3c3;
   text-align: center;
   transition: all 0.4s ease;
 }
@@ -132,7 +132,7 @@
 .pure-checkbox input[type="checkbox"]:checked + label:before,
 .pure-radiobutton input[type="checkbox"]:checked + label:before {
   animation: borderscale 200ms ease-in;
-  background: #4f8196;
+  background: #b7b5d5;
 }
 .pure-checkbox input[type="checkbox"]:checked + label:after,
 .pure-radiobutton input[type="checkbox"]:checked + label:after {
