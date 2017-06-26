@@ -15,6 +15,7 @@
     });
 
     $scope.onFilterSelect = function(filterObj, filterName){
+      console.log("filter");
       if(filterObj.selected) {
         if(!$rootScope.filters[filterName]) {
           $rootScope.filters[filterName] = []

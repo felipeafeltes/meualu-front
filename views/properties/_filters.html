@@ -5,13 +5,18 @@
       {{ filter_translation(key.toString()) | capitalize | pluralize }}
       <span class="caret"></span>
     </a>
-    <ul class="dropdown-menu filters">
+    <ul class="dropdown-menu filters" ng-click="$event.stopPropagation();">
       <li ng-repeat="filter in data[0]">
         <div class="form-check">
-          <md-checkbox ng-click="onFilterSelect(filter, key)" ng-model="filter.selected">
+          <input id="{{filter.value}}_{{key}}"
+               type="checkbox"
+               ng-model="filter.selected"
+               ng-click="onFilterSelect(filter, key)">
+          <label for="{{filter.value}}_{{key}}">
+            <!-- INDEX: {{ $index }} -->
             {{ filter.label }}
             {{ $index == 0 ? filter_translation(key.toString()) : (filter_translation(key.toString()) | pluralize) }}
-          </md-checkbox>
+          </label>
         </div>
       </li>
     </ul>
@@ -22,11 +27,18 @@
       {{ filter_translation(key.toString()) | capitalize | pluralize }}
       <span class="caret"></span>
     </a>
-    <ul class="dropdown-menu list-inline filters">
-      <li >
-        <md-radio-group>
-          <md-radio-button ng-repeat="filter in data[0]" ng-value="filter.value"> {{ filter.label }} </md-radio-button>
-        </md-radio-group>
+    <ul class="dropdown-menu list-inline filters" ng-click="$event.stopPropagation();">
+      <li ng-repeat="filter in data[0]">
+        <div class="form-check">
+        <input id="{{filter.value}}_{{key}}"
+               type="checkbox"
+               ng-model="filter.selected"
+               ng-click="onFilterSelect(filter, key)">
+        <label for="{{filter.value}}_{{key}}">
+          <!-- INDEX: {{ $index }} -->
+          {{ filter.label }}
+        </label>
+      </div>
       </li>
     </ul>
   </div>
@@ -36,7 +48,7 @@
       {{ filter_translation(key.toString()) | capitalize | pluralize }}
       <span class="caret"></span>
     </a>
-    <ul class="dropdown-menu filters" style="width: 300px !important;">
+    <ul class="dropdown-menu filters" style="width: 300px !important;" ng-click="$event.stopPropagation();">
       <li>
         <div class="form-check">
           <rzslider rz-slider-model="filter.minValue"
