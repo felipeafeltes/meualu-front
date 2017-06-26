@@ -11,7 +11,8 @@ var app = angular
     'propertiesSearchServices',
     'oauthSessionsServices',
     'extraInfosServices',
-    'ngMaterial'
+    'ngMaterial',
+    'scrollToFixed'
   ]);
 
   app.filter('capitalize', function() {
@@ -106,9 +107,16 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $auth
           return $ocLazyLoad.load('js/directives/header/header.js');
         }]
       }
-        // resolve: {
-        //   loginRequired: loginRequired
-        // }
+    })
+    .state('informations', {
+      url: '/imovel/informacoes',
+      templateUrl: 'views/properties/informations.html',
+      controller: 'InformationsController',
+      resolve: {
+        deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+          return $ocLazyLoad.load('js/directives/header/header.js');
+        }]
+      }
     });
     // .state('admin', {
     //   url: '/admin',

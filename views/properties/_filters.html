@@ -1,68 +1,70 @@
-<div ng-repeat="(key, data) in simple_filters" class="btn-group">
-  <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#">
-    <i class="fa {{data[1]}}"></i>
-    {{ filter_translation(key.toString()) | capitalize | pluralize }}
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu filters">
-    <li ng-repeat="filter in data[0]">
-      <div class="form-check">
-        <md-checkbox ng-click="onFilterSelect(filter, key)" ng-model="filter.selected">
-          {{ filter.label }}
-          {{ $index == 0 ? filter_translation(key.toString()) : (filter_translation(key.toString()) | pluralize) }}
-        </md-checkbox>
-      </div>
-    </li>
-  </ul>
+<div class="btn-group" role="group" aria-label="...">
+  <div ng-repeat="(key, data) in simple_filters" class="btn-group">
+    <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#">
+      <i class="fa {{data[1]}}"></i>
+      {{ filter_translation(key.toString()) | capitalize | pluralize }}
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu filters">
+      <li ng-repeat="filter in data[0]">
+        <div class="form-check">
+          <md-checkbox ng-click="onFilterSelect(filter, key)" ng-model="filter.selected">
+            {{ filter.label }}
+            {{ $index == 0 ? filter_translation(key.toString()) : (filter_translation(key.toString()) | pluralize) }}
+          </md-checkbox>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div ng-repeat="(key, data) in boolean_filters" class="btn-group">
+    <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#">
+      <i class="fa {{data[1]}}"></i>
+      {{ filter_translation(key.toString()) | capitalize | pluralize }}
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu list-inline filters">
+      <li >
+        <md-radio-group>
+          <md-radio-button ng-repeat="filter in data[0]" ng-value="filter.value"> {{ filter.label }} </md-radio-button>
+        </md-radio-group>
+      </li>
+    </ul>
+  </div>
+  <div ng-repeat="(key, filter) in range_filters" class="btn-group">
+    <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#">
+      <i class="fa {{filter.icon}}"></i>
+      {{ filter_translation(key.toString()) | capitalize | pluralize }}
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu filters" style="width: 300px !important;">
+      <li>
+        <div class="form-check">
+          <rzslider rz-slider-model="filter.minValue"
+                    rz-slider-high="filter.maxValue"
+                    rz-slider-options="filter.options"></rzslider>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="btn-group">
+    <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#">
+      Outros
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu filters" style="width: 300px !important;">
+      <li ng-repeat="extra_info in extra_info_filters" class="list-inline-item">
+        <div class="checkbox-custom checkbox-primary" style="width: 290px;">
+          <input type="checkbox"
+                 ng-model="extra_info.selected"
+                 id="{{'div' + extra_info.id}}"
+                 checked="">
+          <label for="{{'div' + extra_info.id}}">{{extra_info.description}}</label>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <!-- <pre>{{ filters | json }}
+    Min Value: <input type="number" ng-model="slider.minValue" class="ng-pristine ng-valid ng-not-empty ng-touched"><br>
+    Max Value: <input type="number" ng-model="slider.maxValue" class="ng-pristine ng-untouched ng-valid ng-not-empty"><br>
+  </pre> -->
 </div>
-<div ng-repeat="(key, data) in boolean_filters" class="btn-group">
-  <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#">
-    <i class="fa {{data[1]}}"></i>
-    {{ filter_translation(key.toString()) | capitalize | pluralize }}
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu list-inline filters">
-    <li >
-      <md-radio-group>
-        <md-radio-button ng-repeat="filter in data[0]" ng-value="filter.value"> {{ filter.label }} </md-radio-button>
-      </md-radio-group>
-    </li>
-  </ul>
-</div>
-<div ng-repeat="(key, filter) in range_filters" class="btn-group">
-  <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#">
-    <i class="fa {{filter.icon}}"></i>
-    {{ filter_translation(key.toString()) | capitalize | pluralize }}
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu filters" style="width: 300px !important;">
-    <li>
-      <div class="form-check">
-        <rzslider rz-slider-model="filter.minValue"
-                  rz-slider-high="filter.maxValue"
-                  rz-slider-options="filter.options"></rzslider>
-      </div>
-    </li>
-  </ul>
-</div>
-<div class="btn-group">
-  <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#">
-    Outros
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu filters" style="width: 300px !important;">
-    <li ng-repeat="extra_info in extra_info_filters" class="list-inline-item">
-      <div class="checkbox-custom checkbox-primary" style="width: 290px;">
-        <input type="checkbox"
-               ng-model="extra_info.selected"
-               id="{{'div' + extra_info.id}}"
-               checked="">
-        <label for="{{'div' + extra_info.id}}">{{extra_info.description}}</label>
-      </div>
-    </li>
-  </ul>
-</div>
-<!-- <pre>{{ filters | json }}
-  Min Value: <input type="number" ng-model="slider.minValue" class="ng-pristine ng-valid ng-not-empty ng-touched"><br>
-  Max Value: <input type="number" ng-model="slider.maxValue" class="ng-pristine ng-untouched ng-valid ng-not-empty"><br>
-</pre> -->

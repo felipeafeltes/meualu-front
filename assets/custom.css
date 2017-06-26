@@ -10,20 +10,25 @@ h1, h2, h3, h4, h5, h6{font-family:'Maven Pro', sans-serif;}
 .chat-logo{width:30px;height:30px;}
 .full-heigth{height:100%;min-height:100vh;}
 .footer-heigth{min-height:40vh;}
+.m-r-5{margin-right:5px;}
 .m-r-30{margin-right:30px;}
 .m-t-5{margin-top:5px;}
 .m-t-10{margin-top:10px;}
+.m-t-15{margin-top:15px;}
 .m-t-20{margin-top:20px;}
 .m-t-30{margin-top:30px;}
 .m-t-40{margin-top:40px;}
 .m-t-60{margin-top:60px;}
 .m-t-90{margin-top:90px;}
 .m-t-120{margin-top:120px;}
+.m-b-0{margin-bottom: 0px;}
+.m-b-5{margin-bottom: 5px;}
 .m-b-10{margin-bottom: 10px;}
 .p-t-10-p{padding-top:10%;}
 .p-t-15-p{padding-top:15%;}
 .p-t-0{padding-top: 0px !important;}
 .p-t-8{padding-top:8px;}
+.p-t-30{padding-top:30px;}
 .p-t-40{padding-top:40px;}
 .p-t-50{padding-top:50px;}
 .p-b-50{padding-bottom:50px;}
@@ -56,6 +61,8 @@ h1, h2, h3, h4, h5, h6{font-family:'Maven Pro', sans-serif;}
 .btn-purple:hover{color:#fff;background:#4a4275;}
 .btn-yellow{color:#fff;background-color:transparent;border-color:#fff;border:2px solid #fff;border-radius:2px;font-weight:bold;padding:10px 30px;}
 .btn-yellow:hover{color:#67b7b4;background:#fff;}
+.btn-yellow-full{color:#fff;background-color:#fbd58a;border-color:#fff;border:2px solid #fff;border-radius:2px;font-weight:bold;padding:10px 30px;}
+.btn-yellow-full:hover{color:#67b7b4;background:#fbd58a;}
 .btn-green{color:#fff;background-color:transparent;border-color:#fff;border:1px solid transparent;border-radius:0px;font-weight:bold;}
 .btn-green:hover{color:#fff;background:#5ca4a2;}
 .btn-green-full{color:#fff;background-color:#5ca4a2;border-color:#fff;border:1px solid transparent;border-radius:0px;font-size: 14px;}
@@ -133,6 +140,31 @@ ul.properties-details {
 
 .navbar.filters {
   min-height: 35px;
+}
+
+ul.without-style{
+  list-style-type: none;
+  -webkit-padding-start: 0px;
+}
+
+.fixed {
+  position: fixed;
+  top: 0;
+}
+
+.panel-rental {
+  border-radius: 0px;
+  border: 0px;
+  width: 50%;
+  margin-top: -60px;
+}
+
+.panel-rental > .panel-body {
+  color: #737477
+}
+
+h1.rental {
+  margin: 0px;
 }
 
 /* OVERWRITE CSS*/
