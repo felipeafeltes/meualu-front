@@ -27,51 +27,18 @@
       }
 
       $scope.map = { center: { latitude: $rootScope.lat, longitude: $rootScope.lng }, zoom: 11 };
-
-      $scope.properties = [
-        {
-          address:{
-            street: "Rua machado de Assis",
-            neighborhood: "Jardim Botanico"
-          },
-          rental: "800,00",
-          total: "920,00",
-          details:{
-            bedrooms: 2,
-            bathrooms: 4,
-            total_area: "86m²",
-          }
-        },
-        {
-          address:{
-            street: "Rua machado de Assis",
-            neighborhood: "Jardim Botanico"
-          },
-          rental: "800,00",
-          total: "920,00",
-          details:{
-            bedrooms: 2,
-            bathrooms: 4,
-            total_area: "86m²",
-          }
-        },
-        {
-          address:{
-            street: "Rua machado de Assis",
-            neighborhood: "Jardim Botanico"
-          },
-          rental: "800,00",
-          total: "920,00",
-          details:{
-            bedrooms: 2,
-            bathrooms: 4,
-            total_area: "86m²",
-          }
-        }
-      ]
   }
 
   function PropertiesDetailsController($scope, $stateParams, Property) {
+    $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 11 };
+
+    $scope.scrollToFixedOptions = {
+      'marginTop': 5 ,
+      'maxWidth': 50,
+      'limit': 500,
+      'offsets': true
+    }
+
     $scope.property = Property.get({ id: $stateParams.id })
   }
 })()

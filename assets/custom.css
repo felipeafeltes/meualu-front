@@ -133,7 +133,7 @@ ul.properties-details {
   margin-bottom: 0px;
 }
 
-.propertie-list {
+.property-list {
   overflow-y: auto;
   height: calc(100vh - 130px);
 }

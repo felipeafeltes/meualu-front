@@ -15,6 +15,10 @@
           propertySearch.prototype.full_address = function() {
               return this.address.street + " " + this.address.number;
           };
+
+          propertySearch.prototype.total_rental = function() {
+              return this.rental.value + this.rental.condominium + this.rental.iptu
+          };
           return propertySearch;
 
         }

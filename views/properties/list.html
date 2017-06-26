@@ -5,9 +5,9 @@
       <div class="filters-container" ng-controller="searchController" ng-include="'views/properties/_filters.html'"></div>
     </nav>
     <div class="row row-list-details text-gray">
-      <div class="col-md-5 font-14 propertie-list">
+      <div class="col-md-5 font-14 property-list">
         <h2>
-          <span class="text-green bold">Encontramos 14 apês</span>
+          <span class="text-green bold">Encontramos {{ properties.length }} apês</span>
           <button type="button" class="btn btn-green-full btn-sm pull-right">Adicionar alerta</button>
         </h2>
         <p>Nos ajude a ser mais preciso, utilize os filtros acima.</p>
@@ -23,20 +23,22 @@
             <li><a href="#">maior preço</a></li>
           </ul>
         </div>
-        <div class="panel panel-default" ng-repeat="propertie in properties">
+        <div class="panel panel-default" ng-repeat="property in properties" ng-click='details(property.id)'>
           <div class="panel-body imovel-desc" >
-            <div class="col-md-5" ng-click='details(13)'>
-              <h4 class="text-dark">{{propertie.address.street}}</h4>
-              <p>{{propertie.address.neighborhood}}</p>
+            <div class="col-md-5">
+              <h4 class="text-dark">{{ property.full_address() }} ({{ property.description }})</h4>
+              <p>{{property.address.district}}</p>
               <ul class="properties-details" >
-                <li ng-repeat="(key, detail) in propertie.details">{{detail}}</li>
+                <li> {{ property.bedrooms }} dorms</li>
+                <li> {{ property.garages }} vagas</li>
+                <li> {{ property.total_area }} m²</li>
               </ul>
               <hr />
               <h4 class="text-green">
-                Aluguel: {{propertie.rental}}
+                Aluguel: {{ property.rental.value }}
               </h4>
               <h4 class="text-green">
-                Valor total: {{propertie.total}}
+                Valor total: {{ property.total_rental() }}
               </h4>
             </div>
             <div class="col-md-7 no-padding">

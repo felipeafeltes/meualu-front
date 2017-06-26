@@ -13,7 +13,7 @@ var app = angular
     'extraInfosServices',
     'propertiesServices',
     'ngMaterial',
-    'scrollToFixed'
+    'scrollToFixed',
     'ngMaterial'
   ]);
 
