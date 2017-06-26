@@ -1,11 +1,23 @@
 <header></header>
 <section class="bg-gray">
-  <div class="container">
-    <div id="pictures" class="row" style="height: calc(100vh - 250px); background-color: red;">
-
+  <div class="container-fluid">
+    <div id="pictures" class="row" style="height: calc(100vh - 250px); margin-bottom: -20px;">
+      <slick arrows="false" slides-to-show="1" id="slide-full" as-nav-for="#slide-nav" arrows="false" slides-to-scroll="1">
+          <div ng-repeat="img in images">
+            <img src="{{img.src}}" class="img-full" alt="Responsive image">
+          </div>
+        </slick>
     </div>
+  </div>
+  <div class="container">
     <div class="row" style="height:  200px;">
       <div class="col-md-6">
+        <slick arrows="true" slides-to-show="4" style="height: 90px; width: 90%;" id="slide-nav" as-nav-for="#slide-full" slides-to-scroll="1" infinite="false">
+          <div class="image" ng-repeat="img in images">
+            <img src="{{img.src}}" class="img-full" alt="Responsive image">
+          </div>
+        </slick>
+
         <h1 class="text-purple m-b-0">Rua Machado de Assis</h1>
         <h2 class="m-t-5">Jardim botanico</h2>
         <ul class="list-inline m-t-15">
@@ -47,7 +59,6 @@
         </ul>
       </div>
       <div class="col-md-6">
-        {{scrollToFixedOptions}}
         <div class="panel panel-rental" scroll-to-fixed="scrollToFixedOptions" >
           <div class="panel-heading bg-yellow">
             <h1 class="rental">
@@ -185,12 +196,20 @@
 <section class="bg-gray">
   <div class="container p-t-30 p-b-30">
     <div class="row">
-      <h1 class="text-green text-center">Apartamentos relacionados</h1>
+      <h1 class="text-green text-center m-b-50">Apartamentos relacionados</h1>
+
+      <slick arrows="true" slides-to-show="4" id="slide-nav" slides-to-scroll="1" infinite="true">
+        <div class="panel panel-default properties-related" ng-repeat="propertie in properties_related">
+          <div class="panel-heading properties-related">
+            <img src="assets/imagens/imovel.jpg" class="img-full" alt="Responsive image">
+          </div>
+          <div class="panel-body properties-related">
+            <h4 class="text-purple">{{propertie.address.street}}</h4>
+            <p>{{propertie.address.neighborhood}}</p>
+            <p>Lore ipsum morbmore this not the other thing, bla bla bla</p>
+          </div>
+        </div>
+      </slick>
     </div>
   </div>
 </section>
-<script type="text/javascript">
-  $(document).ready(function() {
-    $('.panel-rental').scrollToFixed({ marginTop: 90 });
-  });
-</script>

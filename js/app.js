@@ -14,7 +14,8 @@ var app = angular
     'propertiesServices',
     'ngMaterial',
     'scrollToFixed',
-    'ngMaterial'
+    'ngMaterial',
+    'slick'
   ]);
 
   app.filter('capitalize', function() {

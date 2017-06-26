@@ -6,11 +6,57 @@
     $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 11 };
 
     $scope.scrollToFixedOptions = {
-      'marginTop': 5 ,
-      'maxWidth': 50,
-      'limit': 500,
-      'offsets': true
-    }
+      preFixed: function() { $(this).css('margin-top', '5px'); },
+      postFixed: function() { $(this).css('margin-top', '-40px');}
+    };
+
+    $scope.images = [
+      {src: "assets/imagens/imovel.jpg"},
+      {src: "assets/imagens/imovel.jpg"},
+      {src: "assets/imagens/imovel.jpg"},
+      {src: "assets/imagens/imovel.jpg"},
+      {src: "assets/imagens/imovel.jpg"},
+      {src: "assets/imagens/imovel.jpg"}
+    ];
+
+    $scope.properties_related = [
+      {
+        address:{
+          street: "Rua machado de Assis",
+          neighborhood: "Jardim Botanico"
+        }
+      },
+      {
+        address:{
+          street: "Rua machado de Assis",
+          neighborhood: "Jardim Botanico"
+        }
+      },
+      {
+        address:{
+          street: "Rua machado de Assis",
+          neighborhood: "Jardim Botanico"
+        }
+      },
+      {
+        address:{
+          street: "Rua machado de Assis",
+          neighborhood: "Jardim Botanico"
+        }
+      },
+      {
+        address:{
+          street: "Rua machado de Assis",
+          neighborhood: "Jardim Botanico"
+        }
+      },
+      {
+        address:{
+          street: "Rua machado de Assis",
+          neighborhood: "Jardim Botanico"
+        }
+      }
+    ];
   }
 
 })()

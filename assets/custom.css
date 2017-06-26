@@ -12,6 +12,7 @@ h1, h2, h3, h4, h5, h6{font-family:'Maven Pro', sans-serif;}
 .footer-heigth{min-height:40vh;}
 .m-r-5{margin-right:5px;}
 .m-r-30{margin-right:30px;}
+.m-t-0{margin-top:0px;}
 .m-t-5{margin-top:5px;}
 .m-t-10{margin-top:10px;}
 .m-t-15{margin-top:15px;}
@@ -24,6 +25,8 @@ h1, h2, h3, h4, h5, h6{font-family:'Maven Pro', sans-serif;}
 .m-b-0{margin-bottom: 0px;}
 .m-b-5{margin-bottom: 5px;}
 .m-b-10{margin-bottom: 10px;}
+.m-b-30{margin-bottom: 30px;}
+.m-b-50{margin-bottom: 50px;}
 .p-t-10-p{padding-top:10%;}
 .p-t-15-p{padding-top:15%;}
 .p-t-0{padding-top: 0px !important;}
@@ -97,7 +100,8 @@ input.search-home {
 }
 .navbar-purple {
   background-color: #4a4275;
-  border-color: #e7e7e7;
+  border-color: #4a4275;
+  margin-bottom: 0px;
 }
 
 .logo-nav-puple {
@@ -156,7 +160,7 @@ ul.without-style{
   border-radius: 0px;
   border: 0px;
   width: 50%;
-  margin-top: -60px;
+  margin-top: -40px;
 }
 
 .panel-rental > .panel-body {
@@ -196,4 +200,30 @@ h1.rental {
 
 .navbar-form .form-control {
   width: 100%;
+}
+
+.slick-slide.image img {
+  padding: 5px;
+}
+
+#slide-full {
+  height: inherit;
+}
+
+#slide-full .slick-list {
+  height: inherit;
+}
+
+.panel-heading.properties-related {
+  padding: 5px 5px 0px;
+  border-bottom: none;
+  background-color: #fff;
+}
+
+.panel.properties-related {
+  margin: 0px 5px;
+}
+
+.panel-body.properties-related {
+  padding: 0 15px;
 }
