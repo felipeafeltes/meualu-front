@@ -5,6 +5,7 @@
 
   function PropertiesSearchController($scope, $rootScope, PropertySearch, $stateParams, $state) {
       var filters = $stateParams.filters || {};
+      $rootScope.coords = null;
       $scope.properties = PropertySearch.query(
         {
           address_string: $stateParams.address_string,
@@ -19,8 +20,22 @@
             rental: filters.rental,
             extra_infos: filters.extra_infos
           }
-        }
-      );
+        },
+      function(data){
+        $scope.markers = data.map(function (prop) {
+          return {
+                   id: prop.id,
+                   coords:
+                   {
+                      latitude: prop.address.latitude,
+                      longitude: prop.address.longitude
+                   }
+                 }
+        });
+        console.log($scope.markers);
+      }
+
+    );
 
       $scope.details = function(id) {
         $state.go('alu.propertiesDetails', { id: id });
