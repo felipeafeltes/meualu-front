@@ -22,16 +22,7 @@
           }
         },
       function(data){
-        $scope.markers = data.map(function (prop) {
-          return {
-                   id: prop.id,
-                   coords:
-                   {
-                      latitude: prop.address.latitude,
-                      longitude: prop.address.longitude
-                   }
-                 }
-        });
+        $scope.markers = _setupMarkers(data);
         console.log($scope.markers);
       }
 
@@ -45,7 +36,14 @@
   }
 
   function PropertiesDetailsController($scope, $stateParams, Property) {
-    $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 11 };
+
+    $scope.scrollToFixedOptions = {
+      preFixed: function() { $(this).css('margin-top', '5px'); },
+      postFixed: function() { $(this).css('margin-top', '-40px');}
+    };
+
+    $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 11 }
+    $scope.marker = null
 
     $scope.scrollToFixedOptions = {
       'marginTop': 5 ,
@@ -54,6 +52,31 @@
       'offsets': true
     }
 
-    $scope.property = Property.get({ id: $stateParams.id })
+
+    $scope.property = Property.get({ id: $stateParams.id },
+      function(data){
+        var markers = _setupMarkers([data]);
+        $scope.marker = markers[0];
+        $scope.map = { center: markers[0].coords, zoom: 15 };
+        $scope.images = data.pictures.map(function (pic) {
+          return {src: pic.url}
+        });
+      }
+    )
+  }
+
+  function _setupMarkers(properties) {
+    var markers = [];
+    markers = properties.map(function (prop) {
+      return {
+               id: prop.id,
+               coords:
+               {
+                  latitude: prop.address.latitude,
+                  longitude: prop.address.longitude
+               }
+             }
+    });
+    return markers
   }
 })()

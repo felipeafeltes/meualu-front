@@ -1,14 +1,26 @@
-<pre>{{ property | json }}</pre>
+<!-- <pre>{{ property | json }}</pre> -->
 <header></header>
 <section class="bg-gray">
-  <div class="container">
-    <div id="pictures" class="row" style="height: calc(100vh - 250px); background-color: red;">
-
+  <div class="container-fluid">
+    <div id="pictures" class="row">
+      <slick ng-if="images.length" arrows="false" slides-to-show="1" id="slide-full" as-nav-for="#slide-nav" arrows="false" slides-to-scroll="1">
+          <div ng-repeat="img in images">
+            <img src="{{img.src}}" class="img-full" alt="Responsive image">
+          </div>
+        </slick>
     </div>
-    <div class="row" style="height:  200px;">
+  </div>
+  <div class="container">
+    <div class="row row-slider-full">
       <div class="col-md-6">
-        <h1 class="text-purple m-b-0">Rua Machado de Assis</h1>
-        <h2 class="m-t-5">Jardim botanico</h2>
+        <slick ng-if="images.length" arrows="true" slides-to-show="4" id="slide-nav" as-nav-for="#slide-full" slides-to-scroll="1" infinite="false">
+          <div class="image" ng-repeat="img in images">
+            <img src="{{img.src}}" class="img-full" alt="Responsive image">
+          </div>
+        </slick>
+
+        <h1 class="text-purple m-b-0">{{ property.full_address() }}</h1>
+        <h2 class="m-t-5">{{ property.address.district }}</h2>
         <ul class="list-inline m-t-15">
           <li class="text-center">
             <i class="fa fa-percent"></i>
@@ -28,51 +40,54 @@
           <li class="text-center">
             <i class="fa fa-paw"></i>
             <br/>
-            <span>Permitido</span>
+            <span>{{ property.pets_allowed ? 'Permitido' : 'Não permitido'  }}</span>
           </li>
           <li class="text-center">
             <i class="fa fa-building"></i>
             <br/>
-            <span>{{ property.floor }} andar</span>
+            <span>{{ property.floor }}º andar</span>
           </li>
-          <li class="text-center">
+          <!-- <li class="text-center">
             <i class="fa fa-tv"></i>
             <br/>
             <span>Não</span>
-          </li>
+          </li> -->
           <li class="text-center">
             <i class="fa fa-bus"></i>
             <br/>
-            <span>Proximo</span>
+            <span>{{ property.public_transportation ? 'Próximo' : 'Não' }}</span>
           </li>
         </ul>
       </div>
       <div class="col-md-6">
-        {{scrollToFixedOptions}}
         <div class="panel panel-rental" scroll-to-fixed="scrollToFixedOptions" >
           <div class="panel-heading bg-yellow">
             <h1 class="rental">
               <span>Total</span>
-              <span class="pull-right">R$ 3.426</span>
+              <span class="pull-right">R$ {{ property.total_rental() }}</span>
             </h1>
           </div>
           <div class="panel-body">
             <ul class="without-style">
               <li class="m-b-5">
                 <span>Aluguel</span>
-                <span class="pull-right">R$ 2.750</span>
+                <span class="pull-right">R$ {{ property.rental.value }}</span>
               </li>
               <li class="m-b-5">
                 <span>Condominio</span>
-                <span class="pull-right">R$ 650</span>
+                <span class="pull-right">R$ {{ property.rental.condominium }}</span>
+              </li>
+              <li class="m-b-5">
+                <span>IPTU</span>
+                <span class="pull-right">R$ {{ property.rental.iptu }}</span>
               </li>
               <li class="m-b-5">
                 <span>Proteção residencial</span>
-                <span class="pull-right">R$ 26</span>
+                <span class="pull-right">Grátis (TO DO)</span>
               </li>
               <li class="m-b-5">
                 <span>Seguro-fiança</span>
-                <span class="pull-right">Grátis</span>
+                <span class="pull-right">Grátis (TO DO)</span>
               </li>
             </ul>
             <hr>
@@ -179,19 +194,32 @@
 <section id="maps">
   <div class="container-fluid">
     <div class="row">
-      <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
+      <!-- <pre>{{ marker | json }}</pre> -->
+      <ui-gmap-google-map center='map.center' zoom='map.zoom'>
+        <ui-gmap-marker idKey="marker.id"
+                        coords="marker.coords">
+        </ui-gmap-marker>
+      </ui-gmap-google-map>
     </div>
   </div>
 </section>
 <section class="bg-gray">
   <div class="container p-t-30 p-b-30">
     <div class="row">
-      <h1 class="text-green text-center">Apartamentos relacionados</h1>
+      <h1 class="text-green text-center m-b-50">Apartamentos relacionados</h1>
+
+      <slick arrows="true" slides-to-show="4" id="slide-nav" slides-to-scroll="1" infinite="true">
+        <div class="panel panel-default properties-related" ng-repeat="propertie in properties_related">
+          <div class="panel-heading properties-related">
+            <img src="assets/imagens/imovel.jpg" class="img-full" alt="Responsive image">
+          </div>
+          <div class="panel-body properties-related">
+            <h4 class="text-purple">{{propertie.address.street}}</h4>
+            <p>{{propertie.address.neighborhood}}</p>
+            <p>Lore ipsum morbmore this not the other thing, bla bla bla</p>
+          </div>
+        </div>
+      </slick>
     </div>
   </div>
 </section>
-<script type="text/javascript">
-  $(document).ready(function() {
-    $('.panel-rental').scrollToFixed({ marginTop: 90 });
-  });
-</script>
