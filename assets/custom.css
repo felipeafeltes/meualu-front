@@ -39,7 +39,7 @@ h1, h2, h3, h4, h5, h6{font-family:'Maven Pro', sans-serif;}
 .p-b-80{padding-bottom:80px;}
 .no-padding{padding: 0px !important;}
 .my-header{}
-.bg-purple{background:#534a83;color:#fff;}
+.bg-purple{background:#5f447b !important;color:#fff;}
 .bg-yellow{background:#fbd58a;color:#fff;}
 .bg-green{background:#67b7b4;color:#fff;}
 .bg-gray{background:#f1f1f1;color:#b1b1b0;}
