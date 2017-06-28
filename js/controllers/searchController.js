@@ -5,9 +5,11 @@
   function searchController($scope, $rootScope, $state, ExtraInfo) {
     $scope.$watch('address', function(address) {
       if(address) {
-        setup_search_filters();
-        $rootScope.filters = _setup_filters();
-        $rootScope.address_string = address.formatted_address;
+        if(address.formatted_address != undefined && $rootScope.address_string != address.formatted_address) {
+          setup_search_filters();
+          $rootScope.filters = _setup_filters();
+          $rootScope.address_string = address.formatted_address;
+        }
         $rootScope.lng = address.geometry.location.lng();
         $rootScope.lat = address.geometry.location.lat();
         searchProperties($rootScope.address_string);
