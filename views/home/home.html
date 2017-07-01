@@ -9,9 +9,6 @@
         </div>
         <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-8">
           <ul class="nav navbar-nav">
-   <li class="bold text-uppercase"><a class="text-yellow"  ui-sref="informations">Infos</a></li>
-
-
             <li class="bold text-uppercase"><a class="text-yellow" href="#">Anuncie aqui</a></li>
             <li class="bold text-uppercase"><a class="text-white" href="#">Favoritos</a></li>
             <li class="bold text-uppercase cursor-pointer" ng-hide="current_user"><a class="text-white" data-toggle="modal" data-target="#modalLogin"><i class="fa fa-user-o"></i> Entrar</a></li>
@@ -25,13 +22,16 @@
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
           <h1 class="bold">Você também acha o aluguel algo complicado? <br> Junte-se a nós.</h1>
-          <input g-places-autocomplete
-                 ng-model="address"
-                 options="autocompleteOptions"
-                 force-selection="true"
-                 type="text"
-                 class="form-control search-home m-t-30">
-          </input>
+          <div class="search-wrapper">
+            <input g-places-autocomplete
+                   ng-model="address"
+                   options="autocompleteOptions"
+                   force-selection="true"
+                   type="text"
+                   class="form-control search-home m-t-30">
+            </input>
+            <i class="fa fa-search fa-2x"></i>
+          </div>
         </div>
       </div>
     </div>

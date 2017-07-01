@@ -102,6 +102,18 @@ input.search-home {
   height: 5rem;
   font-size: 1.5em;
 }
+
+.search-wrapper {
+  position: relative;
+}
+
+.search-wrapper i {
+  position: absolute;
+  top: 5px;
+  right: 20px;
+  color: #534a83;
+}
+
 .navbar-purple {
   background-color: #5f447b;
   border-color: #5f447b;
