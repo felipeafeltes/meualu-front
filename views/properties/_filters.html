@@ -43,18 +43,20 @@
     </ul>
   </div>
   <div ng-repeat="(key, filter) in range_filters" class="btn-group">
-    <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#">
+    <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#" ng-click="refreshSlider();">
       <i class="fa {{filter.icon}}"></i>
       {{ filter_translation(key.toString()) | capitalize | pluralize }}
       <span class="caret"></span>
     </a>
-    <ul class="dropdown-menu filters" style="width: 300px !important;" ng-click="$event.stopPropagation();">
-      <li>
-        <div class="form-check">
+    <ul class="dropdown-menu dropdown-menu-right filters" ng-click="$event.stopPropagation();" style="width: 390px !important;">
+      <li class="{{filter.class}}">
+        <span class="min" >{{filter.translate}}{{filter.minValue}}</span>
+        <div class="slider" >
           <rzslider rz-slider-model="filter.minValue"
-                    rz-slider-high="filter.maxValue"
-                    rz-slider-options="filter.options"></rzslider>
+                  rz-slider-high="filter.maxValue"
+                  rz-slider-options="filter.options"></rzslider>
         </div>
+        <span class="max">{{filter.maxValue}}</span>
       </li>
     </ul>
   </div>
@@ -63,7 +65,7 @@
       Outros
       <span class="caret"></span>
     </a>
-    <ul class="dropdown-menu filters" style="width: 300px !important;">
+    <ul class="dropdown-menu dropdown-menu-right filters" style="width: 300px !important;">
       <li ng-repeat="extra_info in extra_info_filters" class="list-inline-item">
         <div class="checkbox-custom checkbox-primary" style="width: 290px;">
           <input type="checkbox"

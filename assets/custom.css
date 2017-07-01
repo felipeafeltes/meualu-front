@@ -240,3 +240,41 @@ h1.rental {
   height: 90px;
   width: 90%;
 }
+
+
+span.min{
+  float: left;
+  line-height: 5;
+  margin-right: 10px;
+}
+
+span.max{
+  line-height: 5;
+  margin-left: 10px;
+}
+
+li.total-area-filter .slider{
+  width: 70%;
+  float: left;
+}
+
+li.total-area-filter span.min:after{
+  content: " m²";
+}
+
+li.total-area-filter span.max:after{
+  content: " m²";
+}
+
+li.rental-filter .slider{
+  width: 65%;
+  float: left;
+}
+
+li.rental-filter span.min:before{
+  content: "R$";
+}
+
+li.rental-filter span.max:before{
+  content: "R$ ";
+}

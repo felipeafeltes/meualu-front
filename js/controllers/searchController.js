@@ -2,7 +2,7 @@
     'use strict';
   app.controller('searchController', searchController);
 
-  function searchController($scope, $rootScope, $state, ExtraInfo) {
+  function searchController($scope, $rootScope, $state, ExtraInfo, $timeout) {
     $scope.$watch('address', function(address) {
       if(address) {
         if(address.formatted_address != undefined && $rootScope.address_string != address.formatted_address) {
@@ -10,11 +10,19 @@
           $rootScope.filters = _setup_filters();
           $rootScope.address_string = address.formatted_address;
         }
-        $rootScope.lng = address.geometry.location.lng();
-        $rootScope.lat = address.geometry.location.lat();
+        if (address.geometry != undefined){
+          $rootScope.lng = address.geometry.location.lng();
+          $rootScope.lat = address.geometry.location.lat();
+        }
         searchProperties($rootScope.address_string);
       }
     });
+
+    $scope.refreshSlider = function () {
+      $timeout(function () {
+          $scope.$broadcast('rzSliderForceRender');
+      }, 10);
+    };
 
     $scope.onFilterSelect = function(filterObj, filterName){
       console.log("filter");
@@ -52,10 +60,10 @@
                                       public_transportation: [_boolean_filter_component('public_transportation'), 'fa-bus']
                                    };
       $rootScope.range_filters = {
-                                   total_area: setup_range_filters('total_area', 15, 500, 'fa-percent'),
-                                   rental: setup_range_filters('rental', 500, 10000, 'fa-usd')
+                                   total_area: setup_range_filters('total_area', 15, 500, 'fa-percent', 'total-area-filter'),
+                                   rental: setup_range_filters('rental', 500, 10000, 'fa-usd', 'rental-filter')
                                 };
-      $rootScope.extra_info_filters = ExtraInfo.query();
+      //$rootScope.extra_info_filters = ExtraInfo.query();
       $rootScope.$watch('extra_info_filters |filter:{selected:true}', function (nv) {
           $rootScope.filters.extra_infos = nv.map(function (info) {
             return info.id;
@@ -64,21 +72,24 @@
       }, true);
     }
 
-    var setup_range_filters = function(filterName, minValue, maxValue, icon){
+    var setup_range_filters = function(filterName, minValue, maxValue, icon, filterClass){
       return {
           minValue: minValue,
           maxValue: maxValue,
           options: {
               floor: minValue,
               ceil: maxValue,
-              step: 1,
+              translate: function (value) {
+                return "";
+              },
               onEnd: function () {
                 var rangeFilter = $rootScope.range_filters[filterName];
                 $rootScope.filters[filterName] = rangeFilter.minValue + "," + rangeFilter.maxValue;
                 searchProperties($rootScope.address_string);
               }
           },
-          icon: icon
+          icon: icon,
+          class: filterClass
         }
     }
 
