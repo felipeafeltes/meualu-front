@@ -18,17 +18,21 @@ var app = angular
     'slick'
   ]);
 
-  app.filter('capitalize', function() {
-      return function(input) {
-        return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
-      }
-  });
+app.constant('config', {
+  apiUrl: 'http://localhost:3000/'
+});
 
-  app.filter('pluralize', function() {
-      return function(input) {
-        return (input.charAt(input.length -1) != "#") ? input + 's' : input.slice(0, input.length -1);
-      }
-  });
+app.filter('capitalize', function() {
+    return function(input) {
+      return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
+    }
+});
+
+app.filter('pluralize', function() {
+    return function(input) {
+      return (input.charAt(input.length -1) != "#") ? input + 's' : input.slice(0, input.length -1);
+    }
+});
 
 app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $authProvider, $ocLazyLoadProvider) {
 
@@ -63,10 +67,10 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $auth
   $urlRouterProvider.otherwise('/');
 
   $authProvider.facebook({
-    url: 'http://localhost:3000/auth/facebook/callback',
+    url: app.config.apiUrl + 'auth/facebook/callback',
     clientId: '914533272017680',
     authorizationEndpoint: 'https://www.facebook.com/v2.6/dialog/oauth',
-    baseUrl: 'http://localhost:3000/'
+    baseUrl: app.config.apiUrl
   });
 
   $stateProvider

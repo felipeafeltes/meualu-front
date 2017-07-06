@@ -5,10 +5,10 @@
         .module('propertiesServices', ['ngResource', 'ngRoute'])
         .factory('Property', Property);
 
-        Property.$inject = ['$resource'];
+        Property.$inject = ['$resource', 'config'];
 
-        function Property($resource) {
-            var property = $resource('http://localhost:3000/properties/:id', { id:'@id' });
+        function Property($resource, config) {
+            var property = $resource(config.apiUrl + 'properties/:id', { id:'@id' });
 
           function _transform_request(data) {
               data = { "property" : data }

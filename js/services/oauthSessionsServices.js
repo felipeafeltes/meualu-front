@@ -5,10 +5,10 @@
         .module('oauthSessionsServices', ['ngResource', 'ngRoute'])
         .factory('OauthUser', OauthUser);
 
-        OauthUser.$inject = ['$resource'];
+        OauthUser.$inject = ['$resource', 'config'];
 
-        function OauthUser($resource) {
-          return $resource('http://localhost:3000/auth/:provider',
+        function OauthUser($resource, config) {
+          return $resource(config.apiUrl + 'auth/:provider',
               {}, {
               authenticate: {
                   method: 'GET'

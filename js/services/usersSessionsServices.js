@@ -5,10 +5,10 @@
         .module('usersSessionServices', ['ngResource', 'ngRoute'])
         .factory('User', User);
 
-        User.$inject = ['$resource'];
+        User.$inject = ['$resource', 'config'];
 
-        function User($resource) {
-          return $resource('http://localhost:3000/users/sign_in',
+        function User($resource, config) {
+          return $resource(config.apiUrl + 'users/sign_in',
               { id:'@id' }, {
               sign_in: {
                   method: 'POST',

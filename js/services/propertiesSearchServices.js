@@ -5,10 +5,10 @@
         .module('propertiesSearchServices', ['ngResource', 'ngRoute'])
         .factory('PropertySearch', PropertySearch);
 
-        PropertySearch.$inject = ['$resource'];
+        PropertySearch.$inject = ['$resource', 'config'];
 
-        function PropertySearch($resource) {
-            var propertySearch = $resource('http://localhost:3000/properties/search/:address_string/',
+        function PropertySearch($resource, config) {
+            var propertySearch = $resource(config.apiUrl + 'properties/search/:address_string/',
             { filters: '@filters' }
           );
 

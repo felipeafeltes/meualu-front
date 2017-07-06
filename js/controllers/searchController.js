@@ -63,7 +63,7 @@
                                    total_area: setup_range_filters('total_area', 15, 500, 'fa-percent', 'total-area-filter'),
                                    rental: setup_range_filters('rental', 500, 10000, 'fa-usd', 'rental-filter')
                                 };
-      //$rootScope.extra_info_filters = ExtraInfo.query();
+      $rootScope.extra_info_filters = ExtraInfo.query();
       $rootScope.$watch('extra_info_filters |filter:{selected:true}', function (nv) {
           $rootScope.filters.extra_infos = nv.map(function (info) {
             return info.id;

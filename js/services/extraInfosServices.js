@@ -5,10 +5,10 @@
         .module('extraInfosServices', ['ngResource', 'ngRoute'])
         .factory('ExtraInfo', ExtraInfo);
 
-        ExtraInfo.$inject = ['$resource'];
+        ExtraInfo.$inject = ['$resource', 'config'];
 
-        function ExtraInfo($resource) {
-            return $resource('http://localhost:3000/extra_infos');
+        function ExtraInfo($resource, config) {
+            return $resource(config.apiUrl + 'extra_infos');
         }
 
 })();
