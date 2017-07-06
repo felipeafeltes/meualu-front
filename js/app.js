@@ -19,7 +19,8 @@ var app = angular
   ]);
 
 app.constant('config', {
-  apiUrl: 'http://localhost:3000/'
+  // apiUrl: 'http://localhost:3000/'
+  apiUrl: 'http://api.meualu.ubistart.com/'
 });
 
 app.filter('capitalize', function() {
