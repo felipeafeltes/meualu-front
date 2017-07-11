@@ -55,9 +55,9 @@
                                       garages: [_simple_filter_component(3), 'fa-car']
                                    };
       $rootScope.boolean_filters = {
-                                      furnished: [_boolean_filter_component('furnished'), 'fa-tv'],
-                                      pets_allowed: [_boolean_filter_component('pets_allowed'), 'fa-paw'],
-                                      public_transportation: [_boolean_filter_component('public_transportation'), 'fa-bus']
+                                      furnished: [_boolean_filter_component('furnished', "Sim", 'Não'), 'fa-tv'],
+                                      pets_allowed: [_boolean_filter_component('pets_allowed', 'Aceita', 'Não aceita'), 'fa-paw'],
+                                      public_transportation: [_boolean_filter_component('public_transportation', 'Próximo', 'Não próximo'), 'fa-bus']
                                    };
       $rootScope.range_filters = {
                                    total_area: setup_range_filters('total_area', 15, 500, 'fa-percent', 'total-area-filter'),
@@ -101,6 +101,10 @@
     $scope.filter_translation = function(filterName) {
       return _filter_name_translation(filterName)
     }
+
+    $scope.label_translation = function(filterName) {
+      return _label_name_translation(filterName)
+    }
   }
 
   function _filter_name_translation(filterName) {
@@ -112,7 +116,26 @@
                         pets_allowed: "pet",
                         public_transportation: "transporte público#",
                         total_area: "área total#",
-                        rental: "valor#"
+                        rental: "valor#",
+                        truepublic_transportation: "Próximo"
+                     };
+    return filtersMap[filterName];
+  }
+
+  function _label_name_translation(filterName) {
+    var filtersMap = {
+                        truefurnished: "Sim",
+                        falsefurnished: "Não",
+                        'true,falsefurnished': "Ambos",
+                        'false,truefurnished': "Ambos",
+                        truepets_allowed: "Aceita",
+                        falsepets_allowed: "Não aceita",
+                        'true,falsepets_allowed': "Ambos",
+                        'false,truepets_allowed': "Ambos",
+                        truepublic_transportation: "Próximo",
+                        falsepublic_transportation: "Não próximo",
+                        'true,falsepublic_transportation': "Ambos",
+                        'false,truepublic_transportation': "Ambos"
                      };
     return filtersMap[filterName];
   }
@@ -131,10 +154,10 @@
     return filterComponent;
   }
 
-  function _boolean_filter_component(name) {
+  function _boolean_filter_component(name, label_true, label_false) {
     return [
-        { value: true, label: "Sim", selected: false, name: name },
-        { value: false, label: "Não", selected: false, name: name }
+        { value: true, label: label_true, selected: false, name: name },
+        { value: false, label: label_false, selected: false, name: name }
       ]
   }
 
