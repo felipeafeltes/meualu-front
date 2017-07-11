@@ -14,16 +14,16 @@
 
         <div class="dropdown">
           <span>Order por</span>
-          <a class="text-green dropdown-toggle" type="button" id="dropdownPreco" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            menor preço
+          <a class="text-green dropdown-toggle order-properties" type="button" id="dropdownPreco" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            {{ (properties_order)? "menor preço" : "maior preço" }}
             <span class="caret"></span>
-          </button>
+          </a>
           <ul class="dropdown-menu" aria-labelledby="dropdownPreco">
-            <li><a href="#">menor preço</a></li>
-            <li><a href="#">maior preço</a></li>
+            <li><a ng-click="properties_order = true">menor preço</a></li>
+            <li><a ng-click="properties_order = false">maior preço</a></li>
           </ul>
         </div>
-        <div class="panel panel-default" ng-repeat="property in properties" ng-click='details(property.id)'>
+        <div class="panel panel-default" ng-repeat="property in properties | orderBy:rental.value:properties_order" ng-click='details(property.id)'>
           <div class="panel-body imovel-desc" >
             <div class="col-md-5">
               <h4 class="text-dark">{{ property.full_address() }} ({{ property.description }})</h4>

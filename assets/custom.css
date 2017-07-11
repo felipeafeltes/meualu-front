@@ -286,7 +286,7 @@ li.rental-filter .slider{
 }
 
 li.rental-filter span.min:before{
-  content: "R$";
+  content: "R$ ";
 }
 
 li.rental-filter span.max:before{
@@ -301,4 +301,12 @@ li.rental-filter span.max:before{
   -webkit-column-count: 3;
   -moz-column-count: 3;
   column-count: 3;
+}
+
+.order-properties{
+  cursor: pointer;
+}
+.order-properties:hover{
+  text-decoration: none;
+  color: #67b7b4;
 }

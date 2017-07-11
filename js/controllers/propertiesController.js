@@ -21,18 +21,18 @@
             extra_infos: filters.extra_infos
           }
         },
-      function(data){
-        $scope.markers = _setupMarkers(data);
-        console.log($scope.markers);
-      }
+        function(data){
+          $scope.markers = _setupMarkers(data);
+          console.log($scope.markers);
+        }
+      );
 
-    );
+    $scope.details = function(id) {
+      $state.go('alu.propertiesDetails', { id: id });
+    }
 
-      $scope.details = function(id) {
-        $state.go('alu.propertiesDetails', { id: id });
-      }
-
-      $scope.map = { center: { latitude: $rootScope.lat, longitude: $rootScope.lng }, zoom: 11 };
+    $scope.map = { center: { latitude: $rootScope.lat, longitude: $rootScope.lng }, zoom: 11 };
+    $scope.properties_order = true;
   }
 
   function PropertiesDetailsController($scope, $stateParams, Property) {

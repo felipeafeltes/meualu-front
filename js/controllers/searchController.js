@@ -56,7 +56,7 @@
                                    };
       $rootScope.boolean_filters = {
                                       furnished: [_boolean_filter_component('furnished', "Sim", 'Não'), 'fa-tv'],
-                                      pets_allowed: [_boolean_filter_component('pets_allowed', 'Aceita', 'Não aceita'), 'fa-paw'],
+                                      pets_allowed: [_boolean_filter_component('pets_allowed', 'Permitido', 'Não permitido'), 'fa-paw'],
                                       public_transportation: [_boolean_filter_component('public_transportation', 'Próximo', 'Não próximo'), 'fa-bus']
                                    };
       $rootScope.range_filters = {
@@ -128,8 +128,8 @@
                         falsefurnished: "Não",
                         'true,falsefurnished': "Ambos",
                         'false,truefurnished': "Ambos",
-                        truepets_allowed: "Aceita",
-                        falsepets_allowed: "Não aceita",
+                        truepets_allowed: "Permitido",
+                        falsepets_allowed: "Não permitido",
                         'true,falsepets_allowed': "Ambos",
                         'false,truepets_allowed': "Ambos",
                         truepublic_transportation: "Próximo",
