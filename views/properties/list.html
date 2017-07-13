@@ -6,43 +6,51 @@
     </nav>
     <div class="row row-list-details text-gray">
       <div class="col-md-5 property-list">
-        <h2>
-          <span class="text-green bold">Encontramos {{ properties.length }} apês</span>
-          <button type="button" class="btn btn-green-full btn-sm pull-right">Adicionar alerta</button>
-        </h2>
-        <p>Nos ajude a ser mais preciso, utilize os filtros acima.</p>
-
-        <div class="dropdown">
-          <span>Order por</span>
-          <a class="text-green dropdown-toggle order-properties" type="button" id="dropdownPreco" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            {{ (properties_order)? "menor preço" : "maior preço" }}
-            <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="dropdownPreco">
-            <li><a ng-click="properties_order = true">menor preço</a></li>
-            <li><a ng-click="properties_order = false">maior preço</a></li>
-          </ul>
+        <div ng-if="properties.length == 0">
+          <h2 class="text-yellow bold text-center">
+            Não encontramos nenhum ap disponível para o endereço procurado.
+          </h2>
+          <p class="text-center">Refaça sua busca.</p>
         </div>
-        <div class="panel panel-default" ng-repeat="property in properties | orderBy:rental.value:properties_order" ng-click='details(property.id)'>
-          <div class="panel-body imovel-desc" >
-            <div class="col-md-5">
-              <h4 class="text-dark">{{ property.full_address() }} ({{ property.description }})</h4>
-              <p>{{property.address.district}}</p>
-              <ul class="properties-details" >
-                <li> {{ property.bedrooms }} dorms</li>
-                <li> {{ property.garages }} vagas</li>
-                <li> {{ property.total_area }} m²</li>
-              </ul>
-              <hr />
-              <h4 class="text-green">
-                Aluguel: {{ property.rental.value }}
-              </h4>
-              <h4 class="text-green">
-                Valor total: {{ property.total_rental() }}
-              </h4>
-            </div>
-            <div class="col-md-7 no-padding">
-              <img src="assets/imagens/imovel.jpg" class="img-full" alt="Responsive image">
+        <div ng-if="properties.length != 0">
+          <h2>
+            <span class="text-green bold">Encontramos {{ properties.length }} apês</span>
+            <!--<button type="button" class="btn btn-green-full btn-sm pull-right">Adicionar alerta</button>-->
+          </h2>
+          <p>Nos ajude a ser mais preciso, utilize os filtros acima.</p>
+
+          <div class="dropdown">
+            <span>Order por</span>
+            <a class="text-green dropdown-toggle order-properties" type="button" id="dropdownPreco" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              {{ (properties_order)? "menor preço" : "maior preço" }}
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownPreco">
+              <li><a ng-click="properties_order = true">menor preço</a></li>
+              <li><a ng-click="properties_order = false">maior preço</a></li>
+            </ul>
+          </div>
+          <div class="panel panel-default" ng-repeat="property in properties | orderBy:rental.value:properties_order" ng-click='details(property.id)'>
+            <div class="panel-body imovel-desc" >
+              <div class="col-md-5">
+                <h4 class="text-dark">{{ property.full_address() }} ({{ property.description }})</h4>
+                <p>{{property.address.district}}</p>
+                <ul class="properties-details" >
+                  <li><i class="fa fa-bed"></i> {{ property.bedrooms }} dorms</li>
+                  <li><i class="fa fa-car"></i> {{ property.garages }} vagas</li>
+                  <li><i class="fa fa-percent"></i> {{ property.total_area }} m²</li>
+                </ul>
+                <hr />
+                <h4 class="text-green">
+                  Aluguel: {{ property.rental.value }}
+                </h4>
+                <h4 class="text-green">
+                  Valor total: {{ property.total_rental() }}
+                </h4>
+              </div>
+              <div class="col-md-7 no-padding">
+                <img src="{{ property.cover_url() }}" class="img-full" alt="Responsive image">
+              </div>
             </div>
           </div>
         </div>

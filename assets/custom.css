@@ -50,7 +50,7 @@ h1, h2, h3, h4, h5, h6{font-family:'Maven Pro', sans-serif;}
 .bg-thank-inquilino{background:url('imagens/backgrounds/Agradecimentos.jpg') no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;}
 .bg-thank-proprietario{background:url('imagens/backgrounds/Agradecimentos2.jpg') no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;}
 .text-yellow{color:#fbd58a;}
-.text-yellow:hover{color:#fbd58a; text-decoration:underline !important;}
+a.text-yellow:hover{color:#fbd58a; text-decoration:underline !important;}
 .text-white:visited{color:#fff; text-decoration:underline !important;}
 .text-purple{color:#534a83;}
 .text-green{color:#67b7b4;}
@@ -151,8 +151,9 @@ input.search-home {
 }
 
 ul.properties-details {
-  -webkit-padding-start: 20px;
+  -webkit-padding-start: 10px;
   margin-bottom: 0px;
+  list-style: none;
 }
 
 .property-list {

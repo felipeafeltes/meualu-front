@@ -60,7 +60,7 @@
         </ul>
       </div>
       <div class="col-md-6">
-        <div class="panel panel-rental" scroll-to-fixed="scrollToFixedOptions" >
+        <div id="rental-fix" class="panel panel-rental" scroll-to-fixed="scrollToFixedOptions" >
           <div class="panel-heading bg-yellow">
             <h1 class="rental">
               <span>Total</span>
@@ -208,14 +208,17 @@
     <div class="row">
       <h1 class="text-green text-center m-b-50">Apartamentos relacionados</h1>
 
+      <div ng-if="!properties_related.length" >
+        <h3 class="text-center"><i class="fa fa-frown-o "></i>  Nenhum apartamento encontrado</h3>
+      </div>
       <slick arrows="true" slides-to-show="4" slides-to-scroll="1" infinite="true">
-        <div class="panel panel-default properties-related" ng-repeat="propertie in properties_related">
+        <div class="panel panel-default properties-related" ng-repeat="propertie_related in properties_related">
           <div class="panel-heading properties-related">
             <img src="assets/imagens/imovel.jpg" class="img-full" alt="Responsive image">
           </div>
           <div class="panel-body properties-related">
-            <h4 class="text-purple">{{propertie.address.street}}</h4>
-            <p>{{propertie.address.neighborhood}}</p>
+            <h4 class="text-purple">{{propertie_related.address.street}}</h4>
+            <p>{{propertie_related.address.neighborhood}}</p>
             <p>Lore ipsum morbmore this not the other thing, bla bla bla</p>
           </div>
         </div>

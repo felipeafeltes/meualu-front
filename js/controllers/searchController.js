@@ -61,7 +61,7 @@
                                    };
       $rootScope.range_filters = {
                                    total_area: setup_range_filters('total_area', 15, 500, 'fa-percent', 'total-area-filter'),
-                                   rental: setup_range_filters('rental', 500, 10000, 'fa-usd', 'rental-filter')
+                                   rental: setup_range_filters('rental', 200, 10000, 'fa-usd', 'rental-filter')
                                 };
       $rootScope.extra_info_filters = ExtraInfo.query();
       $rootScope.$watch('extra_info_filters |filter:{selected:true}', function (nv) {
@@ -95,7 +95,10 @@
 
     $scope.autocompleteOptions = {
       componentRestrictions: { country: 'br' },
-      types: ['geocode']
+      bounds: new google.maps.LatLngBounds(
+          new google.maps.LatLng(-30.1280988,-51.2153672)),
+      strictBounds: true,
+      types: ['address']
     }
 
     $scope.filter_translation = function(filterName) {
