@@ -6,8 +6,10 @@ angular
     templateUrl:'js/directives/header/header.html',
     restrict: 'E',
     replace: true,
+    controller: 'autoCompleteController',
+    scope: true,
     link: function (scope) {
-      scope.address = $state.params.address_string;
+      scope.address = $rootScope.address_string;
     }
   }
 });

@@ -3,7 +3,7 @@
   app.controller('searchController', searchController);
 
   function searchController($scope, $rootScope, $state, ExtraInfo, $timeout) {
-    $scope.$watch('address', function(address) {
+    /*$scope.$watch('address', function(address) {
       if(address) {
         if(address.formatted_address != undefined && $rootScope.address_string != address.formatted_address) {
           setup_search_filters();
@@ -16,7 +16,7 @@
         }
         searchProperties($rootScope.address_string);
       }
-    });
+    });*/
 
     $scope.refreshSlider = function () {
       $timeout(function () {
@@ -25,7 +25,6 @@
     };
 
     $scope.onFilterSelect = function(filterObj, filterName){
-      console.log("filter");
       if(filterObj.selected) {
         if(!$rootScope.filters[filterName]) {
           $rootScope.filters[filterName] = []
@@ -93,20 +92,17 @@
         }
     }
 
-    $scope.autocompleteOptions = {
-      componentRestrictions: { country: 'br' },
-      bounds: new google.maps.LatLngBounds(
-          new google.maps.LatLng(-30.1280988,-51.2153672)),
-      strictBounds: true,
-      types: ['address']
-    }
-
     $scope.filter_translation = function(filterName) {
       return _filter_name_translation(filterName)
     }
 
     $scope.label_translation = function(filterName) {
       return _label_name_translation(filterName)
+    }
+
+    if ($rootScope.filters == null){
+      setup_search_filters();
+      $rootScope.filters = _setup_filters();
     }
   }
 

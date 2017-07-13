@@ -23,7 +23,6 @@
       },
       function(data){
         $scope.markers = _setupMarkers(data);
-        console.log($scope.markers);
       }
     );
 

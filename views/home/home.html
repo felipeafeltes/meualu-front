@@ -18,12 +18,13 @@
       </div>
     </nav>
 
-    <div class="container text-center m-a" ng-controller="searchController">
+    <div class="container text-center m-a" ng-controller="autoCompleteController">
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
           <h1 class="bold">Você também acha o aluguel algo complicado? <br> Junte-se a nós.</h1>
           <div class="search-wrapper">
             <input g-places-autocomplete
+                  ng-change="searchPropertie()"
                    ng-model="address"
                    options="autocompleteOptions"
                    force-selection="true"

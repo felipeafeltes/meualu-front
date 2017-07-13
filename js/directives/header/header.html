@@ -18,6 +18,7 @@
       <form class="navbar-form navbar-left">
         <div class="form-group">
           <input g-places-autocomplete
+                ng-change="searchPropertie()"
                  ng-model="address"
                  options="autocompleteOptions"
                  force-selection="true"

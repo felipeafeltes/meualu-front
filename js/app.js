@@ -129,7 +129,12 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $auth
     .state('alu.propertiesDetails', {
       url: '/imoveis/:id',
       templateUrl: 'views/properties/show.html',
-      controller: 'PropertiesDetailsController'
+      controller: 'PropertiesDetailsController',
+      resolve: {
+        deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+          return $ocLazyLoad.load('js/directives/header/header.js');
+        }]
+      }
     });
     // .state('admin', {
     //   url: '/admin',
