@@ -188,6 +188,14 @@ angular.module('google.places', [])
                             $scope.$apply(function () {
                                 var customPlacePredictions;
 
+                                var filtred_prediction = [];
+                                angular.forEach(predictions, function(prediction) {
+                                    angular.forEach(prediction.terms, function(term) {
+                                        if (term.value === "Porto Alegre")
+                                            filtred_prediction.push(prediction)
+                                    });
+                                }, filtred_prediction);
+
                                 clearPredictions();
 
                                 if ($scope.customPlaces) {
@@ -196,7 +204,7 @@ angular.module('google.places', [])
                                 }
 
                                 if (status == google.maps.places.PlacesServiceStatus.OK) {
-                                    $scope.predictions.push.apply($scope.predictions, predictions);
+                                    $scope.predictions.push.apply($scope.predictions, filtred_prediction);
                                 }
 
                                 if ($scope.predictions.length > 5) {

@@ -19,11 +19,13 @@
       }
     }
 
+    var PoABounds = new google.maps.LatLngBounds(
+          new google.maps.LatLng(-30.255998,-51.224980),
+          new google.maps.LatLng(-29.963159,-51.096578));
+
     $scope.autocompleteOptions = {
       componentRestrictions: { country: 'br' },
-      bounds: new google.maps.LatLngBounds(
-          new google.maps.LatLng(-30.1280988,-51.2153672)),
-      strictBounds: true,
+      bounds: PoABounds,
       types: ['address']
     }
   }
