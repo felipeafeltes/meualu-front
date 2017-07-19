@@ -3,7 +3,7 @@
 <section class="bg-gray">
   <div class="container-fluid">
     <div id="pictures" class="row">
-      <slick ng-if="images.length" arrows="false" slides-to-show="1" id="slide-full" as-nav-for="#slide-nav" arrows="false" slides-to-scroll="1">
+      <slick ng-if="images.length" arrows="false" slides-to-show="1" id="slide-full" arrows="false" slides-to-scroll="1" infinite="false" draggable="false">
           <div ng-repeat="img in images">
             <img src="{{img.src}}" class="img-full" alt="Responsive image">
           </div>
@@ -13,13 +13,13 @@
   <div class="container">
     <div class="row row-slider-full">
       <div class="col-md-6">
-        <slick ng-if="images.length" arrows="true" slides-to-show="4" id="slide-nav" as-nav-for="#slide-full" slides-to-scroll="1" infinite="false">
+        <slick ng-if="images.length" arrows="true" slides-to-show="4" id="slide-nav" as-nav-for="#slide-full" slides-to-scroll="1" infinite="true">
           <div class="image" ng-repeat="img in images">
-            <img src="{{img.src}}" class="img-full" alt="Responsive image">
+            <img src="{{img.src}}" class="slider-nav-img" alt="Responsive image">
           </div>
         </slick>
 
-        <h1 class="text-purple m-b-0">{{ property.full_address() }}</h1>
+        <h1 class="text-purple m-b-0" ng-bind=property.full_address() ></h1>
         <h2 class="m-t-5">{{ property.address.district }}</h2>
         <ul class="list-inline m-t-15">
           <li class="text-center">
