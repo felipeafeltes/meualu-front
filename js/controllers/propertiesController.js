@@ -38,7 +38,7 @@
 
     $scope.scrollToFixedOptions = {
       preFixed: function() { $(this).css('margin-top', '5px'); },
-      postFixed: function() { $(this).css('margin-top', '-40px');},
+      postFixed: function() { $(this).css('margin-top', '-54px');},
       limit: $('#maps').offset().top
     };
 

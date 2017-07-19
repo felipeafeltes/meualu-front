@@ -13,13 +13,11 @@
           );
 
           propertySearch.prototype.full_address = function() {
-            if (this.$resolved)
-              return this.address.street + " " + this.address.number;
+            return this.address.street + " " + this.address.number;
           };
 
           propertySearch.prototype.total_rental = function() {
-            if (this.$resolved)
-              return this.rental.value + this.rental.condominium + this.rental.iptu
+            return this.rental.value + this.rental.condominium + this.rental.iptu
           };
 
           propertySearch.prototype.cover_url = function() {

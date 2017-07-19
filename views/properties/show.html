@@ -5,7 +5,7 @@
     <div id="pictures" class="row">
       <slick ng-if="images.length" arrows="false" slides-to-show="1" id="slide-full" arrows="false" slides-to-scroll="1" infinite="false" draggable="false">
           <div ng-repeat="img in images">
-            <img src="{{img.src}}" class="img-full" alt="Responsive image">
+            <img ng-src="{{img.src}}" class="slider-full-img" alt="Responsive image">
           </div>
         </slick>
     </div>
@@ -15,7 +15,7 @@
       <div class="col-md-6">
         <slick ng-if="images.length" arrows="true" slides-to-show="4" id="slide-nav" as-nav-for="#slide-full" slides-to-scroll="1" infinite="true">
           <div class="image" ng-repeat="img in images">
-            <img src="{{img.src}}" class="slider-nav-img" alt="Responsive image">
+            <img ng-src="{{img.src}}" class="slider-nav-img" alt="Responsive image">
           </div>
         </slick>
 
@@ -62,24 +62,24 @@
       <div class="col-md-6">
         <div id="rental-fix" class="panel panel-rental" scroll-to-fixed="scrollToFixedOptions" >
           <div class="panel-heading bg-yellow">
-            <h1 class="rental">
+            <h2 class="rental m-t-10">
               <span>Total</span>
-              <span class="pull-right">R$ {{ property.total_rental() }}</span>
-            </h1>
+              <span class="pull-right"> {{ property.total_rental() | currency }}</span>
+            </h2>
           </div>
           <div class="panel-body">
             <ul class="without-style">
               <li class="m-b-5">
                 <span>Aluguel</span>
-                <span class="pull-right">R$ {{ property.rental.value }}</span>
+                <span class="pull-right"> {{ property.rental.value | currency}}</span>
               </li>
               <li class="m-b-5">
                 <span>Condominio</span>
-                <span class="pull-right">R$ {{ property.rental.condominium }}</span>
+                <span class="pull-right"> {{ property.rental.condominium | currency}}</span>
               </li>
               <li class="m-b-5">
                 <span>IPTU</span>
-                <span class="pull-right">R$ {{ property.rental.iptu }}</span>
+                <span class="pull-right"> {{ property.rental.iptu | currency}}</span>
               </li>
               <li class="m-b-5">
                 <span>Proteção residencial</span>

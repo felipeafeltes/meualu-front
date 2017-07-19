@@ -35,15 +35,15 @@
                   <li><i class="fa fa-percent"></i> {{ property.total_area }} m²</li>
                 </ul>
                 <hr />
-                <h4 class="text-green">
-                  Aluguel: {{ property.rental.value }}
-                </h4>
-                <h4 class="text-green">
-                  Valor total: {{ property.total_rental() }}
-                </h4>
+                <p class="text-green">
+                  Aluguel: {{ property.rental.value | currency }}
+                </p>
+                <p class="text-green">
+                  Valor total: {{ property.total_rental() | currency }}
+                </p>
               </div>
               <div class="col-md-7 no-padding">
-                <img src="{{ property.cover_url() }}" class="img-full" alt="Responsive image">
+                <img ng-src="{{ property.cover_url() }}" class="img-full" alt="Responsive image">
               </div>
             </div>
           </div>

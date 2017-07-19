@@ -2,7 +2,7 @@
     'use strict';
   app.controller('searchController', searchController);
 
-  function searchController($scope, $rootScope, $state, ExtraInfo, $timeout) {
+  function searchController($scope, $rootScope, $state, ExtraInfo, $timeout, $filter) {
     /*$scope.$watch('address', function(address) {
       if(address) {
         if(address.formatted_address != undefined && $rootScope.address_string != address.formatted_address) {
@@ -60,7 +60,7 @@
                                    };
       $rootScope.range_filters = {
                                    total_area: setup_range_filters('total_area', 15, 500, 'fa-percent', 'total-area-filter'),
-                                   rental: setup_range_filters('rental', 200, 10000, 'fa-usd', 'rental-filter')
+                                   rental: setup_range_filters('rental', 200, 10000, 'fa-money', 'rental-filter')
                                 };
       $rootScope.extra_info_filters = ExtraInfo.query();
       $rootScope.$watch('extra_info_filters |filter:{selected:true}', function (nv) {
@@ -93,11 +93,28 @@
     }
 
     $scope.filter_translation = function(filterName) {
-      return _filter_name_translation(filterName)
+      //if selected return value instead
+      if ($scope.filters[filterName] != ""){
+        if ($rootScope.simple_filters[filterName] != undefined){
+          return $scope.filters[filterName].sort().join()+"#";
+        } else if ($rootScope.boolean_filters[filterName] != undefined) {
+          var value_and_key = $scope.filters[filterName].join()+filterName;
+          return _label_name_translation(value_and_key)+"#";
+        } else {
+          if (filterName == "total_area"){
+            return $scope.filters[filterName].split(",").join(" até ")+" m²#";
+          } else {
+            var value_splited = $scope.filters[filterName].split(",");
+            return "R$ "+[$filter('currency')(value_splited[0], ""), $filter('currency')(value_splited[1], "") ].join(" até ")+"#";
+          }
+        }
+      } else {
+        return _filter_name_translation(filterName, $scope.filters[filterName]);
+      }
     }
 
     $scope.label_translation = function(filterName) {
-      return _label_name_translation(filterName)
+      return _label_name_translation(filterName);
     }
 
     if ($rootScope.filters == null){
@@ -123,18 +140,21 @@
 
   function _label_name_translation(filterName) {
     var filtersMap = {
-                        truefurnished: "Sim",
-                        falsefurnished: "Não",
-                        'true,falsefurnished': "Ambos",
-                        'false,truefurnished': "Ambos",
-                        truepets_allowed: "Permitido",
-                        falsepets_allowed: "Não permitido",
-                        'true,falsepets_allowed': "Ambos",
-                        'false,truepets_allowed': "Ambos",
-                        truepublic_transportation: "Próximo",
-                        falsepublic_transportation: "Não próximo",
-                        'true,falsepublic_transportation': "Ambos",
-                        'false,truepublic_transportation': "Ambos"
+                      garages: "vaga",
+                      bedrooms: "dormitório",
+                      bathrooms: "banheiro",
+                      truefurnished: "Sim",
+                      falsefurnished: "Não",
+                      'true,falsefurnished': "Ambos",
+                      'false,truefurnished': "Ambos",
+                      truepets_allowed: "Permitido",
+                      falsepets_allowed: "Não permitido",
+                      'true,falsepets_allowed': "Ambos",
+                      'false,truepets_allowed': "Ambos",
+                      truepublic_transportation: "Próximo",
+                      falsepublic_transportation: "Não próximo",
+                      'true,falsepublic_transportation': "Ambos",
+                      'false,truepublic_transportation': "Ambos"
                      };
     return filtersMap[filterName];
   }

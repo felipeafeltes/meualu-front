@@ -147,6 +147,12 @@ input.search-home {
 .img-full {
   display: block;
   width: 100%;
+  height: 100%;
+}
+
+.slider-full-img {
+  display: block;
+  width: 100%;
   max-height: calc(100vh - 350px);
 }
 
@@ -185,7 +191,7 @@ ul.without-style{
   border-radius: 0px;
   border: 0px;
   width: 50%;
-  margin-top: -40px;
+  margin-top: -54px;
 }
 
 .panel-rental > .panel-body {

@@ -3,8 +3,6 @@
     <a class="btn btn-grey dropdown-toggle {{ (filters[key.toString()].length)? 'used' : '' }}" data-toggle="dropdown" href="#" ng-click="refreshSlider();">
       <i class="fa {{filter.icon}}"></i>
       {{ filter_translation(key.toString()) | capitalize | pluralize }}
-
-      {{ filters[key.toString()] }}
       <span class="caret"></span>
     </a>
     <ul class="dropdown-menu filters" ng-click="$event.stopPropagation();" style="width: 390px !important;">
@@ -23,8 +21,6 @@
     <a class="btn btn-grey dropdown-toggle {{ (filters[key.toString()].length)? 'used' : '' }}" data-toggle="dropdown" href="#">
       <i class="fa {{data[1]}}"></i>
       {{ filter_translation(key.toString()) | capitalize | pluralize }}
-
-      {{ filters[key.toString()].join() }}
       <span class="caret"></span>
     </a>
     <ul class="dropdown-menu filters" ng-click="$event.stopPropagation();">
@@ -37,7 +33,7 @@
           <label for="{{filter.value}}_{{key}}">
             <!-- INDEX: {{ $index }} -->
             {{ filter.label }}
-            {{ $index == 0 ? filter_translation(key.toString()) : (filter_translation(key.toString()) | pluralize) }}
+            {{ $index == 0 ? label_translation(key.toString()) : (label_translation(key.toString()) | pluralize) }}
           </label>
         </div>
       </li>
@@ -47,8 +43,6 @@
     <a class="btn btn-grey dropdown-toggle {{ (filters[key.toString()].length)? 'used' : '' }}" data-toggle="dropdown" href="#">
       <i class="fa {{data[1]}}"></i>
       {{ filter_translation(key.toString()) | capitalize | pluralize }}
-
-      {{ label_translation(filters[key.toString()].join()+key) }}
       <span class="caret"></span>
     </a>
     <ul class="dropdown-menu list-inline filters" ng-click="$event.stopPropagation();" style="width: 100%;">
