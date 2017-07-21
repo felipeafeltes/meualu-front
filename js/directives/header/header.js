@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-  .module('aluFrontApp').directive('header', function($state, $rootScope){
+  .module('aluFrontApp').directive('header', function($state, $stateParams){
   return {
     templateUrl:'js/directives/header/header.html',
     restrict: 'E',
@@ -9,7 +9,7 @@ angular
     controller: 'autoCompleteController',
     scope: true,
     link: function (scope) {
-      scope.address = $rootScope.address_string;
+      scope.address = $stateParams.address_string;
     }
   }
 });

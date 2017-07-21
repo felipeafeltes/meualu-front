@@ -13,8 +13,8 @@
           $rootScope.lng = address.geometry.location.lng();
           $rootScope.lat = address.geometry.location.lat();
         }
-        $state.go('alu.properties', {
-          address_string: address
+        $state.go('properties', {
+          address_string: address.formatted_address
         });
       }
     }

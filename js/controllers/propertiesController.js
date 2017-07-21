@@ -27,7 +27,7 @@
     );
 
     $scope.details = function(id) {
-      $state.go('alu.propertiesDetails', { id: id });
+      $state.go('propertiesDetails', { id: id });
     }
 
     $scope.map = { center: { latitude: $rootScope.lat, longitude: $rootScope.lng }, zoom: 11 };

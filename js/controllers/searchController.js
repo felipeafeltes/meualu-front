@@ -40,7 +40,7 @@
     var searchProperties = function(address) {
       var filters  = $rootScope.filters;
       if(address) {
-        $state.go('alu.properties', {
+        $state.go('properties', {
           address_string: address,
           filters: _prepare_filters(filters)
         });

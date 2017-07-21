@@ -65,8 +65,6 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $auth
     return deferred.promise;
   }];
 
-  $urlRouterProvider.otherwise('/');
-
   $authProvider.facebook({
     url: app.config.apiUrl + 'auth/facebook/callback',
     clientId: '914533272017680',
@@ -74,14 +72,18 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $auth
     baseUrl: app.config.apiUrl
   });
 
+  $urlRouterProvider.otherwise('/');
+  // Utilizando o HTML5 History API
+  $locationProvider.html5Mode(true);
+
   $stateProvider
-    .state('template', {
-      url: '/template',
-      templateUrl: 'index.html',
-    })
     .state('home', {
       url: '/',
       templateUrl: 'views/home/home.html',
+    })
+    .state('template', {
+      url: '/template',
+      templateUrl: 'index.html',
     })
     .state('sign_in', {
       url: '/sign_in',
@@ -95,11 +97,7 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $auth
       url: '/authenticate',
       controller: 'OauthSessionsAuthenticate'
     })
-    .state('alu', {
-      url: '/alu',
-      templateUrl: 'views/default_layout.html'
-    })
-    .state('alu.properties', {
+    .state('properties', {
       url: '/imoveis/:address_string?{filters:json}',
       params: {
         filters: {
@@ -116,18 +114,8 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $auth
         }]
       }
     })
-    .state('informations', {
-      url: '/imovel/informacoes',
-      templateUrl: 'views/properties/informations.html',
-      controller: 'InformationsController',
-      resolve: {
-        deps: ['$ocLazyLoad', function ($ocLazyLoad) {
-          return $ocLazyLoad.load('js/directives/header/header.js');
-        }]
-      }
-    })
-    .state('alu.propertiesDetails', {
-      url: '/imoveis/:id',
+    .state('propertiesDetails', {
+      url: '/imoveis/detalhes/:id',
       templateUrl: 'views/properties/show.html',
       controller: 'PropertiesDetailsController',
       resolve: {
@@ -161,6 +149,5 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $auth
     //   controller: 'PropertiesDeleteController'
     // })
 
-    // Utilizando o HTML5 History API
-    $locationProvider.html5Mode(true);
+
 });
