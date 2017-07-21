@@ -53,7 +53,8 @@
         <ui-gmap-google-map center='map.center' zoom='map.zoom'>
           <ui-gmap-marker ng-repeat="marker in markers"
                   idKey="marker.id"
-                  coords="marker.coords">
+                  coords="marker.coords"
+                  options="marker.options">
           </ui-gmap-marker>
         </ui-gmap-google-map>
       </div>

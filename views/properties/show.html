@@ -3,7 +3,7 @@
 <section class="bg-gray">
   <div class="container-fluid">
     <div id="pictures" class="row">
-      <slick ng-if="images.length" arrows="false" slides-to-show="1" id="slide-full" arrows="false" slides-to-scroll="1" infinite="false" draggable="false">
+      <slick ng-if="images.length" arrows="false" slides-to-show="1" id="slide-full" arrows="false" slides-to-scroll="1" infinite="true" draggable="false">
           <div ng-repeat="img in images">
             <img ng-src="{{img.src}}" class="slider-full-img" alt="Responsive image">
           </div>
@@ -13,7 +13,7 @@
   <div class="container">
     <div class="row row-slider-full">
       <div class="col-md-6">
-        <slick ng-if="images.length" arrows="true" slides-to-show="4" id="slide-nav" as-nav-for="#slide-full" slides-to-scroll="1" infinite="true">
+        <slick ng-if="images.length" arrows="true" slides-to-show="4" id="slide-nav" as-nav-for="#slide-full" slides-to-scroll="1" infinite="true" focus-on-select="true">
           <div class="image" ng-repeat="img in images">
             <img ng-src="{{img.src}}" class="slider-nav-img" alt="Responsive image">
           </div>
@@ -197,7 +197,8 @@
       <!-- <pre>{{ marker | json }}</pre> -->
       <ui-gmap-google-map center='map.center' zoom='map.zoom'>
         <ui-gmap-marker idKey="marker.id"
-                        coords="marker.coords">
+                        coords="marker.coords"
+                        options="marker.options">
         </ui-gmap-marker>
       </ui-gmap-google-map>
     </div>
