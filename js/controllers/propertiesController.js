@@ -42,22 +42,22 @@
       limit: $('#maps').offset().top
     };
 
-    $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 11 }
-    $scope.marker = null
+    $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 11 };
+    $scope.marker = null;
 
     $scope.property = Property.get({ id: $stateParams.id },
       function(data){
         var markers = _setupMarkers([data]);
         $scope.marker = markers[0];
-        $scope.map = { center: markers[0].coords, zoom: 15 };
+        $scope.map = { center: angular.copy(markers[0].coords), zoom: 15 };
         $scope.images = data.pictures.map(function (pic) {
-          return {src: pic.url}
+          return {src: pic.url};
         });
       }
     );
 
-    $scope.properties_related = []
-  }
+    $scope.properties_related = [];
+  };
 
   function _setupMarkers(properties) {
     var markers = [];
