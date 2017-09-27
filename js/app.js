@@ -12,15 +12,17 @@ var app = angular
     'oauthSessionsServices',
     'extraInfosServices',
     'propertiesServices',
+    'scheduleVisitsServices',
     'ngMaterial',
     'scrollToFixed',
     'ngMaterial',
-    'slick'
+    'slick',
+    'ui.bootstrap'
   ]);
 
 app.constant('config', {
-  // apiUrl: 'http://localhost:3000/'
   apiUrl: 'http://api.meualu.ubistart.com/'
+  // apiUrl: 'http://localhost:3000/'
 });
 
 app.filter('capitalize', function() {

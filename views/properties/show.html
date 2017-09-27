@@ -96,8 +96,8 @@
               <br>
               sem falar com ninguem.
             </p>
-            <div class="text-center">
-              <button type="button" class="btn btn-warning btn-sm">Agendar visita</button>
+            <div class="text-center" ng-controller="ScheduleVisitsModalController">
+              <button type="button" class="btn btn-warning btn-sm" ng-click="showModal(property.id)">Agendar visita</button>
             </div>
           </div>
         </div>
@@ -228,3 +228,4 @@
   </div>
 </section>
 <div ng-include="'views/shared/_footer.html'"></div>
+<div ng-include="'views/properties/scheduleVisitModal.htm'"></div>
