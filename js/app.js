@@ -21,7 +21,7 @@ var app = angular
   ]);
 
 app.constant('config', {
-  apiUrl: 'http://api.meualu.ubistart.com/'
+  apiUrl: 'http://api.meualu.com/'
   // apiUrl: 'http://localhost:3000/'
 });
 
