@@ -1,0 +1,46 @@
+@media (max-width: 768px) {
+  .bg-man{
+    background-position: right;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    padding-bottom: 70px; padding-top: 50px;
+  }
+
+  .btn-purple.full {
+    font-size: 15px;
+    padding: 15px 15px;
+  }
+
+  .search-wrapper {
+    width: 100%;
+  }
+
+  .h1-principal {
+    font-size: 25px;
+    width: 100%;
+    margin-bottom: 50px;
+  }
+
+  .font-18 {
+    font-size: 16px;
+  }
+
+  .section-how-it-works {
+    font-size: 16px;
+  }
+
+  .section-how-it-works p{
+    width: 100%;
+  }
+
+  .navbar-home .navbar-collapse.collapse {
+    display: none !important;
+  }
+
+  .social-content {
+    float: none;
+    text-align: left;
+  }
+}

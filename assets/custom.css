@@ -66,7 +66,7 @@ a.text-yellow:hover{color:#f4cc6a;}
 .text-white:visited{color:#fff;}
 .bold{font-weight:bold;}
 .btn-purple{color:#fff;background-color:transparent;border-color:#fff;border:2px solid #fff;border-radius:2px;font-weight:bold;padding:10px 30px;}
-.btn-purple.full{background:#5f447b;border:0px;padding-top: 15px; padding-bottom: 15px;}
+.btn-purple.full{background:#5f447b;border:0px;padding-top: 15px; padding-bottom: 15px; font-size: 18px;}
 .btn-purple:hover,.btn-purple:active,.btn-purple:focus {color:#fff;background:#4a4275;}
 .btn-yellow{color:#fff;background-color:transparent;border-color:#fff;border:2px solid #fff;border-radius:2px;font-weight:bold;padding:10px 30px;}
 .btn-yellow:hover{color:#67b7b4;background:#fff;}
@@ -93,7 +93,7 @@ a.text-yellow:hover{color:#f4cc6a;}
 .container-video{display: flex; min-height: 100vh; flex-direction: column; padding-bottom: 20px;}
 .cursor-pointer{cursor:pointer;}
 .angular-google-map-container { height: calc(100vh - 130px); }
-.font-18{font-size: 18px !important;}
+.font-18{font-size: 18px;}
 .row-list-details {
   height: calc(100vh - 130px);
   background-color: #f5f5f5;
@@ -388,4 +388,8 @@ a {
 
 .footer {
   font-size: 16px;
+}
+
+.social-content {
+  float: left;
 }
