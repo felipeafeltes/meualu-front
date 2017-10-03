@@ -9,12 +9,13 @@
 body{font-family:'Circular std book', sans-serif;font-size:14px;}
 label{font-size:14px;}
 h1, h2, h3, h4, h5, h6{font-family:'Circular std book', sans-serif;}
-.section-how-it-works{overflow:hidden;max-height:660px;}
+.section-how-it-works{overflow:hidden;max-height:660px;padding-top: 50px; padding-bottom: 50px; font-size: 18px;}
 .logo-heigth{height:60px;}
 .chat-logo{width:30px;height:30px;}
 .full-heigth{height:100%;min-height:100vh;}
 .footer-heigth{min-height:40vh;}
 .m-r-5{margin-right:5px;}
+.m-r-15{margin-right:15px;}
 .m-r-30{margin-right:30px;}
 .m-t-0{margin-top:0px;}
 .m-t-5{margin-top:5px;}
@@ -48,7 +49,7 @@ h1, h2, h3, h4, h5, h6{font-family:'Circular std book', sans-serif;}
 .bg-green{background:#67b7b4;color:#fff;}
 .bg-gray{background:#f1f1f1;color:#b1b1b0;}
 .bg-principal{background:url('imagens/backgrounds/principal.jpg') no-repeat center center;-webkit-background-size: 100% 100%;-moz-background-size: 100% 100%;-o-background-size: 100% 100% ;background-size: 100% 100%;}
-.bg-man{background:url('imagens/backgrounds/banner_purple.jpg') no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;}
+.bg-man{background:url('imagens/backgrounds/bg-man.jpg') no-repeat;-webkit-background-size: 100% 100%;-moz-background-size: 100% 100%;-o-background-size: 100% 100%;background-size: 100% 100%;padding-bottom: 70px; padding-top: 50px;}
 .bg-building{background:url('imagens/backgrounds/bn-anunciar-bottom.jpg') no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;}
 .bg-chair{background:url('imagens/backgrounds/bn-anunciar-top.jpg') no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;}
 .bg-thank-inquilino{background:url('imagens/backgrounds/Agradecimentos.jpg') no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;}
@@ -65,7 +66,8 @@ a.text-yellow:hover{color:#f4cc6a;}
 .text-white:visited{color:#fff;}
 .bold{font-weight:bold;}
 .btn-purple{color:#fff;background-color:transparent;border-color:#fff;border:2px solid #fff;border-radius:2px;font-weight:bold;padding:10px 30px;}
-.btn-purple:hover{color:#fff;background:#4a4275;}
+.btn-purple.full{background:#5f447b;border:0px;padding-top: 15px; padding-bottom: 15px;}
+.btn-purple:hover,.btn-purple:active,.btn-purple:focus {color:#fff;background:#4a4275;}
 .btn-yellow{color:#fff;background-color:transparent;border-color:#fff;border:2px solid #fff;border-radius:2px;font-weight:bold;padding:10px 30px;}
 .btn-yellow:hover{color:#67b7b4;background:#fff;}
 .btn-yellow-full{color:#fff;background-color:#f4cc6a;border-color:#fff;border:2px solid #fff;border-radius:2px;font-weight:bold;padding:10px 30px;}
@@ -365,4 +367,25 @@ li.rental-filter span.max:before{
 
 a {
   text-decoration: none !important;
+}
+
+.section-how-it-works p {
+  width: 70%;
+}
+
+.section-how-it-works h3 div.circular {
+  border-radius: 50%;
+  border: 3px solid #d8d8d8;
+  width: 36px;
+  height: 36px;
+  padding-left: 9px;
+  padding-top: 2px;
+}
+
+.section-how-it-works h3 div.circular.first {
+  padding-left: 10px;
+}
+
+.footer {
+  font-size: 16px;
 }
