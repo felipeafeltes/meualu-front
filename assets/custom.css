@@ -362,3 +362,7 @@ li.rental-filter span.max:before{
   text-decoration: none;
   color: #67b7b4;
 }
+
+a {
+  text-decoration: none !important;
+}
