@@ -15,6 +15,17 @@
   },
   "dependencies": {
     "satellizer": "^0.15.5",
-    "angularjs-slider": "^6.2.2"
+    "angularjs-slider": "^6.2.2",
+    "ScrollToFixed": "1.0.8",
+    "angular-animate": "1.6.4",
+    "angular-aria": "1.6.4",
+    "angular-bootstrap": "2.5.0",
+    "angular-google-maps": "2.4.1",
+    "angular-google-places-autocomplete": "0.2.7",
+    "angular-material": "1.1.4",
+    "slick-carousel": "1.4.1",
+    "oclazyload": "1.1.0",
+    "angular-slick": "0.2.1",
+    "angular-scrolltofixed": "0.5.0"
   }
 }
