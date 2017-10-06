@@ -1,43 +1,41 @@
 <section class="text-white bg-yellow bg-proprietario font-18">
-  <div style="padding-bottom: 20px;">
-    <nav class="navbar navbar-proprietario">
-      <div class="container-fluid  container" style="display: flex; flex-direction: row;">
-        <div class="navbar-header" style="display: flex;">
-          <a class="navbar-brand" ui-sref="home">
-            <img src="assets/imagens/icones/logo_alu_roxo_beta.png" class="img-responsive logo-heigth">
-          </a>
-        </div>
-        <div class="collapse navbar-collapse" style="border-left: 1px solid #ccc;  height: 70px; padding-left: 0px; display: flex !important; flex-direction: row; flex-grow: 1;">
-          <div class="search-wrapper" style="display: flex; height: 70px; margin: 0px; flex-grow: 1;" ng-controller="autoCompleteController">
-            <i class="fa fa-search fa-1x sufix" style=""></i>
-            <input g-places-autocomplete
-                  ng-change="searchPropertie()"
-                  placeholder="Buscar no mapa"
-                   ng-model="address"
-                   options="autocompleteOptions"
-                   force-selection="true"
-                   type="text"
-                   class="form-control search-header"
-                   >
-            </input>
-          </div>
-
-          <ul class="nav navbar-nav hidden-xs" style="display: flex;">
-            <li class="bold text-uppercase">
-              <a class="text-purple" ui-sref="proprietario" style="padding: 25px 0px;">Anuncie seu apê</a>
-            </li>
-          </ul>
-        </div>
+  <nav class="navbar navbar-proprietario">
+    <div class="container-fluid  container">
+      <div class="navbar-header">
+        <a class="navbar-brand" ui-sref="home">
+          <img src="assets/imagens/icones/logo_alu_roxo_beta.png" class="img-responsive logo-heigth">
+        </a>
       </div>
-    </nav>
-
-    <div class="m-a  container">
-      <div class="row">
-        <div class="col-md-4 col-sm-6 col-xs-12 col-comecar">
-          <h1>Alugue seu espaço mais rápido</h1>
-          <p>Nossa tecnologia de aproximação entrega a sua oferta para inquilinos que realmente combinam com o seu apê.</p>
-          <a href="" class="btn btn-yellow-full lg">Começar</a>
+      <div class="navbar-search">
+        <div class="search-wrapper" ng-controller="autoCompleteController">
+          <i class="fa fa-search fa-1x sufix"></i>
+          <input g-places-autocomplete
+                ng-change="searchPropertie()"
+                placeholder="Buscar no mapa"
+                 ng-model="address"
+                 options="autocompleteOptions"
+                 force-selection="true"
+                 type="text"
+                 class="form-control search-header"
+                 >
+          </input>
         </div>
+
+        <ul class="nav navbar-nav hidden-xs">
+          <li class="bold text-uppercase">
+            <a class="text-purple" ui-sref="proprietario">Anuncie seu apê</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="m-a  container">
+    <div class="row">
+      <div class="col-md-4 col-sm-6 col-xs-12 col-comecar">
+        <h1>Alugue seu espaço mais rápido</h1>
+        <p>Nossa tecnologia de aproximação entrega a sua oferta para inquilinos que realmente combinam com o seu apê.</p>
+        <a href="" class="btn btn-yellow-full lg">Começar</a>
       </div>
     </div>
   </div>

@@ -164,8 +164,41 @@ input.search-header:focus {
   height: 70px;
 }
 
+.navbar-proprietario .container-fluid {
+  display: flex;
+  flex-direction: row;
+}
+
+.navbar-proprietario .navbar-header {
+  display: flex;
+}
+
 .navbar-proprietario .navbar-brand {
   padding: 5px 15px;
+}
+
+.navbar-proprietario .navbar-search {
+  border-left: 1px solid #ccc;
+  height: 70px;
+  padding-left: 0px;
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+}
+
+.navbar-proprietario .navbar-search .search-wrapper{
+  display: flex;
+  height: 70px;
+  margin: 0px;
+  flex-grow: 1;
+}
+
+.navbar-proprietario .navbar-search ul.nav.navbar-nav {
+  display: flex
+}
+
+.navbar-proprietario .navbar-search ul.nav.navbar-nav a{
+  padding: 25px 0px;
 }
 
 .navbar-home {
@@ -437,6 +470,10 @@ a {
   width: 70%;
 }
 
+.section-how-it-works.full h3 div.circular {
+  float: left;
+}
+
 .section-how-it-works h3 div.circular {
   border-radius: 50%;
   border: 3px solid #d8d8d8;
@@ -444,7 +481,6 @@ a {
   height: 36px;
   padding-left: 9px;
   padding-top: 2px;
-  float: left;
   margin-right: 10px;
 }
 
@@ -456,7 +492,7 @@ a {
   text-align: right;
 }
 
-.section-how-it-works .reverse div.circular {
+.section-how-it-works.full .reverse div.circular {
   margin-right: 0px;
   margin-left: 10px;
   float: right;
@@ -483,6 +519,7 @@ a {
   background-color: #67b7b4;
   padding: 10px 20px 30px;
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .col-comecar h1 {text-align: initial;}
