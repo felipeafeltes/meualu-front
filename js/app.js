@@ -76,7 +76,7 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $auth
 
   $urlRouterProvider.otherwise('/');
   // Utilizando o HTML5 History API
-  $locationProvider.html5Mode(true);
+  //$locationProvider.html5Mode(true);
 
   $stateProvider
     .state('home', {
@@ -98,6 +98,10 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $auth
     .state('oauth_autenticate', {
       url: '/authenticate',
       controller: 'OauthSessionsAuthenticate'
+    })
+    .state('proprietario', {
+      url: '/proprietario',
+      templateUrl: 'views/home/proprietario.html',
     })
     .state('properties', {
       url: '/imoveis/:address_string?{filters:json}',

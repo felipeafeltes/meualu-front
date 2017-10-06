@@ -3,13 +3,13 @@
     <nav class="navbar navbar-home">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="index.html">
+          <a class="navbar-brand" ui-sref="home">
             <img src="assets/imagens/icones/logo_alu_amarelo_beta.png" class="img-responsive logo-heigth">
           </a>
         </div>
         <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-8">
           <ul class="nav navbar-nav">
-            <li class="bold text-uppercase"><a class="text-yellow" href="#">Anuncie seu apê</a></li>
+            <li class="bold text-uppercase"><a class="text-yellow" ui-sref="proprietario">Anuncie seu apê</a></li>
             <!--<li class="bold text-uppercase cursor-pointer" ng-hide="current_user"><a class="text-white" data-toggle="modal" data-target="#modalLogin"> Login</a></li>
             <li class="bold text-uppercase cursor-pointer" ng-show="current_user"><a class="text-white">{{current_user.name}}</a></li>-->
           </ul>
@@ -30,7 +30,7 @@
                    type="text"
                    class="form-control search-home m-t-30">
             </input>
-            <i class="fa fa-search fa-2x"></i>
+            <i class="fa fa-search fa-2x prefix"></i>
           </div>
           <p class="text-center text-uppercase">encontre sua próxima moradia</p>
         </div>

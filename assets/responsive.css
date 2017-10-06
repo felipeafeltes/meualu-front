@@ -1,3 +1,9 @@
+@media (min-width: 992px){
+  .col-comecar {
+    width: 30%;
+  }
+}
+
 @media (max-width: 768px) {
   .bg-man{
     background-position: right;
