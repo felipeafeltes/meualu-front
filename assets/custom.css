@@ -447,7 +447,7 @@ a {
 }
 
 .section-how-it-works.full div.bg-door {
-  height: 300px;
+  min-height: 300px;
   padding: 30px 30px;
 }
 

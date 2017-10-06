@@ -1,0 +1,42 @@
+<div class="modal" tabindex="-1" role="dialog" id="modalComecar">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-green">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title text-center">Começar</h3>
+      </div>
+      <div class="modal-body row text-gray" ng-controller="OauthSessionsAuthenticate">
+        <div class="col-md-12">
+          <form name="formAdd" ng-submit="sign_in()" ng-controller="UserSessionsSignIn" class="form-horizontal">
+            <div class="form-group m-b-10">
+              <div class=" col-md-6">
+                <input type="text" name="nome" ng-model="user.email" class="form-control input-lg" placeholder="Nome">
+              </div>
+              <div class=" col-md-6">
+                <input type="text" name="sobrenome" ng-model="user.email" class="form-control input-lg" placeholder="sobrenome">
+              </div>
+            </div>
+            <div class="form-group m-b-10">
+              <div class=" col-md-6">
+                <input type="text" name="telefone" ng-model="user.password" class="form-control input-lg" placeholder="Telefone">
+              </div>
+              <div class=" col-md-6">
+                <input type="email" name="email" ng-model="user.email" class="form-control input-lg" placeholder="E-mail">
+              </div>
+            </div>
+            <div class="form-group m-b-10">
+              <div class=" col-md-12">
+                <textarea type="text" name="message" ng-model="user.password" class="form-control input-lg" id="message" placeholder="Mensagem"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-md-12">
+                <button type="submit" class="btn btn-block btn-lg btn-green login">Enviar</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

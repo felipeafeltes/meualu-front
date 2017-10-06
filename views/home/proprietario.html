@@ -32,10 +32,10 @@
 
   <div class="m-a  container">
     <div class="row">
-      <div class="col-md-4 col-sm-6 col-xs-12 col-comecar">
+      <div class="col-md-4 col-sm-6 col-xs-10 col-xs-offset-1 col-comecar">
         <h1>Alugue seu espaço mais rápido</h1>
         <p>Nossa tecnologia de aproximação entrega a sua oferta para inquilinos que realmente combinam com o seu apê.</p>
-        <a href="" class="btn btn-yellow-full lg">Começar</a>
+        <a data-toggle="modal" data-target="#modalComecar" class="btn btn-yellow-full lg">Começar</a>
       </div>
     </div>
   </div>
@@ -83,10 +83,11 @@
       <div class="col-md-12 bg-door">
         <div class="col-md-4 col-sm-6 col-xs-12">
           <h2 class="bold">Prepare-se para conhecer seus inquilinos</h2>
-          <a href="" class="btn btn-yellow-full lg">Começar</a>
+          <a data-toggle="modal" data-target="#modalComecar" class="btn btn-yellow-full lg">Começar</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 <div ng-include="'views/shared/_footer.html'"></div>
+<div ng-include="'views/home/_comecar_modal.html'"></div>
