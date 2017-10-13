@@ -37,9 +37,20 @@
   function PropertiesDetailsController($scope, $stateParams, Property) {
 
     $scope.scrollToFixedOptions = {
-      preFixed: function() { $(this).css('margin-top', '5px'); },
-      postFixed: function() { $(this).css('margin-top', '-54px');},
-      limit: $('#maps').offset().top
+      preFixed: function() {
+      },
+      postFixed: function() {
+        console.log( $(this).position() );
+
+      },
+      preAbsolute: function() {
+      },
+      limit: function() {
+        var limit = $('#maps').offset().top - $('#rental-fix').outerHeight(true) - 10;
+        return limit;
+      },
+      removeOffsets: true,
+      marginTop: 5
     };
 
     $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 11 };

@@ -13,6 +13,7 @@ var app = angular
     'extraInfosServices',
     'propertiesServices',
     'scheduleVisitsServices',
+    'rentalNewsletterServices',
     'ngMaterial',
     'scrollToFixed',
     'ngMaterial',

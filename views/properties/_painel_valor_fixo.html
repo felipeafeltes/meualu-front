@@ -1,0 +1,39 @@
+<div class="panel-heading bg-yellow">
+  <h2 class="rental m-t-10">
+    <span>Total</span>
+    <span class="pull-right"> {{ property.total_rental() | currency }}</span>
+  </h2>
+</div>
+<div class="panel-body">
+  <ul class="without-style">
+    <li class="m-b-5">
+      <span>Aluguel</span>
+      <span class="pull-right"> {{ property.rental.value | currency}}</span>
+    </li>
+    <li class="m-b-5">
+      <span>Condominio</span>
+      <span class="pull-right"> {{ property.rental.condominium | currency}}</span>
+    </li>
+    <li class="m-b-5">
+      <span>IPTU</span>
+      <span class="pull-right"> {{ property.rental.iptu | currency}}</span>
+    </li>
+    <li class="m-b-5">
+      <span>Proteção residencial</span>
+      <span class="pull-right">Grátis (TO DO)</span>
+    </li>
+    <li class="m-b-5">
+      <span>Seguro-fiança</span>
+      <span class="pull-right">Grátis (TO DO)</span>
+    </li>
+  </ul>
+  <hr>
+  <p class="text-center">
+    Agende uma visita agora,
+    <br>
+    sem falar com ninguem.
+  </p>
+  <div class="text-center" ng-controller="ScheduleVisitsModalController">
+    <button type="button" class="btn btn-warning btn-sm" ng-click="showModal(property.id)">Agendar visita</button>
+  </div>
+</div>

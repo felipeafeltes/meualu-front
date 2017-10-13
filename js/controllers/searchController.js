@@ -2,7 +2,7 @@
     'use strict';
   app.controller('searchController', searchController);
 
-  function searchController($scope, $rootScope, $state, ExtraInfo, $timeout, $filter) {
+  function searchController($scope, $rootScope, $state, ExtraInfo, $timeout, $filter, rentalNewsletter) {
     /*$scope.$watch('address', function(address) {
       if(address) {
         if(address.formatted_address != undefined && $rootScope.address_string != address.formatted_address) {
@@ -17,6 +17,13 @@
         searchProperties($rootScope.address_string);
       }
     });*/
+
+    $scope.contato = new rentalNewsletter();
+
+    $scope.sendContato = function(){
+      //rentalNewsletter
+      $scope.contato.$save();
+    };
 
     $scope.refreshSlider = function () {
       $timeout(function () {
@@ -59,7 +66,7 @@
                                       public_transportation: [_boolean_filter_component('public_transportation', 'Próximo', 'Não próximo'), 'fa-bus']
                                    };
       $rootScope.range_filters = {
-                                   total_area: setup_range_filters('total_area', 15, 500, 'fa-percent', 'total-area-filter'),
+                                   total_area: setup_range_filters('total_area', 15, 500, 'fa-regua', 'total-area-filter'),
                                    rental: setup_range_filters('rental', 200, 10000, 'fa-money', 'rental-filter')
                                 };
       $rootScope.extra_info_filters = ExtraInfo.query();

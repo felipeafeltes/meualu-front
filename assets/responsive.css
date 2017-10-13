@@ -2,6 +2,24 @@
   .col-comecar {
     width: 30%;
   }
+
+  .row-slider-full {
+    height: 200px;
+  }
+
+  div#pictures {
+    height: calc(100vh - 350px);
+  }
+
+
+  .footer-social {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .footer-social div{
+    text-align: center;
+  }
 }
 
 @media (max-width: 768px) {
@@ -48,5 +66,14 @@
   .social-content {
     float: none;
     text-align: left;
+  }
+
+  .logo-footer {
+    display: flex;
+    justify-content: center;
+  }
+
+  .footer-social {
+    text-align: center;
   }
 }
