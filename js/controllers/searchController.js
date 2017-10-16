@@ -4,7 +4,7 @@
 
   var modalContato;
 
-  function searchController($scope, $rootScope, $state, ExtraInfo, $timeout, $filter, rentalNewsletter, $uibModal) {
+  function searchController($scope, $rootScope, $state, ExtraInfo, $timeout, $filter, $uibModal) {
     /*$scope.$watch('address', function(address) {
       if(address) {
         if(address.formatted_address != undefined && $rootScope.address_string != address.formatted_address) {
@@ -19,23 +19,6 @@
         searchProperties($rootScope.address_string);
       }
     });*/
-
-    $scope.contato = new rentalNewsletter();
-    $scope.sendContato = function(isValid){
-      //rentalNewsletter
-      if (isValid){
-        $scope.contato.$save(
-          function (data) {
-            console.log(data);
-            modalContato.close();
-          },
-          // error
-          function (error) {
-            console.log(error);
-          }
-        );
-      }
-    };
 
     $scope.refreshSlider = function () {
       $timeout(function () {
@@ -145,7 +128,8 @@
       if(modalContato===undefined || modalContato.$closed ){
         modalContato = $uibModal.open({
           templateUrl: '/views/properties/_contato_modal.html',
-          size: 'lg'
+          size: 'lg',
+          controller: 'rentalNewsletterController',
         });
       }
     }

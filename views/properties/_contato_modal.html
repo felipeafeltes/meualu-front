@@ -5,11 +5,11 @@
     <p>Cadastre seu email abaixo para podermos te mandar algumas dessas opções em primeira mão, que tal?</p>
   </div>
   <div class="col-md-12">
-    <form style="margin-top: 20px;" name="formAdd" ng-submit="sendContato(formAdd.$valid)" novalidate>
+    <form style="margin-top: 20px;" name="formAdd" ng-submit="create(formAdd.$valid)" novalidate>
       <div class="form-group row">
         <label for="contato-email" class="col-sm-6 col-form-label text-right font-18">Como posso te chamar?</label>
         <div class="col-sm-6">
-          <input type="text" name="name" class="form-control" id="contato-nome" placeholder="Nome" ng-model="contato.name" required>
+          <input type="text" name="name" class="form-control" id="contato-nome" placeholder="Nome" ng-model="contact.name" required>
           <div ng-show="formAdd.$submitted || formAdd.name.$touched">
             <p ng-show="formAdd.name.$error.required" class="help-block error">Nome é obrigatório.</p>
           </div>
@@ -18,7 +18,7 @@
       <div class="form-group row">
         <label for="contato-email" class="col-sm-6 col-form-label text-right font-18">Qual seu e-mail?</label>
         <div class="col-sm-6">
-          <input type="email" name="email" class="form-control" id="contato-email" placeholder="Email" ng-model="contato.email" required>
+          <input type="email" name="email" class="form-control" id="contato-email" placeholder="Email" ng-model="contact.email" required>
           <div ng-show="formAdd.$submitted || formAdd.email.$touched">
             <p ng-show="formAdd.email.$error.required" class="help-block error">Email é obrigatório.</p>
           </div>
@@ -27,7 +27,7 @@
       <div class="form-group row">
         <label for="contato-telefone" class="col-sm-6 col-form-label text-right font-18">Qual seu telefone?</label>
         <div class="col-sm-6">
-          <input type="text" name="telefone" class="form-control" id="contato-telefone" placeholder="telefone" ng-model="contato.phone" required>
+          <input type="text" name="telefone" class="form-control" id="contato-telefone" placeholder="telefone" ng-model="contact.phone" required>
           <div ng-show="formAdd.$submitted || formAdd.telefone.$touched">
             <p ng-show="formAdd.telefone.$error.required" class="help-block error">Telefone é obrigatório.</p>
           </div>
@@ -36,15 +36,15 @@
       <div class="form-group row">
         <label for="contato-estado" class="col-sm-6 col-form-label text-right font-18">Onde você está buscando apê?</label>
         <div class="col-sm-3">
-          <input type="text" class="form-control" id="contato-estado" placeholder="Estado" ng-model="contato.state">
+          <input type="text" class="form-control" id="contato-estado" placeholder="Estado" ng-model="contact.state" readonly="true">
         </div>
         <div class="col-sm-3">
-          <input type="text" class="form-control" id="contato-cidade" placeholder="Cidade" ng-model="contato.city">
+          <input type="text" class="form-control" id="contato-cidade" placeholder="Cidade" ng-model="contact.city" readonly="true">
         </div>
       </div>
       <div class="form-group row">
         <div class="col-sm-6 col-sm-offset-6">
-          <input type="text" class="form-control" id="contato-bairro" placeholder="Bairro" ng-model="contato.district" required name="bairro">
+          <input type="text" class="form-control" id="contato-bairro" placeholder="Bairro" ng-model="contact.district" required name="bairro">
           <div ng-show="formAdd.$submitted || formAdd.bairro.$touched">
             <p ng-show="formAdd.bairro.$error.required" class="help-block error">Bairro é obrigatório.</p>
           </div>
