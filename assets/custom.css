@@ -556,3 +556,10 @@ p.error {
   color: #f14949;
   margin-bottom: 0px;
 }
+
+.modal-contato-purple{
+  background-color: #5f447b;
+  color: #fff;
+  padding: 20px 20px;
+  border-radius: 0px;
+}
