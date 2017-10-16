@@ -14,6 +14,7 @@ var app = angular
     'propertiesServices',
     'scheduleVisitsServices',
     'rentalNewsletterServices',
+    'contactClientsServices',
     'ngMaterial',
     'scrollToFixed',
     'ngMaterial',
@@ -101,8 +102,9 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $auth
       controller: 'OauthSessionsAuthenticate'
     })
     .state('proprietario', {
+      controller: 'ContactClientsController',
       url: '/proprietario',
-      templateUrl: 'views/home/proprietario.html',
+      templateUrl: 'views/home/proprietario.html'
     })
     .state('properties', {
       url: '/imoveis/:address_string?{filters:json}',

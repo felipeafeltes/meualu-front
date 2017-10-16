@@ -546,3 +546,13 @@ a {
 .form-control {
   border-radius: 0px;
 }
+
+.ng-invalid.ng-touched {
+  border-color: #f14949;
+  box-shadow: inset 0 1px 1px rgba(136, 54, 54, 0.075);
+}
+
+p.error {
+  color: #f14949;
+  margin-bottom: 0px;
+}

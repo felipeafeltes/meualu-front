@@ -2,7 +2,9 @@
     'use strict';
   app.controller('searchController', searchController);
 
-  function searchController($scope, $rootScope, $state, ExtraInfo, $timeout, $filter, rentalNewsletter) {
+  var modalContato;
+
+  function searchController($scope, $rootScope, $state, ExtraInfo, $timeout, $filter, rentalNewsletter, $uibModal) {
     /*$scope.$watch('address', function(address) {
       if(address) {
         if(address.formatted_address != undefined && $rootScope.address_string != address.formatted_address) {
@@ -19,10 +21,20 @@
     });*/
 
     $scope.contato = new rentalNewsletter();
-
-    $scope.sendContato = function(){
+    $scope.sendContato = function(isValid){
       //rentalNewsletter
-      $scope.contato.$save();
+      if (isValid){
+        $scope.contato.$save(
+          function (data) {
+            console.log(data);
+            modalContato.close();
+          },
+          // error
+          function (error) {
+            console.log(error);
+          }
+        );
+      }
     };
 
     $scope.refreshSlider = function () {
@@ -128,6 +140,17 @@
       setup_search_filters();
       $rootScope.filters = _setup_filters();
     }
+
+    function showModal(){
+      if(modalContato===undefined || modalContato.$closed ){
+        modalContato = $uibModal.open({
+          templateUrl: '/views/properties/_contato_modal.html',
+          size: 'lg'
+        });
+      }
+    }
+
+    showModal();
   }
 
   function _filter_name_translation(filterName) {
