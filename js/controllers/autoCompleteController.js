@@ -16,6 +16,12 @@
         $state.go('properties', {
           address_string: address.formatted_address
         });
+      }else{
+        $rootScope.lat = "-30.0490415";
+        $rootScope.lng = "-51.1916632";
+        $state.go('properties', {
+          address_string: ''
+        });
       }
     }
 

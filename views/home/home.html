@@ -21,18 +21,20 @@
       <div class="row">
         <div class="col-md-12">
           <h1 class="h1-principal">Uma nova maneira de alugar um imóvel, mais condizente com a realidade atual, mais fácil e ágil, desburocrática, transparente e segura.</h1>
-          <div class="search-wrapper">
-            <input g-places-autocomplete
-                  ng-change="searchPropertie()"
-                   ng-model="address"
-                   options="autocompleteOptions"
-                   force-selection="true"
-                   type="text"
-                   class="form-control search-home m-t-30"
-                   placeholder="Busque por rua ou bairro">
-            </input>
-            <i class="fa fa-search fa-2x prefix"></i>
-          </div>
+          <form ng-submit="searchPropertie()">
+            <div class="search-wrapper">
+              <input g-places-autocomplete
+                     ng-change="searchPropertie()"
+                     ng-model="address"
+                     options="autocompleteOptions"
+                     force-selection="true"
+                     type="text"
+                     class="form-control search-home m-t-30"
+                     placeholder="Busque por rua ou bairro">
+              </input>
+              <i class="fa fa-search fa-2x prefix"></i>
+            </div>
+          </form>
           <p class="text-center text-uppercase">encontre sua próxima moradia</p>
         </div>
       </div>

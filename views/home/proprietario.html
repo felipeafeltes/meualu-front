@@ -7,20 +7,21 @@
         </a>
       </div>
       <div class="navbar-search">
-        <div class="search-wrapper" ng-controller="autoCompleteController">
-          <i class="fa fa-search fa-1x sufix"></i>
-          <input g-places-autocomplete
-                ng-change="searchPropertie()"
-                placeholder="Buscar no mapa"
-                 ng-model="address"
-                 options="autocompleteOptions"
-                 force-selection="true"
-                 type="text"
-                 class="form-control search-header"
-                 >
-          </input>
-        </div>
-
+        <form ng-submit="searchPropertie()"  ng-controller="autoCompleteController">
+          <div class="search-wrapper">
+            <i class="fa fa-search fa-1x sufix"></i>
+            <input g-places-autocomplete
+                  ng-change="searchPropertie()"
+                  placeholder="Buscar no mapa"
+                   ng-model="address"
+                   options="autocompleteOptions"
+                   force-selection="true"
+                   type="text"
+                   class="form-control search-header"
+                   >
+            </input>
+          </div>
+        </form>
         <ul class="nav navbar-nav hidden-xs">
           <li class="bold text-uppercase">
             <a class="text-purple" ui-sref="proprietario">Anuncie seu apê</a>

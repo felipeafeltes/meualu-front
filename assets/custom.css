@@ -192,6 +192,13 @@ input.search-header:focus {
   flex-grow: 1;
 }
 
+.navbar-proprietario .navbar-search form {
+  display: flex;
+  height: 70px;
+  margin: 0px;
+  flex-grow: 1;
+}
+
 .navbar-proprietario .navbar-search .search-wrapper{
   display: flex;
   height: 70px;

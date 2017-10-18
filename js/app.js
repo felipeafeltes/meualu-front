@@ -109,6 +109,7 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $auth
     .state('properties', {
       url: '/imoveis/:address_string?{filters:json}',
       params: {
+        address_string: null,
         filters: {
           value: null,
           squash: true,
