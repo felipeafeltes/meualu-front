@@ -7,18 +7,11 @@
         </a>
       </div>
       <div class="navbar-search">
-        <form ng-submit="searchPropertie()"  ng-controller="autoCompleteController">
+        <form ng-submit="searchPropertie()" ng-controller="autoCompleteController">
           <div class="search-wrapper">
             <i class="fa fa-search fa-1x sufix"></i>
-            <input g-places-autocomplete
-                  ng-change="searchPropertie()"
-                  placeholder="Buscar no mapa"
-                   ng-model="address"
-                   options="autocompleteOptions"
-                   force-selection="true"
-                   type="text"
-                   class="form-control search-header"
-                   >
+            <input g-places-autocomplete ng-change="searchPropertie()" placeholder="Buscar no mapa" ng-model="address" options="autocompleteOptions"
+              force-selection="true" type="text" class="form-control search-header">
             </input>
           </div>
         </form>
@@ -35,14 +28,40 @@
     <div class="row">
       <div class="col-md-5 col-sm-6 col-xs-10 col-xs-offset-1 col-comecar">
         <h1>Compartilhe seu espaço mais rápido</h1>
-        <p>Ganhe dinheiro sendo um Locador ALU.</p>
-        <p>Nossa tecnologia de aproximação entrega a sua oferta para inquilinos que realmente combinam com o seu apê.</p>
-        <p>Receba visitas e propostas diretas de futuros inquilinos reais.</p>
-        <p>Use nossa plataforma para auxiliar a administrar seu ativo. Tudo fica na sua mão.</p>
-        <p> Novo texto </p>
+        <div class="owl-carousel owl-theme">
+          <div class="item">
+            <p class="p-item">Ganhe dinheiro sendo um Locador ALU.</p>
+          </div>
+          <div class="item">
+            <p class="p-item">Nossa tecnologia de aproximação entrega a sua oferta para inquilinos que realmente combinam com o seu apê.</p>
+          </div>
+          <div class="item">
+            <p class="p-item">Receba visitas e propostas diretas de futuros inquilinos reais.</p>
+          </div>
+          <div class="item">
+            <p class="p-item">Use nossa plataforma para auxiliar a administrar seu ativo. Tudo fica na sua mão.</p>
+          </div>
+          <div class="item">
+          </div>
+        </div>
+        <script>
+          $('.owl-carousel').owlCarousel({
+            loop: true,
+            margin: 30,
+            items: 1,
+            nav: true,
+            center: true,
+            autoplay: true,
+            nav: true,
+            autoplayTimeout: 3000,
+            autoplayHoverPause: true,
+            navText: ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"]
+          })
+        </script>
         <a ng-click="showModal()" class="btn btn-yellow-full lg">Começar</a>
       </div>
     </div>
+  </div>
   </div>
 </section>
 <section class="section-how-it-works full">
@@ -54,7 +73,8 @@
           <span>Crie anúncios exclusivos e marcantes</span>
         </h3>
         <p>
-          O primeiro passo é criar o seu anúncio. Ele é como uma página de perfil para seu apartamento. Você preencherá uma descrição, produzirá e publicará as fotos e escolherá o seu preço. Te daremos várias dicas pra isso.
+          O primeiro passo é criar o seu anúncio. Ele é como uma página de perfil para seu apartamento. Você preencherá uma descrição,
+          produzirá e publicará as fotos e escolherá o seu preço. Te daremos várias dicas pra isso.
         </p>
       </div>
       <div class="col-md-12 reverse">
@@ -63,7 +83,8 @@
           <span>Alugando mais rápido = mais dinheiro para seus objetivos</span>
         </h3>
         <p>
-          Os futuros inquilinos do seu espaço navegam por filtros inteligentes e poderão marcar visitas na hora pelo site. Além disso, inquilinos alugam sem fiador, trazendo mais interessados para os anúncios e agilizando todo processo.
+          Os futuros inquilinos do seu espaço navegam por filtros inteligentes e poderão marcar visitas na hora pelo site. Além disso,
+          inquilinos alugam sem fiador, trazendo mais interessados para os anúncios e agilizando todo processo.
         </p>
       </div>
       <div class="col-md-12">
@@ -72,7 +93,9 @@
           <span>Garantia segura, sem fiador.</span>
         </h3>
         <p>
-          Você não vai precisar se preocupar com as garantias de pagamento. Todos os contratos feitos através da Alu contam com Seguro Fiança. Além disso, caso o inquilino atrase o pagamento, nós pagamos o prêmio do seguro, fazendo com que você receba o pagamento do aluguel todo mês, sem preocupação.
+          Você não vai precisar se preocupar com as garantias de pagamento. Todos os contratos feitos através da Alu contam com Seguro
+          Fiança. Além disso, caso o inquilino atrase o pagamento, nós pagamos o prêmio do seguro, fazendo com que você receba
+          o pagamento do aluguel todo mês, sem preocupação.
       </div>
       <div class="col-md-12 reverse">
         <h3 class="text-green">
@@ -80,7 +103,8 @@
           <span>Estamos aqui para ajudar</span>
         </h3>
         <p>
-          Temos várias ferramentas e recursos para ajudar você a fazer seu anúncio, tirar e publicar suas fotos, receber as visitas, assinar os contratos digitais e administrar sua locação. Conte sempre conosco.
+          Temos várias ferramentas e recursos para ajudar você a fazer seu anúncio, tirar e publicar suas fotos, receber as visitas,
+          assinar os contratos digitais e administrar sua locação. Conte sempre conosco.
         </p>
       </div>
       <div class="col-md-12 bg-door">

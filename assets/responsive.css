@@ -77,3 +77,47 @@
     text-align: center;
   }
 }
+
+
+/* CACIANO ALTERACOES */
+@media (max-width:1500px) {
+  .property-list {
+    padding: 0px !important;
+  }
+}
+
+@media (max-width:1280px) {
+  .profile-details {
+    width: 100% !important;
+    text-align: center;
+  }
+  .profile-img {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .profile-properties-details {
+    width: 100% !important;
+  }
+}
+
+@media (max-width:768px) {
+  .profile-properties-details {
+    margin-top: 60px;
+  }
+  .text-responsive-center {
+    text-align: center;
+  }
+}
+
+@media(max-width:480px) {
+  .profile-properties-details>div {
+    padding-right: 5px !important;
+    padding-left: 5px !important;
+  }
+  .responsive-properties-div,
+  .responsive-properties-div>div {
+    padding-right: 5px !important;
+    padding-left: 5px !important;
+  }
+}

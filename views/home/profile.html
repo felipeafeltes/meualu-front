@@ -1,0 +1,122 @@
+<section>
+  <header></header>
+  <div class="container-fluid">
+    <div class="row row-list-details text-gray">
+      <div class="col-md-12 property-list">
+        <div class="col-sm-12 col-md-2 col-lg-2 profile-details">
+          <div class="profile">
+            <div class="profile-img panel panel-default">
+              <img src="{{profile_img_url}}" class="img-responsive img-profile">
+            </div>
+            <div class="profile-header">
+              <h3 class="h3-header text-green bold">{{profile_name}}</h3>
+
+
+              <div class="profile-stars" ng-if="profile_rating === 0">
+                <i class="font-size-20 star-ico fa fa-star-o" aria-hidden="true"></i>
+                <i class="font-size-20 star-ico fa fa-star-o" aria-hidden="true"></i>
+                <i class="font-size-20 star-ico fa fa-star-o" aria-hidden="true"></i>
+                <i class="font-size-20 star-ico fa fa-star-o" aria-hidden="true"></i>
+                <i class="font-size-20 star-ico fa fa-star-o" aria-hidden="true"></i>
+              </div>
+
+
+              <div class="profile-stars" ng-if="profile_rating === 1">
+                <i class="font-size-20 star-ico fa fa-star" aria-hidden="true"></i>
+                <i class="font-size-20 star-ico fa fa-star-o" aria-hidden="true"></i>>
+                <i class="font-size-20 star-ico fa fa-star-o" aria-hidden="true"></i>
+                <i class="font-size-20 star-ico fa fa-star-o" aria-hidden="true"></i>
+                <i class="font-size-20 star-ico fa fa-star-o" aria-hidden="true"></i>
+              </div>
+
+
+              <div class="profile-stars" ng-if="profile_rating === 2">
+                <i class="font-size-20 star-ico fa fa-star" aria-hidden="true"></i>
+                <i class="font-size-20 star-ico fa fa-star" aria-hidden="true"></i>
+                <i class="font-size-20 star-ico fa fa-star-o" aria-hidden="true"></i>
+                <i class="font-size-20 star-ico fa fa-star-o" aria-hidden="true"></i>
+                <i class="font-size-20 star-ico fa fa-star-o" aria-hidden="true"></i>
+              </div>
+
+              <div class="profile-stars" ng-if="profile_rating === 3">
+                <i class="font-size-20 star-ico fa fa-star" aria-hidden="true"></i>
+                <i class="font-size-20 star-ico fa fa-star" aria-hidden="true"></i>
+                <i class="font-size-20 star-ico fa fa-star" aria-hidden="true"></i>
+                <i class="font-size-20 star-ico fa fa-star-o" aria-hidden="true"></i>
+                <i class="font-size-20 star-ico fa fa-star-o" aria-hidden="true"></i>
+              </div>
+
+
+              <div class="profile-stars" ng-if="profile_rating === 4">
+                <i class="font-size-20 star-ico fa fa-star" aria-hidden="true"></i>
+                <i class="font-size-20 star-ico fa fa-star" aria-hidden="true"></i>
+                <i class="font-size-20 star-ico fa fa-star" aria-hidden="true"></i>
+                <i class="font-size-20 star-ico fa fa-star" aria-hidden="true"></i>
+                <i class="font-size-20 star-ico fa fa-star-o" aria-hidden="true"></i>
+              </div>
+
+              <div class="profile-stars" ng-if="profile_rating === 5">
+                <i class="font-size-20 star-ico fa fa-star" aria-hidden="true"></i>
+                <i class="font-size-20 star-ico fa fa-star" aria-hidden="true"></i>
+                <i class="font-size-20 star-ico fa fa-star" aria-hidden="true"></i>
+                <i class="font-size-20 star-ico fa fa-star" aria-hidden="true"></i>
+                <i class="font-size-20 star-ico fa fa-star" aria-hidden="true"></i>
+              </div>
+
+            </div>
+
+            <div class="profile-links">
+              <a href="#" class="links">
+                Editar Perfil
+              </a>
+              <a href="#" class="links">
+                Contratos
+              </a>
+              <a href="#" class="links">
+                Cadastrar Imóvel           
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-10 col-lg-10 profile-properties-details">
+          <div class="panel panel-imoveis">
+            <div class="panel-header">
+              <h2 class="bold text-responsive-center">Imóveis Cadastrados</h2>
+            </div>
+            <div class="panel-body">
+
+              <div class="col-sm-12 panel-ngFor-divs" ng-repeat="property in properties">
+                <div class="col-md-5 responsive-properties-div">
+                  <div class="div-properties-details">
+                    <button type="button" class="fa fa-trash pull-right"></button>
+                    <button type="button" class="fa fa-edit pull-right"></button>
+                    <h4 class="text-dark">{{ property.full_address }}</h4>
+                    <p>{{property.address}}</p>
+                    <ul class="properties-details">
+                      <li><i class="fa fa-bed"></i> {{ property.bedrooms }} dorms</li>
+                      <li><i class="fa fa-car"></i> {{ property.garages }} vagas</li>
+                      <li><i class="fa fa-regua"></i> {{ property.total_area }} m²</li>
+                    </ul>
+                  </div>
+                  <div class="properties-price">
+                    <p class="text-green font-size-20">
+                      Aluguel: R$ {{ property.rental | currency }}
+                    </p>
+                    <p class="text-green font-size-20">
+                      Valor total: R$ {{ property.total_rental | currency }}
+                    </p>
+                  </div>
+                </div>
+                <div class="col-md-7 no-padding responsive-properties-div">
+                  <img ng-src="{{property.img_url}}" class="img-bordered img-responsive" alt="Responsive image">
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div ng-include="'views/shared/_footer.html'"></div>

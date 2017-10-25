@@ -54,7 +54,7 @@ h1, h2, h3, h4, h5, h6{font-family:'Circular std book', sans-serif;}
 .text-yellow{color:#f4cc6a;}
 a.text-yellow:hover{color:#f4cc6a;}
 .text-yellow:visited, .text-yellow:focus{color:#f4cc6a;}
-.text-purple{color:#534a83;}
+.text-purple{color:#6B5DB7;}
 .text-green{color:#67b7b4;}
 .text-gray{color:#b1b1b0;}
 .text-dark{color: #000;}
@@ -533,6 +533,16 @@ a {
 .col-comecar h1 {text-align: initial;}
 .col-comecar p {text-align: initial; margin-bottom: 30px;}
 
+.col-comecar .p-item{margin-bottom: 0px}
+
+.owl-dots{text-align: center !important;margin-top:10px;}
+.owl-nav{text-align: center !important; margin-top:0px !important;}
+.owl-theme .owl-nav [class*=owl-]:hover {
+  background: #D6D6D6 !important;
+}
+.owl-prev{  position:absolute; left:0;}
+.owl-next{ position:absolute; right:0;}
+
 .propertie-title {
   margin-top: 54px;
 }
@@ -569,4 +579,93 @@ p.error {
   color: #fff;
   padding: 20px 20px;
   border-radius: 0px;
+}
+
+
+
+/* ALTERACOES CACIANO*/
+.panel-imoveis {
+  padding: 30px;
+}
+
+.padding-20 {
+  padding: 20px;
+}
+
+.profile-details {
+  padding: 20px;
+}
+
+.profile-properties-details {
+  padding: 20px;
+}
+
+.property-list {
+  padding-right: 100px !important;
+  padding-left: 100px !important;
+}
+
+.img-profile {
+  max-width: 200px;
+  max-height: 240px;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.profile-img {
+  width: 200px;
+  height: 240px;
+}
+
+.font-size-20 {
+  font-size: 20px !important;
+}
+
+.star-ico {
+  color: #f9cf34;
+}
+
+.links {
+  text-decoration: none;
+  color: #b1b1b0;
+  font-size: 18px;
+  width: 100%;
+  float: left;
+}
+
+.img-bordered {
+  border-radius: 5px;
+  max-width: 600px;
+  max-height: 300px;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.properties-price {
+  padding: 20px;
+}
+
+.div-properties-details {
+  padding: 20px;
+  border-bottom: 0.1rem solid #ededeb;
+}
+
+.div-properties-details>button {
+  background-color: transparent !important;
+  border: none !important;
+  font-size: 20px;
+}
+
+.panel-ngFor-divs {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border-bottom: 0.1rem solid #ededeb;
+}
+
+/* Editar Perfil */
+.form-row .form-edit-profile{
+    height:70px;
 }
