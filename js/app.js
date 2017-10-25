@@ -78,7 +78,7 @@ $authProvider.facebook({
 
 $urlRouterProvider.otherwise('/');
 // Utilizando o HTML5 History API
-/* $locationProvider.html5Mode(true); */
+$locationProvider.html5Mode(true);
 
 $stateProvider
   .state('home', {
@@ -134,7 +134,7 @@ $stateProvider
       }]
     }
   })
-    .state('perfil', {
+/*     .state('perfil', {
     controller: 'profileController',
     url: '/perfil',
     templateUrl: 'views/home/profile.html',
@@ -153,7 +153,7 @@ $stateProvider
         return $ocLazyLoad.load('js/directives/header/header.js');
       }]
     }
-  })
+  }) */
 
 /*     
    .state('admin', {
