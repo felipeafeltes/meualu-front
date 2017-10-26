@@ -44,8 +44,8 @@ h1, h2, h3, h4, h5, h6{font-family:'Circular std book', sans-serif;}
 .bg-green{background:#67b7b4;color:#fff;}
 .bg-gray{background:#f1f1f1;color:#b1b1b0;}
 .bg-principal{background:url('imagens/backgrounds/principal.jpg') no-repeat center center;-webkit-background-size: 100% 100%;-moz-background-size: 100% 100%;-o-background-size: 100% 100% ;background-size: 100% 100%;}
-.bg-proprietario{background:url('imagens/backgrounds/proprietario.jpg') no-repeat center center;-webkit-background-size: 100% 100%;-moz-background-size: 100% 100%;-o-background-size: 100% 100% ;background-size: 100% 100%;}
-.bg-door{background:url('imagens/backgrounds/door.jpg') no-repeat center center;-webkit-background-size: 100% 100%;-moz-background-size: 100% 100%;-o-background-size: 100% 100% ;background-size: 100% 100%;}
+.bg-proprietario{background:url('imagens/backgrounds/proprietario_optimized.jpg') no-repeat center center;-webkit-background-size: 100% 100%;-moz-background-size: 100% 100%;-o-background-size: 100% 100% ;background-size: 100% 100%;}
+.bg-door{background:url('imagens/backgrounds/door_optimized.jpg') no-repeat center center;-webkit-background-size: 100% 100%;-moz-background-size: 100% 100%;-o-background-size: 100% 100% ;background-size: 100% 100%;}
 .bg-man{background:url('imagens/backgrounds/bg-man.jpg') no-repeat;-webkit-background-size: 100% 100%;-moz-background-size: 100% 100%;-o-background-size: 100% 100%;background-size: 100% 100%;padding-bottom: 70px; padding-top: 50px;}
 .bg-building{background:url('imagens/backgrounds/bn-anunciar-bottom.jpg') no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;}
 .bg-chair{background:url('imagens/backgrounds/bn-anunciar-top.jpg') no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;}
