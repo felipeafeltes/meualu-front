@@ -120,4 +120,13 @@
     padding-right: 5px !important;
     padding-left: 5px !important;
   }
+  .panel-imoveis{
+    padding:5px;
+  }
+  .panel-body-edit{
+    padding: 5px;
+  }
+  .panel-body-edit > div{
+    padding:5px;
+  }
 }
