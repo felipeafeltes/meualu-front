@@ -76,6 +76,7 @@ a.text-yellow:hover{color:#f4cc6a;}
 .btn-green.login{background:#5ca4a2;}
 .btn-grey, .btn-grey:hover, .btn-grey:focus {border-color: #d4d4d4; color: #b1b1b0;}
 .btn-grey.used, .btn-grey.used:hover, .btn-grey.used:focus {border-color: #d4d4d4; color: #5ca4a2; font-weight: 500;}
+.btn-send-contato{margin-top:10px;}
 .l-h-1.7{line-height:1.7;}
 .ul-footer{list-style-type:none;-webkit-padding-start:0px;}
 .ul-footer > li{margin-bottom:10px;}
@@ -623,6 +624,10 @@ p.error {
   font-size: 20px !important;
 }
 
+.font-size-150{
+  font-size: 150px !important;
+}
+
 .star-ico {
   color: #f9cf34;
 }
@@ -668,4 +673,34 @@ p.error {
 /* Editar Perfil */
 .form-row .form-edit-profile{
     height:70px;
+}
+
+/* Loading */
+.loading-img{
+  margin-right: 10px;
+}
+
+/* Animations */
+.div-thanks > i {
+  position: relative;
+  -webkit-animation-name: thanksAnimation; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+  -webkit-animation-iteration-count: 3; /* Safari 4.0 - 8.0 */
+  animation-name: thanksAnimation;
+  animation-duration: 4s;
+  animation-iteration-count: 3;
+}
+@-webkit-keyframes thanksAnimation {
+  0%   {left:-10px; top:0px;}
+  25%  {left:10px; top:0px;}
+  50%  {left:10px; top:10px;}
+  75%  {left:-10px; top:10px;}
+  100% {left:-10px; top:0px;}
+}
+@keyframes thanksAnimation {
+  0%   {left:-10px; top:0px;}
+  25%  {left:10px; top:0px;}
+  50%  {left:10px; top:10px;}
+  75%  {left:-10px; top:10px;}
+  100% {left:-10px; top:0px;}
 }
