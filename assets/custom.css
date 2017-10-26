@@ -106,6 +106,10 @@ div#pictures {
   margin-bottom: 90px;
 }
 
+.text-responsive-center{
+  margin-left:30px;
+}
+
 input.search-home {
   color: #534a83;
   border-radius: 0px;

@@ -31,7 +31,7 @@
                             <div class="panel-header">
                                 <h2 class="bold text-dark text-responsive-center">Editar Perfil</h2>
                             </div>
-                            <div class="panel-body">
+                            <div class="panel-body panel-body-edit">
                                 <form name="formEdit" ng-submit="edit(formEdit.$valid)" novalidate>
                                     <div class="form-row">
                                         <div class="form-group form-edit-profile col-md-6">
@@ -126,7 +126,8 @@
                                                 um pouco mais sobre você.</p>
                                         </div>
                                     </div>
-                                    <button type="submit" ng-disabled="!formEdit.$valid" class="btn btn-primary pull-right">Submit</button>
+                                    <button type="submit" ng-disabled="!formEdit.$valid || !response" class="btn btn-send-contato btn-success pull-right">Enviar</button>
+                                    <img ng-if="!response" src="assets/imagens/loading.gif" width="50" height="50" class="pull-right loading-img">
                                 </form>
                             </div>
                         </div>
