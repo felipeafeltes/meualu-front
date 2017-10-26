@@ -130,6 +130,8 @@
           templateUrl: '/views/properties/_contato_modal.html',
           size: 'lg',
           controller: 'rentalNewsletterController',
+          backdrop  : 'static',
+          keyboard  : false
         });
       }
     }
