@@ -70,10 +70,10 @@ var loginRequired = ['$q', '$state', '$auth', function ($q, $state, $auth) {
 }];
 
 $authProvider.facebook({
-  url: app.config.apiUrl + 'auth/facebook/callback',
+  url: 'https://api.meualu.com/auth/facebook/callback',
   clientId: '914533272017680',
   authorizationEndpoint: 'https://www.facebook.com/v2.6/dialog/oauth',
-  baseUrl: app.config.apiUrl
+  baseUrl: 'https://api.meualu.com/'
 });
 
 $urlRouterProvider.otherwise('/');
