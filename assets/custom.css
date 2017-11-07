@@ -586,6 +586,10 @@ p.error {
   border-radius: 0px;
 }
 
+.redondend-border{
+  border-radius: 5px;
+}
+
 
 
 /* ALTERACOES CACIANO*/
