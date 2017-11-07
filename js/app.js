@@ -69,12 +69,12 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
     return deferred.promise;
   }];
 
-  $authProvider.facebook({
-    url: 'https://api.meualu.com/auth/facebook/callback',
-    clientId: '914533272017680',
-    authorizationEndpoint: 'https://www.facebook.com/v2.6/dialog/oauth',
-    baseUrl: app.config.apiUrl
-  });
+$authProvider.facebook({
+  url: 'https://api.meualu.com/auth/facebook/callback',
+  clientId: '914533272017680',
+  authorizationEndpoint: 'https://www.facebook.com/v2.6/dialog/oauth',
+  baseUrl: 'https://api.meualu.com/'
+});
 
   $urlRouterProvider.otherwise('/');
   // Utilizando o HTML5 History API
