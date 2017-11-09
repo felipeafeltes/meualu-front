@@ -2,9 +2,17 @@
     'use strict';
     app.controller('profileController', profileController);
 
-    function profileController($rootScope, $scope, $state) {
+    function profileController($rootScope, Profile, $scope, $state) {
+        $scope.response = false;
+        $scope.profile = new Profile();
+        $scope.profile.$getUser(
+            { id: $rootScope.current_user.id },
+            function (data) {
+                $scope.response = true;
+                console.log(data)
+            },
+        );
 
-        $scope.profile_name = "Luciana Martins";
         $scope.profile_rating = 4;
         $scope.profile_img_url = "http://www.homenscomestilo.com/wp-content/uploads/2013/10/COMO-ESCOLHER-FOTO-DE-PERFIL-HOMEM-6.jpg";
 

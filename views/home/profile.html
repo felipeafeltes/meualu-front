@@ -1,6 +1,11 @@
 <section>
   <header></header>
-  <div class="container-fluid">
+  <div ng-if="!response" class="row" style="height:700px">
+    <div class="col-sm-12 full-size">
+        <img class="loading-data" width="130" src="assets/imagens/loadingRipple.gif">
+    </div>
+  </div>
+  <div class="container-fluid" ng-if="response">
     <div class="row row-list-details text-gray">
       <div class="col-md-12 property-list">
         <div class="col-sm-12 col-md-2 col-lg-2 profile-details">
@@ -9,8 +14,8 @@
               <img src="{{profile_img_url}}" class="img-responsive img-profile">
             </div>
             <div class="profile-header">
-              <h3 class="h3-header text-green bold">{{profile_name}}</h3>
-
+              <h3 class="h3-header text-green bold">{{current_user.name}}</h3>
+              <small>{{current_user.email}}</small>
 
               <div class="profile-stars" ng-if="profile_rating === 0">
                 <i class="font-size-20 star-ico fa fa-star-o" aria-hidden="true"></i>
@@ -66,7 +71,7 @@
             </div>
 
             <div class="profile-links">
-              <a href="#" class="links">
+              <a href="#" ui-sref="editarPerfil" class="links">
                 Editar Perfil
               </a>
               <a href="#" class="links">

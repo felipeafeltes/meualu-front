@@ -2,15 +2,15 @@
     'use strict';
 
     angular
-        .module('usersSessionServices', ['ngResource', 'ngRoute'])
-        .factory('User', User);
+        .module('userService', ['ngResource', 'ngRoute'])
+        .factory('UsersService', UsersService);
 
-    User.$inject = ['$resource', 'config'];
+    UsersService.$inject = ['$resource', 'config'];
 
-    function User($resource, config) {
-        return $resource(config.apiUrl + 'users/sign_in',
-            { id: '@id' }, {
-                sign_in: {
+    function UsersService($resource, config) {
+        return $resource(config.apiUrl + 'users',
+            { }, {
+                registerUser: {
                     method: 'POST',
                     transformRequest: _transform_request
                 }

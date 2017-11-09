@@ -9,11 +9,18 @@
         </div>
         <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-8">
           <ul class="nav navbar-nav">
-            <li class="bold text-uppercase"><a class="text-yellow" ui-sref="proprietario">Anuncie seu apê</a></li>
-            <li class="bold text-uppercase cursor-pointer" ng-hide="current_user"><a class="text-white" data-toggle="modal" data-target="#modalLogin"> Login</a></li>
-            <li class="bold text-uppercase cursor-pointer" ng-show="current_user"><a class="text-white">{{current_user.name}}</a></li>
-            <li class="bold text-uppercase cursor-pointer" ng-hide="current_user"><a class="text-white" ui-sref="perfil" > Perfil</a></li>
-            <li class="bold text-uppercase cursor-pointer" ng-hide="current_user"><a class="text-white" ui-sref="editarPerfil" >Editar Perfil </a></li>
+            <li class="bold text-uppercase">
+              <a class="text-yellow" ui-sref="proprietario">Anuncie seu apê</a>
+            </li>
+            <li class="bold text-uppercase cursor-pointer" ng-hide="current_user">
+              <a class="text-white" data-toggle="modal" data-target="#modalLogin">Login</a>
+            </li>
+            <li class="bold text-uppercase cursor-pointer" ng-show="current_user">
+              <a class="text-white" ui-sref="perfil">{{current_user.name}}</a>
+            </li>
+            <li class="bold text-uppercase cursor-pointer" ng-show="current_user" ng-controller="UserSessionsSignOut">
+              <a class="text-white" ng-click="sign_out()">Logout</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -22,17 +29,12 @@
     <div class="m-a" ng-controller="autoCompleteController">
       <div class="row">
         <div class="col-md-12">
-          <h1 class="h1-principal">Uma nova maneira de alugar um imóvel, mais condizente com a realidade atual, mais fácil e ágil, desburocrática, transparente e segura.</h1>
+          <h1 class="h1-principal">Uma nova maneira de alugar um imóvel, mais condizente com a realidade atual, mais fácil e ágil, desburocrática,
+            transparente e segura.</h1>
           <form ng-submit="searchPropertie()">
             <div class="search-wrapper">
-              <input g-places-autocomplete
-                     ng-change="searchPropertie()"
-                     ng-model="address"
-                     options="autocompleteOptions"
-                     force-selection="true"
-                     type="text"
-                     class="form-control search-home m-t-30"
-                     placeholder="Busque por rua ou bairro">
+              <input g-places-autocomplete ng-change="searchPropertie()" ng-model="address" options="autocompleteOptions" force-selection="true"
+                type="text" class="form-control search-home m-t-30" placeholder="Busque por rua ou bairro">
               </input>
               <i class="fa fa-search fa-2x prefix" ng-click="searchPropertie()"></i>
             </div>
@@ -90,7 +92,8 @@
           <div class="circular">3</div>
         </h3>
         <p>
-          Negocie as condições diretamente com o proprietário pelo site e deixe a garantia com a gente. Pagamos o seguro dos nossos usuários. Não se preocupe e aproveite sua nova moradia.
+          Negocie as condições diretamente com o proprietário pelo site e deixe a garantia com a gente. Pagamos o seguro dos nossos
+          usuários. Não se preocupe e aproveite sua nova moradia.
         </p>
       </div>
     </div>
@@ -102,10 +105,12 @@
       <div class="col-md-6">
         <h1 class="my-header">Quer alugar <br class="hidden-sm hidden-xs"> seu apartamento?</h1>
         <p class="l-h-1.7 m-t-30 font-18">
-          Conhecemos muitas pessoas que estão em busca de um novo lar, mais próximo do trabalho, da escola dos filhos, da faculdade. Seu imóvel pode ser perfeito para elas.
+          Conhecemos muitas pessoas que estão em busca de um novo lar, mais próximo do trabalho, da escola dos filhos, da faculdade.
+          Seu imóvel pode ser perfeito para elas.
         </p>
         <p class="font-18">
-          alugue seu apartamento para outras pessoas usando a alu e experimente a liberdade de fazer do seu jeito, a segurança de saber que receberá garantido e a sensação de fazer a diferença. Entenda como funciona.
+          alugue seu apartamento para outras pessoas usando a alu e experimente a liberdade de fazer do seu jeito, a segurança de saber
+          que receberá garantido e a sensação de fazer a diferença. Entenda como funciona.
         </p>
         <a class="btn btn-lg btn-purple full m-t-30 font-18" ui-sref="proprietario" role="button">TORNAR-ME UM LOCADOR ALU</a>
       </div>
@@ -114,3 +119,4 @@
 </section>
 <div ng-include="'views/shared/_footer.html'"></div>
 <div ng-include="'views/home/_sign_in_modal.html'"></div>
+<div ng-include="'views/home/_register_user_modal.html'"></div>
