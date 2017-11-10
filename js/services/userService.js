@@ -8,9 +8,10 @@
     UsersService.$inject = ['$resource', 'config'];
 
     function UsersService($resource, config) {
-        return $resource(config.apiUrl + 'users',
-            { }, {
-                registerUser: {
+
+        var register = $resource(config.apiUrl + 'users',
+            {}, {
+                save: {
                     method: 'POST',
                     transformRequest: _transform_request
                 }
@@ -20,6 +21,8 @@
             data = { "user": data }
             return angular.toJson(data);
         }
+
+        return register;
     }
 
 })();
