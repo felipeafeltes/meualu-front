@@ -65,7 +65,7 @@
                             </div>
                             <div class=" col-md-6">
                                 <select name="sex" ng-model="user.sex" class="form-control input-lg redondend-border">
-                                    <option value="9" selected>Selecione o Sexo</option>
+                                    <option value="9" selected="selected">Selecione o Sexo</option>
                                     <option value="1">Masculino</option>
                                     <option value="2">Feminino</option>
                                     <option value="0">Outro</option>
@@ -89,6 +89,7 @@
                         <div class="form-group">
                             <div class="col-md-12">
                                 <button type="submit" class="btn btn-block btn-lg btn-green login">Cadastrar</button>
+                                <img ng-if="!response" src="assets/imagens/loading.gif" width="50" height="50" class="loading-img img-center">
                             </div>
                         </div>
                         <div class="form-group">

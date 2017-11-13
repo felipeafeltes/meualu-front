@@ -37,21 +37,24 @@
     function UserSessionsRegister($scope, UsersService , $rootScope, $state) {
         $scope.dataUser = {};
         $scope.user = new UsersService();
+        $scope.response = true;
 
         $scope.openLogin = function () {
             $('#modalRegister').modal('hide');
         }
 
         $scope.register = function (isValid) {
-            console.log($scope.dataUser)
             if (isValid) {
-                $scope.user.$registerUser({ data: $scope.dataUser },
+                $scope.response = false;
+                $scope.user.$create(
                     // success
                     function (data) {
+                        $scope.response = true;
                         console.log(data)
                     },
                     // error
                     function (error) {
+                        $scope.response = true;
                         console.log(error)
                         _showValidationErrors($scope, error);
                     }

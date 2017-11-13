@@ -9,7 +9,6 @@ var app = angular
     'rzModule',
     'usersSessionServices',
     'propertiesSearchServices',
-    'profileService',
     'userService',
     'oauthSessionsServices',
     'extraInfosServices',

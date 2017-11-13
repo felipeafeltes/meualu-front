@@ -2,33 +2,21 @@
     'use strict';
     app.controller('editProfileController', editProfileController);
 
-    function editProfileController($rootScope, $scope, $state) {
-
-        $scope.profile_name = "Luciana Martins";
-        $scope.profile_img_url = "http://www.homenscomestilo.com/wp-content/uploads/2013/10/COMO-ESCOLHER-FOTO-DE-PERFIL-HOMEM-6.jpg";
+    function editProfileController($rootScope, UsersService, $scope, $state) {
         $scope.response = true;
-
-        var formContacts = {
-            first_name: '',
-            last_namme: '',
-            gender: '',
-            birthday: '',
-            email: '',
-            phone: '',
-            phone2: '',
-            cep: '',
-            city: '',
-            address: '',
-            number: 1,
-            complement: '',
-            description: ''
-        }
-
+        $scope.user = new UsersService();
         $scope.edit = function (isValid) {
             if (isValid) {
-                $scope.response = false
-                formContacts = $scope.contact;
-                console.log(formContacts);
+                $scope.response = false;
+                $scope.user.$update(
+                    function (data) {
+                        $scope.response = true;
+                        console.log(data)
+                    },
+                    function (err){
+                        console.log(err)
+                    }
+                );
             }
         };
     }

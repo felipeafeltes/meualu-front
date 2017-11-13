@@ -2,13 +2,14 @@
     'use strict';
     app.controller('profileController', profileController);
 
-    function profileController($rootScope, Profile, $scope, $state) {
+    function profileController($rootScope, UsersService, $scope, $state) {
         $scope.response = false;
-        $scope.profile = new Profile();
-        $scope.profile.$getUser(
+        $scope.profile = new UsersService();
+        $scope.profile.$get(
             { id: $rootScope.current_user.id },
             function (data) {
                 $scope.response = true;
+                $scope.user = data;
                 console.log(data)
             },
         );

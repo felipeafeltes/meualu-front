@@ -9,7 +9,7 @@
 
     function User($resource, config) {
         return $resource(config.apiUrl + 'users/sign_in',
-            { id: '@id' }, {
+            { }, {
                 sign_in: {
                     method: 'POST',
                     transformRequest: _transform_request

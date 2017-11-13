@@ -9,11 +9,26 @@
 
     function UsersService($resource, config) {
 
-        var register = $resource(config.apiUrl + 'users',
-            {}, {
-                save: {
+        var register = $resource(config.apiUrl + 'users/:id',
+            {id:'@id'}, {
+                //Criar Usuario
+                create: {
                     method: 'POST',
                     transformRequest: _transform_request
+                },
+                //Pegar dados Usuario pelo ID
+                get: {
+                    method: 'GET',
+                    transformRequest: _transform_request
+                },
+                //Editar cadastro de usuario
+                update: {
+                    method: 'PUT',
+                    transformRequest: _transform_request
+                },
+                //Deletar usuario
+                delete:{
+                    method: 'DELETE',
                 }
             });
 

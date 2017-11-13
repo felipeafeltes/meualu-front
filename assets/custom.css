@@ -700,6 +700,12 @@ p.error {
   transform: translate(-50%,-50%);
 }
 
+.img-center{
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 /* Animations */
 .div-thanks > i {
   position: relative;
