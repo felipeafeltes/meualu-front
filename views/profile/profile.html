@@ -1,11 +1,11 @@
 <section>
   <header></header>
-  <div ng-if="!response" class="row" style="height:700px">
+  <div ng-if="!hasProperties || !hasData" class="row" style="height:700px">
     <div class="col-sm-12 full-size">
         <img class="loading-data" width="130" src="assets/imagens/loadingRipple.gif">
     </div>
   </div>
-  <div class="container-fluid" ng-if="response">
+  <div class="container-fluid" ng-if="!hasProperties || !hasData">
     <div class="row row-list-details text-gray">
       <div class="col-md-12 property-list">
         <div class="col-sm-12 col-md-2 col-lg-2 profile-details">
@@ -14,10 +14,9 @@
               <img src="{{profile_img_url}}" class="img-responsive img-profile">
             </div>
             <div class="profile-header">
-              <h3 class="h3-header text-green bold">{{current_user.name}}</h3>
-              <small>{{current_user.email}}</small>
-
-              <div class="profile-stars" ng-if="profile_rating === 0">
+              <h3 class="h3-header text-green bold">{{user.name}}</h3>
+              <small>{{user.email}}</small>
+              <div class="profile-stars" ng-if="user.rating === 0">
                 <i class="font-size-20 star-ico fa fa-star-o" aria-hidden="true"></i>
                 <i class="font-size-20 star-ico fa fa-star-o" aria-hidden="true"></i>
                 <i class="font-size-20 star-ico fa fa-star-o" aria-hidden="true"></i>
@@ -26,7 +25,7 @@
               </div>
 
 
-              <div class="profile-stars" ng-if="profile_rating === 1">
+              <div class="profile-stars" ng-if="user.rating === 1">
                 <i class="font-size-20 star-ico fa fa-star" aria-hidden="true"></i>
                 <i class="font-size-20 star-ico fa fa-star-o" aria-hidden="true"></i>>
                 <i class="font-size-20 star-ico fa fa-star-o" aria-hidden="true"></i>
@@ -35,7 +34,7 @@
               </div>
 
 
-              <div class="profile-stars" ng-if="profile_rating === 2">
+              <div class="profile-stars" ng-if="user.rating === 2">
                 <i class="font-size-20 star-ico fa fa-star" aria-hidden="true"></i>
                 <i class="font-size-20 star-ico fa fa-star" aria-hidden="true"></i>
                 <i class="font-size-20 star-ico fa fa-star-o" aria-hidden="true"></i>
@@ -43,7 +42,7 @@
                 <i class="font-size-20 star-ico fa fa-star-o" aria-hidden="true"></i>
               </div>
 
-              <div class="profile-stars" ng-if="profile_rating === 3">
+              <div class="profile-stars" ng-if="user.rating === 3">
                 <i class="font-size-20 star-ico fa fa-star" aria-hidden="true"></i>
                 <i class="font-size-20 star-ico fa fa-star" aria-hidden="true"></i>
                 <i class="font-size-20 star-ico fa fa-star" aria-hidden="true"></i>
@@ -52,7 +51,7 @@
               </div>
 
 
-              <div class="profile-stars" ng-if="profile_rating === 4">
+              <div class="profile-stars" ng-if="user.rating === 4">
                 <i class="font-size-20 star-ico fa fa-star" aria-hidden="true"></i>
                 <i class="font-size-20 star-ico fa fa-star" aria-hidden="true"></i>
                 <i class="font-size-20 star-ico fa fa-star" aria-hidden="true"></i>
@@ -60,7 +59,7 @@
                 <i class="font-size-20 star-ico fa fa-star-o" aria-hidden="true"></i>
               </div>
 
-              <div class="profile-stars" ng-if="profile_rating === 5">
+              <div class="profile-stars" ng-if="user.rating === 5">
                 <i class="font-size-20 star-ico fa fa-star" aria-hidden="true"></i>
                 <i class="font-size-20 star-ico fa fa-star" aria-hidden="true"></i>
                 <i class="font-size-20 star-ico fa fa-star" aria-hidden="true"></i>
@@ -77,7 +76,7 @@
               <a href="#" class="links">
                 Contratos
               </a>
-              <a href="#" class="links">
+              <a href="#" class="links" ui-sref="cadastrarImovel">
                 Cadastrar Imóvel           
               </a>
             </div>

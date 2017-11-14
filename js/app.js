@@ -8,6 +8,7 @@ var app = angular
     'google.places',
     'rzModule',
     'usersSessionServices',
+    'myPropertiesService',
     'propertiesSearchServices',
     'userService',
     'oauthSessionsServices',
@@ -70,16 +71,16 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
     return deferred.promise;
   }];
 
-$authProvider.facebook({
-  url: 'https://api.meualu.com/auth/facebook/callback',
-  clientId: '914533272017680',
-  authorizationEndpoint: 'https://www.facebook.com/v2.6/dialog/oauth',
-  baseUrl: 'https://api.meualu.com/'
-});
+  $authProvider.facebook({
+    url: 'https://api.meualu.com/auth/facebook/callback',
+    clientId: '914533272017680',
+    authorizationEndpoint: 'https://www.facebook.com/v2.6/dialog/oauth',
+    baseUrl: 'https://api.meualu.com/'
+  });
 
   $urlRouterProvider.otherwise('/');
   // Utilizando o HTML5 History API
-/*   $locationProvider.html5Mode(true); */
+  /*   $locationProvider.html5Mode(true); */
 
   $stateProvider
     .state('home', {
@@ -138,7 +139,7 @@ $authProvider.facebook({
     .state('perfil', {
       controller: 'profileController',
       url: '/perfil',
-      templateUrl: 'views/home/profile.html',
+      templateUrl: 'views/profile/profile.html',
       resolve: {
         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
           return $ocLazyLoad.load('js/directives/header/header.js');
@@ -148,7 +149,7 @@ $authProvider.facebook({
     .state('editarPerfil', {
       controller: 'editProfileController',
       url: '/perfil/editar',
-      templateUrl: 'views/home/edit_profile.html',
+      templateUrl: 'views/profile/edit_profile.html',
       resolve: {
         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
           return $ocLazyLoad.load('js/directives/header/header.js');
@@ -158,7 +159,7 @@ $authProvider.facebook({
     .state('cadastrarImovel', {
       controller: 'propertyRegistrationController',
       url: '/perfil/novo-imovel',
-      templateUrl: 'views/home/property_registration.html',
+      templateUrl: 'views/profile/property_registration/property_registration.html',
       resolve: {
         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
           return $ocLazyLoad.load('js/directives/header/header.js');
@@ -193,4 +194,23 @@ $authProvider.facebook({
      });
   
    */
+
+    .state('cadastrarImovel.adress', {
+      url: '/adress',
+      templateUrl: 'views/profile/property_registration/property_registration_adress.html'
+    })
+
+    // url will be /form/interests
+    .state('cadastrarImovel.details', {
+      url: '/details',
+      templateUrl: 'views/profile/property_registration/property_registration_details.html'
+    })
+
+    // url will be /form/payment
+    .state('cadastrarImovel.images', {
+      url: '/images',
+      templateUrl: 'views/profile/property_registration/property_registration_images.html'
+    });
+
 });
+

@@ -19,7 +19,6 @@
                 //Pegar dados Usuario pelo ID
                 get: {
                     method: 'GET',
-                    transformRequest: _transform_request
                 },
                 //Editar cadastro de usuario
                 update: {

@@ -1,0 +1,215 @@
+<section>
+    <header></header>
+    <div class="container-fluid">
+        <div class="row row-list-details text-gray">
+            <div class="col-md-12 property-list">
+                <div class="col-sm-12 col-md-2 col-lg-2 profile-details">
+                    <div class="profile">
+                        <div class="profile-img panel panel-default">
+                            <img src="{{profile_img_url}}" class="img-responsive img-profile">
+                        </div>
+                        <div class="profile-header">
+                            <h3 class="h3-header text-green bold">{{profile_name}}</h3>
+                            <div class="profile-links">
+                                <a href="#" class="links">
+                                     Editar Perfil
+                                </a>
+                                <a href="#" class="links">
+                                      Contratos
+                                </a>
+                                <a href="#" class="links">
+                                        Cadastrar Imóvel           
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-10 col-lg-10 profile-properties-details">
+                    <div class="panel panel-imoveis">
+                        <div class="panel-header">
+                            <h2 class="bold text-responsive-center black-text">Cadastrar Imóvel</h2>
+                            <small class="text-responsive-center">Preencha as etapas a seguir para cadastrar seu imóvel</small>
+                        </div>
+                        <div class="panel-body">
+
+                            <div class="container">
+                                <div class="row">
+                                    <section>
+                                        <div class="wizard">
+                                            <div class="wizard-inner">
+                                                <div class="connecting-line"></div>
+                                                <ul class="nav nav-tabs no-border">
+                                                    <li class="active" ui-sref-active="active">
+                                                        <a ui-sref=".adress" title="Step 1">
+                                                                <span class="round-tab">
+                                                                    <i class="glyphicon glyphicon-home"></i>
+                                                                </span>
+                                                            </a>
+                                                    </li>
+
+                                                    <li class="disabled" ui-sref-active="active">
+                                                        <a ui-sref=".details" title="Step 2">
+                                                                <span class="round-tab">
+                                                                    <i class="glyphicon glyphicon-list-alt"></i>
+                                                                </span>
+                                                            </a>
+                                                    </li>
+                                                    <li class="disabled" ui-sref-active="active">
+                                                        <a ui-sref=".images" title="Step 3">
+                                                                <span class="round-tab">
+                                                                    <i class="glyphicon glyphicon-picture"></i>
+                                                                </span>
+                                                            </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                            <form id="signup-form" ng-submit="processForm()">
+
+                                                <div id="form-views" ui-view></div>
+
+                                            </form>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div ng-include="'views/shared/_footer.html'"></div>
+
+<style>
+    .black-text{
+        color:#000;
+    }
+    
+    .no-border{
+        border:none !important;
+    }
+    .wizard {
+        margin: 20px auto;
+        background: #fff;
+    }
+
+    .wizard .nav-tabs {
+        position: relative;
+        margin: 40px auto;
+        margin-bottom: 0;
+    }
+
+    .wizard>div.wizard-inner {
+        position: relative;
+    }
+
+    .connecting-line {
+        height: 1px;
+        background: #e0e0e0;
+        position: absolute;
+        width: 100%;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        top: 50%;
+        z-index: 1;
+    }
+
+    .wizard .nav-tabs>li.active>a,
+    .wizard .nav-tabs>li.active>a:hover,
+    .wizard .nav-tabs>li.active>a:focus {
+        color: #555555;
+        cursor: default;
+        border: 0;
+        border-bottom-color: transparent;
+    }
+
+    span.round-tab {
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        display: inline-block;
+        border-radius: 100px;
+        background: #e0e0e0;
+        z-index: 2;
+        position: absolute;
+        left: 0;
+        text-align: center;
+        font-size: 25px;
+    }
+
+    span.round-tab i {
+        color:#fff;
+        font-size:20px;
+    }
+
+    .wizard li.active span.round-tab {
+        background: #67b7b4;
+        border: 2px solid #67b7b4;
+    }
+
+    .wizard li.active span.round-tab i {
+        color: #fff;
+    }
+
+    span.round-tab:hover {
+        background-color: #67b7b4;
+        opacity: 0.7;
+
+    }
+
+    .wizard .nav-tabs>li {
+        width: 33.33%;
+    }
+
+
+    .wizard .nav-tabs>li a {
+        width: 50px;
+        height: 50px;
+        margin: 20px auto;
+        border-radius: 100%;
+        padding: 0;
+    }
+
+    .wizard .nav-tabs>li a:hover {
+        background: transparent;
+    }
+
+    .wizard .tab-pane {
+        position: relative;
+        padding-top: 50px;
+    }
+
+    .wizard h3 {
+        margin-top: 0;
+    }
+
+    @media( max-width: 585px) {
+
+        .wizard {
+            width: 90%;
+            height: auto !important;
+        }
+
+        span.round-tab {
+            font-size: 16px;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+        }
+
+        .wizard .nav-tabs>li a {
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+        }
+
+        .wizard li.active:after {
+            content: " ";
+            position: absolute;
+            left: 35%;
+        }
+    }
+</style>

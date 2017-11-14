@@ -21,6 +21,7 @@
                 },
                 // error
                 function (error) {
+                    console.log(error)
                     _showValidationErrors($scope, error);
                 }
             );
