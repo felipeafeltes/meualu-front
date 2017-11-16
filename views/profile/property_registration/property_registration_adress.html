@@ -1,31 +1,39 @@
 <div class="form-group col-md-12">
     <label for="description">Descrição Curta do Imóvel</label>
-    <input type="text" class="form-control" name="description" ng-model="formData.name" placeholder="Ex: Charmoso Apê no Moinho de Vento">
+    <input type="text" class="form-control redondend-border" name="description" ng-model="propertie.description" placeholder="Ex: Charmoso Apê no Moinho de Vento">
 </div>
 
+<h4 class="text-center">Busque o endereço</h4>
+<div class="form-group col-md-12">
+    <input g-places-autocomplete type="text" class="form-control redondend-border" name="address" options="autocompleteOptions" ng-model="address"
+        autocomplete="off" force-selection="true" placeholder="Busque por rua ou bairro" ng-change="searchAdress()">
+</div>
+<h4 class="text-center">OU</h4>
+<hr>
+<h4 class="text-center">Preencha o formulário</h4>
 <div class="form-group col-md-12">
     <label for="street">Rua/Avenida</label>
-    <input type="text" class="form-control" name="street" ng-model="formData.email">
+    <input type="text" class="form-control redondend-border" name="street" ng-model="propertie.street">
 </div>
 
 <div class="form-group col-md-6">
     <label for="number">Número</label>
-    <input type="number" class="form-control" name="number" ng-model="formData.email">
+    <input type="number" class="form-control redondend-border" name="number" ng-model="propertie.number">
 </div>
 
 <div class="form-group col-md-6">
     <label for="cep">CEP</label>
-    <input type="text" class="form-control" name="cep" ng-model="formData.email">
+    <input type="text" class="form-control redondend-border" name="cep" ng-model="propertie.cep">
 </div>
 
 <div class="form-group col-md-6">
     <label for="city">Cidade</label>
-    <input type="text" class="form-control" name="city" ng-model="formData.email">
+    <input type="text" class="form-control redondend-border" name="city" ng-model="propertie.city">
 </div>
 
 <div class="form-group col-md-6">
     <label for="state">Estado</label>
-    <input type="text" class="form-control" name="state" ng-model="formData.email">
+    <input type="text" class="form-control redondend-border" name="state" ng-model="propertie.state">
 </div>
 
 <div class="form-group row">

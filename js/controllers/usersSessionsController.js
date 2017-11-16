@@ -11,6 +11,7 @@
             $('#modalLogin').modal('hide');
         }
 
+    
         $scope.sign_in = function () {
             $scope.user.$sign_in(
                 // success

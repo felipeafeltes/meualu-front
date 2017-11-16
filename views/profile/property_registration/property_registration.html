@@ -24,53 +24,50 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-12 col-md-10 col-lg-10 profile-properties-details">
+                <div class="col-sm-12 col-md-7 col-lg-7 profile-properties-details">
                     <div class="panel panel-imoveis">
                         <div class="panel-header">
                             <h2 class="bold text-responsive-center black-text">Cadastrar Imóvel</h2>
                             <small class="text-responsive-center">Preencha as etapas a seguir para cadastrar seu imóvel</small>
                         </div>
                         <div class="panel-body">
-
-                            <div class="container">
-                                <div class="row">
-                                    <section>
-                                        <div class="wizard">
-                                            <div class="wizard-inner">
-                                                <div class="connecting-line"></div>
-                                                <ul class="nav nav-tabs no-border">
-                                                    <li class="active" ui-sref-active="active">
-                                                        <a ui-sref=".adress" title="Step 1">
+                            <div class="row">
+                                <div class="wizard col-sm-12">
+                                    <div class="wizard-inner">
+                                        <div class="connecting-line"></div>
+                                        <ul class="nav nav-tabs no-border">
+                                            <li class="active" ui-sref-active="active">
+                                                <a ui-sref=".adress" title="Step 1">
                                                                 <span class="round-tab">
                                                                     <i class="glyphicon glyphicon-home"></i>
                                                                 </span>
                                                             </a>
-                                                    </li>
+                                            </li>
 
-                                                    <li class="disabled" ui-sref-active="active">
-                                                        <a ui-sref=".details" title="Step 2">
+                                            <li class="disabled" ui-sref-active="active">
+                                                <a ui-sref=".details" title="Step 2">
                                                                 <span class="round-tab">
                                                                     <i class="glyphicon glyphicon-list-alt"></i>
                                                                 </span>
                                                             </a>
-                                                    </li>
-                                                    <li class="disabled" ui-sref-active="active">
-                                                        <a ui-sref=".images" title="Step 3">
+                                            </li>
+                                            <li class="disabled" ui-sref-active="active">
+                                                <a ui-sref=".images" title="Step 3">
                                                                 <span class="round-tab">
                                                                     <i class="glyphicon glyphicon-picture"></i>
                                                                 </span>
                                                             </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
+                                            </li>
+                                        </ul>
+                                    </div>
 
-                                            <form id="signup-form" ng-submit="processForm()">
+                                    <form id="signup-form" ng-submit="processForm()">
 
-                                                <div id="form-views" ui-view></div>
+                                        <div id="form-views" ui-view>
 
-                                            </form>
                                         </div>
-                                    </section>
+
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -83,13 +80,23 @@
 <div ng-include="'views/shared/_footer.html'"></div>
 
 <style>
-    .black-text{
-        color:#000;
+    .checkbox {
+        padding: 8px 8px 8px 0px;
     }
-    
-    .no-border{
-        border:none !important;
+
+    .checkbox input[type='checkbox'] {
+        width: 15px;
+        height: 15px;
     }
+
+    .black-text {
+        color: #000;
+    }
+
+    .no-border {
+        border: none !important;
+    }
+
     .wizard {
         margin: 20px auto;
         background: #fff;
@@ -141,8 +148,8 @@
     }
 
     span.round-tab i {
-        color:#fff;
-        font-size:20px;
+        color: #fff;
+        font-size: 20px;
     }
 
     .wizard li.active span.round-tab {
@@ -157,7 +164,6 @@
     span.round-tab:hover {
         background-color: #67b7b4;
         opacity: 0.7;
-
     }
 
     .wizard .nav-tabs>li {
