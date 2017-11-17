@@ -1,44 +1,34 @@
 <div class="form-group col-md-12">
     <label for="description">Descrição Curta do Imóvel</label>
-    <input type="text" class="form-control redondend-border" name="description" ng-model="propertie.description" placeholder="Ex: Charmoso Apê no Moinho de Vento">
+    <input type="text" class="form-control redondend-border" name="description" ng-model="propertie.description" placeholder="Ex: Charmoso Apê no Moinho de Vento" required>
+    <div ng-show="fillAddress || formProperty.description.$touched">
+        <p ng-show="formProperty.description.$error.required" class="help-block error">Descrição é obrigatório.</p>
+    </div>
 </div>
 
-<h4 class="text-center">Busque o endereço</h4>
-<div class="form-group col-md-12">
-    <input g-places-autocomplete type="text" class="form-control redondend-border" name="address" options="autocompleteOptions" ng-model="address"
-        autocomplete="off" force-selection="true" placeholder="Busque por rua ou bairro" ng-change="searchAdress()">
-</div>
-<h4 class="text-center">OU</h4>
-<hr>
-<h4 class="text-center">Preencha o formulário</h4>
-<div class="form-group col-md-12">
-    <label for="street">Rua/Avenida</label>
-    <input type="text" class="form-control redondend-border" name="street" ng-model="propertie.street">
+<div class="form-group col-md-12" ng-controller="propertyRegistrationController">
+    <label for="number">Rua</label>
+    <input g-places-autocomplete type="text" class="form-control redondend-border" name="address" options="autocompleteOptions"
+        ng-model="address" autocomplete="off" force-selection="true" placeholder="Busque por rua ou bairro" ng-change="searchAdress()"
+        required>
+    <div ng-show="fillAddress || formProperty.address.$touched">
+        <p ng-show="formProperty.address.$error.required" class="help-block error">Endereço é obrigatório.</p>
+    </div>
 </div>
 
 <div class="form-group col-md-6">
     <label for="number">Número</label>
-    <input type="number" class="form-control redondend-border" name="number" ng-model="propertie.number">
+    <input type="number" class="form-control redondend-border" name="number" ng-model="formAdress.number">
 </div>
 
 <div class="form-group col-md-6">
-    <label for="cep">CEP</label>
-    <input type="text" class="form-control redondend-border" name="cep" ng-model="propertie.cep">
-</div>
-
-<div class="form-group col-md-6">
-    <label for="city">Cidade</label>
-    <input type="text" class="form-control redondend-border" name="city" ng-model="propertie.city">
-</div>
-
-<div class="form-group col-md-6">
-    <label for="state">Estado</label>
-    <input type="text" class="form-control redondend-border" name="state" ng-model="propertie.state">
+    <label for="complement">Complemento</label>
+    <input type="text" class="form-control redondend-border" name="complement" ng-model="formAdress.complement">
 </div>
 
 <div class="form-group row">
     <div class="col-xs-3 col-xs-offset-9">
-        <a ui-sref="cadastrarImovel.details" class="btn btn-block bg-green">
+        <a class="btn btn-block bg-green" ng-click="processAdress(formProperty.address.$valid && formProperty.description.$valid)">
     Próximo <span class="glyphicon glyphicon-circle-arrow-right"></span>
     </a>
     </div>

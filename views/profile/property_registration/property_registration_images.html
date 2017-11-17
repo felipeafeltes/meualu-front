@@ -1,25 +1,38 @@
-<style>
-    .cropArea {
-        background: #E4E4E4;
-        overflow: hidden;
-        width: 700px;
-        height: 350px;
-    }
-</style>
 <div ng-controller="propertyRegistrationController as ctrl">
-    <input type="file" img-cropper-fileread image="cropper.sourceImage" />
-    <div>
-        <canvas width="500" height="300" id="canvas" image-cropper image="cropper.sourceImage" cropped-image="cropper.croppedImage"
-            crop-width="400" crop-height="200" keep-aspect="true" touch-radius="30" crop-area-bounds="bounds"></canvas>
+
+    <div class="input-div col-sm-12">
+        <label class="fileContainer">
+             <span class="input-span">Clique ou solte a imagem aqui!</span>
+             <input type="file" img-cropper-fileread image="cropper.sourceImage" />
+        </label>
     </div>
-    <div>Cropped Image (Left: {{bounds.left}} Right: {{bounds.right}} Top: {{bounds.top}} Bottom: {{bounds.bottom}})</div>
-    <div ng-show="cropper.croppedImage!=null"><img ng-src="{{cropper.croppedImage}}" /></div>
+
+    <div class="col-sm-12" ng-show="images.length !== 0">
+        <h4 class="black-text">Imagens:</h4>
+        <div class="col-sm-3 div-thumbnail" ng-repeat="image in images  ">
+            <img src="{{image.url}}" class="img-thumbnail" width="200" height="200">
+            <button type="button" ng-click="deleteImage($index,image.url)" class="btn btn-redounded">
+                <span class="glyphicon glyphicon glyphicon-remove font-size-20"></span>
+            </button>
+        </div>
+    </div>
+
+    <div ng-include="'views/profile/property_registration/_cropp_modal.html'"></div>
+
 </div>
 
+
 <div class="form-group row">
-    <div class="col-xs-3 col-xs-offset-9">
-        <button type="submit" class="btn btn-block bg-green">
-    Salvar <span class="glyphicon glyphicon-circle-arrow-right"></span>
-    </button>
+    <div class="col-md-8 col-md-offset-4">
+        <div class="col-md-6">
+            <a ui-sref="cadastrarImovel.details" class="btn btn-block bg-green">
+                Anterior <span class="glyphicon glyphicon-circle-arrow-left"></span>
+            </a>
+        </div>
+        <div class="col-md-6">
+            <button type="submit" class="btn btn-block bg-green">
+                Salvar <span class="glyphicon glyphicon-circle-arrow-right"></span>
+            </button>
+        </div>
     </div>
 </div>

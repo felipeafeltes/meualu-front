@@ -1,49 +1,50 @@
 <div class="form-group col-md-6">
     <label for="street">Tipo do Imóvel</label>
-    <select class="form-control redondend-border" name="street" >
-        <option value="">A</option>
+    <select class="form-control redondend-border" name="street" ng-model="propertie.description">
+        <option value="A">A</option>
+        <option value="B">B</option>
     </select>
 </div>
 
 <div class="form-group col-md-6">
-    <label for="street">Área Útil (m²)</label>
-    <input type="number" class="form-control redondend-border" name="street" >
+    <label for="total_area">Área Útil (m²)</label>
+    <input type="number" class="form-control redondend-border" name="total_area" ng-model="propertie.description">
 </div>
 <div class="form-group col-md-6">
-    <label for="street">Dormitórios</label>
-    <input type="number" class="form-control redondend-border" name="street" >
+    <label for="bedrooms">Dormitórios</label>
+    <input type="number" class="form-control redondend-border" name="bedrooms" ng-model="propertie.bedrooms">
 </div>
 <div class="form-group col-md-6">
-    <label for="street">Quantas são Suíte?</label>
-    <input type="number" class="form-control redondend-border" name="street" >
+    <label for="suites">Quantas são Suíte?</label>
+    <input type="number" class="form-control redondend-border" name="suites" ng-model="propertie.suites">
 </div>
 <div class="form-group col-md-6">
-    <label for="street">Banheiros</label>
-    <input type="number" class="form-control redondend-border" name="street" >
+    <label for="bathrooms">Banheiros</label>
+    <input type="number" class="form-control redondend-border" name="bathrooms" ng-model="propertie.bathrooms">
 </div>
 <div class="form-group col-md-6">
-    <label for="street">Andar do Imóvel</label>
-    <input type="number" class="form-control redondend-border" name="street" >
+    <label for="floor">Andar do Imóvel</label>
+    <input type="number" class="form-control redondend-border" name="floor" ng-model="propertie.floor">
 </div>
 <div class="form-group col-md-6">
-    <label for="street">Vagas Cobertas</label>
-    <input type="number" class="form-control redondend-border" name="street" >
+    <label for="covered_garages">Vagas Cobertas</label>
+    <input type="number" class="form-control redondend-border" name="covered_garages" ng-model="propertie.covered_garages">
 </div>
 <div class="form-group col-md-6">
-    <label for="street">Vagas Descobertas</label>
-    <input type="number" class="form-control redondend-border" name="street" >
+    <label for="not_covered_garages">Vagas Descobertas</label>
+    <input type="number" class="form-control redondend-border" name="not_covered_garages" ng-model="propertie.not_covered_garages">
 </div>
 
 <div class="checkbox col-sm-6">
-    <label><input type="checkbox" value="">Aceita animais de estimação?</label>
+    <label><input type="checkbox" ng-model="propertie.pets_allowed">Aceita animais de estimação?</label>
 </div>
 
 <div class="checkbox col-sm-6" style="margin-top: 10px;">
-    <label><input type="checkbox" value="">O transporte público é perto?</label>
+    <label><input type="checkbox" ng-model="propertie.public_transportation">O transporte público é perto?</label>
 </div>
 
 <div class="checkbox col-sm-12">
-    <label><input type="checkbox" value="">Este apartamento será alugado mobiliado?</label>
+    <label><input type="checkbox" ng-model="propertie.furniture">Este apartamento será alugado mobiliado?</label>
 </div>
 
 <h3 class="black-text col-sm-12">Informações Adicionais</h3>
@@ -54,89 +55,92 @@
             <h5>Do Imóvel</h5>
 
             <div class="checkbox">
-                <label><input type="checkbox" name="" ng-model="extraInfos" value="Apartamento cobertura">Apartamento cobertura</label>
+                <label>
+                    <input type="checkbox" ng-model="infos.roof">
+                    Apartamento cobertura
+                </label>
             </div>
             <div class="checkbox">
-                <label><input type="checkbox" name="" ng-model="extraInfos" value="Ar condicionado">Ar condicionado</label>
+                <label><input type="checkbox" ng-model="infos.air_conditioning">Ar condicionado</label>
             </div>
             <div class="checkbox">
-                <label><input type="checkbox" name="" ng-model="extraInfos" value="3">Armários embutidos no quarto</label>
+                <label><input type="checkbox" ng-model="infos.bedroom_cabinet">Armários embutidos no quarto</label>
             </div>
             <div class="checkbox">
-                <label><input type="checkbox" name="" ng-model="extraInfos" value="4">Armários na cozinha</label>
+                <label><input type="checkbox" ng-model="infos.kitchen_cabinet">Armários na cozinha</label>
             </div>
             <div class="checkbox">
-                <label><input type="checkbox" name="" ng-model="extraInfos" value="5">Armários nos banheiros</label>
+                <label><input type="checkbox" ng-model="infos.bathroom_cabinet">Armários nos banheiros</label>
             </div>
             <div class="checkbox">
-                <label><input type="checkbox" name="" ng-model="extraInfos" value="6">Banheira de hidromassagem</label>
+                <label><input type="checkbox" ng-model="infos.whirlpool_tub">Banheira de hidromassagem</label>
             </div>
             <div class="checkbox">
-                <label><input type="checkbox" name="" ng-model="extraInfos" value="7">Banheira de serviço</label>
+                <label><input type="checkbox" ng-model="infos.tub">Banheira de serviço</label>
             </div>
             <div class="checkbox">
-                <label><input type="checkbox" name="" ng-model="extraInfos" value="8">Box blindex</label>
+                <label><input type="checkbox" ng-model="infos.box">Box blindex</label>
             </div>
             <div class="checkbox">
-                <label><input type="checkbox" name="" ng-model="extraInfos" value="9">Fogão incluso</label>
+                <label><input type="checkbox" ng-model="infos.cooker">Fogão incluso</label>
             </div>
             <div class="checkbox">
-                <label><input type="checkbox" name="" ng-model="extraInfos" value="10">Geladeira inclusa</label>
+                <label><input type="checkbox" ng-model="infos.refrigerator">Geladeira inclusa</label>
             </div>
             <div class="checkbox">
-                <label><input type="checkbox" name="" ng-model="extraInfos" value="11">Piscina privativa</label>
+                <label><input type="checkbox" ng-model="infos.private_pool">Piscina privativa</label>
             </div>
             <div class="checkbox">
-                <label><input type="checkbox" name="" ng-model="extraInfos" value="12">Quarto de serviço</label>
+                <label><input type="checkbox" ng-model="infos.room_service" >Quarto de serviço</label>
             </div>
             <div class="checkbox">
-                <label><input type="checkbox" name="" ng-model="extraInfos" value="13">Quarto extra reversível</label>
+                <label><input type="checkbox" ng-model="infos.extra_bedroom">Quarto extra reversível</label>
             </div>
             <div class="checkbox">
-                <label><input type="checkbox" name="" ng-model="extraInfos" value="14">Varanda Gourmet</label>
+                <label><input type="checkbox" ng-model="infos.gourmet_balcony">Varanda Gourmet</label>
             </div>
         </div>
         <div class="col-sm-6">
             <h5>Do Condomínio</h5>
 
             <div class="checkbox">
-                <label><input type="checkbox" name="" ng-model="extraInfos" value="15">Academia</label>
+                <label><input type="checkbox" ng-model="infos.academy">Academia</label>
             </div>
             <div class="checkbox">
-                <label><input type="checkbox" name="" ng-model="extraInfos" value="16">Elevador</label>
+                <label><input type="checkbox" ng-model="infos.elevator">Elevador</label>
             </div>
             <div class="checkbox">
-                <label><input type="checkbox" name="" ng-model="extraInfos" value="17">Gás encanado</label>
+                <label><input type="checkbox" ng-model="infos.piped_gas">Gás encanado</label>
             </div>
             <div class="checkbox">
-                <label><input type="checkbox" name="" ng-model="extraInfos" value="18">Perto do metrô ou trem</label>
+                <label><input type="checkbox" ng-model="infos.near">Perto do metrô ou trem</label>
             </div>
             <div class="checkbox">
-                <label><input type="checkbox" name="" ng-model="extraInfos" value="19">Piscina</label>
+                <label><input type="checkbox" ng-model="infos.pool">Piscina</label>
             </div>
             <div class="checkbox">
-                <label><input type="checkbox" name="" ng-model="extraInfos" value="20">Playground</label>
+                <label><input type="checkbox" ng-model="infos.playground">Playground</label>
             </div>
             <div class="checkbox">
-                <label><input type="checkbox" name="" ng-model="extraInfos" value="21">Porteiro 24 horas</label>
+                <label><input type="checkbox" ng-model="infos.porter">Porteiro 24 horas</label>
             </div>
             <div class="checkbox">
-                <label><input type="checkbox" name="" ng-model="extraInfos" value="22">Quadra Esportiva</label>
+                <label><input type="checkbox" ng-model="infos.sports_court">Quadra Esportiva</label>
             </div>
             <div class="checkbox">
-                <label><input type="checkbox" name="" ng-model="extraInfos" value="23">Salão de Festas</label>
+                <label><input type="checkbox" ng-model="infos.party_room">Salão de Festas</label>
             </div>
             <div class="checkbox">
-                <label><input type="checkbox" name="" ng-model="extraInfos" value="24">Churrasqueira</label>
+                <label><input type="checkbox" ng-model="infos.barbecue_grill">Churrasqueira</label>
             </div>
             <div class="checkbox">
-                <label><input type="checkbox" name="" ng-model="extraInfos" value="25">Espaço gourmet na área comum</label>
+                <label><input type="checkbox" ng-model="infos.gourmet_space">Espaço gourmet na área comum</label>
             </div>
             <div class="checkbox">
-                <label><input type="checkbox" name="" ng-model="extraInfos" value="26">Lavanderia no prédio</label>
+                <label><input type="checkbox" ng-model="infos.laundry">Lavanderia no prédio</label>
             </div>
             <div class="checkbox">
-                <label><input type="checkbox" name="" ng-model="extraInfos" value="27">Sauna</label>
+                <label><input type="checkbox" ng-model="infos.sauna">Sauna</label>
             </div>
 
         </div>
@@ -146,9 +150,16 @@
 
 
 <div class="form-group row">
-    <div class="col-xs-3 col-xs-offset-9">
-        <a ui-sref="cadastrarImovel.images" class="btn btn-block bg-green">
-    Próximo <span class="glyphicon glyphicon-circle-arrow-right"></span>
-    </a>
+    <div class="col-md-8 col-md-offset-4">
+        <div class="col-md-6">
+            <a ui-sref="cadastrarImovel.address" class="btn btn-block bg-green">
+                Anterior <span class="glyphicon glyphicon-circle-arrow-left"></span>
+            </a>
+        </div>
+        <div class="col-md-6">
+            <a class="btn btn-block bg-green" ng-click="processDetails()">
+                Próximo <span class="glyphicon glyphicon-circle-arrow-right"></span>
+            </a>
+        </div>
     </div>
 </div>

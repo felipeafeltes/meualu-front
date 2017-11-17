@@ -196,22 +196,19 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
   
    */
 
-    .state('cadastrarImovel.adress', {
-      controller: 'propertyRegistrationController',
-      url: '/adress',
+    .state('cadastrarImovel.address', {
+      url: '/address',
       templateUrl: 'views/profile/property_registration/property_registration_adress.html'
     })
 
     // url will be /form/interests
     .state('cadastrarImovel.details', {
-      controller: 'propertyRegistrationController',
       url: '/details',
       templateUrl: 'views/profile/property_registration/property_registration_details.html'
     })
     
     // url will be /form/payment
     .state('cadastrarImovel.images', {
-      controller: 'propertyRegistrationController',
       url: '/images',
       templateUrl: 'views/profile/property_registration/property_registration_images.html'
     });

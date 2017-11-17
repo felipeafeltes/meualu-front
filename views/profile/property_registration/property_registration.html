@@ -34,34 +34,36 @@
                             <div class="row">
                                 <div class="wizard col-sm-12">
                                     <div class="wizard-inner">
-                                        <div class="connecting-line"></div>
+                                        <div class="connecting-line connecting-line-left active"></div>
+                                        <div class="connecting-line connecting-line-center"></div>
+                                        <div class="connecting-line connecting-line-right"></div>
                                         <ul class="nav nav-tabs no-border">
-                                            <li class="active" ui-sref-active="active">
-                                                <a ui-sref=".adress" title="Step 1">
-                                                                <span class="round-tab">
-                                                                    <i class="glyphicon glyphicon-home"></i>
-                                                                </span>
-                                                            </a>
+                                            <li id="addressForm" class="active" ui-sref-active="active">
+                                                <a title="Endereço">
+                                                    <span class="round-tab">
+                                                        <i class="glyphicon glyphicon-home"></i>
+                                                    </span>
+                                                </a>
                                             </li>
 
-                                            <li class="disabled" ui-sref-active="active">
-                                                <a ui-sref=".details" title="Step 2">
-                                                                <span class="round-tab">
-                                                                    <i class="glyphicon glyphicon-list-alt"></i>
-                                                                </span>
-                                                            </a>
+                                            <li id="detailsForm" class="disabled" ui-sref-active="active">
+                                                <a title="Detalhes">
+                                                    <span class="round-tab">
+                                                        <i class="glyphicon glyphicon-list-alt"></i>
+                                                    </span>
+                                                </a>
                                             </li>
-                                            <li class="disabled" ui-sref-active="active">
-                                                <a ui-sref=".images" title="Step 3">
-                                                                <span class="round-tab">
-                                                                    <i class="glyphicon glyphicon-picture"></i>
-                                                                </span>
-                                                            </a>
+                                            <li id="imagesForm" class="disabled" ui-sref-active="active">
+                                                <a title="Imagens">
+                                                    <span class="round-tab">
+                                                        <i class="glyphicon glyphicon-picture"></i>
+                                                    </span>
+                                                </a>
                                             </li>
                                         </ul>
                                     </div>
 
-                                    <form id="signup-form" ng-submit="processForm()">
+                                    <form name="formProperty" id="signup-form" ng-controller="propertyRegistrationController" ng-submit="processForm()">
 
                                         <div id="form-views" ui-view>
 
@@ -78,144 +80,3 @@
     </div>
 </section>
 <div ng-include="'views/shared/_footer.html'"></div>
-
-<style>
-    .checkbox {
-        padding: 8px 8px 8px 0px;
-    }
-
-    .checkbox input[type='checkbox'] {
-        width: 15px;
-        height: 15px;
-    }
-
-    .black-text {
-        color: #000;
-    }
-
-    .no-border {
-        border: none !important;
-    }
-
-    .wizard {
-        margin: 20px auto;
-        background: #fff;
-    }
-
-    .wizard .nav-tabs {
-        position: relative;
-        margin: 40px auto;
-        margin-bottom: 0;
-    }
-
-    .wizard>div.wizard-inner {
-        position: relative;
-    }
-
-    .connecting-line {
-        height: 1px;
-        background: #e0e0e0;
-        position: absolute;
-        width: 100%;
-        margin: 0 auto;
-        left: 0;
-        right: 0;
-        top: 50%;
-        z-index: 1;
-    }
-
-    .wizard .nav-tabs>li.active>a,
-    .wizard .nav-tabs>li.active>a:hover,
-    .wizard .nav-tabs>li.active>a:focus {
-        color: #555555;
-        cursor: default;
-        border: 0;
-        border-bottom-color: transparent;
-    }
-
-    span.round-tab {
-        width: 50px;
-        height: 50px;
-        line-height: 50px;
-        display: inline-block;
-        border-radius: 100px;
-        background: #e0e0e0;
-        z-index: 2;
-        position: absolute;
-        left: 0;
-        text-align: center;
-        font-size: 25px;
-    }
-
-    span.round-tab i {
-        color: #fff;
-        font-size: 20px;
-    }
-
-    .wizard li.active span.round-tab {
-        background: #67b7b4;
-        border: 2px solid #67b7b4;
-    }
-
-    .wizard li.active span.round-tab i {
-        color: #fff;
-    }
-
-    span.round-tab:hover {
-        background-color: #67b7b4;
-        opacity: 0.7;
-    }
-
-    .wizard .nav-tabs>li {
-        width: 33.33%;
-    }
-
-
-    .wizard .nav-tabs>li a {
-        width: 50px;
-        height: 50px;
-        margin: 20px auto;
-        border-radius: 100%;
-        padding: 0;
-    }
-
-    .wizard .nav-tabs>li a:hover {
-        background: transparent;
-    }
-
-    .wizard .tab-pane {
-        position: relative;
-        padding-top: 50px;
-    }
-
-    .wizard h3 {
-        margin-top: 0;
-    }
-
-    @media( max-width: 585px) {
-
-        .wizard {
-            width: 90%;
-            height: auto !important;
-        }
-
-        span.round-tab {
-            font-size: 16px;
-            width: 50px;
-            height: 50px;
-            line-height: 50px;
-        }
-
-        .wizard .nav-tabs>li a {
-            width: 50px;
-            height: 50px;
-            line-height: 50px;
-        }
-
-        .wizard li.active:after {
-            content: " ";
-            position: absolute;
-            left: 35%;
-        }
-    }
-</style>
