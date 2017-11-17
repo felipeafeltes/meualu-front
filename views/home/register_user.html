@@ -1,0 +1,55 @@
+<section class="full-heigth text-white bg-yellow bg-principal font-18">
+    <div class="bg-full-purple"></div>
+    <div class="container-video container">
+        <nav class="navbar navbar-home">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" ui-sref="home">
+                  <img src="assets/imagens/icones/logo_alu_amarelo_beta.png" class="img-responsive logo-heigth">
+                </a>
+                </div>
+                <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-8">
+                    <ul class="nav navbar-nav">
+                        <li class="bold text-uppercase">
+                            <a class="text-yellow" ui-sref="proprietario">Anuncie seu apê</a>
+                        </li>
+                        <li class="bold text-uppercase cursor-pointer" ng-hide="current_user">
+                            <a class="text-white" data-toggle="modal" data-target="#modalLogin">Login</a>
+                        </li>
+                        <li class="bold text-uppercase cursor-pointer" ng-show="current_user">
+                            <a class="text-white" ui-sref="perfil">{{current_user.name}}</a>
+                        </li>
+                        <li class="bold text-uppercase cursor-pointer" ng-show="current_user" ng-controller="UserSessionsSignOut">
+                            <a class="text-white" ng-click="sign_out()">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="col-md-6 col-md-offset-6">
+            <div class="panel panel-imoveis">
+                <div class="panel-header">
+                    <button class="btn btn-block btn-primary btn-lg m-t-20 redondend-border" ng-click="authenticate('facebook')">Acessar com Facebook</button>
+                    <button class="btn btn-block btn-danger btn-lg m-t-10 redondend-border">Acessar com Google+</button>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <hr>
+                        </div>
+                        <div class="col-md-2 text-center p-t-8 black-text">OU</div>
+                        <div class="col-md-5">
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<div ng-include="'views/shared/_footer.html'"></div>

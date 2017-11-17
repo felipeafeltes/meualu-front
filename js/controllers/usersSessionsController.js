@@ -41,10 +41,6 @@
         $scope.user = new UsersService();
         $scope.response = true;
 
-        $scope.openLogin = function () {
-            $('#modalRegister').modal('hide');
-        }
-
         $scope.register = function (isValid) {
             if (isValid) {
                 $scope.response = false;

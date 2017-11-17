@@ -96,6 +96,16 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
       url: '/sign_in',
       controller: 'UserSessionsSignIn'
     })
+    .state('registerUser', {
+      controller: 'UserSessionsRegister',
+      url: '/register',
+      templateUrl: 'views/home/register_user.html',
+      resolve: {
+        deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+          return $ocLazyLoad.load('js/directives/header/header.js');
+        }]
+      }
+    })
     .state('sign_out', {
       url: '/sign_out',
       controller: 'UserSessionsSignOut'
@@ -168,33 +178,33 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
       }
     })
 
-  /*     
-     .state('admin', {
-       url: '/admin',
-       templateUrl: 'views/default_layout.html',
-     })
-     .state('admin.properties', {
-       url: '/properties',
-       templateUrl: 'views/properties/list.html',
-       controller: 'PropertiesListController'
-     })
-     .state('admin.addProperties', {
-       url: '/properties/add',
-       templateUrl: 'views/properties/add.html',
-       controller: 'PropertiesAddController'
-     })
-     .state('admin.editProperties', {
-       url: '/properties/edit/:id',
-       templateUrl: 'views/properties/edit.html',
-       controller: 'PropertiesEditController'
-     })
-     .state('admin.deleteProperties', {
-       url: '/properties/delete/:id',
-       templateUrl: 'views/properties/delete.html',
-       controller: 'PropertiesDeleteController'
-     });
-  
-   */
+    /*     
+       .state('admin', {
+         url: '/admin',
+         templateUrl: 'views/default_layout.html',
+       })
+       .state('admin.properties', {
+         url: '/properties',
+         templateUrl: 'views/properties/list.html',
+         controller: 'PropertiesListController'
+       })
+       .state('admin.addProperties', {
+         url: '/properties/add',
+         templateUrl: 'views/properties/add.html',
+         controller: 'PropertiesAddController'
+       })
+       .state('admin.editProperties', {
+         url: '/properties/edit/:id',
+         templateUrl: 'views/properties/edit.html',
+         controller: 'PropertiesEditController'
+       })
+       .state('admin.deleteProperties', {
+         url: '/properties/delete/:id',
+         templateUrl: 'views/properties/delete.html',
+         controller: 'PropertiesDeleteController'
+       });
+    
+     */
 
     .state('cadastrarImovel.address', {
       url: '/address',
@@ -206,7 +216,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
       url: '/details',
       templateUrl: 'views/profile/property_registration/property_registration_details.html'
     })
-    
+
     // url will be /form/payment
     .state('cadastrarImovel.images', {
       url: '/images',

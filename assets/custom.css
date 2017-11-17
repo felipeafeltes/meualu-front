@@ -276,6 +276,14 @@ input.search-header:focus {
   height: 100%;
 }
 
+.bg-full-purple{
+  width:100%;
+  height:100%;
+  background-color:#5f447b;
+  opacity:0.6;
+  position:absolute;
+}
+
 .slider-full-img {
   display: block;
   width: 100%;
