@@ -8,10 +8,10 @@
   "license": "MIT",
   "homepage": "",
   "devDependencies": {
-    "angular": "^1.6.4",
-    "angular-resource": "1.6.4",
+    "angular": "^1.6.6",
+    "angular-resource": "1.6.6",
     "angular-ui-router": "^1.0.3",
-    "angular-route": "^1.6.4"
+    "angular-route": "^1.6.6"
   },
   "dependencies": {
     "satellizer": "^0.15.5",
