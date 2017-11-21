@@ -1,140 +1,106 @@
-<section>
-    <header></header>
-    <div class="container-fluid">
-        <div class="row row-list-details text-gray">
-            <div class="col-md-12 property-list">
-                <div class="col-sm-12 col-md-2 col-lg-2 profile-details">
-                    <div class="profile">
-                        <div class="profile-img panel panel-default">
-                            <img src="{{profile_img_url}}" class="img-responsive img-profile">
-                        </div>
-                        <div class="profile-header">
-                            <h3 class="h3-header text-purple bold">{{profile_name}}</h3>
-                        </div>
-
-                        <div class="profile-links">
-                            <a href="#" class="links">
-                      Editar Perfil
-                    </a>
-                            <a href="#" class="links">
-                      Contratos
-                    </a>
-                            <a href="#" class="links">
-                      Cadastrar Imóvel           
-                    </a>
+<div class="panel panel-default">
+    <div class="panel-imoveis">
+        <div class="panel-header">
+            <h2 class="bold text-dark text-responsive-center">Editar Perfil</h2>
+        </div>
+        <div class="panel-body panel-body-edit">
+            <form name="formEdit" ng-submit="edit(formEdit.$valid)" novalidate>
+                <div class="form-row">
+                    <div class="form-group form-edit-profile col-md-6">
+                        <label for="firstName">Primeiro Nome</label>
+                        <input type="text" class="form-control" id="firstName" ng-model="user.first_name" name="firstName" required>
+                        <div ng-show="formEdit.$submitted || formEdit.firstName.$touched">
+                            <p ng-show="formEdit.firstName.$error.required" class="help-block error">Nome é obrigatório.</p>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-12 col-md-7 col-lg-7 profile-properties-details">
-                    <div class="panel panel-default">
-                        <div class="panel-imoveis">
-                            <div class="panel-header">
-                                <h2 class="bold text-dark text-responsive-center">Editar Perfil</h2>
-                            </div>
-                            <div class="panel-body panel-body-edit">
-                                <form name="formEdit" ng-submit="edit(formEdit.$valid)" novalidate>
-                                    <div class="form-row">
-                                        <div class="form-group form-edit-profile col-md-6">
-                                            <label for="firstName">Primeiro Nome</label>
-                                            <input type="text" class="form-control" id="firstName" ng-model="user.first_name" name="firstName" required>
-                                            <div ng-show="formEdit.$submitted || formEdit.firstName.$touched">
-                                                <p ng-show="formEdit.firstName.$error.required" class="help-block error">Nome é obrigatório.</p>
-                                            </div>
-                                        </div>
-                                        <div class="form-group form-edit-profile col-md-6">
-                                            <label for="lastName">Sobrenome</label>
-                                            <input type="text" class="form-control" id="lastName" ng-model="user.last_name" name="lastName" required>
-                                            <div ng-show="formEdit.$submitted || formEdit.lastName.$touched">
-                                                <p ng-show="formEdit.lastName.$error.required" class="help-block error">Sobrenome é obrigatório.</p>
-                                            </div>
-                                        </div>
-                                        <div class="form-group form-edit-profile col-md-6">
-                                            <label for="gender">Sexo</label>
-                                            <select id="gender" name="gender" class="form-control" ng-model="user.gender" required>
+                    <div class="form-group form-edit-profile col-md-6">
+                        <label for="lastName">Sobrenome</label>
+                        <input type="text" class="form-control" id="lastName" ng-model="user.last_name" name="lastName" required>
+                        <div ng-show="formEdit.$submitted || formEdit.lastName.$touched">
+                            <p ng-show="formEdit.lastName.$error.required" class="help-block error">Sobrenome é obrigatório.</p>
+                        </div>
+                    </div>
+                    <div class="form-group form-edit-profile col-md-6">
+                        <label for="gender">Sexo</label>
+                        <select id="gender" name="gender" class="form-control" ng-model="user.gender" required>
                                                 <option selected="selected" disabled>Selecione o sexo</option>
                                                 <option value="M">Masculino</option>
                                                 <option value="F">Feminino</option>
                                             </select>
-                                            <div ng-show="formEdit.$submitted || formEdit.gender.$touched">
-                                                <p ng-show="formEdit.gender.$error.required" class="help-block error">Sexo é obrigatório.</p>
-                                            </div>
-                                        </div>
-                                        <div class="form-group form-edit-profile col-md-6">
-                                            <label for="birthday">Data de Nascimento</label>
-                                            <input type="date" class="form-control" id="birthday" name="birthday" ng-model="user.birthday" required>
-                                            <div ng-show="formEdit.$submitted || formEdit.birthday.$touched">
-                                                <p ng-show="formEdit.birthday.$error.required" class="help-block error">Data de nascimento é obrigatório.</p>
-                                            </div>
-                                        </div>
-                                        <div class="form-group form-edit-profile col-md-12">
-                                            <label for="inputEmail">Email</label>
-                                            <input type="email" class="form-control" id="inputEmail" name="inputEmail" ng-model="user.email" required>
-                                            <div ng-show="formEdit.$submitted || formEdit.inputEmail.$touched">
-                                                <p ng-show="formEdit.inputEmail.$error.required" class="help-block error">Email é obrigatório.</p>
-                                                <p ng-show="formEdit.inputEmail.$error.email" class="help-block error">Email não é válido.</p>
-                                            </div>
-                                        </div>
-                                        <div class="form-group form-edit-profile col-md-6">
-                                            <label for="phone">Telefone Celular</label>
-                                            <input type="text" class="form-control" id="phone" name="phone" ng-model="user.phone" required>
-                                            <div ng-show="formEdit.$submitted || formEdit.phone.$touched">
-                                                <p ng-show="formEdit.phone.$error.required" class="help-block error">Telefone é obrigatório.</p>
-                                            </div>
-                                        </div>
-                                        <div class="form-group form-edit-profile col-md-6">
-                                            <label for="phone2">Telefone Celular 2 (Opcional)</label>
-                                            <input type="text" class="form-control" id="phone2" name="phone2" ng-model="user.phone2">
-                                        </div>
-                                        <div class="form-group form-edit-profile col-md-6">
-                                            <label for="cep">CEP</label>
-                                            <input type="text" class="form-control" id="cep" name="cep" ng-model="user.cep" required>
-                                            <div ng-show="formEdit.$submitted || formEdit.cep.$touched">
-                                                <p ng-show="formEdit.cep.$error.required" class="help-block error">CEP é obrigatório.</p>
-                                            </div>
-                                        </div>
-                                        <div class="form-group form-edit-profile col-md-6">
-                                            <label for="city">Cidade</label>
-                                            <input type="text" class="form-control" id="city" name="city" ng-model="user.city" required>
-                                            <div ng-show="formEdit.$submitted || formEdit.city.$touched">
-                                                <p ng-show="formEdit.city.$error.required" class="help-block error">Cidade é obrigatório.</p>
-                                            </div>
-                                        </div>
-                                        <div class="form-group form-edit-profile col-md-12">
-                                            <label for="address">Endereço</label>
-                                            <input type="text" class="form-control" id="address" name="address" ng-model="user.address" required>
-                                            <div ng-show="formEdit.$submitted || formEdit.address.$touched">
-                                                <p ng-show="formEdit.address.$error.required" class="help-block error">Endereço é obrigatório.</p>
-                                            </div>
-                                        </div>
-                                        <div class="form-group form-edit-profile col-md-6">
-                                            <label for="number">Número</label>
-                                            <input type="number" class="form-control" id="number" name="number" ng-model="user.number" required>
-                                            <div ng-show="formEdit.$submitted || formEdit.number.$touched">
-                                                <p ng-show="formEdit.number.$error.required" class="help-block error">Número é obrigatório.</p>
-                                            </div>
-                                        </div>
-                                        <div class="form-group form-edit-profile col-md-6">
-                                            <label for="complement">Complemento</label>
-                                            <input type="text" class="form-control" id="complement" name="complement" ng-model="user.complement">
-                                        </div>
-                                        <div class="form-group  col-md-12">
-                                            <label for="description">Descreva-se</label>
-                                            <textarea class="form-control" id="description" rows="3" ng-model="user.description"></textarea>
-                                        </div>
-                                        <div class="form-group col-md-12">
-                                            <p class="form-text text-muted text-center">A Alu é construída a partir de relacionamentos. Ajude outras pessoas a saber
-                                                um pouco mais sobre você.</p>
-                                        </div>
-                                    </div>
-                                    <button type="submit" ng-disabled="!formEdit.$valid || !response" class="btn btn-send-contato btn-success pull-right">Enviar</button>
-                                    <img ng-if="!response" src="assets/imagens/loading.gif" width="50" height="50" class="pull-right loading-img">
-                                </form>
-                            </div>
+                        <div ng-show="formEdit.$submitted || formEdit.gender.$touched">
+                            <p ng-show="formEdit.gender.$error.required" class="help-block error">Sexo é obrigatório.</p>
                         </div>
                     </div>
+                    <div class="form-group form-edit-profile col-md-6">
+                        <label for="birthday">Data de Nascimento</label>
+                        <input type="date" class="form-control" id="birthday" name="birthday" ng-model="user.birthday" required>
+                        <div ng-show="formEdit.$submitted || formEdit.birthday.$touched">
+                            <p ng-show="formEdit.birthday.$error.required" class="help-block error">Data de nascimento é obrigatório.</p>
+                        </div>
+                    </div>
+                    <div class="form-group form-edit-profile col-md-12">
+                        <label for="inputEmail">Email</label>
+                        <input type="email" class="form-control" id="inputEmail" name="inputEmail" ng-model="user.email" required>
+                        <div ng-show="formEdit.$submitted || formEdit.inputEmail.$touched">
+                            <p ng-show="formEdit.inputEmail.$error.required" class="help-block error">Email é obrigatório.</p>
+                            <p ng-show="formEdit.inputEmail.$error.email" class="help-block error">Email não é válido.</p>
+                        </div>
+                    </div>
+                    <div class="form-group form-edit-profile col-md-6">
+                        <label for="phone">Telefone Celular</label>
+                        <input type="text" class="form-control" id="phone" name="phone" ng-model="user.phone" required>
+                        <div ng-show="formEdit.$submitted || formEdit.phone.$touched">
+                            <p ng-show="formEdit.phone.$error.required" class="help-block error">Telefone é obrigatório.</p>
+                        </div>
+                    </div>
+                    <div class="form-group form-edit-profile col-md-6">
+                        <label for="phone2">Telefone Celular 2 (Opcional)</label>
+                        <input type="text" class="form-control" id="phone2" name="phone2" ng-model="user.phone2">
+                    </div>
+                    <div class="form-group form-edit-profile col-md-6">
+                        <label for="cep">CEP</label>
+                        <input type="text" class="form-control" id="cep" name="cep" ng-model="user.cep" required>
+                        <div ng-show="formEdit.$submitted || formEdit.cep.$touched">
+                            <p ng-show="formEdit.cep.$error.required" class="help-block error">CEP é obrigatório.</p>
+                        </div>
+                    </div>
+                    <div class="form-group form-edit-profile col-md-6">
+                        <label for="city">Cidade</label>
+                        <input type="text" class="form-control" id="city" name="city" ng-model="user.city" required>
+                        <div ng-show="formEdit.$submitted || formEdit.city.$touched">
+                            <p ng-show="formEdit.city.$error.required" class="help-block error">Cidade é obrigatório.</p>
+                        </div>
+                    </div>
+                    <div class="form-group form-edit-profile col-md-12">
+                        <label for="address">Endereço</label>
+                        <input type="text" class="form-control" id="address" name="address" ng-model="user.address" required>
+                        <div ng-show="formEdit.$submitted || formEdit.address.$touched">
+                            <p ng-show="formEdit.address.$error.required" class="help-block error">Endereço é obrigatório.</p>
+                        </div>
+                    </div>
+                    <div class="form-group form-edit-profile col-md-6">
+                        <label for="number">Número</label>
+                        <input type="number" class="form-control" id="number" name="number" ng-model="user.number" required>
+                        <div ng-show="formEdit.$submitted || formEdit.number.$touched">
+                            <p ng-show="formEdit.number.$error.required" class="help-block error">Número é obrigatório.</p>
+                        </div>
+                    </div>
+                    <div class="form-group form-edit-profile col-md-6">
+                        <label for="complement">Complemento</label>
+                        <input type="text" class="form-control" id="complement" name="complement" ng-model="user.complement">
+                    </div>
+                    <div class="form-group  col-md-12">
+                        <label for="description">Descreva-se</label>
+                        <textarea class="form-control" id="description" rows="3" ng-model="user.description"></textarea>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <p class="form-text text-muted text-center">A Alu é construída a partir de relacionamentos. Ajude outras pessoas a saber um pouco mais sobre
+                            você.</p>
+                    </div>
                 </div>
-            </div>
+                <button type="submit" ng-disabled="!formEdit.$valid || !response" class="btn btn-send-contato btn-success pull-right">Enviar</button>
+                <img ng-if="!response" src="assets/imagens/loading.gif" width="50" height="50" class="pull-right loading-img">
+            </form>
         </div>
     </div>
-</section>
-<div ng-include="'views/shared/_footer.html'"></div>
+</div>

@@ -8,11 +8,19 @@
       <div class="modal-body row text-gray" ng-controller="OauthSessionsAuthenticate">
         <div class="col-md-10 col-md-offset-1">
           <button class="btn btn-block btn-primary btn-lg m-t-20 redondend-border" ng-click="authenticate('facebook')">Acessar com Facebook</button>
-          <button class="btn btn-block btn-danger btn-lg m-t-10 redondend-border">Acessar com Google+</button>
+          <button class="btn btn-block btn-danger btn-lg m-t-10 redondend-border">              
+            Acessar com Google+</button>
+ <!--          <div>
+            <google-plus-signin clientid="1083734615013-3bff0193jcdueh30bimq5coekmoiec1d.apps.googleusercontent.com"></google-plus-signin>
+          </div> -->
           <div class="row">
-            <div class="col-md-5"><hr></div>
+            <div class="col-md-5">
+              <hr>
+            </div>
             <div class="col-md-2 text-center p-t-8">OU</div>
-            <div class="col-md-5"><hr></div>
+            <div class="col-md-5">
+              <hr>
+            </div>
           </div>
           <form name="formAdd" ng-submit="sign_in()" ng-controller="UserSessionsSignIn" class="form-horizontal">
             <div class="form-group m-b-10">
@@ -22,7 +30,8 @@
             </div>
             <div class="form-group m-b-10">
               <div class=" col-md-12">
-                <input type="password" name="password" ng-model="user.password" class="form-control input-lg redondend-border" id="inputPassword3" placeholder="Senha">
+                <input type="password" name="password" ng-model="user.password" class="form-control input-lg redondend-border" id="inputPassword3"
+                  placeholder="Senha">
               </div>
             </div>
             <div class="form-group m-b-10">
@@ -44,12 +53,15 @@
             </div>
             <div class="form-group">
               <div class="col-md-12">
-                <p>Ainda não possui conta? <a ui-sref="registerUser">Cadastre-se</a></p>
+                <p>Ainda não possui conta? <a ui-sref="registerUser" ng-click="openRegister()">Cadastre-se</a></p>
               </div>
             </div>
           </form>
         </div>
       </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

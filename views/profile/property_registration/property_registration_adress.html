@@ -9,7 +9,9 @@
 <div class="form-group col-md-12" ng-controller="propertyRegistrationController">
     <label for="number">Rua</label>
     <input g-places-autocomplete type="text" class="form-control redondend-border" name="address" options="autocompleteOptions"
-        ng-model="address" autocomplete="off" force-selection="true" placeholder="Busque por rua ou bairro" ng-change="searchAdress()"
+        ng-model="address" autocomplete="off" force-selection="true" 
+        placeholder="Busque por rua ou bairro" 
+        ng-change="searchAdress()"
         required>
     <div ng-show="fillAddress || formProperty.address.$touched">
         <p ng-show="formProperty.address.$error.required" class="help-block error">Endereço é obrigatório.</p>

@@ -22,13 +22,16 @@ var app = angular
     'ngMaterial',
     'slick',
     'ui.bootstrap',
-    'angular-img-cropper'
+    'angular-img-cropper',
+    'directive.g+signin'
   ]);
 
 app.constant('config', {
   apiUrl: 'https://api.meualu.com/'
   // apiUrl: 'http://localhost:3000/'
+
 });
+
 
 app.filter('capitalize', function () {
   return function (input) {
@@ -82,6 +85,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
   $urlRouterProvider.otherwise('/');
   // Utilizando o HTML5 History API
   /*   $locationProvider.html5Mode(true); */
+
 
   $stateProvider
     .state('home', {
@@ -157,71 +161,57 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
         }]
       }
     })
-    .state('editarPerfil', {
+    .state('perfil.info', {
       controller: 'editProfileController',
-      url: '/perfil/editar',
+      url: '/info',
+      templateUrl: 'views/profile/profile_info.html',
+    })
+    .state('perfil.editar', {
+      controller: 'editProfileController',
+      url: '/editar',
       templateUrl: 'views/profile/edit_profile.html',
-      resolve: {
-        deps: ['$ocLazyLoad', function ($ocLazyLoad) {
-          return $ocLazyLoad.load('js/directives/header/header.js');
-        }]
-      }
     })
     .state('cadastrarImovel', {
       controller: 'propertyRegistrationController',
       url: '/perfil/novo-imovel',
       templateUrl: 'views/profile/property_registration/property_registration.html',
-      resolve: {
-        deps: ['$ocLazyLoad', function ($ocLazyLoad) {
-          return $ocLazyLoad.load('js/directives/header/header.js');
-        }]
-      }
     })
-
-    /*     
-       .state('admin', {
-         url: '/admin',
-         templateUrl: 'views/default_layout.html',
-       })
-       .state('admin.properties', {
-         url: '/properties',
-         templateUrl: 'views/properties/list.html',
-         controller: 'PropertiesListController'
-       })
-       .state('admin.addProperties', {
-         url: '/properties/add',
-         templateUrl: 'views/properties/add.html',
-         controller: 'PropertiesAddController'
-       })
-       .state('admin.editProperties', {
-         url: '/properties/edit/:id',
-         templateUrl: 'views/properties/edit.html',
-         controller: 'PropertiesEditController'
-       })
-       .state('admin.deleteProperties', {
-         url: '/properties/delete/:id',
-         templateUrl: 'views/properties/delete.html',
-         controller: 'PropertiesDeleteController'
-       });
-    
-     */
-
     .state('cadastrarImovel.address', {
       url: '/address',
       templateUrl: 'views/profile/property_registration/property_registration_adress.html'
     })
-
-    // url will be /form/interests
     .state('cadastrarImovel.details', {
       url: '/details',
       templateUrl: 'views/profile/property_registration/property_registration_details.html'
     })
-
-    // url will be /form/payment
     .state('cadastrarImovel.images', {
       url: '/images',
       templateUrl: 'views/profile/property_registration/property_registration_images.html'
-    });
+    })
 
+    .state('admin', {
+      url: '/admin',
+      templateUrl: 'views/default_layout.html',
+    })
+    .state('admin.properties', {
+      url: '/properties',
+      templateUrl: 'views/properties/list.html',
+      controller: 'PropertiesListController'
+    })
+    .state('admin.addProperties', {
+      url: '/properties/add',
+      templateUrl: 'views/properties/add.html',
+      controller: 'PropertiesAddController'
+    })
+    .state('admin.editProperties', {
+      url: '/properties/edit/:id',
+      templateUrl: 'views/properties/edit.html',
+      controller: 'PropertiesEditController'
+    })
+    .state('admin.deleteProperties', {
+      url: '/properties/delete/:id',
+      templateUrl: 'views/properties/delete.html',
+      controller: 'PropertiesDeleteController'
+    });
 });
 

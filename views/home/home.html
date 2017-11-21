@@ -13,10 +13,15 @@
               <a class="text-yellow" ui-sref="proprietario">Anuncie seu apê</a>
             </li>
             <li class="bold text-uppercase cursor-pointer" ng-hide="current_user">
-              <a class="text-white" data-toggle="modal" data-target="#modalLogin">Login</a>
+              <li class="bold text-uppercase cursor-pointer" ng-hide="current_user">
+                <a class="text-white" data-toggle="modal" data-target="#modalLogin">
+                    <img src="assets/imagens/icones/account.png" width="15" height="15" class="margin-bottom-5">
+                        Entrar
+                    </a>
+              </li>
             </li>
             <li class="bold text-uppercase cursor-pointer" ng-show="current_user">
-              <a class="text-white" ui-sref="perfil">{{current_user.name}}</a>
+              <a class="text-white" ui-sref="perfil.info">{{current_user.name}}</a>
             </li>
             <li class="bold text-uppercase cursor-pointer" ng-show="current_user" ng-controller="UserSessionsSignOut">
               <a class="text-white" ng-click="sign_out()">Logout</a>
@@ -119,4 +124,3 @@
 </section>
 <div ng-include="'views/shared/_footer.html'"></div>
 <div ng-include="'views/home/_sign_in_modal.html'"></div>
-<div ng-include="'views/home/_register_user_modal.html'"></div>

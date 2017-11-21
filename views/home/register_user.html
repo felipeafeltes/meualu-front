@@ -1,49 +1,123 @@
-<section class="full-heigth text-white bg-yellow bg-principal font-18">
+<section class="full-heigth text-white bg-yellow bg-principal font-18" style="position:relative">
     <div class="bg-full-purple"></div>
     <div class="container-video container">
         <nav class="navbar navbar-home">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <a class="navbar-brand" ui-sref="home">
-                  <img src="assets/imagens/icones/logo_alu_amarelo_beta.png" class="img-responsive logo-heigth">
+                  <img src="assets/imagens/icones/logo_branco.png" class="img-responsive" width="120">
                 </a>
                 </div>
                 <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-8">
                     <ul class="nav navbar-nav">
                         <li class="bold text-uppercase">
-                            <a class="text-yellow" ui-sref="proprietario">Anuncie seu apê</a>
+                            <a class="text-yellow" ui-sref="proprietario">Anuncie aqui</a>
                         </li>
                         <li class="bold text-uppercase cursor-pointer" ng-hide="current_user">
-                            <a class="text-white" data-toggle="modal" data-target="#modalLogin">Login</a>
-                        </li>
-                        <li class="bold text-uppercase cursor-pointer" ng-show="current_user">
-                            <a class="text-white" ui-sref="perfil">{{current_user.name}}</a>
-                        </li>
-                        <li class="bold text-uppercase cursor-pointer" ng-show="current_user" ng-controller="UserSessionsSignOut">
-                            <a class="text-white" ng-click="sign_out()">Logout</a>
+                            <a class="text-white" href="#" data-toggle="modal" data-target="#modalLogin" ng-click="openLogin()">
+                            <img src="assets/imagens/icones/account.png" width="15" height="15" class="margin-bottom-5">
+                                Entrar
+                            </a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
-        <div class="col-md-6 col-md-offset-6">
-            <div class="panel panel-imoveis">
-                <div class="panel-header">
-                    <button class="btn btn-block btn-primary btn-lg m-t-20 redondend-border" ng-click="authenticate('facebook')">Acessar com Facebook</button>
-                    <button class="btn btn-block btn-danger btn-lg m-t-10 redondend-border">Acessar com Google+</button>
-                    <div class="row">
-                        <div class="col-md-5">
-                            <hr>
-                        </div>
-                        <div class="col-md-2 text-center p-t-8 black-text">OU</div>
-                        <div class="col-md-5">
-                            <hr>
+        <div class="row">
+            <div class="col-md-6 margin-top-50">
+                <h1 class="text-yellow">Achamos o aluguel tão complicado que resolvemos simplificar até no nome.</h1>
+                <h1>Muito prazer, somos a ALU.</h1>
+                <p class="margin-top-50">Todas as pessoas devem ter o direito e o acesso fácil às opções de moradia. A única preocupação deveria ser
+                    escolher o melhor lugar para viver. Bom, nós acreditamos que seja possível deixar tudo mais leve, diminuir
+                    drasticamente a burocracia, digitalizar os processos e deixar o poder em suas mãos...</p>
+                <h1 class="text-yellow">Quer fazer parte disto?</h1>
+            </div>
+            <div class="col-md-5 col-md-offset-1">
+                <div class="panel panel-imoveis">
+                    <div class="panel-header" ng-controller="OauthSessionsAuthenticate">
+                        <button class="btn btn-block btn-primary btn-lg m-t-20 redondend-border" ng-click="authenticate('facebook')">Acessar com Facebook</button>
+                        <button class="btn btn-block btn-danger btn-lg m-t-10 redondend-border">Acessar com Google+</button>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <hr>
+                            </div>
+                            <div class="col-md-2 text-center p-t-8 black-text">OU</div>
+                            <div class="col-md-5">
+                                <hr>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12 register-form" ng-controller="UserSessionsRegister">
+                                <form name="formAdd" ng-submit="register(formAdd.$valid)" class="form-horizontal" novalidate>
+                                    <div class="form-group" style="margin-bottom:0px;">
+                                        <h3 class="text-purple no-top">Criar Conta</h3>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Seu Email</label>
+                                        <input type="email" name="email" ng-model="user.email" class="form-control input-lg redondend-border" placeholder="E-mail"
+                                            required>
+                                        <div ng-show="formAdd.$submitted || formAdd.email.$touched">
+                                            <p ng-show="formAdd.email.$error.required" class="help-block error">Email é obrigatório.</p>
+                                            <p ng-show="formAdd.email.$error.email" class="help-block error">Email não é válido.</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Nome Completo</label>
+                                        <input type="text" name="name" ng-model="user.name" class="form-control input-lg redondend-border" placeholder="Nome" required>
+                                        <div ng-show="formAdd.$submitted || formAdd.name.$touched">
+                                            <p ng-show="formAdd.name.$error.required" class="help-block error">Nome é obrigatório.</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group m-b-10">
+                                        <label>Telefone</label>
+                                        <input type="text" name="phone_primary" ng-model="user.phone_primary" class="form-control input-lg redondend-border" placeholder="Telefone">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Criar Senha</label>
+                                        <input type="password" name="password" ng-model="user.password" class="form-control input-lg redondend-border" placeholder="Senha"
+                                            required>
+                                        <div ng-show="formAdd.$submitted || formAdd.password.$touched">
+                                            <p ng-show="formAdd.password.$error.required" class="help-block error">Senha é obrigatório.</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <h3 class="text-purple no-top">Aniversário</h3>
+                                        <small style="font-size:80%">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras convallis venenatis diam nec viverra.</small>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-3" style="padding-left: 0px;">
+                                            <input type="number" max="99" name="day" ng-model="user.day_birthday" class="form-control input-lg redondend-border" placeholder="Dia">
+                                        </div>
+                                        <div class="col-md-3" style="padding-left: 0px;">
+                                            <input type="number" max="99" name="month" ng-model="user.month_birthday" class="form-control input-lg redondend-border"
+                                                placeholder="Mês">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="number" max="9999" name="year" ng-model="user.year_birthday" class="form-control input-lg redondend-border" placeholder="Ano">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="checkbox p-t-0">
+                                            <label>
+                                                <input type="checkbox" name="newsletter" ng-model="user.newsletter" ng-checked="formAdd.first_name.$touched"> 
+                                                Gostaria de receber cupons, promoções, pesquisas e novidades por e-mail sobre o MeuAlu.
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-block btn-lg btn-green login redondend-border">Cadastrar</button>
+                                        <img ng-if="!response" src="assets/imagens/loading.gif" width="50" height="50" class="loading-img img-center">
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-12 text-center">
+                                            <p>Já possui conta? <a href="#" data-toggle="modal" data-target="#modalLogin" ng-click="openLogin()">Acesse Aqui</a></p>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -19,8 +19,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <img ng-if="!uploadedImage" src="assets/imagens/loading.gif" width="50" height="50" class="loading-img pull-right">
-                <button type="button" ng-click="saveImage()" class="btn btn-primary">Salvar</button>
+                <img ng-if="uploadedImage" src="assets/imagens/loading.gif" width="35" height="35" class="loading-img pull-right">
+                <button type="button" ng-click="saveImage()" class="btn btn-primary pull-right" ng-disabled="uploadedImage">Salvar</button>
             </div>
         </div>
         <!-- /.modal-content -->

@@ -11,15 +11,18 @@
                         <div class="profile-header">
                             <h3 class="h3-header text-green bold">{{profile_name}}</h3>
                             <div class="profile-links">
-                                <a href="#" class="links">
-                                     Editar Perfil
-                                </a>
+                                <a href="#" ui-sref="perfil.info" class="links">
+                                      Meu perfil
+                                    </a>
+                                <a href="#" ui-sref="perfil.editar" class="links">
+                                      Editar Perfil
+                                    </a>
                                 <a href="#" class="links">
                                       Contratos
-                                </a>
-                                <a href="#" class="links">
-                                        Cadastrar Imóvel           
-                                </a>
+                                    </a>
+                                <a href="#" class="links" ui-sref="cadastrarImovel.address">
+                                      Cadastrar Imóvel           
+                                    </a>
                             </div>
                         </div>
                     </div>
@@ -63,7 +66,7 @@
                                         </ul>
                                     </div>
 
-                                    <form name="formProperty" id="signup-form" ng-controller="propertyRegistrationController" ng-submit="processForm()">
+                                    <form name="formProperty" id="form-views" ng-submit="processForm()">
 
                                         <div id="form-views" ui-view>
 

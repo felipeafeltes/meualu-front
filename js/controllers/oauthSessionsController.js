@@ -2,7 +2,7 @@
     'use strict';
   app.controller('OauthSessionsAuthenticate', OauthSessionsAuthenticate);
 
-  function OauthSessionsAuthenticate($scope, OauthUser, $rootScope, $auth) {
+  function OauthSessionsAuthenticate($scope, OauthUser, $rootScope, $auth, $state) {
       $scope.user = new OauthUser();
 
       $scope.authenticate = function(provider) {
@@ -11,6 +11,7 @@
             localStorage.setItem('token', response.data.auth_token)
             $rootScope.current_user = response.data.user;
             $('#modalLogin').modal('hide');
+            $state.go('perfil');
           })
           .catch(function(error) {
             _showValidationErrors($scope, error);

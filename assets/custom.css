@@ -61,6 +61,9 @@ a.text-yellow:hover{color:#f4cc6a;}
 .text-white{color:#fff;}
 .text-white:hover{color:#fff;}
 .text-white:visited{color:#fff;}
+.margin-bottom-5{margin-bottom: 5px}
+.margin-top-50{margin-top:50px}
+.no-top{margin-top:0px;margin-bottom: 0px}
 .bold{font-family: 'Circular std bold' }
 .btn-purple{color:#fff;background-color:transparent;border-color:#fff;border:2px solid #fff;border-radius:2px;font-weight:bold;padding:10px 30px;}
 .btn-purple.full{background:#5f447b;border:0px;padding-top: 15px; padding-bottom: 15px; font-size: 18px;}
@@ -240,6 +243,10 @@ input.search-header:focus {
   display: flex !important;
   justify-content: center;
   flex-direction: column;
+}
+
+.register-form{
+  color:#b1b1b0; 
 }
 
 .navbar-purple {
@@ -937,6 +944,9 @@ span.round-tab:hover {
       left: 35%;
   }
 }
+.padding-15{
+  padding-left: 15px;
+}
 
 /* Animations */
 .div-thanks > i {
@@ -961,4 +971,58 @@ span.round-tab:hover {
   50%  {left:10px; top:10px;}
   75%  {left:-10px; top:10px;}
   100% {left:-10px; top:0px;}
+}
+
+/* style.css */
+/* ANIMATION STYLINGS
+============================================================================= */
+#signup-form            { position:relative; min-height:300px; overflow:hidden; padding:30px; }
+#form-views             { width:auto; }
+
+/* basic styling for entering and leaving */
+/* left and right added to ensure full width */
+#form-views.ng-enter,
+#form-views.ng-leave      { position:absolute; left:30px; right:30px;
+    transition:0.5s all ease; -moz-transition:0.5s all ease; -webkit-transition:0.5s all ease; 
+}
+
+/* enter animation */
+#form-views.ng-enter            { 
+    -webkit-animation:slideInRight 0.5s both ease;
+    -moz-animation:slideInRight 0.5s both ease;
+    animation:slideInRight 0.5s both ease; 
+}
+
+/* leave animation */
+#form-views.ng-leave            { 
+    -webkit-animation:slideOutLeft 0.5s both ease;
+    -moz-animation:slideOutLeft 0.5s both ease;
+    animation:slideOutLeft 0.5s both ease;   
+}
+
+/* ANIMATIONS
+============================================================================= */
+/* slide out to the left */
+@keyframes slideOutLeft {
+    to      { transform: translateX(-200%); }
+}
+@-moz-keyframes slideOutLeft {  
+    to      { -moz-transform: translateX(-200%); }
+}
+@-webkit-keyframes slideOutLeft {
+    to      { -webkit-transform: translateX(-200%); }
+}
+
+/* slide in from the right */
+@keyframes slideInRight {
+    from    { transform:translateX(200%); }
+    to      { transform: translateX(0); }
+}
+@-moz-keyframes slideInRight {
+    from    { -moz-transform:translateX(200%); }
+    to      { -moz-transform: translateX(0); }
+}
+@-webkit-keyframes slideInRight {
+    from    { -webkit-transform:translateX(200%); }
+    to      { -webkit-transform: translateX(0); }
 }

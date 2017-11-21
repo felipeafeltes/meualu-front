@@ -1,35 +1,35 @@
-app.factory('httpPostImageFactory', function ($http) {
+app.factory('httpPostImageFactory', function ($http, config) {
     return function (_url, data, callback) {
         $http({
-            url: _url,
+            url: config.apiUrl + 'pictures',
             method: "POST",
             data: data,
             headers: { 'Content-Type': undefined }
         }).then(
-            function (response) {
-                console.log(response);
+            function successCallback(response) {
+                return response;
             },
-            function (err) {
-                console.log(err);
+            function errorCallback(error) {
+                return error;
             }
-            );
+        );
     };
 });
 
-app.factory('httpDeleteImageFactory', function ($http) {
+app.factory('httpDeleteImageFactory', function ($http, config) {
     return function (_url, data, callback) {
         $http({
-            url: _url,
+            url: config.apiUrl + 'pictures',
             method: "DELETE",
             data: data,
             headers: { 'Content-Type': undefined }
         }).then(
             function (response) {
-                console.log(response);
+                return response;
             },
             function (err) {
-                console.log(err);
+                return err;
             }
-            );
+        );
     };
 });

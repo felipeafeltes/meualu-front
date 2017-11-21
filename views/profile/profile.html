@@ -2,7 +2,7 @@
   <header></header>
   <div ng-if="!hasProperties || !hasData" class="row" style="height:700px">
     <div class="col-sm-12 full-size">
-        <img class="loading-data" width="130" src="assets/imagens/loadingRipple.gif">
+      <img class="loading-data" width="130" src="assets/imagens/loadingRipple.gif">
     </div>
   </div>
   <div class="container-fluid" ng-if="!hasProperties || !hasData">
@@ -70,7 +70,10 @@
             </div>
 
             <div class="profile-links">
-              <a href="#" ui-sref="editarPerfil" class="links">
+              <a href="#" ui-sref="perfil.info" class="links">
+                Meu perfil
+              </a>
+              <a href="#" ui-sref="perfil.editar" class="links">
                 Editar Perfil
               </a>
               <a href="#" class="links">
@@ -83,41 +86,12 @@
           </div>
         </div>
         <div class="col-sm-12 col-md-7 col-lg-7 profile-properties-details">
-          <div class="panel panel-imoveis">
-            <div class="panel-header">
-              <h2 class="bold text-responsive-center">Imóveis Cadastrados</h2>
-            </div>
-            <div class="panel-body">
 
-              <div class="col-sm-12 panel-ngFor-divs" ng-repeat="property in properties">
-                <div class="col-md-5 responsive-properties-div">
-                  <div class="div-properties-details">
-                    <button type="button" class="fa fa-trash pull-right"></button>
-                    <button type="button" class="fa fa-edit pull-right"></button>
-                    <h4 class="text-dark">{{ property.full_address }}</h4>
-                    <p>{{property.address}}</p>
-                    <ul class="properties-details">
-                      <li><i class="fa fa-bed"></i> {{ property.bedrooms }} dorms</li>
-                      <li><i class="fa fa-car"></i> {{ property.garages }} vagas</li>
-                      <li><i class="fa fa-regua"></i> {{ property.total_area }} m²</li>
-                    </ul>
-                  </div>
-                  <div class="properties-price">
-                    <p class="text-green font-size-20">
-                      Aluguel: R$ {{ property.rental | currency }}
-                    </p>
-                    <p class="text-green font-size-20">
-                      Valor total: R$ {{ property.total_rental | currency }}
-                    </p>
-                  </div>
-                </div>
-                <div class="col-md-7 no-padding responsive-properties-div">
-                  <img ng-src="{{property.img_url}}" class="img-bordered img-responsive" alt="Responsive image">
-                </div>
-              </div>
+          <div ui-view>
 
-            </div>
           </div>
+
+
         </div>
       </div>
     </div>

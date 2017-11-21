@@ -3,7 +3,14 @@
 
     app.controller('propertyRegistrationController', propertyRegistrationController);
 
-    function propertyRegistrationController($rootScope, $scope, $state, myPropertiesService, httpPostImageFactory, httpDeleteImageFactory) {
+    function propertyRegistrationController(
+        $rootScope,
+        $scope,
+        $state,
+        myPropertiesService,
+        httpPostImageFactory,
+        httpDeleteImageFactory,
+    ) {
         //IMAGE CROPPER
         $scope.cropper = {};
         $scope.cropper.sourceImage = null;
@@ -16,7 +23,7 @@
 
         //IMAGES UPLOADED
         $scope.images = [];
-        $scope.uploadedImage = true;
+        $scope.uploadedImage = false;
 
         //PROPERTY VARS
         $scope.propertie = new myPropertiesService();
@@ -31,39 +38,39 @@
                 number: '',
                 complement: ''
             };
+
+        $rootScope.googleApiAddress;
         $scope.infos = {};
         $scope.fillAddress = false;
         $scope.fillDetails = false;
 
         $scope.processForm = function () {
+            $scope.propertie.address = $rootScope.googleApiAddress;
+            $scope.propertie.extra_infos = $scope.infos;
             console.log($scope.propertie);
         }
 
         $scope.processAdress = function (isValid) {
-            console.log(isValid)
             $scope.fillAddress = true;
-            if(isValid){
-                $scope.propertie.address = $scope.formAdress;
+            if (isValid) {
                 $('.connecting-line-center').addClass('active');
                 $('#addressForm').addClass('active');
-                $('#detailsForm').addClass('active');
+                $('#detailsForm').addClass('active  ');
                 $state.go('cadastrarImovel.details');
-                console.log($scope.propertie);
-            }   
+            }
         }
 
         $scope.processDetails = function () {
-            $scope.propertie.extra_infos = $scope.infos;
             $('.connecting-line-right').addClass('active');
             $('#imagesForm').addClass('active');
             $state.go('cadastrarImovel.images');
             $scope.fillDetails = true;
-            console.log($scope.propertie);
         }
 
+
+        //IMAGENS
         $scope.saveImage = function () {
             $scope.uploadedImage = true;
-
             if ($scope.cropper.croppedImage !== null) {
                 //UPLOAD IMAGE
                 var base64ImageContent = $scope.cropper.croppedImage.replace(/^data:image\/(png|jpg);base64,/, "");
@@ -74,12 +81,12 @@
                 httpPostImageFactory('upload_image.php', formData,
                     function (callback) {
                         console.log(callback);
-                        $scope.uploadedImage = true;
-                    });
-
-                $scope.images.push({ url: $scope.cropper.croppedImage });
-
-                $('#croppImage').modal('hide');
+                        $('#croppImage').modal('hide');
+                        $scope.images.push({ url: $scope.cropper.croppedImage });
+                        $scope.uploadedImage = false;
+                        toastr.error('CALLBACK');
+                    },
+                );
             }
         }
 
@@ -90,49 +97,6 @@
                 });
             $scope.images.splice(i, 1);
             toastr.info('Imagem removida!');
-        }
-
-        $scope.searchAdress = function () {
-            var address = $scope.address;
-            if (address) {
-                if (address.formatted_address != undefined && $rootScope.address_string != address.formatted_address) {
-                    $rootScope.address_string = address.formatted_address;
-                }
-                if (address.geometry != undefined) {
-                    $rootScope.lng = address.geometry.location.lng();
-                    $rootScope.lat = address.geometry.location.lat();
-                }
-            } else {
-                $rootScope.lat = "-30.0490415";
-                $rootScope.lng = "-51.1916632";
-            }
-            if (address.address_components !== undefined) {
-
-                if (address.address_components[5] !== undefined) {
-                    $scope.formAdress.street = address.address_components[0].long_name;
-                    $scope.formAdress.district = address.address_components[1].long_name;
-                    $scope.formAdress.city = address.address_components[2].long_name;
-                    $scope.formAdress.state = address.address_components[3].short_name;
-                    $scope.formAdress.country = address.address_components[4].short_name;
-                    $scope.formAdress.zip_code = address.address_components[5].long_name;
-                } else {
-                    $scope.formAdress.street = address.address_components[0].long_name;
-                    $scope.formAdress.city = address.address_components[1].long_name;
-                    $scope.formAdress.state = address.address_components[2].short_name;
-                    $scope.formAdress.country = address.address_components[3].long_name;
-                    $scope.formAdress.zip_code = address.address_components[4].long_name;
-                }
-            }
-        }
-
-        var PoABounds = new google.maps.LatLngBounds(
-            new google.maps.LatLng(-30.255998, -51.224980),
-            new google.maps.LatLng(-29.963159, -51.096578));
-
-        $scope.autocompleteOptions = {
-            componentRestrictions: { country: 'br' },
-            bounds: PoABounds,
-            types: ['address']
         }
 
         //Transforma a imagem cortada de base64 pra blob
@@ -158,6 +122,55 @@
             return new Blob(byteArrays, { type: mime });
         }
 
+
+        //ENDEREÇO
+        $scope.searchAdress = function () {
+            let address = $scope.address;
+            if (address) {
+                if (address.formatted_address != undefined && $rootScope.address_string != address.formatted_address) {
+                    $rootScope.address_string = address.formatted_address;
+                }
+                if (address.geometry != undefined) {
+                    $rootScope.lng = address.geometry.location.lng();
+                    $rootScope.lat = address.geometry.location.lat();
+                }
+            } else {
+                $rootScope.lat = "-30.0490415";
+                $rootScope.lng = "-51.1916632";
+            }
+            if (address.address_components) {
+                if (address.address_components[5] !== undefined) {
+                    $scope.formAdress.street = address.address_components[0].long_name;
+                    $scope.formAdress.district = address.address_components[1].long_name;
+                    $scope.formAdress.city = address.address_components[2].long_name;
+                    $scope.formAdress.state = address.address_components[3].short_name;
+                    $scope.formAdress.country = address.address_components[4].short_name;
+                    $scope.formAdress.zip_code = address.address_components[5].long_name;
+                } else if (address.address_components[4] !== undefined) {
+                    $scope.formAdress.street = address.address_components[0].long_name;
+                    $scope.formAdress.city = address.address_components[1].long_name;
+                    $scope.formAdress.state = address.address_components[2].short_name;
+                    $scope.formAdress.country = address.address_components[3].long_name;
+                    $scope.formAdress.zip_code = address.address_components[4].long_name;
+                } else {
+                    $scope.formAdress.street = address.address_components[0].long_name;
+                    $scope.formAdress.city = address.address_components[1].long_name;
+                    $scope.formAdress.state = address.address_components[2].short_name;
+                    $scope.formAdress.country = address.address_components[3].long_name;
+                }
+            }
+            $rootScope.googleApiAddress = $scope.formAdress;
+        }
+
+        var PoABounds = new google.maps.LatLngBounds(
+            new google.maps.LatLng(-30.255998, -51.224980),
+            new google.maps.LatLng(-29.963159, -51.096578));
+
+        $scope.autocompleteOptions = {
+            componentRestrictions: { country: 'br' },
+            bounds: PoABounds,
+            types: ['address']
+        }
     }
 
 })();

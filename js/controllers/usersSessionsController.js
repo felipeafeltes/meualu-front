@@ -11,22 +11,37 @@
             $('#modalLogin').modal('hide');
         }
 
-    
+
         $scope.sign_in = function () {
             $scope.user.$sign_in(
                 // success
                 function (data) {
+                    console.log("success")
                     localStorage.setItem('token', data.auth_token)
                     $rootScope.current_user = data.user;
                     $('#modalLogin').modal('hide');
+                    $state.go('perfil.info');
                 },
                 // error
                 function (error) {
-                    console.log(error)
+                    console.log("error")
                     _showValidationErrors($scope, error);
                 }
             );
         };
+
+        //API COM GOOGLE LOGIN
+        $scope.$on('event:google-plus-signin-success', function (event, authResult) {
+            // Send login to server or save into cookie
+            console.log(event)
+            console.log(authResult)
+        });
+        $scope.$on('event:google-plus-signin-failure', function (event, authResult) {
+            // Auth failure or signout detected
+            console.log(event)
+            console.log(authResult)
+        });
+        
     }
 
     function UserSessionsSignOut($scope, $rootScope, $state) {
@@ -36,10 +51,14 @@
         };
     }
 
-    function UserSessionsRegister($scope, UsersService , $rootScope, $state) {
+    function UserSessionsRegister($scope, UsersService, $rootScope, $state) {
         $scope.dataUser = {};
         $scope.user = new UsersService();
         $scope.response = true;
+
+        $scope.openLogin = function () {
+            $('#modalLogin').modal('show');
+        }
 
         $scope.register = function (isValid) {
             if (isValid) {
@@ -48,12 +67,12 @@
                     // success
                     function (data) {
                         $scope.response = true;
-                        console.log(data)
+                        console.log("success")
                     },
                     // error
                     function (error) {
                         $scope.response = true;
-                        console.log(error)
+                        console.log("error")
                         _showValidationErrors($scope, error);
                     }
                 );
