@@ -10,7 +10,7 @@
     <div class="col-sm-12" ng-show="images.length !== 0">
         <h4 class="black-text">Imagens:</h4>
         <div class="col-sm-3 div-thumbnail" ng-repeat="image in images  ">
-            <img src="{{image.url}}" class="img-thumbnail" width="200" height="200">
+            <img ng-src="{{image.url}}" class="img-thumbnail" width="200" height="200">
             <button type="button" ng-click="deleteImage($index,image.url)" class="btn btn-redounded">
                 <span class="glyphicon glyphicon glyphicon-remove font-size-20"></span>
             </button>

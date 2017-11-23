@@ -1,35 +1,33 @@
-app.factory('httpPostImageFactory', function ($http, config) {
-    return function (_url, data, callback) {
-        $http({
-            url: config.apiUrl + 'pictures',
-            method: "POST",
-            data: data,
-            headers: { 'Content-Type': undefined }
-        }).then(
-            function successCallback(response) {
-                return response;
+(function () {
+    'use strict';
+    angular
+    .module('uploadImageService', ['ngResource', 'ngRoute'])
+    
+    app.factory('ImageService', ImageService);    
+    
+    ImageService.$inject = ['$resource', 'config']; 
+    
+    
+    function ImageService($resource, config) {
+        var image = $resource(config.apiUrl + 'pictures/:id',{ id:'@id'},
+        {
+            upload: 
+            {
+                method: 'POST',
+                transformRequest: _transform_request
             },
-            function errorCallback(error) {
-                return error;
+            delete:
+            {
+                method: 'DELETE'
             }
-        );
-    };
-});
+        });       
 
-app.factory('httpDeleteImageFactory', function ($http, config) {
-    return function (_url, data, callback) {
-        $http({
-            url: config.apiUrl + 'pictures',
-            method: "DELETE",
-            data: data,
-            headers: { 'Content-Type': undefined }
-        }).then(
-            function (response) {
-                return response;
-            },
-            function (err) {
-                return err;
-            }
-        );
-    };
-});
+        function _transform_request(data) {
+            data = { "pictures": data }
+            return angular.toJson(data);
+        }
+        
+        return image;
+    }
+    
+})();

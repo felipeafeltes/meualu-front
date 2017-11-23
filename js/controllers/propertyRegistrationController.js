@@ -1,16 +1,18 @@
 (function () {
     'use strict';
-
+    
     app.controller('propertyRegistrationController', propertyRegistrationController);
-
+    
     function propertyRegistrationController(
         $rootScope,
         $scope,
         $state,
         config,
+        ExtraInfo,
+        ExtraInfoProperty,
+        ExtraInfoCondominium,
         myPropertiesService,
-        httpPostImageFactory,
-        httpDeleteImageFactory,
+        ImageService
     ) {
         //IMAGE CROPPER
         $scope.cropper = {};
@@ -21,36 +23,53 @@
         $scope.bounds.right = 0;
         $scope.bounds.top = 0;
         $scope.bounds.bottom = 0;
-
+        
         //IMAGES UPLOADED
         $scope.images = [];
         $scope.uploadedImage = false;
-
+        
+        //EXTRA INFOS
+        ExtraInfo.get().$promise.then(
+            function(data){
+                console.log(data)
+            }
+        );
+        ExtraInfoProperty.get().$promise.then(
+            function(data){
+                console.log(data)
+            }
+        );
+        ExtraInfoCondominium.get().$promise.then(
+            function(data){
+                console.log(data)
+            }
+        );
+        
         //PROPERTY VARS
         $scope.propertie = new myPropertiesService();
         $scope.formAdress =
-            {
-                street: '',
-                district: '',
-                zip_code: 0,
-                city: '',
-                state: '',
-                country: '',
-                number: '',
-                complement: ''
-            };
-
+        {
+            street: '',
+            district: '',
+            zip_code: 0,
+            city: '',
+            state: '',
+            country: '',
+            number: '',
+            complement: ''
+        };
+        
         $rootScope.googleApiAddress;
         $scope.infos = {};
         $scope.fillAddress = false;
         $scope.fillDetails = false;
-
+        
         $scope.processForm = function () {
             $scope.propertie.address = $rootScope.googleApiAddress;
             $scope.propertie.extra_infos = $scope.infos;
             console.log($scope.propertie);
         }
-
+        
         $scope.processAdress = function (isValid) {
             $scope.fillAddress = true;
             if (isValid) {
@@ -60,50 +79,46 @@
                 $state.go('perfil.cadastrarImovel.details');
             }
         }
-
+        
         $scope.processDetails = function () {
             $('.connecting-line-right').addClass('active');
             $('#imagesForm').addClass('active');
             $state.go('perfil.cadastrarImovel.images');
             $scope.fillDetails = true;
         }
-
-
+        
+        
         //IMAGENS
         $scope.saveImage = function () {
             $scope.uploadedImage = true;
             if ($scope.cropper.croppedImage !== null) {
-                //UPLOAD IMAGE
-                /* let imagePost = $scope.cropper.croppedImage.replace(/^data:image\/(png|jpg);base64,/, ""); */
-                let data = {
-                    pictures: {
-                        cover: false,
-                        content: imagePost
-                    }
+                let dataPost = {
+                    cover: false,
+                    content: $scope.cropper.croppedImage
+                    
                 }
-                data = JSON.parse(data);
-                console.log(data)
-                httpPostImageFactory(config.apiUrl + 'pictures', data,
-                    function (callback) {
-                        console.log(callback);
+                ImageService.upload(dataPost).$promise.then(
+                    function(data){
                         $scope.uploadedImage = false;
-                        toastr.error('callback');
-                    },
-                );
-                $('#croppImage').modal('hide');
-                $scope.images.push({ url: $scope.cropper.croppedImage });
+                        $('#croppImage').modal('hide');
+                        $scope.images.push({id:data.id ,url: data.url });
+                        toastr.success('Upload concluído');
+                    }
+                )
+                
             }
         }
-
+        
         $scope.deleteImage = function (i, id) {
-            httpDeleteImageFactory('upload_image.php', id,
-                function (callback) {
-                    console.log(callback);
-                });
+            ImageService.delete(id).$promise.then(
+                function(data){
+                    console.log(data)
+                }
+            )
             $scope.images.splice(i, 1);
             toastr.info('Imagem removida!');
         }
-
+        
         //ENDEREÇO
         $scope.searchAdress = function () {
             let address = $scope.address;
@@ -142,17 +157,18 @@
             }
             $rootScope.googleApiAddress = $scope.formAdress;
         }
-
+        
         var PoABounds = new google.maps.LatLngBounds(
             new google.maps.LatLng(-30.255998, -51.224980),
             new google.maps.LatLng(-29.963159, -51.096578));
-
-        $scope.autocompleteOptions = {
-            componentRestrictions: { country: 'br' },
-            bounds: PoABounds,
-            types: ['address']
+            
+            $scope.autocompleteOptions = {
+                componentRestrictions: { country: 'br' },
+                bounds: PoABounds,
+                types: ['address']
+            }
         }
-    }
-
-})();
-
+        
+    })();
+    
+    

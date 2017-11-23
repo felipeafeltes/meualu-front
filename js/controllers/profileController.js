@@ -48,8 +48,8 @@
         //IMOVEIS DO USUARIO
         $scope.properties.$get(
             function (data) {
-                $scope.hasProperties = true;
                 console.log(data)
+                $scope.hasProperties = true;
                 $scope.properties = data;
             },
         );
