@@ -157,7 +157,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
       templateUrl: 'views/profile/profile.html',
       resolve: {
         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
-          return $ocLazyLoad.load('js/directives/header/header.js');
+          return $ocLazyLoad.load('js/directives/header-logged/header-logged.js');
         }]
       }
     })
@@ -171,20 +171,20 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
       url: '/editar',
       templateUrl: 'views/profile/edit_profile.html',
     })
-    .state('cadastrarImovel', {
+    .state('perfil.cadastrarImovel', {
       controller: 'propertyRegistrationController',
-      url: '/perfil/novo-imovel',
+      url: '/novo-imovel',
       templateUrl: 'views/profile/property_registration/property_registration.html',
     })
-    .state('cadastrarImovel.address', {
+    .state('perfil.cadastrarImovel.address', {
       url: '/address',
       templateUrl: 'views/profile/property_registration/property_registration_adress.html'
     })
-    .state('cadastrarImovel.details', {
+    .state('perfil.cadastrarImovel.details', {
       url: '/details',
       templateUrl: 'views/profile/property_registration/property_registration_details.html'
     })
-    .state('cadastrarImovel.images', {
+    .state('perfil.cadastrarImovel.images', {
       url: '/images',
       templateUrl: 'views/profile/property_registration/property_registration_images.html'
     })

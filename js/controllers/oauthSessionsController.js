@@ -11,7 +11,7 @@
             localStorage.setItem('token', response.data.auth_token)
             $rootScope.current_user = response.data.user;
             $('#modalLogin').modal('hide');
-            $state.go('perfil');
+            $state.go('perfil.info');
           })
           .catch(function(error) {
             _showValidationErrors($scope, error);

@@ -9,8 +9,8 @@
 
     function myPropertiesService($resource, config) {
 
-        var myselfProperties = $resource(config.apiUrl + '/myself/properties/:token',
-            {token:'@token'}, {
+        var myselfProperties = $resource(config.apiUrl + 'myself/properties',
+            {}, {
                 //Pegar dados Usuario pelo ID
                 get: {
                     method: 'GET',

@@ -1,72 +1,39 @@
 <section>
   <header></header>
-  <div ng-if="!hasProperties || !hasData" class="row" style="height:700px">
-    <div class="col-sm-12 full-size">
-      <img class="loading-data" width="130" src="assets/imagens/loadingRipple.gif">
-    </div>
+
+  <div ng-if="!hasData" class="loading-div">
+    <img class="loading-data" width="130" src="assets/imagens/loadingRipple.gif">
   </div>
-  <div class="container-fluid" ng-if="!hasProperties || !hasData">
+  
+
+  <style>
+    .loading-div {
+      position: absolute;
+      z-index: 99;
+      background-color: #fff;
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+  
+  <div class="container-fluid" ng-if="hasData">
     <div class="row row-list-details text-gray">
       <div class="col-md-12 property-list">
         <div class="col-sm-12 col-md-2 col-lg-2 profile-details">
           <div class="profile">
             <div class="profile-img panel panel-default">
-              <img src="{{profile_img_url}}" class="img-responsive img-profile">
+              <img src="assets/imagens/perfil.jpg" class="img-responsive img-profile">
             </div>
             <div class="profile-header">
               <h3 class="h3-header text-green bold">{{user.name}}</h3>
-              <small>{{user.email}}</small>
-              <div class="profile-stars" ng-if="user.rating === 0">
-                <i class="font-size-20 star-ico fa fa-star-o" aria-hidden="true"></i>
-                <i class="font-size-20 star-ico fa fa-star-o" aria-hidden="true"></i>
-                <i class="font-size-20 star-ico fa fa-star-o" aria-hidden="true"></i>
-                <i class="font-size-20 star-ico fa fa-star-o" aria-hidden="true"></i>
-                <i class="font-size-20 star-ico fa fa-star-o" aria-hidden="true"></i>
-              </div>
-
-
-              <div class="profile-stars" ng-if="user.rating === 1">
-                <i class="font-size-20 star-ico fa fa-star" aria-hidden="true"></i>
-                <i class="font-size-20 star-ico fa fa-star-o" aria-hidden="true"></i>>
-                <i class="font-size-20 star-ico fa fa-star-o" aria-hidden="true"></i>
-                <i class="font-size-20 star-ico fa fa-star-o" aria-hidden="true"></i>
-                <i class="font-size-20 star-ico fa fa-star-o" aria-hidden="true"></i>
-              </div>
-
-
-              <div class="profile-stars" ng-if="user.rating === 2">
-                <i class="font-size-20 star-ico fa fa-star" aria-hidden="true"></i>
-                <i class="font-size-20 star-ico fa fa-star" aria-hidden="true"></i>
-                <i class="font-size-20 star-ico fa fa-star-o" aria-hidden="true"></i>
-                <i class="font-size-20 star-ico fa fa-star-o" aria-hidden="true"></i>
-                <i class="font-size-20 star-ico fa fa-star-o" aria-hidden="true"></i>
-              </div>
-
-              <div class="profile-stars" ng-if="user.rating === 3">
-                <i class="font-size-20 star-ico fa fa-star" aria-hidden="true"></i>
-                <i class="font-size-20 star-ico fa fa-star" aria-hidden="true"></i>
-                <i class="font-size-20 star-ico fa fa-star" aria-hidden="true"></i>
-                <i class="font-size-20 star-ico fa fa-star-o" aria-hidden="true"></i>
-                <i class="font-size-20 star-ico fa fa-star-o" aria-hidden="true"></i>
-              </div>
-
-
-              <div class="profile-stars" ng-if="user.rating === 4">
+              <span>{{user.email}}</span>
+              <!--               <div class="profile-stars">
                 <i class="font-size-20 star-ico fa fa-star" aria-hidden="true"></i>
                 <i class="font-size-20 star-ico fa fa-star" aria-hidden="true"></i>
                 <i class="font-size-20 star-ico fa fa-star" aria-hidden="true"></i>
                 <i class="font-size-20 star-ico fa fa-star" aria-hidden="true"></i>
                 <i class="font-size-20 star-ico fa fa-star-o" aria-hidden="true"></i>
-              </div>
-
-              <div class="profile-stars" ng-if="user.rating === 5">
-                <i class="font-size-20 star-ico fa fa-star" aria-hidden="true"></i>
-                <i class="font-size-20 star-ico fa fa-star" aria-hidden="true"></i>
-                <i class="font-size-20 star-ico fa fa-star" aria-hidden="true"></i>
-                <i class="font-size-20 star-ico fa fa-star" aria-hidden="true"></i>
-                <i class="font-size-20 star-ico fa fa-star" aria-hidden="true"></i>
-              </div>
-
+              </div> -->
             </div>
 
             <div class="profile-links">
@@ -79,7 +46,7 @@
               <a href="#" class="links">
                 Contratos
               </a>
-              <a href="#" class="links" ui-sref="cadastrarImovel.address">
+              <a href="#" class="links" ui-sref="perfil.cadastrarImovel.address">
                 Cadastrar Imóvel           
               </a>
             </div>

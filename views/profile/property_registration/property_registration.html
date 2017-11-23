@@ -1,85 +1,49 @@
-<section>
-    <header></header>
-    <div class="container-fluid">
-        <div class="row row-list-details text-gray">
-            <div class="col-md-12 property-list">
-                <div class="col-sm-12 col-md-2 col-lg-2 profile-details">
-                    <div class="profile">
-                        <div class="profile-img panel panel-default">
-                            <img src="{{profile_img_url}}" class="img-responsive img-profile">
-                        </div>
-                        <div class="profile-header">
-                            <h3 class="h3-header text-green bold">{{profile_name}}</h3>
-                            <div class="profile-links">
-                                <a href="#" ui-sref="perfil.info" class="links">
-                                      Meu perfil
-                                    </a>
-                                <a href="#" ui-sref="perfil.editar" class="links">
-                                      Editar Perfil
-                                    </a>
-                                <a href="#" class="links">
-                                      Contratos
-                                    </a>
-                                <a href="#" class="links" ui-sref="cadastrarImovel.address">
-                                      Cadastrar Imóvel           
-                                    </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-7 col-lg-7 profile-properties-details">
-                    <div class="panel panel-imoveis">
-                        <div class="panel-header">
-                            <h2 class="bold text-responsive-center black-text">Cadastrar Imóvel</h2>
-                            <small class="text-responsive-center">Preencha as etapas a seguir para cadastrar seu imóvel</small>
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="wizard col-sm-12">
-                                    <div class="wizard-inner">
-                                        <div class="connecting-line connecting-line-left active"></div>
-                                        <div class="connecting-line connecting-line-center"></div>
-                                        <div class="connecting-line connecting-line-right"></div>
-                                        <ul class="nav nav-tabs no-border">
-                                            <li id="addressForm" class="active" ui-sref-active="active">
-                                                <a title="Endereço">
+<div class="panel panel-imoveis">
+    <div class="panel-header">
+        <h2 class="bold text-responsive-center black-text">Cadastrar Imóvel</h2>
+        <small class="text-responsive-center">Preencha as etapas a seguir para cadastrar seu imóvel</small>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="wizard col-sm-12">
+                <div class="wizard-inner">
+                    <div class="connecting-line connecting-line-left active"></div>
+                    <div class="connecting-line connecting-line-center"></div>
+                    <div class="connecting-line connecting-line-right"></div>
+                    <ul class="nav nav-tabs no-border">
+                        <li id="addressForm" class="active" ui-sref-active="active">
+                            <a title="Endereço">
                                                     <span class="round-tab">
                                                         <i class="glyphicon glyphicon-home"></i>
                                                     </span>
                                                 </a>
-                                            </li>
+                        </li>
 
-                                            <li id="detailsForm" class="disabled" ui-sref-active="active">
-                                                <a title="Detalhes">
+                        <li id="detailsForm" class="disabled" ui-sref-active="active">
+                            <a title="Detalhes">
                                                     <span class="round-tab">
                                                         <i class="glyphicon glyphicon-list-alt"></i>
                                                     </span>
                                                 </a>
-                                            </li>
-                                            <li id="imagesForm" class="disabled" ui-sref-active="active">
-                                                <a title="Imagens">
+                        </li>
+                        <li id="imagesForm" class="disabled" ui-sref-active="active">
+                            <a title="Imagens">
                                                     <span class="round-tab">
                                                         <i class="glyphicon glyphicon-picture"></i>
                                                     </span>
                                                 </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                    <form name="formProperty" id="form-views" ng-submit="processForm()">
-
-                                        <div id="form-views" ui-view>
-
-                                        </div>
-
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        </li>
+                    </ul>
                 </div>
+
+                <form name="formProperty" id="form-views" ng-submit="processForm()">
+
+                    <div id="form-views" ui-view>
+
+                    </div>
+
+                </form>
             </div>
         </div>
     </div>
-</section>
-<div ng-include="'views/shared/_footer.html'"></div>
+</div>

@@ -22,7 +22,7 @@
                 },
                 //Editar cadastro de usuario
                 update: {
-                    method: 'PUT',
+                    method: 'PATCH',
                     transformRequest: _transform_request
                 },
                 //Deletar usuario

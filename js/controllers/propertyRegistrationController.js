@@ -7,6 +7,7 @@
         $rootScope,
         $scope,
         $state,
+        config,
         myPropertiesService,
         httpPostImageFactory,
         httpDeleteImageFactory,
@@ -56,14 +57,14 @@
                 $('.connecting-line-center').addClass('active');
                 $('#addressForm').addClass('active');
                 $('#detailsForm').addClass('active  ');
-                $state.go('cadastrarImovel.details');
+                $state.go('perfil.cadastrarImovel.details');
             }
         }
 
         $scope.processDetails = function () {
             $('.connecting-line-right').addClass('active');
             $('#imagesForm').addClass('active');
-            $state.go('cadastrarImovel.images');
+            $state.go('perfil.cadastrarImovel.images');
             $scope.fillDetails = true;
         }
 
@@ -73,20 +74,24 @@
             $scope.uploadedImage = true;
             if ($scope.cropper.croppedImage !== null) {
                 //UPLOAD IMAGE
-                var base64ImageContent = $scope.cropper.croppedImage.replace(/^data:image\/(png|jpg);base64,/, "");
-                var url = "url/action";
-                var blob = base64ToBlob(base64ImageContent, 'image/png');
-                var formData = new FormData();
-                formData.append('file', blob);
-                httpPostImageFactory('upload_image.php', formData,
+                /* let imagePost = $scope.cropper.croppedImage.replace(/^data:image\/(png|jpg);base64,/, ""); */
+                let data = {
+                    pictures: {
+                        cover: false,
+                        content: imagePost
+                    }
+                }
+                data = JSON.parse(data);
+                console.log(data)
+                httpPostImageFactory(config.apiUrl + 'pictures', data,
                     function (callback) {
                         console.log(callback);
-                        $('#croppImage').modal('hide');
-                        $scope.images.push({ url: $scope.cropper.croppedImage });
                         $scope.uploadedImage = false;
-                        toastr.error('CALLBACK');
+                        toastr.error('callback');
                     },
                 );
+                $('#croppImage').modal('hide');
+                $scope.images.push({ url: $scope.cropper.croppedImage });
             }
         }
 
@@ -98,30 +103,6 @@
             $scope.images.splice(i, 1);
             toastr.info('Imagem removida!');
         }
-
-        //Transforma a imagem cortada de base64 pra blob
-        function base64ToBlob(base64, mime) {
-            mime = mime || '';
-            var sliceSize = 1024;
-            var byteChars = window.atob(base64);
-            var byteArrays = [];
-
-            for (var offset = 0, len = byteChars.length; offset < len; offset += sliceSize) {
-                var slice = byteChars.slice(offset, offset + sliceSize);
-
-                var byteNumbers = new Array(slice.length);
-                for (var i = 0; i < slice.length; i++) {
-                    byteNumbers[i] = slice.charCodeAt(i);
-                }
-
-                var byteArray = new Uint8Array(byteNumbers);
-
-                byteArrays.push(byteArray);
-            }
-
-            return new Blob(byteArrays, { type: mime });
-        }
-
 
         //ENDEREÇO
         $scope.searchAdress = function () {

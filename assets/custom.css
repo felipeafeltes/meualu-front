@@ -1002,7 +1002,7 @@ span.round-tab:hover {
 
 /* ANIMATIONS
 ============================================================================= */
-/* slide out to the left */
+
 @keyframes slideOutLeft {
     to      { transform: translateX(-200%); }
 }
@@ -1013,7 +1013,7 @@ span.round-tab:hover {
     to      { -webkit-transform: translateX(-200%); }
 }
 
-/* slide in from the right */
+
 @keyframes slideInRight {
     from    { transform:translateX(200%); }
     to      { transform: translateX(0); }

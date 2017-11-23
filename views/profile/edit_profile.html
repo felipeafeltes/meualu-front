@@ -21,15 +21,12 @@
                         </div>
                     </div>
                     <div class="form-group form-edit-profile col-md-6">
-                        <label for="gender">Sexo</label>
-                        <select id="gender" name="gender" class="form-control" ng-model="user.gender" required>
+                        <label for="sex">Sexo</label>
+                        <select name="sex" class="form-control" ng-model="user.sex" required>
                                                 <option selected="selected" disabled>Selecione o sexo</option>
                                                 <option value="M">Masculino</option>
                                                 <option value="F">Feminino</option>
                                             </select>
-                        <div ng-show="formEdit.$submitted || formEdit.gender.$touched">
-                            <p ng-show="formEdit.gender.$error.required" class="help-block error">Sexo é obrigatório.</p>
-                        </div>
                     </div>
                     <div class="form-group form-edit-profile col-md-6">
                         <label for="birthday">Data de Nascimento</label>
@@ -66,21 +63,21 @@
                     </div>
                     <div class="form-group form-edit-profile col-md-6">
                         <label for="city">Cidade</label>
-                        <input type="text" class="form-control" id="city" name="city" ng-model="user.city" required>
+                        <input type="text" class="form-control" id="city" name="city" ng-model="user.city">
                         <div ng-show="formEdit.$submitted || formEdit.city.$touched">
                             <p ng-show="formEdit.city.$error.required" class="help-block error">Cidade é obrigatório.</p>
                         </div>
                     </div>
                     <div class="form-group form-edit-profile col-md-12">
                         <label for="address">Endereço</label>
-                        <input type="text" class="form-control" id="address" name="address" ng-model="user.address" required>
+                        <input type="text" class="form-control" id="address" name="address" ng-model="user.address">
                         <div ng-show="formEdit.$submitted || formEdit.address.$touched">
                             <p ng-show="formEdit.address.$error.required" class="help-block error">Endereço é obrigatório.</p>
                         </div>
                     </div>
                     <div class="form-group form-edit-profile col-md-6">
                         <label for="number">Número</label>
-                        <input type="number" class="form-control" id="number" name="number" ng-model="user.number" required>
+                        <input type="number" class="form-control" id="number" name="number" ng-model="user.number">
                         <div ng-show="formEdit.$submitted || formEdit.number.$touched">
                             <p ng-show="formEdit.number.$error.required" class="help-block error">Número é obrigatório.</p>
                         </div>
@@ -90,15 +87,15 @@
                         <input type="text" class="form-control" id="complement" name="complement" ng-model="user.complement">
                     </div>
                     <div class="form-group  col-md-12">
-                        <label for="description">Descreva-se</label>
-                        <textarea class="form-control" id="description" rows="3" ng-model="user.description"></textarea>
+                        <label for="about">Descreva-se</label>
+                        <textarea class="form-control" id="about" rows="3" ng-model="user.about"></textarea>
                     </div>
                     <div class="form-group col-md-12">
                         <p class="form-text text-muted text-center">A Alu é construída a partir de relacionamentos. Ajude outras pessoas a saber um pouco mais sobre
                             você.</p>
                     </div>
                 </div>
-                <button type="submit" ng-disabled="!formEdit.$valid || !response" class="btn btn-send-contato btn-success pull-right">Enviar</button>
+                <button type="submit" class="btn btn-send-contato btn-success pull-right">Enviar</button>
                 <img ng-if="!response" src="assets/imagens/loading.gif" width="50" height="50" class="pull-right loading-img">
             </form>
         </div>
