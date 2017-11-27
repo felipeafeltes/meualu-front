@@ -66,8 +66,9 @@
                     .$promise.then(
                     // success
                     function (success) {
+                        toastr.success("Cadastrado com sucesso, efetue o login para acessar sua conta!");
                         $scope.response = true;
-                        console.log(success)
+                        $state.go('home');
                     },
                     // error
                     function (data) {

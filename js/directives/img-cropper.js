@@ -446,7 +446,7 @@ angular.module("angular-img-cropper", []).directive("imageCropper", ["$document"
         },
         link: function (b, c) {
             c.bind("change", function (c) {
-                $('#croppImage').modal('show');
+                $('#croppImage').modal({backdrop:'static',keyboard:false, show:true});
                 var d = new FileReader;
                 d.onload = function (c) {
                     a(function () {

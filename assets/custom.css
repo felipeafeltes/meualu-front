@@ -665,8 +665,6 @@ p.error {
 
 .img-bordered {
   border-radius: 5px;
-  max-width: 600px;
-  max-height: 300px;
   position: relative;
   left: 50%;
   transform: translate(-50%);
@@ -713,6 +711,14 @@ p.error {
   left: 50%;
   top: 50%;
   transform: translate(-50%,-50%);
+}
+
+.loading-div {
+  position: absolute;
+  z-index: 99;
+  background-color: #fff;
+  height: 100%;
+  width: 100%;
 }
 
 .img-center{
@@ -823,7 +829,7 @@ span.round-tab:hover {
 }
 
 .wizard .nav-tabs>li {
-  width: 33.33%;
+  width: 14.28%;
 }
 
 

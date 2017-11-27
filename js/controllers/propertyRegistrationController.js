@@ -1,18 +1,21 @@
 (function () {
     'use strict';
-    
+
     app.controller('propertyRegistrationController', propertyRegistrationController);
-    
+
+
     function propertyRegistrationController(
         $rootScope,
         $scope,
         $state,
+        $uibModal,
         config,
         ExtraInfo,
         ExtraInfoProperty,
         ExtraInfoCondominium,
-        myPropertiesService,
-        ImageService
+        PropertyService,
+        ImageService,
+        Viacep
     ) {
         //IMAGE CROPPER
         $scope.cropper = {};
@@ -23,152 +26,170 @@
         $scope.bounds.right = 0;
         $scope.bounds.top = 0;
         $scope.bounds.bottom = 0;
-        
+        //PROPERTY VARS
+        $scope.propertie = new PropertyService();
+        $scope.sendForm = false;
+
+        //ENDERECO
+        $scope.formAdress =
+            {
+                street: '',
+                district: '',
+                zip_code: 0,
+                city: '',
+                state: '',
+                country: '',
+                number: '',
+                complement: ''
+            };
+
         //IMAGES UPLOADED
         $scope.images = [];
         $scope.uploadedImage = false;
-        
+
         //EXTRA INFOS
-        ExtraInfo.get().$promise.then(
-            function(data){
-                console.log(data)
-            }
-        );
+        $scope.propertyInfos;
+        $scope.condominiumInfos;
         ExtraInfoProperty.get().$promise.then(
-            function(data){
-                console.log(data)
+            function (data) {
+                $scope.propertyInfos = data.extra_infos;
             }
         );
         ExtraInfoCondominium.get().$promise.then(
-            function(data){
-                console.log(data)
+            function (data) {
+                $scope.condominiumInfos = data.extra_infos;
             }
         );
-        
-        //PROPERTY VARS
-        $scope.propertie = new myPropertiesService();
-        $scope.formAdress =
-        {
-            street: '',
-            district: '',
-            zip_code: 0,
-            city: '',
-            state: '',
-            country: '',
-            number: '',
-            complement: ''
+
+        $rootScope.formAddress = {
+            city: "",
+            complement: "",
+            country: "",
+            district: "",
+            number: "",
+            state: "",
+            street: "",
+            zip_code: "",
         };
-        
-        $rootScope.googleApiAddress;
-        $scope.infos = {};
+        $scope.infos = [];
         $scope.fillAddress = false;
         $scope.fillDetails = false;
-        
+
+        // Toggle selection checkbox list
+        $scope.toggleSelection = function toggleSelection(extraInfo, checkbox1) {
+            let check;
+            $scope.infos.forEach(function (element) {
+                if (element.$$hashKey === extraInfo.$$hashKey) {
+                    $scope.infos.splice($scope.infos.indexOf(element), 1);
+                    check = true;
+                }
+            }, this);
+            if (!check) {
+                $scope.infos.push(extraInfo);
+            }
+        };
+
+        //Proceessamento de cada parte do wizard
+
         $scope.processForm = function () {
-            $scope.propertie.address = $rootScope.googleApiAddress;
+            $('#loadingModal').modal({ backdrop: 'static', keyboard: false, show: true });
+
+            $scope.sendForm = false; let ren = { 'id': 1, 'value': 800, 'condominium': 450, 'iptu': 90 };
+
+            $scope.propertie.address = $rootScope.formAddress;
             $scope.propertie.extra_infos = $scope.infos;
-            console.log($scope.propertie);
+            $scope.propertie.rental = ren;
+            $scope.propertie.pictures = $scope.images;
+
+            $scope.propertie.$save(
+                function (data) {
+                    $('#loadingModal').modal('hide');
+                    toastr.success('Imóvel cadastrado com sucesso!');
+                    $state.go('perfil.info');
+                },
+                function (data) {
+                    $('#loadingModal').modal('hide');
+                    toastr.error(data.errors);
+                }
+            );
         }
-        
+
+        $scope.processImages = function () {
+
+        }
+
         $scope.processAdress = function (isValid) {
             $scope.fillAddress = true;
             if (isValid) {
                 $('.connecting-line-center').addClass('active');
                 $('#addressForm').addClass('active');
-                $('#detailsForm').addClass('active  ');
+                $('#detailsForm').addClass('active');
                 $state.go('perfil.cadastrarImovel.details');
+            } else {
+                toastr.warning('Campos obrigatórios precisam ser preenchidos!');
             }
         }
-        
-        $scope.processDetails = function () {
-            $('.connecting-line-right').addClass('active');
-            $('#imagesForm').addClass('active');
-            $state.go('perfil.cadastrarImovel.images');
+
+        $scope.processDetails = function (isValid) {
             $scope.fillDetails = true;
+            if (isValid) {
+                $('.connecting-line-right').addClass('active');
+                $('#imagesForm').addClass('active');
+                $state.go('perfil.cadastrarImovel.images');
+            } else {
+                toastr.warning('Campos obrigatórios precisam ser preenchidos!');
+            }
         }
-        
-        
+
+        //ENDERECO
+        $scope.searchCep = function (cepValue) {
+            if (cepValue.length === 8) {
+                toastr.info("Procurando CEP...")
+                Viacep.get({ 'cep': cepValue }).$promise.then(
+                    function (data) {
+                        $rootScope.formAddress.city = data.localidade;
+                        $rootScope.formAddress.complement = data.complemento;
+                        $rootScope.formAddress.country = 'Brasil';
+                        $rootScope.formAddress.district = data.bairro;
+                        $rootScope.formAddress.number = data.gia;
+                        $rootScope.formAddress.state = data.uf;
+                        $rootScope.formAddress.street = data.logradouro;
+                    }
+                )
+            }
+        }
+
         //IMAGENS
+        //SAVE
         $scope.saveImage = function () {
             $scope.uploadedImage = true;
             if ($scope.cropper.croppedImage !== null) {
                 let dataPost = {
                     cover: false,
                     content: $scope.cropper.croppedImage
-                    
+
                 }
-                ImageService.upload(dataPost).$promise.then(
-                    function(data){
+                ImageService.save(dataPost).$promise.then(
+                    function (data) {
                         $scope.uploadedImage = false;
                         $('#croppImage').modal('hide');
-                        $scope.images.push({id:data.id ,url: data.url });
+                        $scope.images.push({ id: data.picture.id, url: data.picture.url, base64: $scope.cropper.croppedImage, cover: false });
                         toastr.success('Upload concluído');
                     }
                 )
-                
+
             }
         }
-        
-        $scope.deleteImage = function (i, id) {
-            ImageService.delete(id).$promise.then(
-                function(data){
-                    console.log(data)
+        //DELETE
+        $scope.deleteImage = function (i, idImage) {
+            ImageService.delete({ 'id': idImage }).$promise.then(
+                function (data) {
+                    $scope.images.splice(i, 1);
+                    toastr.info('Imagem removida!');
                 }
             )
-            $scope.images.splice(i, 1);
-            toastr.info('Imagem removida!');
         }
-        
-        //ENDEREÇO
-        $scope.searchAdress = function () {
-            let address = $scope.address;
-            if (address) {
-                if (address.formatted_address != undefined && $rootScope.address_string != address.formatted_address) {
-                    $rootScope.address_string = address.formatted_address;
-                }
-                if (address.geometry != undefined) {
-                    $rootScope.lng = address.geometry.location.lng();
-                    $rootScope.lat = address.geometry.location.lat();
-                }
-            } else {
-                $rootScope.lat = "-30.0490415";
-                $rootScope.lng = "-51.1916632";
-            }
-            if (address.address_components) {
-                if (address.address_components[5] !== undefined) {
-                    $scope.formAdress.street = address.address_components[0].long_name;
-                    $scope.formAdress.district = address.address_components[1].long_name;
-                    $scope.formAdress.city = address.address_components[2].long_name;
-                    $scope.formAdress.state = address.address_components[3].short_name;
-                    $scope.formAdress.country = address.address_components[4].short_name;
-                    $scope.formAdress.zip_code = address.address_components[5].long_name;
-                } else if (address.address_components[4] !== undefined) {
-                    $scope.formAdress.street = address.address_components[0].long_name;
-                    $scope.formAdress.city = address.address_components[1].long_name;
-                    $scope.formAdress.state = address.address_components[2].short_name;
-                    $scope.formAdress.country = address.address_components[3].long_name;
-                    $scope.formAdress.zip_code = address.address_components[4].long_name;
-                } else {
-                    $scope.formAdress.street = address.address_components[0].long_name;
-                    $scope.formAdress.city = address.address_components[1].long_name;
-                    $scope.formAdress.state = address.address_components[2].short_name;
-                    $scope.formAdress.country = address.address_components[3].long_name;
-                }
-            }
-            $rootScope.googleApiAddress = $scope.formAdress;
-        }
-        
-        var PoABounds = new google.maps.LatLngBounds(
-            new google.maps.LatLng(-30.255998, -51.224980),
-            new google.maps.LatLng(-29.963159, -51.096578));
-            
-            $scope.autocompleteOptions = {
-                componentRestrictions: { country: 'br' },
-                bounds: PoABounds,
-                types: ['address']
-            }
-        }
-        
-    })();
-    
-    
+    }
+
+})();
+

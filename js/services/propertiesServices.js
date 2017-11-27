@@ -3,17 +3,18 @@
     
     angular
     .module('propertiesServices', ['ngResource', 'ngRoute'])
-    .factory('Property', Property);
+    .factory('PropertyService', PropertyService);
     
-    Property.$inject = ['$resource', 'config'];
+    PropertyService.$inject = ['$resource', 'config'];
     
-    function Property($resource, config) {
-        var property = $resource(config.apiUrl + 'properties/:id', { id:'@id' },
+    function PropertyService($resource, config) {
+        var property = $resource(config.apiUrl + 'properties/:id', 
+        {"id":"@id"},
         {
             get: {
                 method: 'GET',
             },
-            create: {
+            save: {
                 method: 'POST',
                 transformRequest: _transform_request
             },
@@ -21,9 +22,9 @@
                 method: 'PATCH',
                 transformRequest: _transform_request
             },
-            delete: {
-                method: 'DELETE',
-            },
+            delete:{
+                method: 'DELETE'
+            }
         }
     );
     
@@ -31,16 +32,7 @@
         data = { "property" : data }
         return angular.toJson(data);
     }
-    
-    property.prototype.full_address = function() {
-        if (this.$resolved)
-            return this.address.street + " " + this.address.number;
-    };
-    
-    property.prototype.total_rental = function() {
-        if (this.$resolved)
-            return this.rental.value + this.rental.condominium + this.rental.iptu
-    };
+
     return property;
 }
 

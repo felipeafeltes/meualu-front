@@ -3,14 +3,14 @@
         <h2 class="bold text-responsive-center">Imóveis Cadastrados</h2>
     </div>
     <div class="panel-body">
-
-        <div class="col-sm-12 panel-ngFor-divs" ng-repeat="property in teste">
+        <span class="col-sm-12" ng-show="noPropertie">{{noPropertie}}</span>
+        <div class="col-sm-12 panel-ngFor-divs" ng-repeat="property in properties">
             <div class="col-md-5 responsive-properties-div">
                 <div class="div-properties-details">
-                    <button type="button" class="fa fa-trash pull-right"></button>
-                    <button type="button" class="fa fa-edit pull-right"></button>
+                    <button type="button" class="fa fa-trash pull-right" ng-click="deleteProperty(property.id)"></button>
+                    <!-- <button type="button" class="fa fa-edit pull-right"></button> -->
                     <h4 class="text-dark">{{ property.full_address }}</h4>
-                    <p>{{property.address}}</p>
+                    <p>{{property.address.street}} , {{property.address.number}} , {{property.address.district}} - {{property.address.city}} / {{property.address.state}} </p>
                     <ul class="properties-details">
                         <li><i class="fa fa-bed"></i> {{ property.bedrooms }} dorms</li>
                         <li><i class="fa fa-car"></i> {{ property.garages }} vagas</li>
@@ -19,15 +19,15 @@
                 </div>
                 <div class="properties-price">
                     <p class="text-green font-size-20">
-                        Aluguel: R$ {{ property.rental | currency }}
+                        Aluguel: R$ {{ property.rental.first_alu_fee | currency }}
                     </p>
                     <p class="text-green font-size-20">
-                        Valor total: R$ {{ property.total_rental | currency }}
+                        Valor total: R$ {{ property.rental.package_value | currency }}
                     </p>
                 </div>
             </div>
             <div class="col-md-7 no-padding responsive-properties-div">
-                <img ng-src="{{property.img_url}}" class="img-bordered img-responsive" alt="Responsive image">
+                <img ng-src="{{property.pictures[0].URL}}" class="img-bordered img-responsive">
             </div>
         </div>
 

@@ -1,36 +1,72 @@
+
 <div class="form-group col-md-12">
-    <label for="description">Descrição Curta do Imóvel</label>
-    <input type="text" class="form-control redondend-border" name="description" ng-model="propertie.description" placeholder="Ex: Charmoso Apê no Moinho de Vento" required>
+    <label for="description">Descrição Curta do Imóvel (*)</label>
+    <input type="text" class="form-control redondend-border" name="description" ng-model="propertie.description" placeholder="Ex: Charmoso Apê no Moinho de Vento"
+        required>
     <div ng-show="fillAddress || formProperty.description.$touched">
         <p ng-show="formProperty.description.$error.required" class="help-block error">Descrição é obrigatório.</p>
     </div>
 </div>
 
-<div class="form-group col-md-12" ng-controller="propertyRegistrationController">
-    <label for="number">Rua</label>
-    <input g-places-autocomplete type="text" class="form-control redondend-border" name="address" options="autocompleteOptions"
-        ng-model="address" autocomplete="off" force-selection="true" 
-        placeholder="Busque por rua ou bairro" 
-        ng-change="searchAdress()"
+<div class="form-group col-md-6">
+    <label for="zip_code">CEP</label>
+    <input type="text" class="form-control redondend-border" name="zip_code" ng-model="formAddress.zip_code" ng-change="searchCep(formAddress.zip_code)"
         required>
-    <div ng-show="fillAddress || formProperty.address.$touched">
-        <p ng-show="formProperty.address.$error.required" class="help-block error">Endereço é obrigatório.</p>
+    <div ng-show="fillAddress || formProperty.zip_code.$touched">
+        <p ng-show="formProperty.zip_code.$error.required" class="help-block error">CEP é obrigatório.</p>
+    </div>
+</div>
+
+<div class="form-group col-md-6">
+    <label for="state">Estado</label>
+    <input type="text" class="form-control redondend-border" name="state" ng-model="formAddress.state" required>
+    <div ng-show="fillAddress || formProperty.state.$touched">
+        <p ng-show="formProperty.state.$error.required" class="help-block error">Estado é obrigatório.</p>
+    </div>
+</div>
+
+<div class="form-group col-md-12" ng-controller="propertyRegistrationController">
+    <label for="street">Rua (*)</label>
+    <input type="text" class="form-control redondend-border" name="street" ng-model="formAddress.street" 
+         required>
+    <div ng-show="fillAddress || formProperty.street.$touched">
+        <p ng-show="formProperty.street.$error.required" class="help-block error">Rua é obrigatório.</p>
+    </div>
+</div>
+
+
+<div class="form-group col-md-6">
+    <label for="city">Cidade</label>
+    <input type="text" class="form-control redondend-border" name="city" ng-model="formAddress.city" required>
+    <div ng-show="fillAddress || formProperty.city.$touched">
+        <p ng-show="formProperty.city.$error.required" class="help-block error">Cidade é obrigatório.</p>
+    </div>
+</div>
+
+<div class="form-group col-md-6">
+    <label for="district">Bairro</label>
+    <input type="text" class="form-control redondend-border" name="district" ng-model="formAddress.district" required>
+    <div ng-show="fillAddress || formProperty.district.$touched">
+        <p ng-show="formProperty.district.$error.required" class="help-block error">Bairro é obrigatório.</p>
     </div>
 </div>
 
 <div class="form-group col-md-6">
     <label for="number">Número</label>
-    <input type="number" class="form-control redondend-border" name="number" ng-model="formAdress.number">
+    <input type="number" class="form-control redondend-border" name="number" ng-model="formAddress.number" required>
+    <div ng-show="fillAddress || formProperty.number.$touched">
+        <p ng-show="formProperty.number.$error.required" class="help-block error">Número é obrigatório.</p>
+    </div>
 </div>
 
 <div class="form-group col-md-6">
     <label for="complement">Complemento</label>
-    <input type="text" class="form-control redondend-border" name="complement" ng-model="formAdress.complement">
+    <input type="text" class="form-control redondend-border" name="complement" ng-model="formAddress.complement">
 </div>
 
 <div class="form-group row">
     <div class="col-xs-3 col-xs-offset-9">
-        <a class="btn btn-block bg-green" ng-click="processAdress(formProperty.address.$valid && formProperty.description.$valid)">
+        <a class="btn btn-block bg-green" ng-click="processAdress(formProperty.$valid)">
     Próximo <span class="glyphicon glyphicon-circle-arrow-right"></span>
     </a>
     </div>

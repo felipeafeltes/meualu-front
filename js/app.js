@@ -14,9 +14,11 @@ var app = angular
     'oauthSessionsServices',
     'extraInfosServices',
     'propertiesServices',
+    'searchPropertiesServices',
     'scheduleVisitsServices',
     'rentalNewsletterServices',
     'contactClientsServices',
+    'viacepService',
     'ngMaterial',
     'scrollToFixed',
     'ngMaterial',
@@ -162,7 +164,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
       }
     })
     .state('perfil.info', {
-      controller: 'editProfileController',
+      controller: 'myInfosProfileController',
       url: '/info',
       templateUrl: 'views/profile/profile_info.html',
     })
@@ -177,17 +179,19 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
       templateUrl: 'views/profile/property_registration/property_registration.html',
     })
     .state('perfil.cadastrarImovel.address', {
-      url: '/address',
+      url: '/endereco',
       templateUrl: 'views/profile/property_registration/property_registration_adress.html'
     })
     .state('perfil.cadastrarImovel.details', {
-      url: '/details',
+      url: '/detalhes',
       templateUrl: 'views/profile/property_registration/property_registration_details.html'
     })
     .state('perfil.cadastrarImovel.images', {
-      url: '/images',
+      url: '/fotos',
       templateUrl: 'views/profile/property_registration/property_registration_images.html'
     })
+
+    
 
     .state('admin', {
       url: '/admin',
