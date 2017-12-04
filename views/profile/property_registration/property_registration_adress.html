@@ -1,4 +1,4 @@
-
+<h4 align="center" class="black-text">Endereço</h4>
 <div class="form-group col-md-12">
     <label for="description">Descrição Curta do Imóvel (*)</label>
     <input type="text" class="form-control redondend-border" name="description" ng-model="propertie.description" placeholder="Ex: Charmoso Apê no Moinho de Vento"
@@ -9,7 +9,7 @@
 </div>
 
 <div class="form-group col-md-6">
-    <label for="zip_code">CEP</label>
+    <label for="zip_code">CEP (*)</label>
     <input type="text" class="form-control redondend-border" name="zip_code" ng-model="formAddress.zip_code" ng-change="searchCep(formAddress.zip_code)"
         required>
     <div ng-show="fillAddress || formProperty.zip_code.$touched">
@@ -18,7 +18,7 @@
 </div>
 
 <div class="form-group col-md-6">
-    <label for="state">Estado</label>
+    <label for="state">Estado (*)</label>
     <input type="text" class="form-control redondend-border" name="state" ng-model="formAddress.state" required>
     <div ng-show="fillAddress || formProperty.state.$touched">
         <p ng-show="formProperty.state.$error.required" class="help-block error">Estado é obrigatório.</p>
@@ -36,7 +36,7 @@
 
 
 <div class="form-group col-md-6">
-    <label for="city">Cidade</label>
+    <label for="city">Cidade (*)</label>
     <input type="text" class="form-control redondend-border" name="city" ng-model="formAddress.city" required>
     <div ng-show="fillAddress || formProperty.city.$touched">
         <p ng-show="formProperty.city.$error.required" class="help-block error">Cidade é obrigatório.</p>
@@ -44,7 +44,7 @@
 </div>
 
 <div class="form-group col-md-6">
-    <label for="district">Bairro</label>
+    <label for="district">Bairro (*)</label>
     <input type="text" class="form-control redondend-border" name="district" ng-model="formAddress.district" required>
     <div ng-show="fillAddress || formProperty.district.$touched">
         <p ng-show="formProperty.district.$error.required" class="help-block error">Bairro é obrigatório.</p>
@@ -52,7 +52,7 @@
 </div>
 
 <div class="form-group col-md-6">
-    <label for="number">Número</label>
+    <label for="number">Número (*)</label>
     <input type="number" class="form-control redondend-border" name="number" ng-model="formAddress.number" required>
     <div ng-show="fillAddress || formProperty.number.$touched">
         <p ng-show="formProperty.number.$error.required" class="help-block error">Número é obrigatório.</p>

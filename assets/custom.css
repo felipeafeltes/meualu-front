@@ -305,7 +305,6 @@ input.search-header:focus {
 }
 
 ul.properties-details {
-  -webkit-padding-start: 10px;
   margin-bottom: 0px;
   list-style: none;
 }
@@ -763,28 +762,19 @@ p.error {
   height: 1px;
   background: #e0e0e0;
   position: absolute;
-  width: 33.33%;
+  width: 100%;
   top: 50%;
   z-index: 1;
 }
-
-.connecting-line-center{
-  margin: 0 auto;
-  right: 0;
-  left: 0;
-}
-
-.connecting-line-right{
-  right: 0;
-}
-
-.connecting-line-left{
-  left: 0;
-}
-
-.connecting-line.active{
+.connecting-line-active {
+  height: 1px;
   background-color: #67b7b4 !important;
+  position: absolute;
+  width: 14%;
+  top: 50%;
+  z-index: 2;
 }
+
 
 .wizard .nav-tabs>li.active>a,
 .wizard .nav-tabs>li.active>a:hover,
@@ -853,6 +843,15 @@ span.round-tab:hover {
 .wizard h3 {
   margin-top: 0;
 }
+
+.terms{
+  height: 500px;
+  overflow-x: hidden;
+  overflow-y:scroll;
+  border:1px solid #b1b1b0;
+  border-radius: 4px;
+}
+
 
 .input-div {
   padding: 10px 50px 10px 50px !important;

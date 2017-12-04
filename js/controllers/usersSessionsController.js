@@ -61,14 +61,15 @@
         $scope.register = function (isValid) {
             if (isValid) {
                 $scope.response = false;
+                $scope.registered = false; 
                 $scope.user.birthday = $scope.day_birthday + '-' + $scope.month_birthday + '-' + $scope.year_birthday;
                 UsersService.create($scope.user)
                     .$promise.then(
                     // success
                     function (success) {
-                        toastr.success("Cadastrado com sucesso, efetue o login para acessar sua conta!");
+                        toastr.success("Cadastrado com sucesso!");
                         $scope.response = true;
-                        $state.go('home');
+                        $scope.registered = true;
                     },
                     // error
                     function (data) {

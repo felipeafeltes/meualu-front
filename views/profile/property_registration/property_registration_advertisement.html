@@ -1,0 +1,32 @@
+<h4 align="center" class="black-text">Anúncio</h4>
+
+<div class="form-group col-md-12">
+    <h5 class="black-text">Como é a <strong>moradia</strong> neste imóvel?</h5>
+    <span style="position:absolute;bottom:30px;right:5px;z-index:2">Restam {{countCaracteres(propertie.anuncio)}} caracteres</span>
+    <textarea type="text" class="form-control redondend-border" name="anuncio" rows="8" ng-model="propertie.anuncio" placeholder="Conte-nos um pouco sobre os benefícios deste imóvel e o que o motivou a comprá-lo.
+    Ex:O que há de melhor no Moinhos de Vento..." ng-maxlength="240"
+    required></textarea>
+    <div ng-show="formProperty.$submitted || formProperty.anuncio.$touched">
+        <p ng-show="formProperty.anuncio.$error.required" class="help-block error">Campo é obrigatório.</p>
+        <p ng-show="formProperty.anuncio.$error.maxlength" class="help-block error">Máximo de 240 caracteres.</p>
+    </div>
+</div>
+
+<!-- <div class="form-group col-md-12">
+    <h3 class="black-text">Como é o <strong>bairro</strong> onde este imóvel fica localizado?</h3>
+    <textarea type="text" class="form-control redondend-border" name="what" rows="6" ng-model="propertie.anuncio" placeholder="Conte-nos um pouco sobre os benefícios deste imóvel e o que o motivou a comprá-lo.
+        Ex:O que há de melhor no Minhos de Vento..." ng-maxlength="240" required></textarea>
+    <div ng-show="formProperty.$submitted || formProperty.what.$touched">
+        <p ng-show="formProperty.month.$error.required" class="help-block error">Campo é obrigatório.</p>
+        <p ng-show="formProperty.month.$error.maxlength" class="help-block error">Máximo de 240 caracteres.</p>
+    </div>
+</div>
+ -->
+
+<div class="form-group row">
+    <div class="col-xs-3 col-xs-offset-9">
+        <a class="btn btn-block bg-green" ng-click="processAdvertisement(formProperty.$valid)">
+    Próximo <span class="glyphicon glyphicon-circle-arrow-right"></span>
+    </a>
+    </div>
+</div>

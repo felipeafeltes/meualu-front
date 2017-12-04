@@ -2,19 +2,27 @@
     'use strict';
     app.controller('editProfileController', editProfileController);
 
-    function editProfileController($rootScope, UsersService, $scope, $state, Viacep) {
+    function editProfileController($rootScope, UpdateUsersService, $scope, $state, Viacep) {
         $scope.response = true;
         $scope.user = $rootScope.user;
+        $scope.sexOptions = [{
+            value: 'male',
+            label: 'Masculino',
+        }, {
+            value: 'female',
+            label: 'Feminino',
+        }];
+
         $scope.edit = function (isValid) {
             if (isValid) {
                 $scope.response = false;
-                UsersService.update($scope.user).$promise.then(
+                UpdateUsersService.update($scope.user).$promise.then(
                     function (data) {
                         $scope.response = true;
-                        console.log(data)
+                        toastr.success("Cadastro atualizado!");
                     },
                     function (err) {
-                        console.log(err)
+                        toastr.error(err.errors)
                     }
                 );
             }
@@ -35,6 +43,7 @@
                     }
                 )
             }
+
         }
     }
 })()

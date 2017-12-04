@@ -173,6 +173,8 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
       url: '/editar',
       templateUrl: 'views/profile/edit_profile.html',
     })
+
+    //CADASTRO DE IMOVEL
     .state('perfil.cadastrarImovel', {
       controller: 'propertyRegistrationController',
       url: '/novo-imovel',
@@ -190,8 +192,16 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
       url: '/fotos',
       templateUrl: 'views/profile/property_registration/property_registration_images.html'
     })
+    .state('perfil.cadastrarImovel.advertisement', {
+      url: '/anuncio',
+      templateUrl: 'views/profile/property_registration/property_registration_advertisement.html'
+    })
+    .state('perfil.cadastrarImovel.terms', {
+      url: '/termos',
+      templateUrl: 'views/profile/property_registration/property_registration_terms.html'
+    })
 
-    
+
 
     .state('admin', {
       url: '/admin',

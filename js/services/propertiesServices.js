@@ -19,7 +19,7 @@
                 transformRequest: _transform_request
             },
             update: {
-                method: 'PATCH',
+                method: 'PUT',
                 transformRequest: _transform_request
             },
             delete:{

@@ -13,10 +13,11 @@
             $scope.profile.$get(
                 { id: $rootScope.current_user.id },
                 function (data) {
-                    console.log(data)
                     $('body').css('overflow', 'auto');
+                    console.log(data)
                     $scope.hasData = true;
                     $rootScope.user = data.renter;
+                    ($rootScope.user.birthday !== null) ? $rootScope.user.birthday = new Date(data.renter.birthday) : '';
                 },
             );
         }else{

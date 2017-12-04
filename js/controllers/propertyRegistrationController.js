@@ -3,7 +3,6 @@
 
     app.controller('propertyRegistrationController', propertyRegistrationController);
 
-
     function propertyRegistrationController(
         $rootScope,
         $scope,
@@ -29,20 +28,18 @@
         //PROPERTY VARS
         $scope.propertie = new PropertyService();
         $scope.sendForm = false;
-
+        $scope.readTerms = false;
         //ENDERECO
-        $scope.formAdress =
-            {
-                street: '',
-                district: '',
-                zip_code: 0,
-                city: '',
-                state: '',
-                country: '',
-                number: '',
-                complement: ''
-            };
-
+        $rootScope.formAddress = {
+            city: "",
+            complement: "",
+            country: "",
+            district: "",
+            number: "",
+            state: "",
+            street: "",
+            zip_code: "",
+        };  
         //IMAGES UPLOADED
         $scope.images = [];
         $scope.uploadedImage = false;
@@ -50,6 +47,7 @@
         //EXTRA INFOS
         $scope.propertyInfos;
         $scope.condominiumInfos;
+
         ExtraInfoProperty.get().$promise.then(
             function (data) {
                 $scope.propertyInfos = data.extra_infos;
@@ -61,16 +59,6 @@
             }
         );
 
-        $rootScope.formAddress = {
-            city: "",
-            complement: "",
-            country: "",
-            district: "",
-            number: "",
-            state: "",
-            street: "",
-            zip_code: "",
-        };
         $scope.infos = [];
         $scope.fillAddress = false;
         $scope.fillDetails = false;
@@ -124,6 +112,7 @@
                 $('.connecting-line-center').addClass('active');
                 $('#addressForm').addClass('active');
                 $('#detailsForm').addClass('active');
+                $('#activeLine').width('28%');
                 $state.go('perfil.cadastrarImovel.details');
             } else {
                 toastr.warning('Campos obrigatórios precisam ser preenchidos!');
@@ -162,6 +151,7 @@
         //IMAGENS
         //SAVE
         $scope.saveImage = function () {
+            console.log($scope.cropper.sourceImage)
             $scope.uploadedImage = true;
             if ($scope.cropper.croppedImage !== null) {
                 let dataPost = {
@@ -189,7 +179,16 @@
                 }
             )
         }
-    }
 
+        //ANUNCIO
+        $scope.countCaracteres = function(value){
+           return (value.length > 1)? 240 - value.length : 240;
+        }
+
+        //TERMOS
+        $scope.readedTerms = function () {
+            $scope.readTerms = true;
+        }
+    }
 })();
 
