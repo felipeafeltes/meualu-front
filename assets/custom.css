@@ -770,7 +770,7 @@ p.error {
   height: 1px;
   background-color: #67b7b4 !important;
   position: absolute;
-  width: 14%;
+  width: 16.66%;
   top: 50%;
   z-index: 2;
 }
@@ -819,7 +819,7 @@ span.round-tab:hover {
 }
 
 .wizard .nav-tabs>li {
-  width: 14.28%;
+  width: 16.66%;
 }
 
 
@@ -851,7 +851,12 @@ span.round-tab:hover {
   border:1px solid #b1b1b0;
   border-radius: 4px;
 }
-
+.count-caracteres{
+  position:absolute;
+  bottom:0;
+  right:30px;
+  z-index:2
+}
 
 .input-div {
   padding: 10px 50px 10px 50px !important;

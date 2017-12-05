@@ -39,7 +39,7 @@
             state: "",
             street: "",
             zip_code: "",
-        };  
+        };
         //IMAGES UPLOADED
         $scope.images = [];
         $scope.uploadedImage = false;
@@ -62,6 +62,8 @@
         $scope.infos = [];
         $scope.fillAddress = false;
         $scope.fillDetails = false;
+        $scope.fillAdvertisement = false;
+        $scope.fillImages = false;
 
         // Toggle selection checkbox list
         $scope.toggleSelection = function toggleSelection(extraInfo, checkbox1) {
@@ -102,17 +104,33 @@
             );
         }
 
-        $scope.processImages = function () {
+        $scope.processAdvertisement = function (isValid) {
+            $scope.fillAdvertisement = true;
+            if (isValid) {
+                $('.connecting-line-center').addClass('active');
+                $('#imagesForm').addClass('active');
+                $('#activeLine').width('70%');
+                $state.go('perfil.cadastrarImovel.images');
+            } else {
+                toastr.warning('Campos obrigatórios precisam ser preenchidos!');
+            }
 
         }
 
+        $scope.processImages = function () {
+            $scope.fillImages = true;
+            $('#termsform').addClass('active');
+            $('#activeLine').width('100%');
+            $state.go('perfil.cadastrarImovel.terms');
+        }
+
         $scope.processAdress = function (isValid) {
+            WizardLine();
             $scope.fillAddress = true;
             if (isValid) {
                 $('.connecting-line-center').addClass('active');
-                $('#addressForm').addClass('active');
                 $('#detailsForm').addClass('active');
-                $('#activeLine').width('28%');
+                $('#activeLine').width('14%');
                 $state.go('perfil.cadastrarImovel.details');
             } else {
                 toastr.warning('Campos obrigatórios precisam ser preenchidos!');
@@ -123,8 +141,9 @@
             $scope.fillDetails = true;
             if (isValid) {
                 $('.connecting-line-right').addClass('active');
-                $('#imagesForm').addClass('active');
-                $state.go('perfil.cadastrarImovel.images');
+                $('#advertisementForm').addClass('active');
+                $('#activeLine').width('28%');
+                $state.go('perfil.cadastrarImovel.advertisement');
             } else {
                 toastr.warning('Campos obrigatórios precisam ser preenchidos!');
             }
@@ -151,7 +170,6 @@
         //IMAGENS
         //SAVE
         $scope.saveImage = function () {
-            console.log($scope.cropper.sourceImage)
             $scope.uploadedImage = true;
             if ($scope.cropper.croppedImage !== null) {
                 let dataPost = {
@@ -181,13 +199,26 @@
         }
 
         //ANUNCIO
-        $scope.countCaracteres = function(value){
-           return (value.length > 1)? 240 - value.length : 240;
+        $scope.countCaracteres = function (value) {
+            if (value !== undefined) {
+                if (value.length > 240) {
+                    return 0;
+                } else {
+                    return (value.length > 1) ? 240 - value.length : 240;
+                }
+            } else {
+                return 240;
+            }
         }
-
         //TERMOS
         $scope.readedTerms = function () {
             $scope.readTerms = true;
+        }
+
+        function WizardLine(){
+            var width = $('#activeLine').width();
+            var lineWidth =
+            $('#activeLine').width();
         }
     }
 })();
