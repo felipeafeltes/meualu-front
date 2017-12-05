@@ -192,6 +192,11 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
       url: '/fotos',
       templateUrl: 'views/profile/property_registration/property_registration_images.html'
     })
+    
+    .state('perfil.cadastrarImovel.rental', {
+      url: '/anuncio',
+      templateUrl: 'views/profile/property_registration/property_registration_rental.html'
+    })
     .state('perfil.cadastrarImovel.advertisement', {
       url: '/anuncio',
       templateUrl: 'views/profile/property_registration/property_registration_advertisement.html'

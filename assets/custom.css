@@ -809,6 +809,11 @@ span.round-tab i {
   border: 2px solid #67b7b4;
 }
 
+.wizard li.completed span.round-tab {
+  background: #67b7b4;
+  border: 2px solid #67b7b4;
+}
+
 .wizard li.active span.round-tab i {
   color: #fff;
 }
