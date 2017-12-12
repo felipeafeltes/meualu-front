@@ -4,7 +4,9 @@
     app.controller('UserSessionsSignOut', UserSessionsSignOut);
     app.controller('UserSessionsRegister', UserSessionsRegister);
 
-    function UserSessionsSignIn($scope, User, $rootScope, $state, $http) {
+
+
+    function UserSessionsSignIn($scope, User, $rootScope, $state, $http, MySelf) {
         $scope.user = new User();
 
         $scope.openRegister = function () {
@@ -18,27 +20,32 @@
                     function (response) {
                         localStorage.setItem('token', response.auth_token)
                         $rootScope.current_user = response.user;
-                        $('#modalLogin').modal('hide');
-                        $state.go('perfil.info');
+                        MySelf.get(
+                            {},
+                            function (data) {
+                                $('#modalLogin').modal('hide');
+                                $state.go('perfil.info');
+                            },
+                        );
                     },
                     function (data) {
-                        if(data.errors !== undefined){toastr.error(data.errors[0])}
-                        else{toastr.warning(data.error)}
+                        if (data.errors !== undefined) { toastr.error(data.errors[0]) }
+                        else { toastr.warning(data.error) }
                     }
                 )
             }
         }
-/*                 //API COM GOOGLE LOGIN
-        $scope.$on('event:google-plus-signin-success', function (event, authResult) {
-            // Send login to server or save into cookie
-            console.log(event)
-            console.log(authResult)
-        });
-        $scope.$on('event:google-plus-signin-failure', function (event, authResult) {
-            // Auth failure or signout detected
-            console.log(event)
-            console.log(authResult)
-        });  */
+        /*                 //API COM GOOGLE LOGIN
+                $scope.$on('event:google-plus-signin-success', function (event, authResult) {
+                    // Send login to server or save into cookie
+                    console.log(event)
+                    console.log(authResult)
+                });
+                $scope.$on('event:google-plus-signin-failure', function (event, authResult) {
+                    // Auth failure or signout detected
+                    console.log(event)
+                    console.log(authResult)
+                });  */
     }
 
     function UserSessionsSignOut($scope, $rootScope, $state) {
@@ -61,7 +68,7 @@
         $scope.register = function (isValid) {
             if (isValid) {
                 $scope.response = false;
-                $scope.registered = false; 
+                $scope.registered = false;
                 $scope.user.birthday = $scope.day_birthday + '-' + $scope.month_birthday + '-' + $scope.year_birthday;
                 UsersService.create($scope.user)
                     .$promise.then(
@@ -75,15 +82,16 @@
                     function (data) {
                         let validations = data.errors;
                         let error;
-                        if(validations.email){
+                        if (validations.email) {
                             error = 'Email ' + validations.email[0];
                         }
                         toastr.error(error);
-                        $scope.response = true;                        
+                        $scope.response = true;
                     }
-                );
+                    );
             }
         };
     }
 
 })()
+

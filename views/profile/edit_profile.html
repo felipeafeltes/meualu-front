@@ -23,10 +23,9 @@
                     <div class="form-group form-edit-profile col-md-6">
                         <label for="sex">Sexo</label>
                         <select name="sex" class="form-control" ng-model="user.sex" required>
-                            <option selected="selected" disabled value="">Selecione o sexo</option>
+                            <option ng-selected="user.sex === null" disabled value="">Selecione o sexo</option>
                             <option ng-repeat="option in sexOptions" value="{{option.value}}"
-                            ng-selected="option.value === user.sex"
-                            >{{option.label}}</option>
+                            ng-selected="user.sex">{{option.label}}</option>
                         </select>
                         <div ng-show="formEdit.$submitted || formEdit.sex.$touched">
                             <p ng-show="formEdit.sex.$error.required" class="help-block error">Sexo é obrigatório.</p>

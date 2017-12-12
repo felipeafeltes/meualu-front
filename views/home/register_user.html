@@ -110,27 +110,30 @@
                                         </div>
                                         <div class="form-group">
                                             <div class="col-md-3" style="padding-left: 0px;">
-                                                <input type="number" ng-maxlength="2" name="day" ng-model="day_birthday" class="form-control input-lg redondend-border" placeholder="Dia"
-                                                    required>
+                                                <input type="number" ng-maxlength="2" validay name="day" ng-model="day_birthday" class="form-control input-lg redondend-border"
+                                                    placeholder="Dia" required>
                                                 <div ng-show="formAdd.$submitted || formAdd.day.$touched">
-                                                    <p ng-show="formAdd.day.$error.required" class="help-block error">Dia é obrigatório.</p>
+                                                    <p ng-show="formAdd.day.$error.day" class="help-block error">Inválido</p>
+                                                    <p ng-show="formAdd.day.$error.required" class="help-block error">Obrigatório.</p>
                                                     <p ng-show="formAdd.day.$error.maxlength" class="help-block error">Máximo de 2 caracteres.</p>
                                                 </div>
                                             </div>
                                             <div class="col-md-3" style="padding-left: 0px;">
-                                                <input type="number" ng-maxlength="2" name="month" ng-model="month_birthday" class="form-control input-lg redondend-border"
+                                                <input type="number" ng-maxlength="2" validmonth name="month" ng-model="month_birthday" class="form-control input-lg redondend-border"
                                                     placeholder="Mês" required>
                                                 <div ng-show="formAdd.$submitted || formAdd.month.$touched">
-                                                    <p ng-show="formAdd.month.$error.required" class="help-block error">Mês é obrigatório.</p>
+                                                    <p ng-show="formAdd.month.$error.month" class="help-block error">Inválido</p>
+                                                    <p ng-show="formAdd.month.$error.required" class="help-block error">Obrigatório.</p>
                                                     <p ng-show="formAdd.month.$error.maxlength" class="help-block error">Máximo de 2 caracteres.</p>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <input type="number" ng-maxlength="4" name="year" ng-model="year_birthday" class="form-control input-lg redondend-border"
+                                                <input type="number" ng-maxlength="4" validyear name="year" ng-model="year_birthday" class="form-control input-lg redondend-border"
                                                     placeholder="Ano" required>
-                                                <div ng-show="formAdd.$submitted || formAdd.month.$touched">
-                                                    <p ng-show="formAdd.month.$error.required" class="help-block error">Ano é obrigatório.</p>
-                                                    <p ng-show="formAdd.month.$error.maxlength" class="help-block error">Máximo de 4 caracteres.</p>
+                                                <div ng-show="formAdd.$submitted || formAdd.year.$touched">
+                                                    <p ng-show="formAdd.year.$error.year" class="help-block error">Inválido</p>
+                                                    <p ng-show="formAdd.year.$error.required" class="help-block error">Obrigatório.</p>
+                                                    <p ng-show="formAdd.year.$error.maxlength" class="help-block error">Máximo de 4 caracteres.</p>
                                                 </div>
                                             </div>
                                         </div>

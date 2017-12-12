@@ -2,9 +2,9 @@
     'use strict';
     app.controller('editProfileController', editProfileController);
 
-    function editProfileController($rootScope, UpdateUsersService, $scope, $state, Viacep) {
+    function editProfileController($rootScope, UpdateUsersService, $scope, $state, $http, viaCep) {
         $scope.response = true;
-        $scope.user = $rootScope.user;
+        $scope.user = $rootScope.current_user;
         $scope.sexOptions = [{
             value: 'male',
             label: 'Masculino',
@@ -29,21 +29,25 @@
         };
 
         $scope.searchCep = function (cepValue) {
-            if (cepValue.length === 8) {
-                toastr.info("Procurando CEP...")
-                Viacep.get({ 'cep': cepValue }).$promise.then(
-                    function (data) {
-                        $scope.user.city = data.localidade;
-                        $scope.user.complement = data.complemento;
-                        $scope.user.country = 'Brasil';
-                        $scope.user.district = data.bairro;
-                        $scope.user.number = data.gia;
-                        $scope.user.state = data.uf;
-                        $scope.user.street = data.logradouro;
-                    }
-                )
+            if (cepValue !== undefined) {
+                if (cepValue.length === 8) {
+                    toastr.info("Procurando CEP...")
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('GET', 'https://viacep.com.br/ws/' + cepValue + '/json/');
+                    xhr.addEventListener('load', function () {
+                        var ceps = xhr.responseText;
+                        var cep = JSON.parse(ceps);
+                        $scope.user.address.city = cep.localidade;
+                        $scope.user.address.complement = cep.complemento;
+                        $scope.user.address.country = 'Brasil';
+                        $scope.user.address.district = cep.bairro;
+                        $scope.user.address.number = cep.gia;
+                        $scope.user.address.state = cep.uf;
+                        $scope.user.address.street = cep.logradouro;
+                    });
+                    xhr.send();
+                }
             }
-
         }
     }
 })()

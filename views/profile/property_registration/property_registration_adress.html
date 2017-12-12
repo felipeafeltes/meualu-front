@@ -25,10 +25,9 @@
     </div>
 </div>
 
-<div class="form-group col-md-12" ng-controller="propertyRegistrationController">
+<div class="form-group col-md-12">
     <label for="street">Rua (*)</label>
-    <input type="text" class="form-control redondend-border" name="street" ng-model="formAddress.street" 
-         required>
+    <input type="text" class="form-control redondend-border" name="street" ng-model="formAddress.street" required>         
     <div ng-show="fillAddress || formProperty.street.$touched">
         <p ng-show="formProperty.street.$error.required" class="help-block error">Rua é obrigatório.</p>
     </div>

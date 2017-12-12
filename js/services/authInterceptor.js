@@ -16,7 +16,7 @@ function authInterceptor($rootScope, $q, $state){
             if (response.status === 401 || response.status === 403 || response.status === 422) {
                  $rootScope.validationErrors = [];
                  $rootScope.validationErrors.push(response.data.error);
-            }            
+            }        
              return $q.reject(response.data);
         }
     }

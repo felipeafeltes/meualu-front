@@ -21,7 +21,6 @@
         $scope.contact.$save(
           // success
           function (data) {
-            console.log(data);
             modal.close();
           }
         );

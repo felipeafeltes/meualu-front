@@ -622,6 +622,9 @@ p.error {
 .profile-properties-details {
   padding: 20px;
 }
+.profile-links>a.active{
+  color: #5f447b;
+}
 
 .property-list {
   padding-right: 100px !important;
@@ -678,9 +681,19 @@ p.error {
   border-bottom: 0.1rem solid #ededeb;
 }
 
-.div-properties-details>button {
-  background-color: transparent !important;
-  border: none !important;
+.h110{
+  height: 110px;
+}
+.div-properties-details>a {
+  color:#000;
+  padding: 0px 5px 0px 5px;
+  font-size: 20px;
+}
+
+.rental-btn{
+  cursor: pointer;
+  color: #5f447b;
+  font-weight: bold;
   font-size: 20px;
 }
 
@@ -688,6 +701,24 @@ p.error {
   padding-top: 30px;
   padding-bottom: 30px;
   border-bottom: 0.1rem solid #ededeb;
+}
+
+.bordered-rental-div{
+  border: 1px solid #ccc;
+    padding-right:0px !important;
+  padding-left:0px !important;
+}
+.bordered-rental-div .rental-header{
+  border-bottom: 1px solid #ccc;
+  padding:10px;
+}
+.bordered-rental-div .rental-footer{
+  border-top: 1px solid #ccc;
+  padding:10px;
+}
+
+.bordered-rental-div .rental-body{
+  padding:10px;
 }
 
 /* Editar Perfil */
@@ -927,6 +958,12 @@ span.round-tab:hover {
   left: 50%;
   top: 50%;
   transform: translate(-50%,-50%);
+}
+
+.btn-transparent{
+  background: transparent;
+  border: none;
+  font-weight: bold;
 }
 
 .div-thumbnail{

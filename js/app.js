@@ -1,5 +1,6 @@
 var app = angular
   .module('aluFrontApp', [
+    'angular.viacep',
     'oc.lazyLoad',
     'ui.router',
     'satellizer',
@@ -18,7 +19,6 @@ var app = angular
     'scheduleVisitsServices',
     'rentalNewsletterServices',
     'contactClientsServices',
-    'viacepService',
     'ngMaterial',
     'scrollToFixed',
     'ngMaterial',
@@ -144,7 +144,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
       }
     })
     .state('propertiesDetails', {
-      url: '/imoveis/detalhes/:id',
+      url: '  :id',
       templateUrl: 'views/properties/show.html',
       controller: 'PropertiesDetailsController',
       resolve: {
@@ -205,8 +205,6 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
       url: '/termos',
       templateUrl: 'views/profile/property_registration/property_registration_terms.html'
     })
-
-
 
     .state('admin', {
       url: '/admin',

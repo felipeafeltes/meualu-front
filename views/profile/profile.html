@@ -11,24 +11,24 @@
         <div class="col-sm-12 col-md-2 col-lg-2 profile-details">
           <div class="profile">
             <div class="profile-img panel panel-default">
-              <img src="assets/imagens/perfil.png" class="img-responsive img-profile">
+              <img ng-src="{{current_user.picture_url}}" class="img-responsive img-profile">
             </div>
             <div class="profile-header">
-              <h3 class="h3-header text-green bold">{{user.name}} {{user.last_name}}</h3>
-              <span>{{user.email}}</span>
+              <h3 class="h3-header text-green bold">{{current_user.first_name}} {{current_user.last_name}}</h3>
+              <span>{{current_user.email}}</span>
             </div>
 
             <div class="profile-links">
-              <a href="#" ui-sref="perfil.info" class="links">
-                Meu perfil
+              <a ui-sref-active="active" ui-sref="perfil.info" class="links">
+                Meus Imóveis
               </a>
-              <a href="#" ui-sref="perfil.editar" class="links">
+              <a ui-sref-active="active" ui-sref="perfil.editar" class="links">
                 Editar Perfil
               </a>
-              <a href="#" class="links">
+<!--               <a ui-sref-active="active" class="links">
                 Contratos
-              </a>
-              <a href="#" class="links" ui-sref="perfil.cadastrarImovel.address">
+              </a> -->
+              <a ui-sref-active="active"class="links" ui-sref="perfil.cadastrarImovel.address">
                 Cadastrar Imóvel           
               </a>
             </div>
@@ -45,5 +45,72 @@
       </div>
     </div>
   </div>
+
 </section>
-<!-- <div ng-include="'views/shared/_footer.html'"></div> -->
+<footer class="bg-green footer-heigth footer">
+  <div class="container p-t-40">
+    <div class="col-md-3 logo-footer">
+      <img src="assets/imagens/icones/logo_alu_branco_beta.png" class="img-responsive logo-heigth">
+    </div>
+    <div class="col-md-6">
+      <!--<div class="row">
+        <div class="col-md-4">
+          <h4 class="text-uppercase bold">acesse</h4>
+          <ul class="ul-footer">
+            <li>
+              <a href="#">Buscar imóveis</a>
+            </li>
+            <li>
+              <a href="#">Anúnciar imóveis</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h4 class="text-uppercase bold">como funciona</h4>
+          <ul class="ul-footer">
+            <li>
+              <a href="#">Locatário</a>
+            </li>
+            <li>
+              <a href="#">Anunciante</a>
+            </li>
+            <li>
+              <a href="#">Indicação</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h4 class="text-uppercase bold">alu</h4>
+          <ul class="ul-footer">
+            <li>
+              <a href="#">Quem somos?</a>
+            </li>
+            <li>
+              <a href="#">Imprensa</a>
+            </li>
+            <li>
+              <a href="#">Contato</a>
+            </li>
+            <li>
+              <a href="#">Trabalhe conosco</a>
+            </li>
+          </ul>
+        </div>
+      </div>-->
+    </div>
+    <div class="col-md-3 footer-social">
+      <div>
+        <h4 class="text-uppercase bold">siga-nos</h4>
+        <a href="https://twitter.com/meu_alu" class="text-white" target="_blank">
+          <i class="fa fa-twitter m-r-15 fa-2x"></i>
+        </a>
+        <a  href="https://www.facebook.com/meualu/" class="text-white" target="_blank">
+          <i class="fa fa-facebook-official m-r-15 fa-2x"></i>
+        </a>
+        <a href="https://www.instagram.com/meualu/" class="text-white" target="_blank">
+          <i class="fa fa-instagram m-r-15 fa-2x"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

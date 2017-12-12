@@ -23,7 +23,7 @@
             });       
 
         function _transform_request(data) {
-            data = { "pictures": data }
+            data = { "picture": data }
             return angular.toJson(data);
         }
         

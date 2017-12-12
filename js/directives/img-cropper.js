@@ -94,13 +94,13 @@ angular.module("angular-img-cropper", []).directive("imageCropper", ["$document"
                         (this.over || this.drag) && (b = 12);
                         var c = 1,
                             d = 1;
-                        this.horizontalNeighbour.position.x < this.position.x && (c = -1), this.verticalNeighbour.position.y < this.position.y && (d = -1), a.beginPath(), a.lineJoin = "miter", a.moveTo(this.position.x, this.position.y), a.lineTo(this.position.x + b * c, this.position.y), a.lineTo(this.position.x + b * c, this.position.y + b * d), a.lineTo(this.position.x, this.position.y + b * d), a.lineTo(this.position.x, this.position.y), a.closePath(), a.lineWidth = 2, a.strokeStyle = "#67b7b4", a.stroke()
+                      
                     }, b.prototype.drawCornerFill = function (a) {
                         var b = 10;
                         (this.over || this.drag) && (b = 12);
                         var c = 1,
                             d = 1;
-                        this.horizontalNeighbour.position.x < this.position.x && (c = -1), this.verticalNeighbour.position.y < this.position.y && (d = -1), a.beginPath(), a.moveTo(this.position.x, this.position.y), a.lineTo(this.position.x + b * c, this.position.y), a.lineTo(this.position.x + b * c, this.position.y + b * d), a.lineTo(this.position.x, this.position.y + b * d), a.lineTo(this.position.x, this.position.y), a.closePath(), a.fillStyle = "rgba(0,0,0,1)", a.fill()
+                        
                     }, b.prototype.moveX = function (a) {
                         this.setPosition(a, this.position.y)
                     }, b.prototype.moveY = function (a) {
@@ -190,50 +190,6 @@ angular.module("angular-img-cropper", []).directive("imageCropper", ["$document"
                             m = 0,
                             n = 0,
                             o = 0;
-                        if (a.keepAspect) {
-                            if (e = d.getHorizontalNeighbour().getVerticalNeighbour(), i = e.getPosition().x, j = e.getPosition().y, b <= e.getPosition().x) {
-                                if (c <= e.getPosition().y) {
-                                    if (f = i - 100 / this.aspectRatio, h = j - 100 / this.aspectRatio * this.aspectRatio, o = this.getSide(g.instance.borrow(f, h), e.getPosition(), g.instance.borrow(b, c)), o > 0) {
-                                        k = Math.abs(e.getPosition().y - c), l = k / this.aspectRatio, m = e.getPosition().y - k, n = e.getPosition().x - l;
-                                        var p = this.enforceMinSize(n, m, d);
-                                        d.move(p.x, p.y), g.instance.returnPoint(p)
-                                    } else if (0 > o) {
-                                        l = Math.abs(e.getPosition().x - b), k = l * this.aspectRatio, m = e.getPosition().y - k, n = e.getPosition().x - l;
-                                        var p = this.enforceMinSize(n, m, d);
-                                        d.move(p.x, p.y), g.instance.returnPoint(p)
-                                    }
-                                } else if (f = i - 100 / this.aspectRatio, h = j + 100 / this.aspectRatio * this.aspectRatio, o = this.getSide(g.instance.borrow(f, h), e.getPosition(), g.instance.borrow(b, c)), o > 0) {
-                                    l = Math.abs(e.getPosition().x - b), k = l * this.aspectRatio, m = e.getPosition().y + k, n = e.getPosition().x - l;
-                                    var p = this.enforceMinSize(n, m, d);
-                                    d.move(p.x, p.y), g.instance.returnPoint(p)
-                                } else if (0 > o) {
-                                    k = Math.abs(e.getPosition().y - c), l = k / this.aspectRatio, m = e.getPosition().y + k, n = e.getPosition().x - l;
-                                    var p = this.enforceMinSize(n, m, d);
-                                    d.move(p.x, p.y), g.instance.returnPoint(p)
-                                }
-                            } else if (c <= e.getPosition().y) {
-                                if (f = i + 100 / this.aspectRatio, h = j - 100 / this.aspectRatio * this.aspectRatio, o = this.getSide(g.instance.borrow(f, h), e.getPosition(), g.instance.borrow(b, c)), 0 > o) {
-                                    k = Math.abs(e.getPosition().y - c), l = k / this.aspectRatio, m = e.getPosition().y - k, n = e.getPosition().x + l;
-                                    var p = this.enforceMinSize(n, m, d);
-                                    d.move(p.x, p.y), g.instance.returnPoint(p)
-                                } else if (o > 0) {
-                                    l = Math.abs(e.getPosition().x - b), k = l * this.aspectRatio, m = e.getPosition().y - k, n = e.getPosition().x + l;
-                                    var p = this.enforceMinSize(n, m, d);
-                                    d.move(p.x, p.y), g.instance.returnPoint(p)
-                                }
-                            } else if (f = i + 100 / this.aspectRatio, h = j + 100 / this.aspectRatio * this.aspectRatio, o = this.getSide(g.instance.borrow(f, h), e.getPosition(), g.instance.borrow(b, c)), 0 > o) {
-                                l = Math.abs(e.getPosition().x - b), k = l * this.aspectRatio, m = e.getPosition().y + k, n = e.getPosition().x + l;
-                                var p = this.enforceMinSize(n, m, d);
-                                d.move(p.x, p.y), g.instance.returnPoint(p)
-                            } else if (o > 0) {
-                                k = Math.abs(e.getPosition().y - c), l = k / this.aspectRatio, m = e.getPosition().y + k, n = e.getPosition().x + l;
-                                var p = this.enforceMinSize(n, m, d);
-                                d.move(p.x, p.y), g.instance.returnPoint(p)
-                            }
-                        } else {
-                            var p = this.enforceMinSize(b, c, d);
-                            d.move(p.x, p.y), g.instance.returnPoint(p)
-                        }
                         this.center.recalculatePosition(this.getBounds()), a.cropAreaBounds && this.imageSet && (a.cropAreaBounds = this.getCropBounds(), a.$apply())
                     }, b.prototype.getSide = function (a, b, c) {
                         var d = this.sign((b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x));

@@ -38,7 +38,7 @@
 
     function UpdateUsersService($resource, config) {
 
-        var register = $resource(config.apiUrl + 'users',
+        var register = $resource(config.apiUrl + 'users/',
             {}, {
                 update: {
                     method: 'PUT',

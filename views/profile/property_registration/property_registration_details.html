@@ -1,10 +1,7 @@
 <h4 align="center" class="black-text">Detalhes</h4>
 <div class="form-group col-md-6">
     <label for="type">Tipo do Imóvel</label>
-    <select class="form-control redondend-border" name="type" ng-model="propertie.type">
-        <option value="A">A</option>
-        <option value="B">B</option>
-    </select>
+    <input type="text" class="form-control redondend-border" name="type" ng-model="propertie.type" ng-value="propertie.type" disabled>
 </div>
 
 <div class="form-group col-md-6">
@@ -67,7 +64,7 @@
 </div>
 
 <div class="form-group checkbox padding-15 col-sm-12">
-    <label><input type="checkbox" name="furniture" ng-model="propertie.furniture" required>Este apartamento será alugado mobiliado?</label>
+    <label><input type="checkbox" name="furniture" ng-model="propertie.furniture">Este apartamento será alugado mobiliado?</label>
 </div>
 
 <h3 class="black-text col-sm-12">Informações Adicionais</h3>
