@@ -53,18 +53,17 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
     events: true
   });
 
-  /**
-  * Helper auth functions
-  */
-  // var skipIfLoggedIn = ['$q', '$auth', function($q, $auth) {
-  //   var deferred = $q.defer();
-  //   if ($auth.isAuthenticated()) {
-  //     deferred.reject();
-  //   } else {
-  //     deferred.resolve();
-  //   }
-  //   return deferred.promise;
-  // }];
+
+
+  var skipIfLoggedIn = ['$q', '$auth', function ($q, $auth) {
+    var deferred = $q.defer();
+    if ($auth.isAuthenticated()) {
+      deferred.reject();
+    } else {
+      deferred.resolve();
+    }
+    return deferred.promise;
+  }];
 
   var loginRequired = ['$q', '$state', '$auth', function ($q, $state, $auth) {
     var deferred = $q.defer();
@@ -72,7 +71,6 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
       deferred.resolve();
     } else {
       $state.go('home');
-      console.log('Não autorizado!')
     }
     return deferred.promise;
   }];
@@ -192,7 +190,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
       url: '/fotos',
       templateUrl: 'views/profile/property_registration/property_registration_images.html'
     })
-    
+
     .state('perfil.cadastrarImovel.rental', {
       url: '/anuncio',
       templateUrl: 'views/profile/property_registration/property_registration_rental.html'
