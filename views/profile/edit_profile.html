@@ -95,9 +95,10 @@
                     </div>
                     <div class="form-group form-edit-profile col-md-2">
                         <label for="number">Número</label>
-                        <input type="number" class="form-control" id="number" name="number" ng-model="user.address.number" required>
+                        <input type="number" class="form-control" id="number" name="number" min="0" ng-model="user.address.number" required>
                         <div ng-show="formEdit.$submitted || formEdit.number.$touched">
                             <p ng-show="formEdit.number.$error.required" class="help-block error">Número é obrigatório.</p>
+                            <p ng-show="formEdit.number.$error.min" class="help-block error">Número inválido.</p>
                         </div>
                     </div>
                     <div class="form-group form-edit-profile col-md-5">

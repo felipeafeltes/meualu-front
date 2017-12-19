@@ -22,7 +22,14 @@
                         toastr.success("Cadastro atualizado!");
                     },
                     function (err) {
-                        toastr.error(err.errors)
+                        if (err.status) {
+                            if (err.status === 500) {
+                                toastr.error("Serviço indisponivel, tente novamente!")
+                            }
+                        } else {
+                            toastr.error(err.errors)
+                        }
+
                     }
                 );
             }
