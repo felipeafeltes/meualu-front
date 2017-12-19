@@ -128,11 +128,12 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <input type="number" ng-maxlength="4" validyear name="year" ng-model="year_birthday" class="form-control input-lg redondend-border"
+                                                <input type="number" ng-maxlength="4" ng-minlength="4" validyear name="year" ng-model="year_birthday" class="form-control input-lg redondend-border"
                                                     placeholder="Ano" required>
                                                 <div ng-show="formAdd.$submitted || formAdd.year.$touched">
                                                     <p ng-show="formAdd.year.$error.year" class="help-block error">Inválido</p>
                                                     <p ng-show="formAdd.year.$error.required" class="help-block error">Obrigatório.</p>
+                                                    <p ng-show="formAdd.year.$error.minlength" class="help-block error">Minimo de 4 caracteres.</p>
                                                     <p ng-show="formAdd.year.$error.maxlength" class="help-block error">Máximo de 4 caracteres.</p>
                                                 </div>
                                             </div>
