@@ -100,8 +100,8 @@
                                             <input type="password" name="password" ng-model="user.password" ng-minlength="6" class="form-control input-lg redondend-border"
                                                 placeholder="Senha" required>
                                             <div ng-show="formAdd.$submitted || formAdd.password.$touched">
-                                                <p ng-show="formAdd.password.$error.required" class="help-block error">Senha é obrigatório.</p>
-                                                <p ng-show="formAdd.password.$error.minlength" class="help-block error">Mínimo de 6 caracteres.</p>
+                                                <p ng-show="formAdd.password.$error.required" class="f-13 help-block error">Senha é obrigatório.</p>
+                                                <p ng-show="formAdd.password.$error.minlength" class="f-13 help-block error">Mínimo de 6 caracteres.</p>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -113,28 +113,28 @@
                                                 <input type="number" ng-maxlength="2" validay name="day" ng-model="day_birthday" class="form-control input-lg redondend-border"
                                                     placeholder="Dia" required>
                                                 <div ng-show="formAdd.$submitted || formAdd.day.$touched">
-                                                    <p ng-show="formAdd.day.$error.day" class="help-block error">Inválido</p>
-                                                    <p ng-show="formAdd.day.$error.required" class="help-block error">Obrigatório.</p>
-                                                    <p ng-show="formAdd.day.$error.maxlength" class="help-block error">Máximo de 2 caracteres.</p>
+                                                    <p ng-show="formAdd.day.$error.day" class="f-13 help-block error">Inválido</p>
+                                                    <p ng-show="formAdd.day.$error.required" class="f-13 help-block error">Obrigatório.</p>
+                                                    <p ng-show="formAdd.day.$error.maxlength" class="f-13 help-block error">Máximo de 2 caracteres.</p>
                                                 </div>
                                             </div>
                                             <div class="col-md-3" style="padding-left: 0px;">
                                                 <input type="number" ng-maxlength="2" validmonth name="month" ng-model="month_birthday" class="form-control input-lg redondend-border"
                                                     placeholder="Mês" required>
                                                 <div ng-show="formAdd.$submitted || formAdd.month.$touched">
-                                                    <p ng-show="formAdd.month.$error.month" class="help-block error">Inválido</p>
-                                                    <p ng-show="formAdd.month.$error.required" class="help-block error">Obrigatório.</p>
-                                                    <p ng-show="formAdd.month.$error.maxlength" class="help-block error">Máximo de 2 caracteres.</p>
+                                                    <p ng-show="formAdd.month.$error.month" class="f-13 help-block error">Inválido</p>
+                                                    <p ng-show="formAdd.month.$error.required" class="f-13 help-block error">Obrigatório.</p>
+                                                    <p ng-show="formAdd.month.$error.maxlength" class="f-13 help-block error">Máximo de 2 caracteres.</p>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <input type="number" ng-maxlength="4" ng-minlength="4" validyear name="year" ng-model="year_birthday" class="form-control input-lg redondend-border"
                                                     placeholder="Ano" required>
                                                 <div ng-show="formAdd.$submitted || formAdd.year.$touched">
-                                                    <p ng-show="formAdd.year.$error.year" class="help-block error">Inválido</p>
-                                                    <p ng-show="formAdd.year.$error.required" class="help-block error">Obrigatório.</p>
-                                                    <p ng-show="formAdd.year.$error.minlength" class="help-block error">Minimo de 4 caracteres.</p>
-                                                    <p ng-show="formAdd.year.$error.maxlength" class="help-block error">Máximo de 4 caracteres.</p>
+                                                    <p ng-show="formAdd.year.$error.year" class="f-13 help-block error">Inválido</p>
+                                                    <p ng-show="formAdd.year.$error.required" class="f-13 help-block error">Obrigatório.</p>
+                                                    <p ng-show="formAdd.year.$error.minlength" class="f-13 help-block error">Minimo de 4 caracteres.</p>
+                                                    <p ng-show="formAdd.year.$error.maxlength" class="f-13 help-block error">Máximo de 4 caracteres.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -147,7 +147,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <button type="submit" class="btn btn-block btn-lg btn-green login redondend-border">Cadastrar</button>
+                                            <button type="submit" ng-disabled="!response" class="btn btn-block btn-lg btn-green login redondend-border">Cadastrar</button>
                                             <img ng-if="!response" src="assets/imagens/loading.gif" width="50" height="50" class="loading-img img-center">
                                         </div>
                                         <div class="form-group">

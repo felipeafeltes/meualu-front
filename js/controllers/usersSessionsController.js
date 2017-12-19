@@ -69,6 +69,9 @@
                     // success
                     function (success) {
                         toastr.success("Cadastrado com sucesso!");
+                        localStorage.setItem('token', success.meta.auth_token);
+                        $('#modalLogin').modal('hide');
+                        $state.go('perfil.info');
                         $scope.response = true;
                         $scope.registered = true;
                     },
