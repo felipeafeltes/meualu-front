@@ -43,7 +43,7 @@ app.directive('validyear', function () {
         link: function ($scope, $element, $attrs, ngModel) {
             $scope.$watch($attrs.ngModel, function (value) {
                 var isValid;
-                if (value > 0) {
+                if (value >= 1900) {
                     isValid = true;
                     ngModel.$setValidity('year', isValid);
                 } else {

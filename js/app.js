@@ -157,7 +157,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
       templateUrl: 'views/profile/profile.html',
       resolve: {
         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
-          return $ocLazyLoad.load('js/directives/header-logged/header-logged.js');
+          return $ocLazyLoad.load('js/directives/header/header.js');
         }]
       }
     })

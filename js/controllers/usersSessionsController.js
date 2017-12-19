@@ -18,15 +18,9 @@
                 User.sign_in($scope.user)
                     .$promise.then(
                     function (response) {
-                        localStorage.setItem('token', response.auth_token)
-                        $rootScope.current_user = response.user;
-                        MySelf.get(
-                            {},
-                            function (data) {
-                                $('#modalLogin').modal('hide');
-                                $state.go('perfil.info');
-                            },
-                        );
+                        localStorage.setItem('token', response.auth_token);
+                        $('#modalLogin').modal('hide');
+                        $state.go('perfil.info');
                     },
                     function (data) {
                         if (data.errors !== undefined) { toastr.error(data.errors[0]) }
