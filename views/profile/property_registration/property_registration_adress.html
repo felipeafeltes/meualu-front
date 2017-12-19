@@ -52,9 +52,10 @@
 
 <div class="form-group col-md-6">
     <label for="number">Número (*)</label>
-    <input type="number" class="form-control redondend-border" name="number" ng-model="formAddress.number" required>
+    <input type="number" class="form-control redondend-border" name="number" ng-model="formAddress.number" min="1" required>
     <div ng-show="fillAddress || formProperty.number.$touched">
         <p ng-show="formProperty.number.$error.required" class="help-block error">Número é obrigatório.</p>
+        <p ng-show="formProperty.number.$error.min" class="help-block error">Inválido.</p>
     </div>
 </div>
 
