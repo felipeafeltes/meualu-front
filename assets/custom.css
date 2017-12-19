@@ -8,7 +8,7 @@ h1, h2, h3, h4, h5, h6{font-family:'Circular std book', sans-serif;}
 .logo-heigth{height:60px;}
 .chat-logo{width:30px;height:30px;}
 .full-heigth{height:100%;min-height:100vh;}
-.footer-heigth{min-height:40vh;}
+.footer-heigth{min-height:20vh;}
 .m-r-5{margin-right:5px;}
 .m-r-15{margin-right:15px;}
 .m-r-30{margin-right:30px;}
@@ -31,6 +31,7 @@ h1, h2, h3, h4, h5, h6{font-family:'Circular std book', sans-serif;}
 .p-t-15-p{padding-top:15%;}
 .p-t-0{padding-top: 0px !important;}
 .p-t-8{padding-top:8px;}
+.p-t-15{padding-top:15px;}
 .p-t-30{padding-top:30px;}
 .p-t-40{padding-top:40px;}
 .p-t-50{padding-top:50px;}
