@@ -29,17 +29,7 @@
                 )
             }
         }
-        /*                 //API COM GOOGLE LOGIN
-                $scope.$on('event:google-plus-signin-success', function (event, authResult) {
-                    // Send login to server or save into cookie
-                    console.log(event)
-                    console.log(authResult)
-                });
-                $scope.$on('event:google-plus-signin-failure', function (event, authResult) {
-                    // Auth failure or signout detected
-                    console.log(event)
-                    console.log(authResult)
-                });  */
+
     }
 
     function UserSessionsSignOut($scope, $rootScope, $state) {

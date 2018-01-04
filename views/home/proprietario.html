@@ -1,28 +1,6 @@
 <section class="text-white bg-yellow bg-proprietario font-18">
-  <nav class="navbar navbar-proprietario">
-    <div class="container-fluid  container">
-      <div class="navbar-header">
-        <a class="navbar-brand" ui-sref="home">
-          <img src="assets/imagens/icones/logo_alu_roxo_beta.png" class="img-responsive logo-heigth">
-        </a>
-      </div>
-      <div class="navbar-search">
-        <form ng-submit="searchPropertie()" ng-controller="autoCompleteController">
-          <div class="search-wrapper">
-            <i class="fa fa-search fa-1x sufix"></i>
-            <input g-places-autocomplete ng-change="searchPropertie()" placeholder="Buscar no mapa" ng-model="address" options="autocompleteOptions"
-              force-selection="true" type="text" class="form-control search-header">
-            </input>
-          </div>
-        </form>
-        <ul class="nav navbar-nav hidden-xs">
-          <li class="bold text-uppercase">
-            <a class="text-purple" ui-sref="proprietario">Anuncie seu apê</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+
+<header></header>
 
   <div class="m-a  container">
     <div class="row">
@@ -46,8 +24,9 @@
       </div>
     </div>
   </div>
-  </div>
+
 </section>
+
 <section class="section-how-it-works full">
   <div class="container">
     <div class="row">
@@ -100,7 +79,7 @@
     </div>
   </div>
 </section>
-<div ng-include="'views/shared/_footer.html'"></div>
+<footer></footer>
 <div ng-include="'views/home/_comecar_modal.html'"></div>
 
 <!-- Carousel SCRIPT -->

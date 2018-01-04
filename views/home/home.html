@@ -23,7 +23,7 @@
             <li class="bold text-uppercase cursor-pointer" ng-show="current_user">
               <a class="text-white" ui-sref="perfil.info">{{current_user.first_name}}</a>
             </li>
-<!--             <li class="bold text-uppercase cursor-pointer" ng-show="current_user" ng-controller="UserSessionsSignOut">
+            <!--             <li class="bold text-uppercase cursor-pointer" ng-show="current_user" ng-controller="UserSessionsSignOut">
               <a class="text-white" ng-click="sign_out()">Logout</a>
             </li> -->
           </ul>
@@ -33,9 +33,21 @@
 
     <div class="m-a" ng-controller="autoCompleteController">
       <div class="row">
+
+
         <div class="col-md-12">
-          <h1 class="h1-principal">Uma nova maneira de alugar um imóvel, mais condizente com a realidade atual, mais fácil e ágil, desburocrática,
-            transparente e segura.</h1>
+
+
+          <h1>Uma nova maneira de alugar um imóvel,</h1> <span style="font-size:30px;color:#f4cc6a" typed></span>
+
+          <div id="typed-strings">
+            <p>mais condizente com a realidade atual...</p>
+            <p>mais fácil e ágil...</p>
+            <p>desburocrática...</p>
+            <p>transparente...</p>
+            <p>e segura.</p>
+          </div>
+
           <form ng-submit="searchPropertie()">
             <div class="search-wrapper">
               <input g-places-autocomplete ng-change="searchPropertie()" ng-model="address" options="autocompleteOptions" force-selection="true"

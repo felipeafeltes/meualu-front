@@ -3,7 +3,7 @@
     app.controller('profileController', profileController);
 
     function profileController($rootScope, MySelf, $scope, $state, $window) {
-        if ($rootScope.current_user === undefined || $rootScope.current_user === null) {
+        if ($rootScope.current_user === undefined || $rootScope.current_user === null || $rootScope.current_user.id) {
             if (localStorage.getItem('token')) {
                 $scope.hasData = false;
                 //DADOS DO USUARIOO

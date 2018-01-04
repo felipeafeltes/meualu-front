@@ -29,8 +29,8 @@ var app = angular
   ]);
 
 app.constant('config', {
-  apiUrl: 'https://api.meualu.com/'
-  // apiUrl: 'http://localhost:3000/'
+  /* apiUrl: 'https://api.meualu.com/' */
+  apiUrl: 'http://191.232.166.104/'
 
 });
 
@@ -47,44 +47,38 @@ app.filter('pluralize', function () {
   }
 });
 
+
+
 app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $authProvider, $ocLazyLoadProvider) {
 
   $ocLazyLoadProvider.config({
     events: true
   });
 
-
-
-  var skipIfLoggedIn = ['$q', '$auth', function ($q, $auth) {
-    var deferred = $q.defer();
-    if ($auth.isAuthenticated()) {
-      deferred.reject();
-    } else {
-      deferred.resolve();
-    }
-    return deferred.promise;
-  }];
-
-  var loginRequired = ['$q', '$state', '$auth', function ($q, $state, $auth) {
-    var deferred = $q.defer();
-    if ($auth.isAuthenticated()) {
-      deferred.resolve();
-    } else {
-      $state.go('home');
-    }
-    return deferred.promise;
-  }];
+  /*   $authProvider.facebook({
+      url: 'https://api.meualu.com/auth/facebook/callback',
+      clientId: '914533272017680',
+      authorizationEndpoint: 'https://www.facebook.com/v2.6/dialog/oauth',
+      baseUrl: 'https://api.meualu.com/'
+    }); */
 
   $authProvider.facebook({
-    url: 'https://api.meualu.com/auth/facebook/callback',
+    url: 'http://191.232.166.104/auth/facebook/callback',
     clientId: '914533272017680',
     authorizationEndpoint: 'https://www.facebook.com/v2.6/dialog/oauth',
-    baseUrl: 'https://api.meualu.com/'
+    baseUrl: 'http://191.232.166.104/'
+  });
+
+  $authProvider.google({
+    url: 'http://191.232.166.104/auth/google/callback',
+    clientId: '1083734615013-3bff0193jcdueh30bimq5coekmoiec1d.apps.googleusercontent.com',
+    baseUrl: 'http://191.232.166.104/'
   });
 
   $urlRouterProvider.otherwise('/');
   // Utilizando o HTML5 History API
   /*   $locationProvider.html5Mode(true); */
+
 
 
   $stateProvider
@@ -106,7 +100,8 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
       templateUrl: 'views/home/register_user.html',
       resolve: {
         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
-          return $ocLazyLoad.load('js/directives/header/header.js');
+          return $ocLazyLoad.load('js/directives/header-property/header-property.js'),
+            $ocLazyLoad.load('js/directives/footer/footer.js')
         }]
       }
     })
@@ -121,7 +116,13 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
     .state('proprietario', {
       controller: 'ContactClientsController',
       url: '/proprietario',
-      templateUrl: 'views/home/proprietario.html'
+      templateUrl: 'views/home/proprietario.html',
+      resolve: {
+        deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+          return $ocLazyLoad.load('js/directives/header-property/header-property.js'),
+            $ocLazyLoad.load('js/directives/footer/footer.js')
+        }]
+      }
     })
     .state('properties', {
       url: '/imoveis/:address_string?{filters:json}',
@@ -137,7 +138,8 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
       controller: 'PropertiesSearchController',
       resolve: {
         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
-          return $ocLazyLoad.load('js/directives/header/header.js');
+          return $ocLazyLoad.load('js/directives/header-property/header-property.js'),
+            $ocLazyLoad.load('js/directives/footer/footer.js')
         }]
       }
     })
@@ -147,7 +149,8 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
       controller: 'PropertiesDetailsController',
       resolve: {
         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
-          return $ocLazyLoad.load('js/directives/header/header.js');
+          return $ocLazyLoad.load('js/directives/header-property/header-property.js'),
+            $ocLazyLoad.load('js/directives/footer/footer.js')
         }]
       }
     })
@@ -157,19 +160,24 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
       templateUrl: 'views/profile/profile.html',
       resolve: {
         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
-          return $ocLazyLoad.load('js/directives/header/header.js');
+          return $ocLazyLoad.load('js/directives/header-property/header-property.js'),
+            $ocLazyLoad.load('js/directives/footer/footer.js')
         }]
-      }
+      },
+      protected: true
+
     })
     .state('perfil.info', {
       controller: 'myInfosProfileController',
       url: '/info',
       templateUrl: 'views/profile/profile_info.html',
+      protected: true
     })
     .state('perfil.editar', {
       controller: 'editProfileController',
       url: '/editar',
       templateUrl: 'views/profile/edit_profile.html',
+      protected: true
     })
 
     //CADASTRO DE IMOVEL
@@ -177,56 +185,98 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
       controller: 'propertyRegistrationController',
       url: '/novo-imovel',
       templateUrl: 'views/profile/property_registration/property_registration.html',
+      protected: true
     })
     .state('perfil.cadastrarImovel.address', {
       url: '/endereco',
-      templateUrl: 'views/profile/property_registration/property_registration_adress.html'
+      templateUrl: 'views/profile/property_registration/property_registration_adress.html',
+      protected: true
     })
     .state('perfil.cadastrarImovel.details', {
       url: '/detalhes',
-      templateUrl: 'views/profile/property_registration/property_registration_details.html'
+      templateUrl: 'views/profile/property_registration/property_registration_details.html',
+      protected: true
     })
     .state('perfil.cadastrarImovel.images', {
       url: '/fotos',
-      templateUrl: 'views/profile/property_registration/property_registration_images.html'
+      templateUrl: 'views/profile/property_registration/property_registration_images.html',
+      protected: true
     })
 
     .state('perfil.cadastrarImovel.rental', {
       url: '/anuncio',
-      templateUrl: 'views/profile/property_registration/property_registration_rental.html'
+      templateUrl: 'views/profile/property_registration/property_registration_rental.html',
+      protected: true
     })
     .state('perfil.cadastrarImovel.advertisement', {
       url: '/anuncio',
-      templateUrl: 'views/profile/property_registration/property_registration_advertisement.html'
+      templateUrl: 'views/profile/property_registration/property_registration_advertisement.html',
+      protected: true
     })
     .state('perfil.cadastrarImovel.terms', {
       url: '/termos',
-      templateUrl: 'views/profile/property_registration/property_registration_terms.html'
+      templateUrl: 'views/profile/property_registration/property_registration_terms.html',
+      protected: true
     })
 
+    //AGENDAMENTO
+    .state('scheduling', {
+      url: '/agendar',
+      templateUrl: 'views/properties/schedulingProperty.html',
+      controller: 'schedulingController',
+      resolve: {
+        deps: [
+          '$ocLazyLoad', function ($ocLazyLoad) {
+            return $ocLazyLoad.load('js/directives/header-property/header-property.js'),
+              $ocLazyLoad.load('js/directives/footer/footer.js')
+          }
+        ],
+      }
+    })
+
+    //ADMIN
     .state('admin', {
       url: '/admin',
       templateUrl: 'views/default_layout.html',
+      protected: true
     })
     .state('admin.properties', {
       url: '/properties',
       templateUrl: 'views/properties/list.html',
-      controller: 'PropertiesListController'
+      controller: 'PropertiesListController',
+      protected: true
     })
     .state('admin.addProperties', {
       url: '/properties/add',
       templateUrl: 'views/properties/add.html',
-      controller: 'PropertiesAddController'
+      controller: 'PropertiesAddController',
+      protected: true
     })
     .state('admin.editProperties', {
       url: '/properties/edit/:id',
       templateUrl: 'views/properties/edit.html',
-      controller: 'PropertiesEditController'
+      controller: 'PropertiesEditController',
+      protected: true
     })
     .state('admin.deleteProperties', {
       url: '/properties/delete/:id',
       templateUrl: 'views/properties/delete.html',
-      controller: 'PropertiesDeleteController'
+      controller: 'PropertiesDeleteController',
+      protected: true
     });
+
+
 });
 
+app.run(function ($transitions, $state) {
+
+  //TRATAMENTO DE ROTAS
+  $transitions.onBefore({}, function (transition) {
+    if (transition.to().protected && !localStorage.getItem('token')) {
+      toastr.error("Não foi possível acessar sem estar autenticado.");
+      $state.go('home');
+      return false;
+    }
+  });
+
+});

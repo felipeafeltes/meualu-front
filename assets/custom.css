@@ -95,6 +95,9 @@ a.text-yellow:hover{color:#f4cc6a;}
 .m-a{margin: auto;}
 .container-video{display: flex; min-height: 100vh; flex-direction: column; padding-bottom: 20px;}
 .cursor-pointer{cursor:pointer;}
+.container-nav{
+  padding:0 30px 0 10px
+}
 .angular-google-map-container { height: calc(100vh - 130px); }
 .font-18{font-size: 18px;}
 .row-list-details {
@@ -154,7 +157,7 @@ input.search-header:focus {
 
 .search-wrapper {
   position: relative;
-  width: 45%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 20px;
@@ -174,6 +177,40 @@ input.search-header:focus {
   left: 13px;
   top: 27px;
 }
+
+.typed-cursor {
+  opacity: 1;
+  animation: typedjsBlink 0.7s infinite;
+  -webkit-animation: typedjsBlink 0.7s infinite;
+  animation: typedjsBlink 0.7s infinite;
+  font-size:35px;
+}
+
+@keyframes typedjsBlink {
+  50% {
+    opacity: 0.0;
+  }
+}
+
+@-webkit-keyframes typedjsBlink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.typed-fade-out {
+  opacity: 0;
+  transition: opacity .25s;
+  -webkit-animation: 0;
+  animation: 0;
+}
+
 
 .navbar-proprietario {
   background-color: white;
