@@ -90,73 +90,27 @@
                     <div class="col-md-12 schedule-card">
                         <div class="card-schedule-header">
                             <div class="col-md-10 col-md-offset-1 card-schedule-header" style="background:transparent">
-                                <div class="schedule-day-week">Qua</div>
-                                <div class="schedule-day-week">Qui</div>
-                                <div class="schedule-day-week">Sex</div>
-                                <div class="schedule-day-week">Sáb</div>
-                                <div class="schedule-day-week">Dom</div>
-                                <div class="schedule-day-week">Seg</div>
-                                <div class="schedule-day-week">Ter</div>
+                                <div class="schedule-day-week" ng-repeat="d in daysWeek">{{d.val}}</div>
                             </div>
                         </div>
                         <div class="col-md-10 col-md-offset-1 card-schedule-days" id="days">
-                            <button class="schedule-day-week text-gray active">20</button>
-                            <button class="schedule-day-week text-gray">21</button>
-                            <button class="schedule-day-week text-gray">22</button>
-                            <button class="schedule-day-week text-gray">23</button>
-                            <button class="schedule-day-week text-gray">24</button>
-                            <button class="schedule-day-week text-gray">25</button>
-                            <button class="schedule-day-week text-gray">26</button>
+                            <button ng-repeat="dw in days" class="schedule-day-week text-gray" ng-class="{'active':dw.val === selectedDay}"
+                            ng-click="selectDay(dw.val)">
+                                {{dw.val}}
+                            </button>
                         </div>
                         <div class="col-md-12 text-center">
                             <h4 class="text-gray">Quinta-Feira, 24/10</h4>
                         </div>
                         <div class="col-md-12">
                             <div class="col-md-10 text-center col-md-offset-1 hours">
-                                <button type="button" class="hour green-btn">
-                                    <span>08:00</span>
+                                <button type="button" ng-click="selectHour(h.val)" ng-repeat="h in hours" class="hour" ng-class="{'green-btn':h.valid}" ng-disabled="h.valid === false">
+                                    <span>{{h.val}}</span>
                                 </button>
-                                <button type="button" class="hour green-btn">
-                                    <span>08:00</span>
-                                </button>
-                                <button type="button" class="hour" disabled>
-                                    <span>08:00</span>
-                                </button>
-
-                                <button type="button" class="hour green-btn">
-                                        <span>08:00</span>
-                                    </button>
-                                <button type="button" class="hour green-btn">
-                                        <span>08:00</span>
-                                    </button>
-                                <button type="button" class="hour" disabled>
-                                        <span>08:00</span>
-                                    </button>
-
-                                <button type="button" class="hour green-btn">
-                                            <span>08:00</span>
-                                        </button>
-                                <button type="button" class="hour green-btn">
-                                            <span>08:00</span>
-                                        </button>
-                                <button type="button" class="hour" disabled>
-                                            <span>08:00</span>
-                                        </button>
-
-
-                                <button type="button" class="hour green-btn">
-                                                <span>08:00</span>
-                                            </button>
-                                <button type="button" class="hour green-btn">
-                                                <span>08:00</span>
-                                            </button>
-                                <button type="button" class="hour" disabled>
-                                                <span>08:00</span>
-                                            </button>
 
                             </div>
                             <div class="col-md-8 col-md-offset-2">
-                                <button class="btn btn-block schedule-btn" type="button">Agendar visita</button>
+                                <button class="btn btn-block schedule-btn" type="button" ng-click="scheduleVisit()">Agendar visita</button> 
                             </div>
                         </div>
                     </div>
@@ -187,15 +141,15 @@
         .clear-visit {
             margin-top: 250px;
         }
-        .circular-orange{
+        .circular-orange {
             position: relative;
             left: 50%;
             transform: translateX(-50%);
         }
-        .cirular-text{
+        .cirular-text {
             text-align: center;
         }
-        .title-circular{
+        .title-circular {
             text-align: center;
         }
     }
@@ -346,9 +300,9 @@
         border-top-right-radius: 10px;
     }
 
-    .card-schedule-header>div:hover{
+    .card-schedule-header>div:hover {
         color: #fff !important;
-        cursor:default;
+        cursor: default;
     }
 
     .container-schedule {

@@ -101,7 +101,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
       resolve: {
         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
           return $ocLazyLoad.load('js/directives/header-property/header-property.js'),
-          $ocLazyLoad.load('js/directives/footer/footer.js')
+            $ocLazyLoad.load('js/directives/footer/footer.js')
         }]
       }
     })
@@ -117,6 +117,12 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
       controller: 'ContactClientsController',
       url: '/proprietario',
       templateUrl: 'views/home/proprietario.html',
+      resolve: {
+        deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+          return $ocLazyLoad.load('js/directives/header-property/header-property.js'),
+            $ocLazyLoad.load('js/directives/footer/footer.js')
+        }]
+      }
     })
     .state('properties', {
       url: '/imoveis/:address_string?{filters:json}',
@@ -133,7 +139,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
       resolve: {
         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
           return $ocLazyLoad.load('js/directives/header-property/header-property.js'),
-          $ocLazyLoad.load('js/directives/footer/footer.js')
+            $ocLazyLoad.load('js/directives/footer/footer.js')
         }]
       }
     })
@@ -144,7 +150,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
       resolve: {
         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
           return $ocLazyLoad.load('js/directives/header-property/header-property.js'),
-          $ocLazyLoad.load('js/directives/footer/footer.js')
+            $ocLazyLoad.load('js/directives/footer/footer.js')
         }]
       }
     })
@@ -215,7 +221,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
 
     //AGENDAMENTO
     .state('scheduling', {
-      url: '/agendar',
+      url: '/agendar/:id',
       templateUrl: 'views/properties/schedulingProperty.html',
       controller: 'schedulingController',
       resolve: {

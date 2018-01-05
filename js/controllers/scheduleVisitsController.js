@@ -1,21 +1,12 @@
 (function(){
     'use strict';
-  app.controller('ScheduleVisitsModalController', ScheduleVisitsModalController);
+  app.controller('ScheduleVisitsController', ScheduleVisitsController);
   app.controller('ScheduleVisitsCreateController', ScheduleVisitsCreateController);
 
-  function ScheduleVisitsModalController($scope, $uibModal) {
-    $scope.showModal = function(propertyId) {
+  function ScheduleVisitsController($scope, $uibModal,$state) {
+    $scope.showSchedule = function(propertyId) {
         $scope.propertyId = propertyId;
-        $uibModal.open({
-            templateUrl: 'scheduleVisitModal.htm',
-            size: 'lg',
-            controller: 'ScheduleVisitsCreateController',
-            resolve: {
-                propertyId: function() {
-                    return $scope.propertyId;
-                }
-            }
-        });
+        $state.go('scheduling',{id:2})
     }
   }
 
