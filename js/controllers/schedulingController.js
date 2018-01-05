@@ -2,7 +2,7 @@
     'use strict';
     app.controller('schedulingController', schedulingController);
 
-    function schedulingController($scope, $rootScope, $ocLazyLoad) {
+    function schedulingController($scope, $rootScope, $ocLazyLoad,$uibModal) {
 
         $scope.selectedHour;
         $scope.selectedDay;
@@ -34,7 +34,7 @@
         ]
 
         $scope.selectedDay = $scope.days[0].val;
-        
+
         $scope.daysWeek = [
             { val: 'Qua' },
             { val: 'Qui' },
@@ -45,17 +45,20 @@
             { val: 'Ter' }
         ]
 
-        $scope.scheduleVisit = function(){
-            console.log($scope.selectedHour)
-            if($scope.selectedHour === undefined){
-                toastr.error("Selecione um horário!")
-            }else{
-                alert("agendar dia " + $scope.selectedDay + " as " + $scope.selectedHour)
+        $scope.scheduleVisit = function () {
+            if (!localStorage.getItem('token')) {
+                $('#modalLogin').modal('show'); 
+            } else {
+                if ($scope.selectedHour === undefined) {
+                    toastr.error("Selecione um horário!")
+                } else {
+                    alert("agendar dia " + $scope.selectedDay + " as " + $scope.selectedHour)
+                }
             }
         }
 
         $scope.selectDay = function (day) {
-  
+
             $scope.selectedDay = day;
             alert(day)
         }

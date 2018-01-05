@@ -13,13 +13,12 @@
               <a class="text-yellow" ui-sref="proprietario">Anuncie seu apê</a>
             </li>
             <li class="bold text-uppercase cursor-pointer" ng-hide="current_user">
-              <li class="bold text-uppercase cursor-pointer" ng-hide="current_user">
-                <a class="text-white" data-toggle="modal" data-target="#modalLogin">
+              <a class="text-white" data-toggle="modal" data-target="#modalLogin">
                     <img src="assets/imagens/icones/account.png" width="15" height="15" class="margin-bottom-5">
                         Entrar
                     </a>
-              </li>
             </li>
+
             <li class="bold text-uppercase cursor-pointer" ng-show="current_user">
               <a class="text-white" ui-sref="perfil.info">{{current_user.first_name}}</a>
             </li>
