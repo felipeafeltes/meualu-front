@@ -89,13 +89,15 @@
                 <div class="col-md-4 col-md-offset-1 col-sm-12 clear-visit">
                     <div class="col-md-12 schedule-card">
                         <div class="card-schedule-header">
-                            <div class="schedule-day-week">Qua</div>
-                            <div class="schedule-day-week">Qui</div>
-                            <div class="schedule-day-week">Sex</div>
-                            <div class="schedule-day-week">Sáb</div>
-                            <div class="schedule-day-week">Dom</div>
-                            <div class="schedule-day-week">Seg</div>
-                            <div class="schedule-day-week">Ter</div>
+                            <div class="col-md-10 col-md-offset-1 card-schedule-header" style="background:transparent">
+                                <div class="schedule-day-week">Qua</div>
+                                <div class="schedule-day-week">Qui</div>
+                                <div class="schedule-day-week">Sex</div>
+                                <div class="schedule-day-week">Sáb</div>
+                                <div class="schedule-day-week">Dom</div>
+                                <div class="schedule-day-week">Seg</div>
+                                <div class="schedule-day-week">Ter</div>
+                            </div>
                         </div>
                         <div class="col-md-10 col-md-offset-1 card-schedule-days" id="days">
                             <button class="schedule-day-week text-gray active">20</button>
@@ -185,6 +187,17 @@
         .clear-visit {
             margin-top: 250px;
         }
+        .circular-orange{
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .cirular-text{
+            text-align: center;
+        }
+        .title-circular{
+            text-align: center;
+        }
     }
 
     @media(max-width:752px) {
@@ -229,8 +242,8 @@
         }
     }
 
-    .clear-visit{
-        margin-bottom:20px;
+    .clear-visit {
+        margin-bottom: 20px;
     }
 
     .green-btn {
@@ -331,6 +344,11 @@
         background-color: rgba(103, 183, 179, 0.87);
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
+    }
+
+    .card-schedule-header>div:hover{
+        color: #fff !important;
+        cursor:default;
     }
 
     .container-schedule {

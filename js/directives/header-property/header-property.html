@@ -1,24 +1,37 @@
 <nav class="navbar navbar-proprietario">
-    <div class="container-nav">
-      <div class="navbar-header">
-        <a class="navbar-brand" ui-sref="home">
+  <div class="container-nav">
+    <div class="navbar-header">
+      <a class="navbar-brand" ui-sref="home">
           <img src="assets/imagens/icones/logo_alu_roxo_beta.png" class="img-responsive logo-heigth">
         </a>
-      </div>
-      <div class="navbar-search">
-        <form ng-submit="searchPropertie()" ng-controller="autoCompleteController">
-          <div class="search-wrapper">
-            <i class="fa fa-search fa-1x sufix"></i>
-            <input g-places-autocomplete ng-change="searchPropertie()" placeholder="Buscar no mapa" ng-model="address" options="autocompleteOptions"
-              force-selection="true" type="text" class="form-control search-header">
-            </input>
-          </div>
-        </form>
-        <ul class="nav navbar-nav hidden-xs">
-          <li class="bold text-uppercase">
-            <a class="text-purple" ui-sref="proprietario">Anuncie seu apê</a>
-          </li>
-        </ul>
-      </div>
     </div>
-  </nav>
+    <div class="navbar-search hidden-xs">
+      <form ng-submit="searchPropertie()" ng-controller="autoCompleteController">
+        <div class="search-wrapper">
+          <i class="fa fa-search fa-1x sufix"></i>
+          <input g-places-autocomplete ng-change="searchPropertie()" placeholder="Buscar no mapa" ng-model="address" options="autocompleteOptions"
+            force-selection="true" type="text" class="form-control search-header">
+          </input>
+        </div>
+      </form>
+      <ul class="nav navbar-nav">
+        <li class="bold text-uppercase">
+          <a class="text-purple" ui-sref="proprietario">Anuncie seu apê</a>
+        </li>
+        <li class="bold text-uppercase cursor-pointer" ng-hide="current_user">
+          <li class="bold text-uppercase cursor-pointer" ng-hide="current_user">
+            <a class="text-white" data-toggle="modal" data-target="#modalLogin">
+              <img src="assets/imagens/icones/account.png" width="15" height="15" class="margin-bottom-5">
+                  Entrar
+              </a>
+          </li>
+        </li>
+        <li class="bold text-uppercase cursor-pointer" ng-show="current_user">
+          <a class="text-white" ui-sref="perfil.info">  
+             <img src="assets/imagens/icones/account.png" width="15" height="15" class="margin-bottom-5">
+            {{current_user.first_name}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

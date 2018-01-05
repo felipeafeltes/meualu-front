@@ -1,191 +1,207 @@
 <!-- <pre>{{ property | json }}</pre> -->
 <header></header>
-<section class="bg-gray">
+<section class="bg-white">
   <div class="container-fluid">
     <div id="pictures" class="row">
-      <slick ng-if="images.length" arrows="false" slides-to-show="1" id="slide-full" arrows="false" slides-to-scroll="1" infinite="true" draggable="false">
-          <div ng-repeat="img in images">
-            <img ng-src="{{img.src}}" class="slider-full-img" alt="Responsive image">
-          </div>
-        </slick>
+      <slick ng-if="images.length" arrows="false" slides-to-show="1" id="slide-full" arrows="false" slides-to-scroll="1" infinite="true"
+        draggable="false">
+        <div ng-repeat="img in images">
+          <img ng-src="{{img.src}}" class="slider-full-img" alt="Responsive image">
+        </div>
+      </slick>
     </div>
   </div>
   <div class="container">
     <div class="row row-slider-full">
-      <div class="col-md-6 col-sm-6 propertie-title">
-        <slick ng-if="images.length" arrows="true" slides-to-show="4" id="slide-nav" as-nav-for="#slide-full" slides-to-scroll="1" infinite="true" focus-on-select="true">
+      <div class="col-md-7 col-sm-7 propertie-title">
+        <slick ng-if="images.length" arrows="true" slides-to-show="4" id="slide-nav" as-nav-for="#slide-full" slides-to-scroll="1"
+          infinite="true" focus-on-select="true">
           <div class="image" ng-repeat="img in images">
             <img ng-src="{{img.src}}" class="slider-nav-img" alt="Responsive image">
           </div>
         </slick>
 
-        <h1 class="text-purple m-b-0" ng-bind=property.full_address() ></h1>
-        <h2 class="m-t-5">{{ property.address.district }}</h2>
-        <ul class="list-inline m-t-15">
-          <li class="text-center">
-            <i class="fa fa-regua"></i>
-            <br/>
-            <span>{{ property.total_area }} m²</span>
-          </li>
-          <li class="text-center">
-            <i class="fa fa-bed"></i>
-            <br/>
-            <span>{{ property.bedrooms }} dorm</span>
-          </li>
-          <li class="text-center">
-            <i class="fa fa-car"></i>
-            <br/>
-            <span>{{ property.garages }} vaga</span>
-          </li>
-          <li class="text-center">
-            <i class="fa fa-paw"></i>
-            <br/>
-            <span>{{ property.pets_allowed ? 'Permitido' : 'Não permitido'  }}</span>
-          </li>
-          <li class="text-center">
-            <i class="fa fa-building"></i>
-            <br/>
-            <span>{{ property.floor }}º andar</span>
-          </li>
-          <!-- <li class="text-center">
-            <i class="fa fa-tv"></i>
-            <br/>
-            <span>Não</span>
-          </li> -->
-          <li class="text-center">
-            <i class="fa fa-bus"></i>
-            <br/>
-            <span>{{ property.public_transportation ? 'Próximo' : 'Não' }}</span>
-          </li>
-        </ul>
+        <div class="col-sm-12 p-b-50">
+          <h2 class="m-t-5 property-description">Descrição Curta do Imóvel</h2>
+          <h3 class="m-t-5">Bairro do Imóvel</h3>
+
+          <div class="profile-img2 text-center">
+            <img src="https://image.freepik.com/icones-gratis/perfil-macho-utilizador-sombra_318-40244.jpg" class="img-circle">
+            <span>Igor</span>
+          </div>
+        </div>
+
+        <div class="col-sm-12 characteristics">
+
+          <div class="characteristic">
+            <span>área útil(m²)</span><br>
+            <div>4</div>
+          </div>
+          <div class="characteristic">
+            <span>dormitórios</span><br>
+            <div>4</div>
+          </div>
+          <div class="characteristic">
+            <span>garagem</span><br>
+            <div>4</div>
+          </div>
+          <div class="characteristic">
+            <span>banheiros</span><br>
+            <div>4</div>
+          </div>
+          <div class="characteristic">
+            <span>andar</span><br>
+            <div>4</div>
+          </div>
+          <div class="characteristic">
+            <span>animais</span><br>
+            <div>
+              <img src="assets/imagens/icones/pet.png" width="25px">
+            </div>
+            <small>aceita pet</small>
+          </div>
+          <div class="characteristic">
+            <span>móveis</span><br>
+            <div><img src="assets/imagens/icones/moveis.png" width="25px"></div>
+            <small>mobiliado</small>
+          </div>
+
+        </div>
       </div>
-      <div class="col-md-4 col-md-offset-2 col-sm-6">
-        <div id="rental-fix" class="panel panel-rental hidden-xs" scroll-to-fixed="scrollToFixedOptions" >
+      <div class="col-md-4 col-md-offset-1 col-sm-6 propertie-rental">
+        <div id="rental-fix" class="panel panel-rental hidden-sm hidden-xs" scroll-to-fixed="scrollToFixedOptions">
           <div ng-include="'views/properties/_painel_valor_fixo.html'"></div>
         </div>
-        <div class="panel panel-rental hidden-lg hidden-md hidden-sm" >
+        <div class="panel panel-rental hidden-lg hidden-md ">
           <div ng-include="'views/properties/_painel_valor_fixo.html'"></div>
         </div>
       </div>
     </div>
   </div>
 </section>
-<section class="bg-purple">
-  <div class="container p-t-30 p-b-60">
-    <div class="row">
-      <div class="col-md-6">
-        <h4 class="bold">Apartamento</h4>
-        <div class="col-md-6">
-          <h5 class="bold">Espaço</h5>
-          <ul class="without-style">
-            <li class="m-b-10">
-              <span>Lorem ipsum:</span>
-              <span class="bold">Dolor sit amet</span>
-            </li>
-            <li class="m-b-10">
-              <span>Lorem ipsum:</span>
-              <span class="bold">Dolor sit amet</span>
-            </li>
-            <li class="m-b-10">
-              <span>Lorem ipsum:</span>
-              <span class="bold">Dolor sit amet</span>
-            </li>
-            <li class="m-b-10">
-              <span>Lorem ipsum:</span>
-              <span class="bold">Dolor sit amet</span>
-            </li>
-            <li class="m-b-10">
-              <span>Lorem ipsum:</span>
-              <span class="bold">Dolor sit amet</span>
-            </li>
-            <li class="m-b-10">
-              <span>Lorem ipsum:</span>
-              <span class="bold">Dolor sit amet</span>
-            </li>
-            <li class="m-b-10">
-              <span>Lorem ipsum:</span>
-              <span class="bold">Dolor sit amet</span>
-            </li>
-            <li class="m-b-10">
-              <span>Lorem ipsum:</span>
-              <span class="bold">Dolor sit amet</span>
-            </li>
-          </ul>
+
+<section class="bg-white">
+  <div class="container">
+    <div class="row row-slider-full">
+      <div class="col-md-7 div-descriptions m-b-15">
+
+        <div class="col-sm-12 p0">
+          <h3 class="m-t-5 bold">A moradia</h3>
+          <p class="home-description">
+            Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente
+            inalterado. Se popularizou na década de 60, quando a Letraset lançou decalques contendo passagens de Lorem Ipsum,
+            e mais recentemente quando passou a ser integrado a softwares de editoração eletrônica como Aldus PageMaker.
+          </p>
         </div>
-        <div class="col-md-6">
-          <h5 class="bold">Comodidades</h5>
-          <ul class="without-style">
-            <li class="m-b-10">
-              <i class="fa fa-shopping-cart m-r-5"></i>
-              <span>Lorem ipsun dolor sit amet</span>
-            </li>
-            <li class="m-b-10">
-              <i class="fa fa-tree m-r-5"></i>
-              <span>Lorem ipsun dolor sit amet</span>
-            </li>
-            <li class="m-b-10">
-              <i class="fa fa-subway  m-r-5"></i>
-              <span>Lorem ipsun dolor sit amet</span>
-            </li>
-          </ul>
+
+        <div class="col-sm-12 p0 m-b-30">
+          <div class="col-sm-6  immobile-characteristics">
+            <h5>Imóvel</h5>
+            <div ng-repeat="e in exp" class="pt-5-pb-5">
+              <span>
+                <i class="fa fa-check m-r-10 active-icon"></i> {{e.name}}
+              </span>
+              <br>
+            </div>
+
+            <div ng-show="moreImmobile" ng-repeat="m in more" class="pt-5-pb-5">
+              <span>
+                  <i class="fa fa-times m-r-15"></i> {{m.name}}
+                </span>
+              <br>
+            </div>
+
+            <span ng-show="!moreImmobile" class="more-informations" ng-click="moreInformation(moreImmobile,1)">+Mais informações</span>
+            <span ng-show="moreImmobile" class="more-informations" ng-click="moreInformation(moreImmobile,1)">-Menos informações</span>
+
+          </div>
+          <div class="col-sm-6 condominium-characteristics">
+            <h5>Condomínio</h5>
+            <div ng-repeat="e in exp" class="pt-5-pb-5">
+              <span>
+                  <i class="fa fa-check m-r-10 active-icon"></i> {{e.name}}
+                </span>
+              <br>
+            </div>
+
+            <div ng-show="moreCondominium" ng-repeat="m in more" class="pt-5-pb-5">
+              <span>
+                    <i class="fa fa-times m-r-15"></i> {{m.name}}
+                  </span>
+              <br>
+            </div>
+
+            <span ng-show="!moreCondominium" class="more-informations" ng-click="moreInformation(moreCondominium,2)">+Mais informações</span>
+            <span ng-show="moreCondominium" class="more-informations" ng-click="moreInformation(moreCondominium,2)">-Menos informações</span>
+
+          </div>
         </div>
-        <div class="clearfix"></div>
-        <hr />
-        <h4 class="bold">Condomínio</h4>
-        <div class="col-md-6">
-          <i class="fa fa-futbol-o m-r-5 m-b-10"></i>
-          <span>Lorem ipsun dolor sit amet</span>
+
+        <div class="col-sm-12 p0 border-t-b">
+          <h4 class="">Porto Alegre, RS</h4>
+          <h4 class="">Cadastrou em outubro de 2017</h4>
+          <img src="https://icon-icons.com/icons2/259/PNG/128/ic_verified_user_128_28798.png" width="60">Verificado
+          <div class="profile-img2 text-center">
+            <img src="https://image.freepik.com/icones-gratis/perfil-macho-utilizador-sombra_318-40244.jpg" class="img-circle">
+            <span>Igor</span>
+          </div>
         </div>
-        <div class="col-md-6">
-          <i class="fa fa-bicycle m-r-5 m-b-10"></i>
-          <span>Lorem ipsun dolor sit amet</span>
+
+        <div class="col-sm-12 p0">
+          <h3 class="m-t-5 bold">A bairro</h3>
+          <p class="home-description">
+            Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente
+            inalterado. Se popularizou na década de 60, quando a Letraset lançou decalques contendo passagens de Lorem Ipsum,
+            e mais recentemente quando passou a ser integrado a softwares de editoração eletrônica como Aldus PageMaker.
+          </p>
         </div>
-        <div class="col-md-6">
-          <i class="fa fa-umbrella m-r-5 m-b-10"></i>
-          <span>Lorem ipsun dolor sit amet</span>
+
+        <div class="col-sm-12 p0">
+          <h4 class="m-t-5 bold">Mobilidade</h4>
+          <p class="home-description">
+            Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente
+            inalterado.
+          </p>
         </div>
-        <div class="col-md-6">
-          <i class="fa fa-road m-r-5 m-b-10"></i>
-          <span>Lorem ipsun dolor sit amet</span>
-        </div>
-        <div class="col-md-6">
-          <i class="fa fa-gamepad m-r-5 m-b-10"></i>
-          <span>Lorem ipsun dolor sit amet</span>
-        </div>
+
       </div>
     </div>
   </div>
+
 </section>
+
+
+
 <section id="maps">
   <div class="container-fluid">
     <div class="row">
       <!-- <pre>{{ marker | json }}</pre> -->
       <ui-gmap-google-map center='map.center' zoom='map.zoom'>
-        <ui-gmap-marker idKey="marker.id"
-                        coords="marker.coords"
-                        options="marker.options">
+        <ui-gmap-marker idKey="marker.id" coords="marker.coords" options="marker.options">
         </ui-gmap-marker>
       </ui-gmap-google-map>
     </div>
   </div>
 </section>
-<section class="bg-gray">
+
+
+<section class="bg-white">
   <div class="container p-t-30 p-b-30">
     <div class="row">
-      <h1 class="text-green text-center m-b-50">Apartamentos relacionados</h1>
+      <h1 class="m-b-50">Anúncios parecidos</h1>
 
-      <div ng-if="!properties_related.length" >
-        <h3 class="text-center"><i class="fa fa-frown-o "></i>  Nenhum apartamento encontrado</h3>
+      <div ng-if="!properties_related.length">
+        <h3 class="text-center"><i class="fa fa-frown-o "></i> Nenhum apartamento encontrado</h3>
       </div>
-      <slick arrows="true" slides-to-show="4" slides-to-scroll="1" infinite="true">
-        <div class="panel panel-default properties-related" ng-repeat="propertie_related in properties_related">
+      <slick arrows="true" slides-to-show="3" slides-to-scroll="1" infinite="true">
+        <div class="panel panel-default properties-related" ng-repeat="p in properties_related">
           <div class="panel-heading properties-related">
-            <img src="assets/imagens/imovel.jpg" class="img-full" alt="Responsive image">
+            <img ng-src="{{p.src}}" class="img-full" alt="Responsive image">
           </div>
           <div class="panel-body properties-related">
-            <h4 class="text-purple">{{propertie_related.address.street}}</h4>
-            <p>{{propertie_related.address.neighborhood}}</p>
-            <p>Lore ipsum morbmore this not the other thing, bla bla bla</p>
+            <h3 class="resized-h">Descrição Curta do Imóvel</h3>
+            <h5>{{p.name}}</h5>
+            <h4>R$ {{p.value}}</h4>
           </div>
         </div>
       </slick>
@@ -194,3 +210,184 @@
 </section>
 <footer></footer>
 <div ng-include="'views/properties/scheduleVisitModal.htm'"></div>
+
+<style>
+  @media(max-width:800px) {
+    .slick-next {
+      display: none !important;
+    }
+    .slick-prev {
+      display: none !important;
+    }
+    .resized-h {
+      font-size: 20px;
+    }
+  }
+
+  .navbar-proprietario {
+    margin-bottom: 0px !important;
+  }
+
+  .profile-img2 {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: transparent;
+    position: absolute;
+    left: 90%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .profile-img2>img {
+    max-height: 100%;
+    max-width: 100%;
+  }
+
+  .profile-img2>span {
+    text-align: center;
+  }
+
+  .div-descriptions {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .more-informations {
+    margin-top: 10px;
+    color: #5f447b;
+    cursor: pointer;
+  }
+
+  .active-icon {
+    color: #CDEE39
+  }
+
+  .home-description {
+    font-size: 15px;
+  }
+
+  .immobile-characteristics {
+    padding: 15px 0px 15px 0px !important;
+  }
+
+  .pt-5-pb-5 {
+    padding: 5px 0 5px 0;
+  }
+
+
+  .condominium-characteristics {
+    padding: 15px 0px 15px 0px !important;
+  }
+
+  .p0 {
+    padding: 10px 0 10px 0 !important;
+  }
+
+  .border-t-b {
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  .characteristics {
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    position: relative;
+    height: 110px;
+    margin-bottom: 10px;
+  }
+
+  .characteristic {
+    width: 14.2857%;
+    text-align: center;
+    float: left;
+    color: rgba(0, 0, 0, 0.52);
+  }
+
+  .characteristic>span {
+    text-transform: uppercase;
+    font-size: 9px;
+  }
+
+  .characteristic>div {
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: 400;
+    padding: 10px;
+  }
+
+  .characteristic>small {
+    text-transform: lowercase;
+    font-size: 11px;
+  }
+
+
+  .characteristic>div>img {
+    opacity: 0.5;
+    margin-top: -5px;
+  }
+
+
+
+  .panel-rental {
+    opacity: 0.9;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.7);
+  }
+
+  .slick-prev:before,
+  .slick-next:before {
+    opacity: 1 !important;
+    color: rgba(0, 0, 0, 0.82) !important;
+    font-weight: bold;
+  }
+
+  .slick-next:before {
+    content: '⟩' !important;
+  }
+
+  .slick-prev:before {
+    content: '⟨' !important;
+  }
+
+  .property-description {
+    color: rgba(0, 0, 0, 0.81);
+    font-weight: bold;
+    font-size: 35px;
+  }
+
+  @media(max-width:992px) {
+    .propertie-title {
+      width: 100% !important;
+    }
+    .propertie-rental {
+      width: 100% !important;
+      margin-top: 50px;
+    }
+  }
+
+  @media(max-width:550px) {
+    .profile-img2{
+      left:80%;
+    }
+  }
+
+  @media(max-width:500px) {
+    .characteristic {
+      width: 33.33% !important;
+    }
+    .characteristics {
+      height: 100%;
+    }
+    .panel-rental {
+      margin-top: 300px;
+    }
+  }
+
+  @media(max-width:298px) {
+    .characteristic {
+      width: 50% !important;
+    }
+  }
+</style>

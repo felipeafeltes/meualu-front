@@ -1,5 +1,5 @@
-<div class="panel-heading bg-yellow">
-  <h2 class="rental m-t-10">
+<div class="panel-heading heading-purple">
+  <h2 class="rental mt-10">
     <span>Total</span>
     <span class="pull-right"> {{ property.total_rental() | currency }}</span>
   </h2>
@@ -19,21 +19,37 @@
       <span class="pull-right"> {{ property.rental.iptu | currency}}</span>
     </li>
     <li class="m-b-5">
-      <span>Proteção residencial</span>
-      <span class="pull-right">Grátis (TO DO)</span>
+      <span>Seguro-fiança</span>
+      <span class="pull-right">Incluso</span>
     </li>
     <li class="m-b-5">
-      <span>Seguro-fiança</span>
-      <span class="pull-right">Grátis (TO DO)</span>
+      <span>Assistência Residencial</span>
+      <span class="pull-right"><span class="label label-pill label-success">Grátis</span></span>
     </li>
   </ul>
   <hr>
   <p class="text-center">
     Agende uma visita agora,
-    <br>
-    sem falar com ninguem.
+    <br> sem falar com ninguem.
   </p>
   <div class="text-center" ng-controller="ScheduleVisitsModalController">
-    <button type="button" class="btn btn-warning btn-sm" ng-click="showModal(property.id)">Agendar visita</button>
+    <button type="button" class="btn btn-warning btn-block label-pill" ng-click="showModal(property.id)">Agendar visita</button>
   </div>
 </div>
+
+<style>
+  .heading-purple {
+    background-color: #5f447b;
+    color:#fff;
+    font-size:25px;
+  }
+  .label-pill{
+    border-radius:10px !important;
+  }
+  .rental{
+    margin-top:10px;
+  }
+  .rental>span{
+    font-size:30px;
+  }
+</style>
