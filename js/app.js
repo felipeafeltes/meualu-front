@@ -25,12 +25,11 @@ var app = angular
     'slick',
     'ui.bootstrap',
     'angular-img-cropper',
-    'directive.g+signin'
   ]);
 
 app.constant('config', {
-  /* apiUrl: 'https://api.meualu.com/' */
-  apiUrl: 'http://191.232.166.104/'
+  apiUrl: 'https://api.meualu.com/'
+ /*  apiUrl: 'http://191.232.166.104/' */
 
 });
 
@@ -55,19 +54,19 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
     events: true
   });
 
-  /*   $authProvider.facebook({
+  $authProvider.facebook({
       url: 'https://api.meualu.com/auth/facebook/callback',
       clientId: '914533272017680',
       authorizationEndpoint: 'https://www.facebook.com/v2.6/dialog/oauth',
       baseUrl: 'https://api.meualu.com/'
-    }); */
+    }); 
 
-  $authProvider.facebook({
+/*   $authProvider.facebook({
     url: 'http://191.232.166.104/auth/facebook/callback',
     clientId: '914533272017680',
     authorizationEndpoint: 'https://www.facebook.com/v2.6/dialog/oauth',
     baseUrl: 'http://191.232.166.104/'
-  });
+  }); */
 
   $authProvider.google({
     url: 'http://191.232.166.104/auth/google/callback',
@@ -173,10 +172,17 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
       templateUrl: 'views/profile/profile_info.html',
       protected: true
     })
-    .state('perfil.editar', {
+    .state('perfil.editar', { 
       controller: 'editProfileController',
       url: '/editar',
       templateUrl: 'views/profile/edit_profile.html',
+      protected: true
+    })
+
+    .state('perfil.scheduleds', {
+      controller: 'ScheduledController',
+      url: '/visitas',
+      templateUrl: 'views/profile/scheduledVisits.html',
       protected: true
     })
 

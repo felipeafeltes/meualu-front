@@ -2,10 +2,17 @@
     'use strict';
     app.controller('schedulingController', schedulingController);
 
-    function schedulingController($scope, $rootScope, $ocLazyLoad,$uibModal) {
-
+    function schedulingController($scope, $rootScope, $ocLazyLoad, ScheduleVisit, PropertyService) {
+        $scope.request = false;
+        $scope.schuduled = false;
         $scope.selectedHour;
         $scope.selectedDay;
+
+        PropertyService.get(
+            function (data) {
+                console.log(data)
+            }
+        )
 
         $scope.hours = [
             { val: '21:00', valid: true },
@@ -45,22 +52,27 @@
             { val: 'Ter' }
         ]
 
+
+
         $scope.scheduleVisit = function () {
+
             if (!localStorage.getItem('token')) {
-                $('#modalLogin').modal('show'); 
+                $('#modalLogin').modal('show');
             } else {
                 if ($scope.selectedHour === undefined) {
                     toastr.error("Selecione um horário!")
                 } else {
-                    alert("agendar dia " + $scope.selectedDay + " as " + $scope.selectedHour)
+                    $scope.request = true;
+
                 }
             }
         }
 
+        $scope.teste = function () {
+            $scope.schuduled = true;
+        }
         $scope.selectDay = function (day) {
-
             $scope.selectedDay = day;
-            alert(day)
         }
 
         $scope.selectHour = function (hour) {

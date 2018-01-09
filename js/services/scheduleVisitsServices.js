@@ -5,23 +5,26 @@
         .module('scheduleVisitsServices', ['ngResource', 'ngRoute'])
         .factory('ScheduleVisit', ScheduleVisit);
 
-        ScheduleVisit.$inject = ['$resource', 'config'];
+    ScheduleVisit.$inject = ['$resource', 'config'];
 
-        function ScheduleVisit($resource, config) {
-            var schedule_visit = $resource(config.apiUrl + 'schedule_visits/:id',
-                { id:'@id' }, {
+    function ScheduleVisit($resource, config) {
+        var schedule_visit = $resource(config.apiUrl + '/properties/:id/visit_schedule',
+            { id: '@id' }, {
                 save: {
                     method: 'POST',
                     transformRequest: _transform_request
+                },
+                get: {
+                    method: 'GET'
                 }
             });
 
-          function _transform_request(data) {
-              data = { "schedule_visit" : data }
-              return angular.toJson(data);
-          }
-          return schedule_visit;
-
+        function _transform_request(data) {
+            data = { "schedule_visit": data }
+            return angular.toJson(data);
         }
+        return schedule_visit;
+
+    }
 
 })();
