@@ -28,8 +28,8 @@ var app = angular
   ]);
 
 app.constant('config', {
-  apiUrl: 'https://api.meualu.com/'
- /*  apiUrl: 'http://191.232.166.104/' */
+ /*  apiUrl: 'https://api.meualu.com/' */
+  apiUrl: 'http://meualuapi.brazilsouth.cloudapp.azure.com/'
 
 });
 
@@ -54,24 +54,24 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
     events: true
   });
 
-  $authProvider.facebook({
+/*   $authProvider.facebook({
       url: 'https://api.meualu.com/auth/facebook/callback',
       clientId: '914533272017680',
       authorizationEndpoint: 'https://www.facebook.com/v2.6/dialog/oauth',
       baseUrl: 'https://api.meualu.com/'
-    }); 
+    });  */
 
-/*   $authProvider.facebook({
-    url: 'http://191.232.166.104/auth/facebook/callback',
+  $authProvider.facebook({
+    url: 'http://meualuapi.brazilsouth.cloudapp.azure.com/auth/facebook/callback',
     clientId: '914533272017680',
     authorizationEndpoint: 'https://www.facebook.com/v2.6/dialog/oauth',
-    baseUrl: 'http://191.232.166.104/'
-  }); */
+    baseUrl: 'http://meualuapi.brazilsouth.cloudapp.azure.com'
+  });
 
   $authProvider.google({
-    url: 'http://191.232.166.104/auth/google/callback',
+    url: 'http://meualuapi.brazilsouth.cloudapp.azure.com/auth/google/callback',
     clientId: '1083734615013-3bff0193jcdueh30bimq5coekmoiec1d.apps.googleusercontent.com',
-    baseUrl: 'http://191.232.166.104/'
+    baseUrl: 'http://meualuapi.brazilsouth.cloudapp.azure.com'
   });
 
   $urlRouterProvider.otherwise('/');
