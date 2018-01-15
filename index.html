@@ -29,7 +29,7 @@
   <script src="bower_components/angular-route/angular-route.min.js"></script>
   <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
   <script src="bower_components/satellizer/dist/satellizer.min.js"></script>
-  
+
   <script src="bower_components/angular-google-places-autocomplete/src/autocomplete.js"></script>
   <script src="bower_components/angularjs-slider/dist/rzslider.min.js"></script>
   <!-- maps -->
@@ -61,7 +61,7 @@
   <script src="js/services/userService.js"></script>
   <script src="js/services/mySelfPropertiesService.js"></script>
   <script src="js/services/uploadImageService.js"></script>
-  
+
 
   <!--Controllers-->
   <script src="js/controllers/usersSessionsController.js"></script>
@@ -78,7 +78,7 @@
   <script src="js/controllers/propertyRegistrationController.js"></script>
   <script src="js/controllers/myInfosProfileController.js"></script>
   <script src="js/controllers/schedulingController.js"></script>
-  
+
   <!--Directives -->
   <script src="js/directives/img-cropper.js"></script>
   <script src="js/directives/scrolly.js"></script>
@@ -87,7 +87,17 @@
   <script src="js/directives/typed.js"></script>
   <script src="js/directives/negative.js"></script>
   <script src="js/directives/numberOnly.js"></script>
-  
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src=“https://www.googletagmanager.com/gtag/js?id=UA-97989541-1“></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA - 97989541 - 1');
+  </script>
+
 </head>
 
 <body ng-cloak>
@@ -108,7 +118,7 @@
 <link href="assets/responsive.css" rel="stylesheet">
 <script src="/bower_components/angular-directive.g-signin/google-plus-signin.js"></script>
 
-<link href="/bower_components/toastr/toastr.css" rel="stylesheet"/>
+<link href="/bower_components/toastr/toastr.css" rel="stylesheet" />
 <script src="/bower_components/toastr/toastr.js"></script>
 <script src="bower_components/angular-viacep/dist/angular-viacep.min.js"></script>
 <script src="bower_components/typed.js/lib/typed.js"></script>
