@@ -45,7 +45,7 @@ h1, h2, h3, h4, h5, h6{font-family:'Circular std book', sans-serif;}
 .my-header{}
 .bg-purple{background:#5f447b !important;color:#fff;}
 .bg-white{background: #fff};
-.bg-yellow{background:#f4cc6a;color:#fff;}
+.bg-yellow{background:#f4cc6a;color:#fff; }
 .bg-green{background:#67b7b4;color:#fff;}
 .bg-gray{background:#f1f1f1;color:#b1b1b0;}
 .bg-principal{background:url('imagens/backgrounds/principal.jpg') no-repeat center center;-webkit-background-size: 100% 100%;-moz-background-size: 100% 100%;-o-background-size: 100% 100% ;background-size: 100% 100%;}
@@ -226,7 +226,7 @@ input.search-header:focus {
   margin-bottom: 0px;
 }
 .in{
-  background:#fff !important;
+  background:#fff ;
   margin-top:20px !important;
   position:relative;
   z-index:9;
@@ -236,10 +236,7 @@ input.search-header:focus {
   color: #000 !important;
 }
 .icon-bar{
-  background:#5f447b !important;
-}
-.navbar-proprietario .navbar-header {
-  background:#fff;
+  background:#5f447b;
 }
 
 .navbar-proprietario .navbar-brand {
@@ -295,8 +292,6 @@ input.search-header:focus {
 
 .navbar-home .navbar-collapse.collapse {
   line-height: 70px;
-  height: 70px !important;
-  display: flex !important;
   justify-content: center;
   flex-direction: column;
 }
