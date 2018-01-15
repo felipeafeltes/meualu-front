@@ -239,6 +239,19 @@ input.search-header:focus {
   background:#5f447b;
 }
 
+.icon-bar-yellow{
+  display: block;
+  width: 22px;
+  height: 2px;
+  border-radius: 1px;
+  background:#f4cc6a;
+  margin:3px;
+}
+
+.collabpse-navbar{
+  float:right;
+}
+
 .navbar-proprietario .navbar-brand {
   padding: 5px 15px;
 }

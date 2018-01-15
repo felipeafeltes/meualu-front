@@ -104,6 +104,9 @@
   .text-responsive-center {
     text-align: center;
   }
+  .collabpse-navbar{
+    float:left ;
+  }
 }
 
 @media(max-width:480px) {
