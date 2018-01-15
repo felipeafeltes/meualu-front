@@ -201,14 +201,11 @@
 
         //ENDERECO
         $scope.searchCep = function (cepValue) {
+            console.log("ENTRAQNDo")
+            console.log(cepValue)
             if (cepValue !== undefined) {
                 if (cepValue.length === 8) {
                     toastr.info("Procurando CEP...")
-                    /* Viacep.get({ 'cep': cepValue }).$promise.then(
-                        function (data) {
-
-                        }
-                    ) */
                     var xhr = new XMLHttpRequest();
                     xhr.open('GET', 'https://viacep.com.br/ws/' + cepValue + '/json/');
                     xhr.addEventListener('load', function () {

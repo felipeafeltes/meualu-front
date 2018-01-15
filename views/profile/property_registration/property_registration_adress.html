@@ -10,10 +10,11 @@
 
 <div class="form-group col-md-6">
     <label for="zip_code">CEP (*)</label>
-    <input type="text" number-only class="form-control redondend-border" name="zip_code" ng-model="formAddress.zip_code" ng-change="searchCep(formAddress.zip_code)"
+    <input type="number" class="form-control redondend-border" negative name="zip_code" ng-model="formAddress.zip_code" ng-change="searchCep(formAddress.zip_code)"
         required>
     <div ng-show="fillAddress || formProperty.zip_code.$touched">
         <p ng-show="formProperty.zip_code.$error.required" class="help-block error">CEP é obrigatório.</p>
+        <p ng-show="formProperty.zip_code.$error.negative" class="help-block error">Inválido.</p>
     </div>
 </div>
 
