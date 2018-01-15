@@ -54,3 +54,22 @@ app.directive('validyear', function () {
         }
     };
 });
+
+app.directive('actuallydate', function () {
+    return {
+        restrict: 'A',
+        require: 'ngModel',
+        link: function ($scope, $element, $attrs, ngModel) {
+            $scope.$watch($attrs.ngModel, function (value) {
+                var isValid;
+                if (value >= new Date()) {
+                    isValid = true;
+                    ngModel.$setValidity('actuallydate', isValid);
+                } else if(value < new Date()) {
+                    isValid = false;
+                    ngModel.$setValidity('actuallydate', isValid);
+                }
+            });
+        }
+    };
+});

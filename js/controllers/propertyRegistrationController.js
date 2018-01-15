@@ -201,8 +201,6 @@
 
         //ENDERECO
         $scope.searchCep = function (cepValue) {
-            console.log("ENTRAQNDo")
-            console.log(cepValue)
             if (cepValue !== undefined) {
                 if (cepValue.length === 8) {
                     toastr.info("Procurando CEP...")

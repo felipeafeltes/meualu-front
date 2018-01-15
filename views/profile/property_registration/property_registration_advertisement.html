@@ -60,11 +60,11 @@
     style="padding-right: 0px;padding-left: 0px;padding-top:5px;">Data em que ficará disponível</label>
     <div class="col-sm-5"
     style="padding-left: 0px;padding-right: 0px;">
-        <input type="date" ng-disabled="propertie.moving_house_available === true" ng-required="!propertie.moving_house_available" class="form-control redondend-border" name="moving_house_date" ng-model="propertie.moving_house_date">
+        <input type="date" actuallyDate ng-disabled="propertie.moving_house_available === true" ng-required="!propertie.moving_house_available" class="form-control redondend-border" name="moving_house_date" ng-model="propertie.moving_house_date">
     </div>
     <div ng-show="fillAdvertisement || formProperty.moving_house_date.$touched">
         <p ng-show="formProperty.moving_house_date.$error.required" class="help-block error">Campo é obrigatório.</p>
-        <p ng-show="formProperty.moving_house_date.$error.maxlength" class="help-block error">Máximo de 240 caracteres.</p>
+        <p style="margin-top:50px" ng-show="formProperty.moving_house_date.$error.actuallydate" class="help-block error">Data de disponibilidade do imóvel não pode ser inferior à data de hoje.</p>
     </div>
 </div>
 
