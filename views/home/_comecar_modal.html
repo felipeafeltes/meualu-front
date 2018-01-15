@@ -22,7 +22,7 @@
         </div>
         <div class="form-group m-b-10">
           <div class=" col-md-6">
-            <input type="text" name="phone" ng-model="contact.phone" class="form-control input-lg" placeholder="Telefone" required>
+            <input type="text" name="phone" number-only ng-model="contact.phone" class="form-control input-lg" placeholder="Telefone" required>
             <div ng-show="formAdd.$submitted || formAdd.phone.$touched">
               <p ng-show="formAdd.phone.$error.required" class="help-block error">Telefone é obrigatório.</p>
             </div>

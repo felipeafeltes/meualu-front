@@ -16,7 +16,6 @@
         $scope.contact.$save(
           // success
           function (data) {
-            console.log(data);
             $scope.submittedForm = true;
             $scope.response = true;
           }
