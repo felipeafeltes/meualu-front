@@ -28,8 +28,8 @@ var app = angular
   ]);
 
 app.constant('config', {
- /*  apiUrl: 'https://api.meualu.com/' */
-  apiUrl: 'http://meualuapi.brazilsouth.cloudapp.azure.com/'
+  apiUrl: 'https://api.meualu.com/'
+  /* apiUrl: 'http://meualuapi.brazilsouth.cloudapp.azure.com/' */
 
 });
 
@@ -54,19 +54,19 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
     events: true
   });
 
-/*   $authProvider.facebook({
-      url: 'https://api.meualu.com/auth/facebook/callback',
-      clientId: '914533272017680',
-      authorizationEndpoint: 'https://www.facebook.com/v2.6/dialog/oauth',
-      baseUrl: 'https://api.meualu.com/'
-    });  */
-
   $authProvider.facebook({
-    url: 'http://meualuapi.brazilsouth.cloudapp.azure.com/auth/facebook/callback',
+    url: 'https://api.meualu.com/auth/facebook/callback',
     clientId: '914533272017680',
     authorizationEndpoint: 'https://www.facebook.com/v2.6/dialog/oauth',
-    baseUrl: 'http://meualuapi.brazilsouth.cloudapp.azure.com'
+    baseUrl: 'https://api.meualu.com/'
   });
+
+  /*   $authProvider.facebook({
+      url: 'http://meualuapi.brazilsouth.cloudapp.azure.com/auth/facebook/callback',
+      clientId: '914533272017680',
+      authorizationEndpoint: 'https://www.facebook.com/v2.6/dialog/oauth',
+      baseUrl: 'http://meualuapi.brazilsouth.cloudapp.azure.com'
+    }); */
 
   $authProvider.google({
     url: 'http://meualuapi.brazilsouth.cloudapp.azure.com/auth/google/callback',
@@ -172,7 +172,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
       templateUrl: 'views/profile/profile_info.html',
       protected: true
     })
-    .state('perfil.editar', { 
+    .state('perfil.editar', {
       controller: 'editProfileController',
       url: '/editar',
       templateUrl: 'views/profile/edit_profile.html',
@@ -274,7 +274,18 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
 
 });
 
-app.run(function ($transitions, $state) {
+app.run(function ($transitions, $state, $rootScope, MySelf) {
+
+  if (localStorage.getItem('token')) {
+    //DADOS DO USUARIOO
+    MySelf.get(
+      {},
+      function (data) {
+        $rootScope.current_user = data.renter;
+        ($rootScope.current_user.birthday !== null) ? $rootScope.current_user.birthday = new Date(data.renter.birthday) : '';
+      },
+    );
+  }
 
   //TRATAMENTO DE ROTAS
   $transitions.onBefore({}, function (transition) {

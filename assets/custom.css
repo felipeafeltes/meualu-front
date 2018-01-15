@@ -139,7 +139,7 @@ input.search-home:-moz-placeholder { /* Firefox 18- */
 input.search-header {
   color: #534a83;
   border-radius: 0px;
-  border-left: 1px solid #534a83;
+  border-left: none;
   border-top: none;
   border-bottom: none;
   border-right: none;

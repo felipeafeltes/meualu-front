@@ -15,7 +15,6 @@
         PropertyRentalService,
         PropertyService,
         ImageService,
-        viaCep
     ) {
         //IMAGE CROPPER
         $scope.cropper = {};

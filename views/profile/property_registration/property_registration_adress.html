@@ -1,4 +1,4 @@
-<h4 align="center" class="black-text">Endereço</h4>
+    <h4 align="center" class="black-text">Endereço</h4>
 <div class="form-group col-md-12">
     <label for="description">Descrição Curta do Imóvel (*)</label>
     <input type="text" class="form-control redondend-border" name="description" ng-model="propertie.description" placeholder="Ex: Charmoso Apê no Moinho de Vento"
@@ -10,7 +10,7 @@
 
 <div class="form-group col-md-6">
     <label for="zip_code">CEP (*)</label>
-    <input type="text" class="form-control redondend-border" name="zip_code" ng-model="formAddress.zip_code" ng-change="searchCep(formAddress.zip_code)"
+    <input type="text" number-only class="form-control redondend-border" name="zip_code" ng-model="formAddress.zip_code" ng-change="searchCep(formAddress.zip_code)"
         required>
     <div ng-show="fillAddress || formProperty.zip_code.$touched">
         <p ng-show="formProperty.zip_code.$error.required" class="help-block error">CEP é obrigatório.</p>

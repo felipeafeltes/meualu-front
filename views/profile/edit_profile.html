@@ -48,21 +48,22 @@
                     </div>
                     <div class="form-group form-edit-profile col-md-6">
                         <label for="phone">Telefone Celular</label>
-                        <input type="text" class="form-control" id="phone" name="phone" ng-model="user.phone_primary" required>
+                        <input type="text" number-only class="form-control" id="phone" name="phone" ng-model="user.phone_primary" required>
                         <div ng-show="formEdit.$submitted || formEdit.phone.$touched">
                             <p ng-show="formEdit.phone.$error.required" class="help-block error">Telefone é obrigatório.</p>
                         </div>
                     </div>
                     <div class="form-group form-edit-profile col-md-6">
                         <label for="phone_secondary">Telefone Celular 2 (Opcional)</label>
-                        <input type="text" class="form-control" id="phone_secondary" name="phone_secondary" ng-model="user.phone_secondary">
+                        <input type="text" number-only class="form-control" id="phone_secondary" name="phone_secondary" ng-model="user.phone_secondary">
                     </div>
                     <div class="form-group form-edit-profile col-md-4">
                         <label for="cep">CEP</label>
-                        <input type="text" class="form-control" id="cep" name="cep" ng-model="user.address.zip_code" ng-change="searchCep(user.address.zip_code)"
+                        <input type="text" class="form-control" id="cep" name="cep" negative ng-model="user.address.zip_code" ng-change="searchCep(user.address.zip_code)"
                             required>
                         <div ng-show="formEdit.$submitted || formEdit.cep.$touched">
                             <p ng-show="formEdit.cep.$error.required" class="help-block error">CEP é obrigatório.</p>
+                            <p ng-show="formEdit.cep.$error.negative" class="help-block error">Inválido.</p>
                         </div>
                     </div>
                     <div class="form-group form-edit-profile col-md-4">
@@ -95,10 +96,10 @@
                     </div>
                     <div class="form-group form-edit-profile col-md-2">
                         <label for="number">Número</label>
-                        <input type="number" class="form-control" id="number" name="number" min="0" ng-model="user.address.number" required>
+                        <input type="number" class="form-control" id="number" name="number" negative ng-model="user.address.number" required>
                         <div ng-show="formEdit.$submitted || formEdit.number.$touched">
                             <p ng-show="formEdit.number.$error.required" class="help-block error">Número é obrigatório.</p>
-                            <p ng-show="formEdit.number.$error.min" class="help-block error">Número inválido.</p>
+                            <p ng-show="formEdit.number.$error.negative" class="help-block error">Inválido.</p>
                         </div>
                     </div>
                     <div class="form-group form-edit-profile col-md-5">

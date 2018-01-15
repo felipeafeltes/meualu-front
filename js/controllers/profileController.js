@@ -16,8 +16,6 @@
                     },
                 );
             }
-        }else{
-            $scope.hasData = true;
         }
     }
 })()
