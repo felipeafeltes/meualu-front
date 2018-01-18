@@ -3,7 +3,7 @@
 <div class="form-group col-md-12">
     <h4 class="black-text">Como é a <strong>moradia</strong> neste imóvel?</h4>
     <span class="count-caracteres">Restam {{countCaracteres(propertie.dwelling_description)}} caracteres</span>
-    <textarea type="text" class="form-control redondend-border" name="dwelling_description" rows="8" ng-model="propertie.dwelling_description"
+    <textarea type="text" class="form-control redondend-border" name="dwelling_description" rows="5" ng-model="propertie.dwelling_description"
         placeholder="Conte-nos um pouco sobre os benefícios deste imóvel e o que o motivou a comprá-lo.
     Ex:O que há de melhor no Moinhos de Vento..." ng-maxlength="240" required></textarea>
     <div ng-show="fillAdvertisement || formProperty.dwelling_description.$touched">
@@ -15,7 +15,7 @@
 <div class="form-group col-md-12">
     <h4 class="black-text">Como é o <strong>bairro</strong> onde este imóvel fica localizado?</h4>
     <span class="count-caracteres">Restam {{countCaracteres(propertie.district_description)}} caracteres</span>
-    <textarea type="text" class="form-control redondend-border" name="district_description" rows="8" ng-model="propertie.district_description"
+    <textarea type="text" class="form-control redondend-border" name="district_description" rows="5" ng-model="propertie.district_description"
         placeholder="Conte-nos um pouco sobre os benefícios deste imóvel e o que o motivou a comprá-lo.
         Ex:O que há de melhor no Minhos de Vento..." ng-maxlength="240" required></textarea>
     <div ng-show="fillAdvertisement || formProperty.district_description.$touched">
@@ -27,7 +27,7 @@
 <div class="form-group col-md-12">
     <h4 class="black-text">Descreva sobre a <strong>mobilidade</strong> no entorno do imóvel</h4>
     <span class="count-caracteres">Restam {{countCaracteres(propertie.mobility_description)}} caracteres</span>
-    <textarea type="text" class="form-control redondend-border" name="mobility_description" rows="8" ng-model="propertie.mobility_description"
+    <textarea type="text" class="form-control redondend-border" name="mobility_description" rows="5" ng-model="propertie.mobility_description"
         placeholder="Conte-nos um pouco sobre os benefícios deste imóvel e o que o motivou a comprá-lo.
         Ex:O que há de melhor no Minhos de Vento..." ng-maxlength="240" required></textarea>
     <div ng-show="fillAdvertisement || formProperty.mobility_description.$touched">
@@ -39,7 +39,7 @@
 <div class="form-group col-md-12">
     <h4 class="black-text">Como você imagina o perfil de um <strong>inquilino ideal</strong> para este imóvel?</h4>
     <span class="count-caracteres">Restam {{countCaracteres(propertie.ideal_tenant_profile)}} caracteres</span>
-    <textarea type="text" class="form-control redondend-border" name="ideal_tenant_profile" rows="8" ng-model="propertie.ideal_tenant_profile"
+    <textarea type="text" class="form-control redondend-border" name="ideal_tenant_profile" rows="5" ng-model="propertie.ideal_tenant_profile"
         placeholder="Conte-nos um pouco sobre os benefícios deste imóvel e o que o motivou a comprá-lo.
         Ex:O que há de melhor no Minhos de Vento..." ng-maxlength="240" required></textarea>
     <div ng-show="fillAdvertisement || formProperty.ideal_tenant_profile.$touched">

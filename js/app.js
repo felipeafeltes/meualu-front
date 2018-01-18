@@ -143,7 +143,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
       }
     })
     .state('propertiesDetails', {
-      url: '/detalhes/:id',
+      url: '/imoveis/detalhes/:id',
       templateUrl: 'views/properties/show.html',
       controller: 'PropertiesDetailsController',
       resolve: {
@@ -151,6 +151,20 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
           return $ocLazyLoad.load('js/directives/header-property/header-property.js'),
             $ocLazyLoad.load('js/directives/footer/footer.js')
         }]
+      }
+    })
+    //AGENDAMENTO
+    .state('scheduling', {
+      url: '/imoveis/agendar/:id',
+      templateUrl: 'views/properties/schedulingProperty.html',
+      controller: 'schedulingController',
+      resolve: {
+        deps: [
+          '$ocLazyLoad', function ($ocLazyLoad) {
+            return $ocLazyLoad.load('js/directives/header-property/header-property.js'),
+              $ocLazyLoad.load('js/directives/footer/footer.js')
+          }
+        ],
       }
     })
     .state('perfil', {
@@ -196,48 +210,39 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
     .state('perfil.cadastrarImovel.address', {
       url: '/endereco',
       templateUrl: 'views/profile/property_registration/property_registration_adress.html',
-      protected: true
+      protected: true,
+      processed: true
     })
     .state('perfil.cadastrarImovel.details', {
       url: '/detalhes',
       templateUrl: 'views/profile/property_registration/property_registration_details.html',
-      protected: true
+      protected: true,
+      processed: true
     })
     .state('perfil.cadastrarImovel.images', {
       url: '/fotos',
       templateUrl: 'views/profile/property_registration/property_registration_images.html',
-      protected: true
+      protected: true,
+      processed: true
     })
 
     .state('perfil.cadastrarImovel.rental', {
       url: '/anuncio',
       templateUrl: 'views/profile/property_registration/property_registration_rental.html',
-      protected: true
+      protected: true,
+      processed: true
     })
     .state('perfil.cadastrarImovel.advertisement', {
       url: '/anuncio',
       templateUrl: 'views/profile/property_registration/property_registration_advertisement.html',
-      protected: true
+      protected: true,
+      processed: true
     })
     .state('perfil.cadastrarImovel.terms', {
       url: '/termos',
       templateUrl: 'views/profile/property_registration/property_registration_terms.html',
-      protected: true
-    })
-
-    //AGENDAMENTO
-    .state('scheduling', {
-      url: '/agendar/:id',
-      templateUrl: 'views/properties/schedulingProperty.html',
-      controller: 'schedulingController',
-      resolve: {
-        deps: [
-          '$ocLazyLoad', function ($ocLazyLoad) {
-            return $ocLazyLoad.load('js/directives/header-property/header-property.js'),
-              $ocLazyLoad.load('js/directives/footer/footer.js')
-          }
-        ],
-      }
+      protected: true,
+      processed: true
     })
 
     //ADMIN
@@ -276,6 +281,13 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
 
 app.run(function ($transitions, $state, $rootScope, MySelf) {
 
+  $rootScope.processedAddress = false;
+  $rootScope.processedImages = false;
+  $rootScope.processedAdvertisement = false;
+  $rootScope.processedRental = false;
+  $rootScope.processedDetails = false;
+  $rootScope.processedTerms = false;
+
   if (localStorage.getItem('token')) {
     //DADOS DO USUARIOO
     MySelf.get(
@@ -294,6 +306,49 @@ app.run(function ($transitions, $state, $rootScope, MySelf) {
       $state.go('home');
       return false;
     }
+
+    //Wizard Cadastro de Imovel caso f5 na pagina
+    if (transition.to().processed) {
+      switch (transition.to().name) {
+        case 'perfil.cadastrarImovel.details':
+          if (!$rootScope.processedAddress) {
+            return $state.target('perfil.cadastrarImovel.address');
+          }
+          break;
+        case 'perfil.cadastrarImovel.advertisement':
+          if (!$rootScope.processedAddress ||
+            !$rootScope.processedDetails) {
+            return $state.target('perfil.cadastrarImovel.address');
+          }
+          break;
+        case 'perfil.cadastrarImovel.rental':
+          if (!$rootScope.processedAddress ||
+            !$rootScope.processedDetails ||
+            !$rootScope.processedAdvertisement) {
+            return $state.target('perfil.cadastrarImovel.address');
+          }
+          break;
+        case 'perfil.cadastrarImovel.images':
+          if (!$rootScope.processedAddress ||
+            !$rootScope.processedDetails ||
+            !$rootScope.processedAdvertisement ||
+            !$rootScope.processedRental) {
+            return $state.target('perfil.cadastrarImovel.address');
+          }
+          break;
+        case 'perfil.cadastrarImovel.terms':
+          if (!$rootScope.processedAddress ||
+            !$rootScope.processedDetails ||
+            !$rootScope.processedAdvertisement ||
+            !$rootScope.processedRental ||
+            !rootScope.processedImages) {
+            return $state.target('perfil.cadastrarImovel.address');
+          }
+          break;
+      }
+
+    }
+
   });
 
 });

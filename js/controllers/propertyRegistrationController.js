@@ -34,9 +34,10 @@
         $scope.formAddress = {};
         $rootScope.addressSended;
         //IMAGES UPLOADED
+        $scope.thumbailImages = [];
         $scope.images = [];
         $scope.uploadedImage = false;
-
+        $scope.acceptTerms = false;
         //EXTRA INFOS
         $scope.propertyInfos;
         $scope.condominiumInfos;
@@ -70,7 +71,7 @@
                 }
             }, this);
             if (!check) {
-                $scope.infos.push(extraInfo);
+                $scope.infos.push(extraInfo.id);
             }
         };
 
@@ -117,7 +118,7 @@
         $scope.processForm = function (isValid) {
             if (isValid) {
                 $('#loadingModal').modal({ backdrop: 'static', keyboard: false, show: true });
-                $scope.sendForm = false; 
+                $scope.sendForm = false;
                 $rootScope.addressSended.country = 'Brasil';
                 $scope.propertie.address = $rootScope.addressSended;
                 $scope.propertie.extra_infos = $scope.infos;
@@ -135,17 +136,20 @@
                         toastr.error('Campos obrigatórios não podem ficar em branco!');
                     }
                 );
+            } else {
+                toastr.error("Você esqueceu campos obrigatórios!")
             }
         }
 
         $scope.processRental = function (isValid) {
             $scope.fillRental = true;
             if (isValid) {
-                if(!$scope.checked){
+                if (!$scope.checked) {
                     $scope.checkValue(isValid);
                 }
                 $('#rentalForm').addClass('completed');
                 WizardLine();
+                $rootScope.processedRental = true;
                 $state.go('perfil.cadastrarImovel.images');
             } else {
                 toastr.warning('Campos obrigatórios precisam ser preenchidos!');
@@ -158,6 +162,7 @@
             if (isValid) {
                 $('#advertisementForm').addClass('completed');
                 WizardLine();
+                $rootScope.processedAdvertisement = true;
                 $state.go('perfil.cadastrarImovel.rental');
             } else {
                 toastr.warning('Campos obrigatórios precisam ser preenchidos!');
@@ -166,16 +171,22 @@
         }
 
         $scope.processImages = function () {
-            $scope.fillImages = true;
-            $('#imagesForm').addClass('completed');
-            WizardLine();
-            $state.go('perfil.cadastrarImovel.terms');
+            if ($scope.images.length === 0) {
+                toastr.warning('Necessário pelo menos uma foto!');
+            } else {
+                $scope.fillImages = true;
+                $('#imagesForm').addClass('completed');
+                WizardLine();
+                $rootScope.processedImages = true;
+                $state.go('perfil.cadastrarImovel.terms');
+            }
         }
 
         $scope.processAdress = function (isValid) {
             $scope.fillAddress = true;
             if (isValid) {
                 $rootScope.addressSended = $scope.formAddress;
+                $rootScope.processedAddress = true;
                 $('#addressForm').addClass('completed');
                 WizardLine();
                 $state.go('perfil.cadastrarImovel.details');
@@ -189,6 +200,7 @@
             if (isValid) {
                 $('#detailsForm').addClass('completed');
                 WizardLine();
+                $rootScope.processedDetails = true;
                 $state.go('perfil.cadastrarImovel.advertisement');
             } else {
                 toastr.warning('Campos obrigatórios precisam ser preenchidos!');
@@ -202,7 +214,7 @@
         //ENDERECO
         $scope.searchCep = function (cepValue) {
             if (cepValue !== undefined) {
-                if (cepValue.length === 8) {
+                if (cepValue.toString().length === 8) {
                     toastr.info("Procurando CEP...")
                     var xhr = new XMLHttpRequest();
                     xhr.open('GET', 'https://viacep.com.br/ws/' + cepValue + '/json/');
@@ -237,7 +249,8 @@
                     function (data) {
                         $scope.uploadedImage = false;
                         $('#croppImage').modal('hide');
-                        $scope.images.push({ id: data.picture.id, url: data.picture.url, base64: $scope.cropper.croppedImage, cover: false });
+                        $scope.images.push({ id: data.picture.id, url: data.picture.url, cover: false });
+                        $scope.thumbailImages.push({ id: data.picture.id, url: $scope.cropper.croppedImage })
                         toastr.success('Upload concluído');
                     }
                 )
@@ -249,6 +262,7 @@
             ImageService.delete({ 'id': idImage }).$promise.then(
                 function (data) {
                     $scope.images.splice(i, 1);
+                    $scope.thumbailImages.splice(i, 1);
                     toastr.info('Imagem removida!');
                 }
             )

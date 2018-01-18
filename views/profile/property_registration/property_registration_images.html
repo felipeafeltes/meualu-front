@@ -8,8 +8,8 @@
 
 <div class="col-sm-12" ng-show="images.length !== 0">
     <h4 class="black-text">Imagens:</h4>
-    <div class="col-sm-3 div-thumbnail" ng-repeat="im in images">
-        <img ng-src="{{im.base64}}" class="img-thumbnail" width="200" height="200">
+    <div class="col-sm-3 div-thumbnail" ng-repeat="im in thumbailImages">
+        <img ng-src="{{im.url}}" class="img-thumbnail" width="200" height="200">
         <button type="button" ng-click="deleteImage($index, im.id)" class="btn btn-redounded">
             <span class="glyphicon glyphicon glyphicon-remove font-size-20"></span>
         </button>

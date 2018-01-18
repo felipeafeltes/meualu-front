@@ -1,6 +1,9 @@
 <section>
   <header></header>
-  <div class="container-fluid">
+  <div ng-if="!hasData" class="loading-div">
+    <img class="loading-data" width="130" src="assets/imagens/loadingRipple.gif">
+  </div>
+  <div class="container-fluid" ng-if="hasData">
     <nav class="navbar filters text-center m-t-20">
       <div class="filters-container" ng-controller="searchController" ng-include="'views/properties/_filters.html'"></div>
     </nav>
@@ -8,14 +11,16 @@
       <div class="col-md-5 property-list">
         <div>
           <h2>
-            <span class="text-green bold">Encontramos {{ properties.length }} apês</span>
+            <span class="text-green bold" ng-if="properties.length > 0">Encontramos {{ properties.length }} {{(properties.length === 1)? 'apê' : 'apês' }}</span>
+            <span class="text-green bold" ng-if="properties.length === 0">Não encontramos nenhum apartamento nesse endereço.</span>
             <!--<button type="button" class="btn btn-green-full btn-sm pull-right">Adicionar alerta</button>-->
           </h2>
           <p>Nos ajude a ser mais preciso, utilize os filtros acima.</p>
 
           <div class="dropdown">
             <span>Order por</span>
-            <a class="text-green dropdown-toggle order-properties" type="button" id="dropdownPreco" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <a class="text-green dropdown-toggle order-properties" type="button" id="dropdownPreco" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="true">
               {{ (properties_order)? "menor preço" : "maior preço" }}
               <span class="caret"></span>
             </a>
@@ -25,11 +30,11 @@
             </ul>
           </div>
           <div class="panel panel-default" ng-repeat="property in properties | orderBy:rental.value:properties_order" ng-click='details(property.id)'>
-            <div class="panel-body imovel-desc" >
+            <div class="panel-body imovel-desc">
               <div class="col-md-5">
-                <h4 class="text-dark">{{ property.full_address() }} ({{ property.description }})</h4>
-                <p>{{property.address.district}}</p>
-                <ul class="properties-details" >
+                <h4 class="text-dark">{{ property.description }}</h4>
+                <p>{{property.address.district}}, Nº {{property.address.number}}</p>
+                <ul class="properties-details" style="padding-left: 10px;">
                   <li><i class="fa fa-bed"></i> {{ property.bedrooms }} dorms</li>
                   <li><i class="fa fa-car"></i> {{ property.garages }} vagas</li>
                   <li><i class="fa fa-regua"></i> {{ property.total_area }} m²</li>
@@ -39,11 +44,11 @@
                   Aluguel: {{ property.rental.value | currency }}
                 </p>
                 <p class="text-green">
-                  Valor total: {{ property.total_rental() | currency }}
+                  Valor total: {{ property.rental.package_value | currency }}
                 </p>
               </div>
               <div class="col-md-7 no-padding">
-                <img ng-src="{{ property.cover_url() }}" class="img-full" alt="Responsive image">
+                <img ng-src="{{ property.pictures[0].url }}" class="img-full" alt="Responsive image">
               </div>
             </div>
           </div>
@@ -51,10 +56,7 @@
       </div>
       <div class="col-md-7 no-padding">
         <ui-gmap-google-map center='map.center' zoom='map.zoom'>
-          <ui-gmap-marker ng-repeat="marker in markers"
-                  idKey="marker.id"
-                  coords="marker.coords"
-                  options="marker.options">
+          <ui-gmap-marker ng-repeat="marker in markers" idKey="marker.id" coords="marker.coords" options="marker.options">
           </ui-gmap-marker>
         </ui-gmap-google-map>
       </div>
@@ -62,4 +64,3 @@
   </div>
 </section>
 <footer></footer>
-

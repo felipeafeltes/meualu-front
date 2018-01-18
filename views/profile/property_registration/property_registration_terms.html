@@ -126,6 +126,14 @@
             accumsan nisi.
         </p>
     </div>
+    <div class="form-group checkbox padding-15 col-md-6">
+        <label>
+            <input type="checkbox" name="acceptTerms" ng-model="acceptTerms" required>Aceitar termos de uso.
+        </label>
+        <div ng-show="!acceptTerms">
+            <p ng-show="formProperty.acceptTerms.$error.required" class="help-block error">É necessário aceitar os termos de uso para continuar.</p>
+        </div>
+    </div>
 </div>
 
 
@@ -137,8 +145,8 @@
             </a>
         </div>
         <div class="col-md-6">
-            <button type="submit" class="btn btn-block bg-green" ng-disabled="!readTerms">
+            <button type="submit" class="btn btn-block bg-green" ng-disabled="!readTerms || !acceptTerms">
                 Salvar <span class="glyphicon glyphicon-circle-arrow-right"></span>
             </button>
         </div>
-</div>
+    </div>

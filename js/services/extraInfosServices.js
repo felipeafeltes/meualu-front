@@ -6,12 +6,18 @@
     app.factory('ExtraInfo', ExtraInfo);    
     app.factory('ExtraInfoProperty', ExtraInfoProperty);    
     app.factory('ExtraInfoCondominium', ExtraInfoCondominium);  
+    app.factory('ExtraPropertyInfos', ExtraPropertyInfos);  
     
     ExtraInfo.$inject = ['$resource', 'config']; 
     ExtraInfoProperty.$inject = ['$resource', 'config']; 
     ExtraInfoCondominium.$inject = ['$resource', 'config']; 
+    ExtraPropertyInfos.$inject = ['$resource', 'config']; 
     
     function ExtraInfo($resource, config) {
+        return $resource(config.apiUrl + 'extra_infos',{},{get: {method: 'GET'}});       
+    }
+
+    function ExtraPropertyInfos($resource, config) {
         return $resource(config.apiUrl + 'extra_infos',{},{get: {method: 'GET'}});       
     }
 

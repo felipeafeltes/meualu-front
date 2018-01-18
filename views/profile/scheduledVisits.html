@@ -3,34 +3,32 @@
         <h2 class="bold text-responsive-center">Visitas Marcadas</h2>
     </div>
     <div class="panel-body">
-        <!-- <img ng-show="!hasProperties" src="assets/imagens/loading.gif" width="100" height="100" class="loading-img" style="position:relative;left:50%;transform:translateX(-50%)"> -->
-        <!-- <span class="col-sm-12" ng-show="noPropertie">{{noPropertie}}</span> -->
-        <div class="col-sm-12 panel-ngFor-divs" ng-repeat="v in visitas">
+        <img ng-show="!hasProperties" src="assets/imagens/loading.gif" width="100" height="100" class="loading-img" style="position:relative;left:50%;transform:translateX(-50%)">
+        <span class="col-sm-12" ng-show="noPropertie">{{noPropertie}}</span>
+        <div class="col-sm-12 panel-ngFor-divs" ng-repeat="v in properties">
             <div class="col-md-5 no-padding">
-                <img ng-src="{{v.url}}" class="img-bordered img-responsive" style="max-width: 100%">
+                <img ng-src="{{v.pictures[0].url}}" class="img-bordered img-responsive" style="max-width: 100%">
             </div>
             <div class="col-md-7">
                 <div class="schuled-visits">
                     <div class="col-md-12">
-                        <span class="black-text">{{v.day}} das {{v.hourInit}} às {{v.hourFinish}}</span>
+                        <span class="black-text" style="text-transform:capitalize">{{v.date | date:"EEE"}}({{v.date | date:"dd/MM"}}) às {{v.date | date :"HH:mm"}} hrs</span>
                     </div>
                     <div class="col-md-12">
-                        <strong>{{v.desc}}</strong>
+                        <strong>{{v.property.description}}</strong>
                     </div>
                     <div class="col-md-12">
-                        <span>{{v.end}}</span>
-                    </div>
-                    <div class="col-md-12">
-                        <span><strong>{{v.inquilino}}</strong> é o inquilino interessado neste imóvel.</span>
+                        <span>{{v.address.street}}, {{v.address.number}}, {{v.address.district}}</span>
+                        <span>{{v.address.city}}/{{v.address.state}}</span>
                     </div>
                 </div>
                 <div class="col-md-12 schuled-btns text-center">
                     <div class="col-md-6 p-r-6">
                         <button type="button" class="btn btn-block schuled-btn" ng-click="openReasons()">Cancelar Visita</button>
                     </div>
-                    <div class="col-md-6 p-l-6">
+  <!--                   <div class="col-md-6 p-l-6">
                         <button type="button" class="btn btn-block schuled-btn">Remarcar Visita</button>
-                    </div>
+                    </div> -->
                 </div>
            
             </div>

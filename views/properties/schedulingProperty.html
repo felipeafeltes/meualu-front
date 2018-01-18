@@ -1,5 +1,10 @@
 <header></header>
-<section class="schedule full" style="margin-top:20px;">
+
+<div ng-if="!hasData" class="loading-div">
+    <img class="loading-data" width="130" src="assets/imagens/loadingRipple.gif">
+</div>
+
+<section class="schedule full" style="margin-top:20px;" ng-if="hasData">
     <div class="container-schedule">
         <div class="row">
 
@@ -10,14 +15,12 @@
                     </div>
                     <div class="col-md-12">
                         <div class="col-md-6">
-                            <img src="http://www.4x4brasil.com.br/forum/attachments/gaiola-baja-e-buggy/486756d1418396710-gaiola-estilo-super-buggy-ap-caixa-ap-central-monoposto-img-20141212-wa0008.jpg">
+                            <img ng-src="{{property.pictures[0].url}}">
                         </div>
                         <div class="col-md-6">
-                            <span class="title-img">Descrição Curta</span><br>
-                            <small class="grey-text">Bairro</small>
-                            <p class="description-img">O primeiro passo é criar o seu anúncio. Ele é como uma página de perfil para seu apartamento.
-                                Você preencherá uma descrição, produzirá e publicará as fotos e escolherá o seu preço. Te
-                                daremos várias dicas pra isso.</p>
+                            <span class="title-img">{{property.description}}</span><br>
+                            <small class="grey-text">{{property.address.district}}</small>
+                            <p class="description-img">{{property.mobility_description}}.</p>
                         </div>
 
                     </div>
@@ -91,7 +94,7 @@
                         <div class="clear-content animated fadeIn" ng-show="request">
                             <div ng-show="schuduled" class="animated fadeIn">
                                 <div class='tick-text'>
-                                    Visita agendada
+                                    Visita agendada<br>Dia <span class="text-purple bold">{{selectedHour | date :"dd/MM"}}</span>                                    às <span class="text-purple bold">{{selectedHour | date: "hh:mm"}}</span>.
                                 </div>
                                 <div class="check-div">
                                     <div class="container-check animated infinite rubberBand">
@@ -105,7 +108,7 @@
                                     </div>
                                 </div>
                                 <div class='tick-text bottom-align'>
-                                    Dia <span class="text-purple bold">{{selectedDay}}</span> às <span class="text-purple bold">{{selectedHour}}</span>.
+                                    <a style="color:#f4cc6a" ui-sref="perfil.scheduleds">Ver Visitas</a>
                                 </div>
                             </div>
                             <img ng-show="request && !schuduled" class="loading-data" width="160" src="assets/imagens/loadingRipple.gif">
@@ -113,21 +116,21 @@
 
                         <div class="card-schedule-header">
                             <div class="col-md-10 col-md-offset-1 card-schedule-header" style="background:transparent">
-                                <div class="schedule-day-week" ng-repeat="d in daysWeek">{{d.val}}</div>
+                                <div class="schedule-day-week" ng-repeat="dw in visits">{{dw[0].date | date : "EEE"}}</div>
                             </div>
                         </div>
                         <div class="col-md-10 col-md-offset-1 card-schedule-days" id="days">
-                            <button ng-repeat="dw in days" class="schedule-day-week text-gray" ng-class="{'active':dw.val === selectedDay}" ng-click="selectDay(dw.val)">
-                                {{dw.val}}
+                            <button ng-repeat="d in visits" class="schedule-day-week text-gray" ng-class="{'active': d[0].date === selectedDay}" ng-click="selectDay(d[0].date)">
+                                {{d[0].date | date : "dd"}}
                             </button>
                         </div>
                         <div class="col-md-12 text-center">
-                            <h4 class="text-gray">Quinta-Feira, 24/10</h4>
+                            <h4 class="text-gray" style="text-transform: capitalize">{{selectedDay | date: "EEEE"}}, {{selectedDay | date: "dd/yyyy"}}, {{selectedHour | date:"HH:mm"}}</h4>
                         </div>
                         <div class="col-md-12">
                             <div class="col-md-10 text-center col-md-offset-1 hours">
-                                <button type="button" ng-click="selectHour(h.val)" ng-repeat="h in hours" class="hour" ng-class="{'green-btn':h.valid}" ng-disabled="h.valid === false">
-                                    <span>{{h.val}}</span>
+                                <button type="button" ng-click="selectHour(h.date)" ng-repeat="h in hours" class="hour" ng-class="{'green-btn':h.free}" ng-disabled="h.free === false">
+                                    <span>{{h.date | date : "HH:mm"}}</span>
                                 </button>
 
                             </div>
@@ -147,7 +150,7 @@
     .check-div {
         position: absolute;
         left: 50%;
-        top: 50%;
+        top: 55%;
         transform: translate(-50%, -50%);
     }
 
@@ -166,7 +169,6 @@
         position: absolute;
         font-family: 'Circular std book', sans-serif;
         color: rgba(103, 183, 179, 0.87);
-        ;
         position: relative;
         left: 50%;
         transform: translateX(-50%);
@@ -245,8 +247,9 @@
 
     .schedule-day-week {
         background: transparent;
+        text-transform: capitalize;
         border: none;
-        width: 14.2857%;
+        width: 14.28%;
         float: left;
         font-size: 20px;
         color: #fff;

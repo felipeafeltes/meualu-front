@@ -225,7 +225,7 @@ input.search-header:focus {
 .navbar{
   margin-bottom: 0px;
 }
-.in{
+.collapse.in{
   background:#fff ;
   margin-top:20px !important;
   position:relative;

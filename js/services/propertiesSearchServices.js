@@ -1,35 +1,25 @@
 (function () {
-    'use strict';
+  'use strict';
 
-    angular
-        .module('propertiesSearchServices', ['ngResource', 'ngRoute'])
-        .factory('PropertySearch', PropertySearch);
+  angular
+    .module('propertiesSearchServices', ['ngResource', 'ngRoute'])
+    .factory('PropertySearch', PropertySearch);
 
-        PropertySearch.$inject = ['$resource', 'config'];
+  PropertySearch.$inject = ['$resource', 'config'];
 
-        function PropertySearch($resource, config, $filter) {
-            var propertySearch = $resource(config.apiUrl + 'properties/search/:address_string/',
-            { filters: '@filters' }
-          );
+  function PropertySearch($resource, config, $filter) {
+    var propertySearch = $resource(config.apiUrl + 'properties/search/:address_string',
+      { address_string:'@address_string' },
+      {
+        get: {
+          method: 'GET',
+        },
+      }
 
-          propertySearch.prototype.full_address = function() {
-            return this.address.street + " " + this.address.number;
-          };
+    );
 
-          propertySearch.prototype.total_rental = function() {
-            return this.rental.value + this.rental.condominium + this.rental.iptu
-          };
+    return propertySearch;
 
-          propertySearch.prototype.cover_url = function() {
-            if (this.pictures.length){
-              return this.pictures[0].url;
-            } else {
-              return "/assets/imagens/default-image.png";
-            }
-          };
-
-          return propertySearch;
-
-        }
+  }
 
 })();
