@@ -30,8 +30,8 @@
             <h3 class="m-t-5">{{propertyDetails.address.district}}</h3>
 
             <div class="profile-img2 text-center">
-              <img src="https://image.freepik.com/icones-gratis/perfil-macho-utilizador-sombra_318-40244.jpg" class="img-circle">
-              <span>Igor</span>
+              <img ng-src="{{(propertyDetails.user.picture_url)? propertyDetails.user.picture_url :'assets/imagens/perfil.png'}}" class="img-circle">
+              <span>{{propertyDetails.user.first_name}}</span>
             </div>
           </div>
 
@@ -141,12 +141,12 @@
           </div>
 
           <div class="col-sm-12 p0 border-t-b">
-            <h4 class="">Porto Alegre, RS</h4>
-            <h4 class="">Cadastrou em outubro de 2017</h4>
+            <h4 class="">{{(propertyDetails.user.city)? propertyDetails.user.city + ', ' + propertyDetails.user.state : 'Usuário ainda não atualizou os dados!'}}</h4>
+            <h4 class="">Cadastrou em {{propertyDetails.user.created_at | date:"MMMM"}} de {{propertyDetails.user.created_at | date:"yyyy"}}</h4>
             <img src="https://icon-icons.com/icons2/259/PNG/128/ic_verified_user_128_28798.png" width="60">Verificado
             <div class="profile-img2 text-center">
-              <img src="https://image.freepik.com/icones-gratis/perfil-macho-utilizador-sombra_318-40244.jpg" class="img-circle">
-              <span>Igor</span>
+              <img ng-src="{{(propertyDetails.user.picture_url)? propertyDetails.user.picture_url :'assets/imagens/perfil.png'}}" class="img-circle">
+              <span>{{propertyDetails.user.first_name}}</span>
             </div>
           </div>
 
