@@ -227,7 +227,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
     })
 
     .state('perfil.cadastrarImovel.rental', {
-      url: '/anuncio',
+      url: '/aluguel',
       templateUrl: 'views/profile/property_registration/property_registration_rental.html',
       protected: true,
       processed: true
@@ -329,7 +329,8 @@ app.run(function ($transitions, $state, $rootScope, MySelf) {
           }
           break;
         case 'perfil.cadastrarImovel.images':
-          if (!$rootScope.processedAddress ||
+          if (
+            !$rootScope.processedAddress ||
             !$rootScope.processedDetails ||
             !$rootScope.processedAdvertisement ||
             !$rootScope.processedRental) {
@@ -341,7 +342,7 @@ app.run(function ($transitions, $state, $rootScope, MySelf) {
             !$rootScope.processedDetails ||
             !$rootScope.processedAdvertisement ||
             !$rootScope.processedRental ||
-            !rootScope.processedImages) {
+            !$rootScope.processedImages) {
             return $state.target('perfil.cadastrarImovel.address');
           }
           break;

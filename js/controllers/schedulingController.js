@@ -43,11 +43,9 @@
                     }
                     SchedulePostVisit.save(data,
                         function (data) {
-                            console.log(data)
                             $scope.schuduled = true;
                         },
                         function (data) {
-                            console.log(data)
                             $scope.request = false;
                         }
                     )

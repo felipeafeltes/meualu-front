@@ -26,7 +26,7 @@
                         if (data.errors !== undefined) { toastr.error(data.errors[0]) }
                         else { toastr.warning(data.error) }
                     }
-                )
+                    )
             }
         }
 
@@ -44,6 +44,32 @@
         $scope.dataUser = {};
         $scope.user = new UsersService();
         $scope.response = true;
+
+        $scope.days = [];
+        $scope.months = [
+            { val: 1, name: 'Janeiro' },
+            { val: 2, name: 'Fevereiro' },
+            { val: 3, name: 'Março' },
+            { val: 4, name: 'Abril' },
+            { val: 5, name: 'Maio' },
+            { val: 6, name: 'Junho' },
+            { val: 7, name: 'Julho' },
+            { val: 8, name: 'Agosto' },
+            { val: 9, name: 'Setembro' },
+            { val: 10, name: 'Outubro' },
+            { val: 11, name: 'Novembro' },
+            { val: 12, name: 'Dezembro' }
+        ];
+        $scope.years = [];
+
+        for (let i = 1; i <= 31; i++) {
+            $scope.days.push(i);
+        }
+
+        for (let i = new Date().getFullYear(); i >= 1918; i--) {
+            $scope.years.push(i);
+        }
+
 
         $scope.openLogin = function () {
             $('#modalLogin').modal('show');

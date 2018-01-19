@@ -15,22 +15,27 @@
                         <span class="black-text" style="text-transform:capitalize">{{v.date | date:"EEE"}}({{v.date | date:"dd/MM"}}) às {{v.date | date :"HH:mm"}} hrs</span>
                     </div>
                     <div class="col-md-12">
-                        <strong>{{v.property.description}}</strong>
+                        <strong class="text-green">{{v.property.description}}</strong>
                     </div>
                     <div class="col-md-12">
                         <span>{{v.address.street}}, {{v.address.number}}, {{v.address.district}}</span>
                         <span>{{v.address.city}}/{{v.address.state}}</span>
                     </div>
                 </div>
-                <div class="col-md-12 schuled-btns text-center">
+                <div class="col-md-12 schuled-btns text-center" ng-if="v.status === 'pending'">
                     <div class="col-md-6 p-r-6">
-                        <button type="button" class="btn btn-block schuled-btn" ng-click="openReasons()">Cancelar Visita</button>
+                        <button type="button" class="btn btn-block schuled-btn" ng-click="openReasons(v.id, $index)">Cancelar Visita</button>
                     </div>
-  <!--                   <div class="col-md-6 p-l-6">
+                    <!--                   <div class="col-md-6 p-l-6">
                         <button type="button" class="btn btn-block schuled-btn">Remarcar Visita</button>
                     </div> -->
                 </div>
-           
+                <div class="col-md-12 schuled-btns p15" ng-if="v.status === 'cancelled'">
+                    <span class="text-purple">{{v.justification_description}}</span>
+                    <span class="text-purple">{{v.justification_complement}}</span>
+                </div>
+
+
             </div>
         </div>
     </div>
@@ -39,42 +44,31 @@
 <div class="modal" tabindex="-1" role="dialog" id="cancelScheduled">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form name="formCancel" ng-submit="send()" novalidate>
+            <form name="formCancel" ng-submit="send(formCancel.$valid)" novalidate>
                 <div class="modal-header bg-green">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h3 class="modal-title text-center upcase">Cancelar Visita</h3>
                 </div>
                 <div class="modal-body">
-
-
-                    <div class="form-group">
+                    <div class="form-group" ng-repeat="j in justifications">
                         <label>
-                        <input type="radio" name="reason" value="Este imóvel acabou de ser alugado." ng-model="cancelReason">
-                        Este imóvel acabou de ser alugado.
-                    </label>
-                    </div>
-
-                    <div class="form-group">
-                        <label>
-                            <input type="radio" name="reason" value=" O proprietário teve um imprevisto." ng-model="cancelReason">
-                            O proprietário teve um imprevisto.
+                            <input type="radio" name="reason" value="{{j.id}}" ng-model="$parent.cancelReason" ng-required="cancelReason === undefined">
+                            {{j.description}}
                         </label>
+                        <div ng-show="j.requires_complement && cancelReason == 3">
+                            <textarea name="otherReason" class="col-md-12 m-b-30" rows="4" ng-required="cancelReason == 3" ng-model="$parent.otherReason"
+                                ng-maxlength="100"></textarea>
+                        </div>
                     </div>
-
-                    <div class="form-group">
-                        <label>
-                            <input type="radio" name="reason" value="other" ng-model="cancelReason">
-                            Outro:
-                        </label>
-                        <textarea class="col-md-12 m-b-30" rows="4" ng-show="cancelReason === 'other'" ng-model="otherReason"></textarea>
+                    <div ng-show="formCancel.$submitted || formCancel.reason.$touched">
+                        <p ng-show="formCancel.reason.$error.required" class="help-block error">É obrigatório selecionar uma justificativa.</p>
+                        <p ng-show="formCancel.otherReason.$error.maxlength" class="help-block error">Máximo de 100 caracteres.</p>
                     </div>
-
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn-transparent" data-dismiss="modal">Fechar</button>
-                    <button type="submit" class="btn btn-danger">Cancelar</button>
-                    <!-- <img ng-if="!deleteRequest" src="assets/imagens/loading.gif" width="50" height="50" class="pull-right loading-img"> -->
+                    <button type="submit" class="btn btn-danger" ng-disabled="cancelVisit">Cancelar</button>
+                    <img ng-if="cancelVisit" src="assets/imagens/loading.gif" width="30" height="30" class="pull-right loading-img">
                 </div>
             </form>
         </div>
@@ -90,6 +84,10 @@
         background: #fff;
         border: 1px solid #000 !important;
         font-family: 'Circular std book', sans-serif !important;
+    }
+
+    .p15 {
+        padding: 15px;
     }
 
     .p-r-6 {

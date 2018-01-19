@@ -106,15 +106,15 @@
                 <br>
               </div>
 
-              <div ng-show="moreImmobile" ng-repeat="c in extraInfos" class="pt-5-pb-5" ng-if="c.kind === 'property' && !c.has">
+              <div ng-show="moreImmobile" ng-repeat="c in extraInfos" class="pt-5-pb-5 fadeIn" ng-class="{'animated':moreImmobile}" ng-if="c.kind === 'property' && !c.has">
                 <span>
                   <i class="fa fa-times m-r-15"></i> {{c.description}}
                 </span>
                 <br>
               </div>
 
-              <span ng-show="!moreImmobile" class="more-informations" ng-click="moreImmobile = true">+Mais informações</span>
-              <span ng-show="moreImmobile" class="more-informations" ng-click="moreImmobile = false">-Menos informações</span>
+              <span ng-show="!moreImmobile" class="more-informations p-l-25" ng-click="moreImmobile = true">+Mais informações</span>
+              <span ng-show="moreImmobile" class="more-informations p-l-25" ng-click="moreImmobile = false">-Menos informações</span>
 
             </div>
             <div class="col-sm-6 condominium-characteristics">
@@ -126,15 +126,16 @@
                 <br>
               </div>
 
-              <div ng-show="moreCondominium" ng-repeat="m in extraInfos" class="pt-5-pb-5" ng-if="m.kind === 'condominium' && !m.has">
+              <div ng-show="moreCondominium" ng-repeat="m in extraInfos" class="pt-5-pb-5 fadeIn" ng-class="{'animated':moreCondominium}"
+                ng-if="m.kind === 'condominium' && !m.has">
                 <span>
                     <i class="fa fa-times m-r-15"></i> {{m.description}}
                   </span>
                 <br>
               </div>
 
-              <span ng-show="!moreCondominium" class="more-informations" ng-click="moreCondominium = true">+Mais informações</span>
-              <span ng-show="moreCondominium" class="more-informations" ng-click="moreCondominium = false">-Menos informações</span>
+              <span ng-show="!moreCondominium" class="more-informations p-l-25" ng-click="moreCondominium = true">+Mais informações</span>
+              <span ng-show="moreCondominium" class="more-informations p-l-25" ng-click="moreCondominium = false">-Menos informações</span>
 
             </div>
           </div>
@@ -162,14 +163,6 @@
               {{propertyDetails.mobility_description}}
             </p>
           </div>
-
-          <div class="col-sm-12 p0">
-            <h4 class="m-t-5 bold">Perfil de inquilino ideal</h4>
-            <p class="home-description">
-              {{propertyDetails.ideal_tenant_profile}}
-            </p>
-          </div>
-
         </div>
       </div>
     </div>
@@ -231,6 +224,10 @@
 
   .navbar-proprietario {
     margin-bottom: 0px !important;
+  }
+
+  .p-l-25 {
+    padding-left: 25px;
   }
 
   .profile-img2 {
