@@ -59,7 +59,7 @@ h1, h2, h3, h4, h5, h6{font-family:'Circular std book', sans-serif;}
 .text-yellow{color:#f4cc6a;}
 a.text-yellow:hover{color:#f4cc6a;}
 .text-yellow:visited, .text-yellow:focus{color:#f4cc6a;}
-.text-purple{color:#6B5DB7;}
+.text-purple{color:#6B5DB7 !important;}
 .text-green{color:#67b7b4;}
 .text-gray{color:#b1b1b0;}
 .text-dark{color: #000;}

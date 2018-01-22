@@ -103,6 +103,15 @@
       $state.go('scheduling', { id: propertyId })
     }
 
+    $scope.copyText = function () {
+      var ta = document.getElementById('clip');
+      ta.innerHTML = window.location.href;
+      ta.focus();
+      ta.select();
+      document.execCommand('copy');
+      toastr.info("Link do imóvel copiado para área de transferência!")
+    }
+
     function _setupMarkers(properties) {
       var markers = [];
       markers = properties.map(function (prop) {

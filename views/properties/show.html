@@ -13,10 +13,18 @@
             <img ng-src="{{img.url}}" class="slider-full-img" alt="Responsive image">
           </div>
         </slick>
-
-        <div share-square="true" share-links="Facebook" share-title="Article Title"></div>
-        
       </div>
+      <div class="dropdown share-button">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Compartilhar
+        <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li>
+            <div class="face-link" share-square="true" share-links="Facebook" share-title="{{propertyDetails.description}}"></div>
+          </li>
+          <li class="pointer-cursor"><a class="text-purple" ng-click="copyText()">Copiar Link</a></li>
+        </ul>
+      </div>
+      <textarea id="clip" style="display:hidden;"></textarea>
     </div>
     <div class="container">
       <div class="row row-slider-full">
@@ -363,6 +371,62 @@
     font-size: 35px;
     text-transform: capitalize;
   }
+  .share-button {
+    position: absolute !important;
+    right: 60px;
+    top: 80px;
+  }
+
+  .share-button>button {
+    background: #fff;
+    color: #6B5DB7;
+    border: 1px solid #6B5DB7;
+  }
+
+  .pointer-cursor {
+    cursor: pointer;
+  }
+
+  .face-link {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: 400;
+    line-height: 1.42857143;
+    color: #333;
+    white-space: nowrap;
+  }
+
+  .facebook-link-share{
+    color: #6B5DB7 !important;
+  }
+  
+  .dropdown-menu{
+    min-width:120px !important;
+  }
+
+  .face-link>a {
+    width: 100%;
+  }
+  .face-link>a::before {
+    width: 100%;
+    font-size: 20px;
+  }
+
+  .share-button>button:hover {
+    color: #fff !important;
+    background-color: rgba(107, 93, 183, 0.62) !important;
+    border-color: #6B5DB7 !important;
+  }
+
+  .btn-primary.active,
+  .btn-primary:active,
+  .open>.dropdown-toggle.btn-primary {
+    color: #fff !important;
+    background-color: rgba(107, 93, 183, 0.62) !important;
+    border-color: #6B5DB7 !important;
+  }
+
 
   @media(max-width:992px) {
     .propertie-title {
