@@ -13,9 +13,11 @@
             <img ng-src="{{img.url}}" class="slider-full-img" alt="Responsive image">
           </div>
         </slick>
+
+        <div share-square="true" share-links="Facebook" share-title="Article Title"></div>
+        
       </div>
     </div>
-    <div share-square="true" share-links="Facebook" share-title="Article Title"></div>
     <div class="container">
       <div class="row row-slider-full">
         <div class="col-md-7 col-sm-7 propertie-title">
@@ -142,7 +144,8 @@
           </div>
 
           <div class="col-sm-12 p0 border-t-b">
-            <h4 class="">{{(propertyDetails.user.city)? propertyDetails.user.city + ', ' + propertyDetails.user.state : 'Usuário ainda não atualizou os dados!'}}</h4>
+            <h4 class="">{{(propertyDetails.user.city)? propertyDetails.user.city + ', ' + propertyDetails.user.state : 'Usuário ainda
+              não atualizou os dados!'}}</h4>
             <h4 class="">Cadastrou em {{propertyDetails.user.created_at | date:"MMMM"}} de {{propertyDetails.user.created_at | date:"yyyy"}}</h4>
             <img src="https://icon-icons.com/icons2/259/PNG/128/ic_verified_user_128_28798.png" width="60">Verificado
             <div class="profile-img2 text-center">
