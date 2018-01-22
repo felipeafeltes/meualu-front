@@ -25,6 +25,7 @@ var app = angular
     'slick',
     'ui.bootstrap',
     'angular-img-cropper',
+    'td.easySocialShare'
   ]);
 
 app.constant('config', {
