@@ -1064,6 +1064,32 @@ span.round-tab:hover {
   padding-left: 15px;
 }
 
+.pagination>li>a{
+  color:#67b7b4;
+}
+.pagination>li>a:hover{
+  color: #5f447b;
+}
+
+.pagination>li>a:hover{
+  color: #5f447b;
+}
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover{
+  color: #FFF;
+  cursor: default;
+  background-color: #5f447b;
+  border-color: #5f447b;
+}
+
+.pagination>li>a, .pagination>li>span{
+  border:none;
+  border-radius: 3px;
+}
+
+.pagination>.disabled>a, .pagination>.disabled>a:focus, .pagination>.disabled>a:hover, .pagination>.disabled>span, .pagination>.disabled>span:focus, .pagination>.disabled>span:hover {
+  color: #b1b1b0;
+}
+
 /* Animations */
 .div-thanks > i {
   position: relative;

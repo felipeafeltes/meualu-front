@@ -37,7 +37,6 @@
     $scope.details = function (id) {
       $state.go('propertiesDetails', { id: id });
     }
-
     $scope.map = { center: { latitude: $rootScope.lat, longitude: $rootScope.lng }, zoom: 11 };
     $scope.properties_order = true;
 
@@ -56,7 +55,7 @@
               url: '/assets/imagens/gmap-pin.png',
               size: new google.maps.Size(40, 40),
               origin: new google.maps.Point(0, 0),
-              anchor: new google.maps.Point(0, 30)
+              anchor: new google.maps.Point(0, 10)
             }
           }
         }

@@ -25,7 +25,9 @@ var app = angular
     'slick',
     'ui.bootstrap',
     'angular-img-cropper',
-    'td.easySocialShare'
+    'td.easySocialShare',
+    'angularUtils.directives.dirPagination',
+    'infinite-scroll'
   ]);
 
 app.constant('config', {

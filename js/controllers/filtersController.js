@@ -31,6 +31,7 @@
       types: ['geocode']
     }
   }
+  
 
   function _setup_filters() {
     return {
