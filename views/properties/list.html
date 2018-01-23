@@ -29,7 +29,8 @@
               <li><a ng-click="properties_order = false">maior preço</a></li>
             </ul>
           </div>
-          <div class="panel panel-default" ng-repeat="property in properties | orderBy:rental.value:properties_order" ng-click='details(property.id)'>
+          <div class="panel panel-default" dir-paginate="property in properties | orderBy:rental.value:properties_order|itemsPerPage:5"
+            ng-click='details(property.id)'>
             <div class="panel-body imovel-desc">
               <div class="col-md-5">
                 <h4 class="text-dark">{{ property.description }}</h4>
@@ -52,6 +53,7 @@
               </div>
             </div>
           </div>
+          <dir-pagination-controls max-size="4" boundary-links="true" class="pull-right"></dir-pagination-controls>
         </div>
       </div>
       <div class="col-md-7 no-padding">
