@@ -7,19 +7,31 @@
     $scope.hasData = false;
     $rootScope.coords = null;
     $scope.properties = [];
+    var filters = $stateParams.filters || {};
     PropertySearch.get(
-      { address_string: $stateParams.address_string },
+      {
+        address_string: $stateParams.address_string,
+        filters: {
+          bedrooms: filters.bedrooms,
+          bathrooms: filters.bathrooms,
+          garages: filters.garages,
+          furnished: filters.furnished,
+          pets_allowed: filters.pets_allowed,
+          public_transportation: filters.public_transportation,
+          total_area: filters.total_area,
+          rental: filters.rental,
+          extra_infos: filters.extra_infos
+        }
+      },
       function (data) {
-        console.log(data)
         $scope.properties = data.properties;
         if ($scope.properties.length > 0) {
           $scope.markers = _setupMarkers([data]);
+          var address = data.properties[0].address;
+          $scope.full_adress = `${address.street + ', ' + address.district + ', ' + address.city + '/' + address.state}`;
         }
         $scope.hasData = true;
       },
-      function (data) {
-        console.log(data)
-      }
     );
 
     $scope.details = function (id) {

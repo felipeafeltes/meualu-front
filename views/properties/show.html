@@ -200,13 +200,13 @@
       <div class="row">
         <h1 class="m-b-50">Anúncios parecidos</h1>
 
-        <div ng-if="!properties_related.length">
+        <div ng-if="!propertyDetails.pictures.length">
           <h3 class="text-center"><i class="fa fa-frown-o "></i> Nenhum apartamento encontrado</h3>
         </div>
         <slick arrows="true" slides-to-show="3" slides-to-scroll="1" infinite="true">
-          <div class="panel panel-default properties-related" ng-repeat="p in properties_related">
+          <div class="panel panel-default properties-related" ng-repeat="p in propertyDetails.pictures">
             <div class="panel-heading properties-related">
-              <img ng-src="{{p.src}}" class="img-full" alt="Responsive image">
+              <img ng-src="{{p.url}}" class="img-full" alt="Responsive image">
             </div>
             <div class="panel-body properties-related">
               <h3 class="resized-h">Descrição Curta do Imóvel</h3>
@@ -371,6 +371,7 @@
     font-size: 35px;
     text-transform: capitalize;
   }
+
   .share-button {
     position: absolute !important;
     right: 60px;
@@ -397,17 +398,22 @@
     white-space: nowrap;
   }
 
-  .facebook-link-share{
+  .face-link:hover {
+    background-color: #f5f5f5;
+  }
+
+  .facebook-link-share {
     color: #6B5DB7 !important;
   }
-  
-  .dropdown-menu{
-    min-width:120px !important;
+
+  .dropdown-menu {
+    min-width: 120px !important;
   }
 
   .face-link>a {
     width: 100%;
   }
+
   .face-link>a::before {
     width: 100%;
     font-size: 20px;

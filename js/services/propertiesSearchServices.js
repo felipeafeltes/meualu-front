@@ -9,17 +9,13 @@
 
   function PropertySearch($resource, config, $filter) {
     var propertySearch = $resource(config.apiUrl + 'properties/search/:address_string',
-      { address_string:'@address_string' },
+      { address_string:'@address_string', filters: '@filters' },
       {
         get: {
           method: 'GET',
         },
       }
-
     );
-
     return propertySearch;
-
   }
-
 })();

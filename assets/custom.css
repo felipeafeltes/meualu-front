@@ -82,8 +82,8 @@ a.text-yellow:hover{color:#f4cc6a;}
 .btn-green-full{color:#fff;background-color:#5ca4a2;border-color:#fff;border:1px solid transparent;border-radius:0px;font-size: 14px;}
 .btn-green-full:hover, .btn-green-full:focus{color:#fff;background:#407372;}
 .btn-green.login{background:#5ca4a2;}
-.btn-grey, .btn-grey:hover, .btn-grey:focus {border-color: #d4d4d4; color: #b1b1b0;}
-.btn-grey.used, .btn-grey.used:hover, .btn-grey.used:focus {border-color: #d4d4d4; color: #5ca4a2; font-weight: 500;}
+.btn-grey, .btn-grey:hover, .btn-grey:focus {border-color: #d4d4d4; color: #fff;}
+.btn-grey.used, .btn-grey.used:hover, .btn-grey.used:focus {border-color: #d4d4d4; color: #f4cc6a; font-weight: 500;}
 .btn-send-contato{margin-top:10px;}
 .l-h-1.7{line-height:1.7;}
 .ul-footer{list-style-type:none;-webkit-padding-start:0px;}

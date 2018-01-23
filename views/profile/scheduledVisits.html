@@ -5,7 +5,7 @@
     <div class="panel-body">
         <img ng-show="!hasProperties" src="assets/imagens/loading.gif" width="100" height="100" class="loading-img" style="position:relative;left:50%;transform:translateX(-50%)">
         <span class="col-sm-12" ng-show="noPropertie">{{noPropertie}}</span>
-        <div class="col-sm-12 panel-ngFor-divs" ng-repeat="v in properties">
+        <div class="col-sm-12 panel-ngFor-divs" ng-repeat="v in properties" ng-show="hasProperties">
             <div class="col-md-5 no-padding">
                 <img ng-src="{{v.pictures[0].url}}" class="img-bordered img-responsive" style="max-width: 100%">
             </div>
