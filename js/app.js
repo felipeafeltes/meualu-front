@@ -299,6 +299,12 @@ app.run(function ($transitions, $state, $rootScope, MySelf) {
         $rootScope.current_user = data.renter;
         ($rootScope.current_user.birthday !== null) ? $rootScope.current_user.birthday = new Date(data.renter.birthday) : '';
       },
+      function (data) {
+        toastr.warning("Faça login novamente!");
+        localStorage.removeItem('token');
+        $rootScope.current_user = null;
+        $state.go('home');
+      }
     );
   }
 

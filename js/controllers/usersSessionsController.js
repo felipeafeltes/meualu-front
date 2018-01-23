@@ -3,14 +3,20 @@
     app.controller('UserSessionsSignIn', UserSessionsSignIn);
     app.controller('UserSessionsSignOut', UserSessionsSignOut);
     app.controller('UserSessionsRegister', UserSessionsRegister);
+    app.controller('UserResetPassword', UserResetPassword);
 
+    var modalRecover;
 
-
-    function UserSessionsSignIn($scope, User, $rootScope, $state, $http, MySelf) {
+    function UserSessionsSignIn($scope, User, $rootScope, $uibModal, $state, $http, MySelf) {
         $scope.user = new User();
 
         $scope.openRegister = function () {
             $('#modalLogin').modal('hide');
+        }
+
+        $scope.openRecover = function () {
+            $('#modalLogin').modal('hide');
+            $('#modalRecover').modal('show');
         }
 
         $scope.sign_in = function (isValid) {
@@ -38,6 +44,25 @@
             $rootScope.current_user = null;
             $state.go('home');
         };
+    }
+
+    function UserResetPassword($scope, RecoverService) {
+        $scope.email;
+        $scope.recover = function (isValid) {
+            if (isValid) {
+                RecoverService.recover(
+                    { email: $scope.email },
+                    function (data) {
+                        console.log(data);
+                        $('#modalRecover').modal('hide');
+                        toastr.info("Link de recuperação enviado ao e-mail.")
+                    },
+                    function (data) {
+                        toastr.error("Email não existe.")
+                    }
+                )
+            }
+        }
     }
 
     function UserSessionsRegister($scope, User, UsersService, $rootScope, $state) {

@@ -8,7 +8,7 @@
       <div class="modal-body row text-gray" ng-controller="OauthSessionsAuthenticate">
         <div class="col-md-10 col-md-offset-1">
           <button class="btn btn-block btn-primary btn-lg m-t-20 redondend-border" ng-click="authenticate('facebook')">Acessar com Facebook</button>
-<!--           <button class="btn btn-block btn-danger btn-lg m-t-10 redondend-border"  ng-click="authenticate('google')">              
+          <!--           <button class="btn btn-block btn-danger btn-lg m-t-10 redondend-border"  ng-click="authenticate('google')">              
             Acessar com Google+</button> -->
           <div class="row">
             <div class="col-md-5">
@@ -43,13 +43,13 @@
             <div class="form-group m-b-10">
               <div class="col-md-6">
                 <div class="checkbox p-t-0">
-              <!--     <label>
+                  <!--     <label>
                     <input type="checkbox"> Lembrar de mim
                   </label> -->
                 </div>
               </div>
               <div class="col-md-6">
-                <a href="#" class="pull-right"> Esqueceu sua senha?</a>
+                <a ng-click="openRecover()" href="#" class="pull-right"> Esqueceu sua senha?</a>
               </div>
             </div>
             <div class="form-group">
@@ -60,6 +60,41 @@
             <div class="form-group">
               <div class="col-md-12">
                 <p>Ainda não possui conta? <a ui-sref="registerUser" ng-click="openRegister()">Cadastre-se</a></p>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+
+<div class="modal redondend-border" tabindex="-1" role="dialog" id="modalRecover">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-green redondend-border">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title text-center">Recuperar Senha</h3>
+      </div>
+      <div class="modal-body row text-gray">
+        <div class="col-md-10 col-md-offset-1">
+          <form name="formRecover" ng-submit="recover(formRecover.$valid)" ng-controller="UserResetPassword" class="form-horizontal">
+            <div class="form-group m-b-10">
+              <div class=" col-md-12">
+                <input type="email" name="email" ng-model="email" class="form-control input-lg redondend-border" placeholder="E-mail" required>
+                <div ng-show="formRecover.$submitted || formRecover.email.$touched">
+                  <p ng-show="formRecover.email.$error.required" class="help-block error">Email é obrigatório.</p>
+                  <p ng-show="formRecover.email.$error.email" class="help-block error">Email não é válido.</p>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-md-12">
+                <button type="submit" class="btn btn-block btn-lg btn-green login redondend-border">Recuperar</button>
               </div>
             </div>
           </form>
