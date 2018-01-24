@@ -4,7 +4,7 @@
     "Guilherme Cruz <guilherme.cruz@ubistart.com>, Caciano Francisco Kroth <caciano.kroth@ubistart.com>"
   ],
   "description": "Frontend do meuAlu",
-  "main": "build/main.js",
+  "main": "index.html",
   "license": "MIT",
   "homepage": "",
   "devDependencies": {

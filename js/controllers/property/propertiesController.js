@@ -67,7 +67,7 @@
   function PropertiesDetailsController($scope, $stateParams, $state,
     PropertyService,
     ExtraPropertyInfos,
-    Similar
+    SimilarService
   ) {
 
     $scope.propertyDetails = {};
@@ -110,7 +110,7 @@
       }
     );
 
-    Similar.get(
+    SimilarService.get(
       { id: $stateParams.id },
       function (data) {
         console.log(data)

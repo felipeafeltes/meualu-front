@@ -3,12 +3,12 @@
 
     angular
         .module('similarPropertyService', ['ngResource', 'ngRoute'])
-        .factory('Similar', Similar);
+        .factory('SimilarService', SimilarService);
 
-    Similar.$inject = ['$resource', 'config'];
+        SimilarService.$inject = ['$resource', 'config'];
 
-    function Similar($resource, config) {
-        var similars = $resource(config.apiUrl + '/properties/:id/similar',
+    function SimilarService($resource, config) {
+        var similars = $resource(config.apiUrl + 'properties/:id/similar',
             { id: '@id' },
             {
                 get: {

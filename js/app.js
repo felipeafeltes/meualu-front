@@ -20,7 +20,6 @@ var app = angular
     'scheduleVisitsServices',
     'rentalNewsletterServices',
     'contactClientsServices',
-    'ngMaterial',
     'scrollToFixed',
     'ngMaterial',
     'slick',
@@ -28,7 +27,8 @@ var app = angular
     'angular-img-cropper',
     'td.easySocialShare',
     'angularUtils.directives.dirPagination',
-    'infinite-scroll'
+    'infinite-scroll',
+    'similarPropertyService'
   ]);
   
 app.constant('config', {
