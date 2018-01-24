@@ -1,10 +1,10 @@
 {
   "name": "meualu_front",
   "authors": [
-    "Guilherme Cruz <guilherme.cruz@ubistart.com>"
+    "Guilherme Cruz <guilherme.cruz@ubistart.com>, Caciano Francisco Kroth <caciano.kroth@ubistart.com>"
   ],
   "description": "Frontend do meuAlu",
-  "main": "index.html",
+  "main": "build/main.js",
   "license": "MIT",
   "homepage": "",
   "devDependencies": {

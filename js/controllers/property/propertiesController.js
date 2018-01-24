@@ -67,6 +67,7 @@
   function PropertiesDetailsController($scope, $stateParams, $state,
     PropertyService,
     ExtraPropertyInfos,
+    Similar
   ) {
 
     $scope.propertyDetails = {};
@@ -108,6 +109,16 @@
         $scope.hasData = true;
       }
     );
+
+    Similar.get(
+      { id: $stateParams.id },
+      function (data) {
+        console.log(data)
+      },
+      function (data) {
+        console.log(data)
+      }
+    )
 
 
     $scope.showSchedule = function (propertyId) {

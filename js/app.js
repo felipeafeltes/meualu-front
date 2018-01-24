@@ -1,3 +1,4 @@
+
 var app = angular
   .module('aluFrontApp', [
     'angular.viacep',
@@ -29,7 +30,7 @@ var app = angular
     'angularUtils.directives.dirPagination',
     'infinite-scroll'
   ]);
-
+  
 app.constant('config', {
   apiUrl: 'https://api.meualu.com/'
   /* apiUrl: 'http://meualuapi.brazilsouth.cloudapp.azure.com/' */
