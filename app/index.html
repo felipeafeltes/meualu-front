@@ -112,20 +112,26 @@
     height: 100%;
   }
 
-  .loaded .loading {
-    display: none;
+  .center-img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .none-display {
+    display: none !important;
   }
 </style>
 <script>
     $(window).on('load', function () {
-      $('body').addClass('loaded');
+      $('#loading').hide();
     });
-
 </script>
 
 <body ng-cloak>
-  <div class="loading">
-    <img src="assets/imagens/loading.gif" />
+  <div class="loading" id="loading">
+    <img src="assets/imagens/loading.gif" class="center-img" />
   </div>
   <div ui-view autoscroll="true"></div>
 </body>
