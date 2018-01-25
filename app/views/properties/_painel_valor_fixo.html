@@ -1,0 +1,59 @@
+
+  <div class="panel-heading heading-purple">
+    <h2 class="rental mt-10">
+      <span>Total</span>
+      <span class="pull-right"> {{ propertyDetails.rental.package_value | currency }}</span>
+    </h2>
+  </div>
+  <div class="panel-body">
+    <ul class="without-style">
+      <li class="m-b-5">
+        <span>Aluguel</span>
+        <span class="pull-right"> {{ propertyDetails.rental.value | currency}}</span>
+      </li>
+      <li class="m-b-5">
+        <span>Condominio</span>
+        <span class="pull-right"> {{ propertyDetails.rental.condominium | currency}}</span>
+      </li>
+      <li class="m-b-5">
+        <span>IPTU</span>
+        <span class="pull-right"> {{ propertyDetails.rental.iptu | currency}}</span>
+      </li>
+      <li class="m-b-5">
+        <span>Seguro-fiança</span>
+        <span class="pull-right">Incluso</span>
+      </li>
+      <li class="m-b-5">
+        <span>Assistência Residencial</span>
+        <span class="pull-right"><span class="label label-pill label-success">Grátis</span></span>
+      </li>
+    </ul>
+    <hr>
+    <p class="text-center">
+      Agende uma visita agora,
+      <br> sem falar com ninguem.
+    </p>
+    <div class="text-center">
+      <button type="button" class="btn btn-warning btn-block label-pill" ng-click="showSchedule(propertyDetails.id)">Agendar visita</button>
+    </div>
+  </div>
+
+<style>
+  .heading-purple {
+    background-color: #5f447b;
+    color: #fff;
+    font-size: 25px;
+  }
+
+  .label-pill {
+    border-radius: 10px !important;
+  }
+
+  .rental {
+    margin-top: 10px;
+  }
+
+  .rental>span {
+    font-size: 30px;
+  }
+</style>

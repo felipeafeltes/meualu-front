@@ -1,0 +1,86 @@
+
+<div class="panel panel-imoveis">
+    <div class="panel-header">
+        <h2 class="bold text-responsive-center black-text">Cadastrar Imóvel</h2>
+        <small class="text-responsive-center">Preencha as etapas a seguir para cadastrar seu imóvel</small>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="wizard col-sm-12">
+                <div class="wizard-inner">
+                    <div class="connecting-line"></div>
+                    <div class="connecting-line-active" id="activeLine"></div>
+                    <ul class="nav nav-tabs no-border">
+                        <li id="addressForm" class="active">
+                            <a title="Endereço">
+                                <span class="round-tab">
+                                    <i class="glyphicon glyphicon-home"></i>
+                                </span>
+                            </a>
+                        </li>
+
+                        <li id="detailsForm">
+                            <a title="Detalhes">
+                                <span class="round-tab">
+                                    <i class="glyphicon glyphicon-list-alt"></i>
+                                </span>
+                                
+                            </a>
+                        </li>
+
+                        <li id="advertisementForm">
+                            <a title="Anúncio">
+                                <span class="round-tab">
+                                    <i class="glyphicon glyphicon glyphicon-bullhorn"></i>
+                                </span>
+                            </a>
+                        </li>
+
+<!--                         <li id="scheduleForm" class="disabled" ui-sref-active="active">
+                            <a title="Agenda">
+                                <span class="round-tab">
+                                    <i class="glyphico glyphicon glyphicon-calendar"></i>
+                                </span>
+                            </a>
+                        </li> -->
+
+
+                        <li id="rentalForm">
+                            <a title="Aluguel">
+                                <span class="round-tab">
+                                    <i class="glyphico glyphicon glyphicon-file"></i>
+                                </span>
+                            </a>
+                        </li>
+
+                        <li id="imagesForm">
+                            <a title="Fotos">
+                                <span class="round-tab">
+                                    <i class="glyphicon glyphicon-picture"></i>
+                                </span>
+                            </a>
+                        </li>
+
+                        <li id="termsform">
+                            <a title="Termos">
+                                <span class="round-tab">
+                                    <i class="glyphico glyphicon glyphicon-file"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <form name="formProperty" id="form-views" ng-submit="processForm(formProperty.$valid)">
+
+                    <div id="form-views" ui-view>
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-include="'views/profile/loadingModal.html'"></div>

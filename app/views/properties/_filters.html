@@ -1,0 +1,77 @@
+<div class="btn-group filters bg-purple" role="group" aria-label="...">
+  <div ng-repeat="(key, filter) in range_filters" class="btn-group">
+    <a class="btn btn-grey dropdown-toggle {{ (filters[key.toString()].length)? 'used' : '' }}" data-toggle="dropdown" ng-click="refreshSlider();">
+      <i class="fa {{filter.icon}}"></i>
+      {{ filter_translation(key.toString()) | capitalize | pluralize }}
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu filters" ng-click="$event.stopPropagation();" style="width: 390px !important;">
+      <li class="{{filter.class}}">
+        <span class="min">{{filter.translate}}{{filter.minValue}}</span>
+        <div class="slider">
+          <rzslider rz-slider-model="filter.minValue" rz-slider-high="filter.maxValue" rz-slider-options="filter.options"></rzslider>
+        </div>
+        <span class="max">{{filter.maxValue}}</span>
+      </li>
+    </ul>
+  </div>
+  <div ng-repeat="(key, data) in simple_filters" class="btn-group">
+    <a class="btn btn-grey dropdown-toggle {{ (filters[key.toString()].length)? 'used' : '' }}" data-toggle="dropdown">
+      <i class="fa {{data[1]}}"></i>
+      {{ filter_translation(key.toString()) | capitalize | pluralize }}
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu filters" ng-click="$event.stopPropagation();">
+      <li ng-repeat="filter in data[0]">
+        <div class="form-check pure-checkbox">
+          <input id="{{filter.value}}_{{key}}" type="checkbox" ng-model="filter.selected" ng-click="onFilterSelect(filter, key)">
+          <label for="{{filter.value}}_{{key}}">
+            <!-- INDEX: {{ $index }} -->
+            {{ filter.label }}
+            {{ $index == 0 ? label_translation(key.toString()) : (label_translation(key.toString()) | pluralize) }}
+          </label>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div ng-repeat="(key, data) in boolean_filters" class="btn-group">
+    <a class="btn btn-grey dropdown-toggle {{ (filters[key.toString()].length)? 'used' : '' }}" data-toggle="dropdown">
+      <i class="fa {{data[1]}}"></i>
+      {{ filter_translation(key.toString()) | capitalize | pluralize }}
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu list-inline filters" ng-click="$event.stopPropagation();" style="width: 100%;">
+      <li ng-repeat="filter in data[0]">
+        <div class="form-check pure-checkbox">
+          <input id="{{filter.value}}_{{key}}" type="checkbox" ng-model="filter.selected" ng-click="onFilterSelect(filter, key)">
+          <label for="{{filter.value}}_{{key}}">
+            <!-- INDEX: {{ $index }} -->
+            {{ filter.label }}
+          </label>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="btn-group">
+    <a class="btn btn-grey dropdown-toggle {{ (filters['extra_infos'].length)? 'used' : '' }}" data-toggle="dropdown">
+      Outros
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-right filters extra-info-filter">
+      <li ng-repeat="extra_info in extra_info_filters" class="list-inline-item">
+        <div class="pure-checkbox " style="width: 290px;">
+          <input type="checkbox" ng-model="extra_info.selected" id="{{'div' + extra_info.id}}" checked="">
+          <label for="{{'div' + extra_info.id}}">{{extra_info.description}}</label>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<style>
+
+  .filters {
+    margin-top: 0px !important;
+  }
+</style>

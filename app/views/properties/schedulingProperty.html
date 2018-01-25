@@ -1,0 +1,464 @@
+<header></header>
+
+<div ng-if="!hasData" class="loading-div">
+    <img class="loading-data" width="130" src="assets/imagens/loadingRipple.gif">
+</div>
+
+<section class="schedule full" style="margin-top:20px;" ng-if="hasData">
+    <div class="container-schedule">
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="col-md-6 col-sm-12">
+                    <div class="col-md-12">
+                        <h1>Escolha o melhor horário para visitar</h1>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <img ng-src="{{property.pictures[0].url}}">
+                        </div>
+                        <div class="col-md-6">
+                            <span class="title-img">{{property.description}}</span><br>
+                            <small class="grey-text">{{property.address.district}}</small>
+                            <p class="description-img">{{property.mobility_description}}.</p>
+                        </div>
+
+                    </div>
+                    <div class="col-md-12">
+                        <h2 class="p20">
+                            Como funciona na Alu?
+                        </h2>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="col-md-1 col-sm-2 col-xs-12">
+                            <div class="circular-orange first">1</div>
+                        </div>
+                        <div class="col-md-11 col-sm-10 col-xs-12">
+                            <h3 class="title-circular">Crie anúncios exclusivos e marcantes</h3>
+                        </div>
+                        <div class="col-md-11 col-md-offset-1 cirular-text">
+                            <p>
+                                O primeiro passo é criar o seu anúncio. Ele é como uma página de perfil para seu apartamento. Você preencherá uma descrição,
+                                produzirá e publicará as fotos e escolherá o seu preço. Te daremos várias dicas pra isso.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="col-md-1 col-sm-2 col-xs-12">
+                            <div class="circular-orange">2</div>
+                        </div>
+                        <div class="col-md-11 col-sm-10 col-xs-12">
+                            <h3 class="title-circular">Aguarde a confirmação da visitar pelo proprietário</h3>
+                        </div>
+                        <div class="col-md-12 cirular-text">
+                            <p>
+
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="col-md-1 col-sm-2 col-xs-12">
+                            <div class="circular-orange">3</div>
+                        </div>
+                        <div class="col-md-11 col-sm-10 col-xs-12">
+                            <h3 class="title-circular">O proprietário ou alguém de sua confiança irá lhe acompanhar na visita</h3>
+                        </div>
+                        <div class="col-md-12 cirular-text">
+                            <p>
+
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="col-md-1 col-sm-2 col-xs-12">
+                            <div class="circular-orange">4</div>
+                        </div>
+                        <div class="col-md-11 col-sm-10 col-xs-12">
+                            <h3 class="title-circular">Após a visita, volte para plataforma para negociar o seu aluguel</h3>
+                        </div>
+                        <div class="col-md-12 cirular-text">
+                            <p>
+
+                            </p>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="col-md-4 col-md-offset-1 col-sm-12 clear-visit">
+                    <div class="col-md-12 schedule-card">
+                        <div class="clear-content animated fadeIn" ng-show="request">
+                            <div ng-show="schuduled" class="animated fadeIn">
+                                <div class='tick-text'>
+                                    Visita agendada<br>Dia <span class="text-purple bold">{{selectedHour | date :"dd/MM"}}</span>                                    às <span class="text-purple bold">{{selectedHour | date: "hh:mm"}}</span>.
+                                </div>
+                                <div class="check-div">
+                                    <div class="container-check animated infinite rubberBand">
+                                        <div class='bkground-check'>
+                                            <div></div>
+                                        </div>
+
+                                        <div class='tick'>
+                                            <div>✔</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='tick-text bottom-align'>
+                                    <a style="color:#f4cc6a" ui-sref="perfil.scheduleds">Ver Visitas</a>
+                                </div>
+                            </div>
+                            <img ng-show="request && !schuduled" class="loading-data" width="160" src="assets/imagens/loadingRipple.gif">
+                        </div>
+
+                        <div class="card-schedule-header">
+                            <div class="col-md-10 col-md-offset-1 card-schedule-header" style="background:transparent">
+                                <div class="schedule-day-week" ng-repeat="dw in visits">{{dw[0].date | date : "EEE"}}</div>
+                            </div>
+                        </div>
+                        <div class="col-md-10 col-md-offset-1 card-schedule-days" id="days">
+                            <button ng-repeat="d in visits" class="schedule-day-week text-gray" ng-class="{'active': d[0].date === selectedDay}" ng-click="selectDay(d[0].date)">
+                                {{d[0].date | date : "dd"}}
+                            </button>
+                        </div>
+                        <div class="col-md-12 text-center">
+                            <h4 class="text-gray" style="text-transform: capitalize">{{selectedDay | date: "EEEE"}}, {{selectedDay | date: "dd/yyyy"}}, {{selectedHour | date:"HH:mm"}}</h4>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-10 text-center col-md-offset-1 hours">
+                                <button type="button" ng-click="selectHour(h.date)" ng-repeat="h in hours" class="hour" ng-class="{'green-btn':h.free}" ng-disabled="h.free === false">
+                                    <span>{{h.date | date : "HH:mm"}}</span>
+                                </button>
+
+                            </div>
+                            <div class="col-md-8 col-md-offset-2">
+                                <button class="btn btn-block schedule-btn" type="button" ng-click="scheduleVisit()">Agendar visita</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer></footer>
+<div ng-include="'views/home/_sign_in_modal.html'"></div>
+<style>
+    .check-div {
+        position: absolute;
+        left: 50%;
+        top: 55%;
+        transform: translate(-50%, -50%);
+    }
+
+    .clear-content {
+        width: 99.996%;
+        height: 100%;
+        border-radius: 10px;
+        z-index: 9;
+        background: #fff;
+        position: absolute;
+    }
+
+    .tick-text {
+        font-size: 40px;
+        text-align: center;
+        position: absolute;
+        font-family: 'Circular std book', sans-serif;
+        color: rgba(103, 183, 179, 0.87);
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .bottom-align {
+        bottom: 0 !important;
+        position: absolute;
+        font-size: 35px;
+        width: 100%;
+    }
+
+    .clear-visit {
+        margin-bottom: 20px;
+    }
+
+    .green-btn {
+        color: #fff;
+        background-color: rgba(92, 184, 92, 0.79);
+        border-color: rgba(76, 174, 76, 0.66);
+    }
+
+    .green-btn:hover {
+        background-color: rgb(92, 184, 92);
+        border-color: rgb(76, 174, 76);
+    }
+
+    .hour {
+        position: relative;
+        margin: 3px;
+        border: none;
+        width: 30%;
+        font-weight: bold;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+        float: left;
+        height: 30px;
+        border-radius: 5px;
+        font-family: 'Circular std book', sans-serif !important;
+    }
+
+    .hour>span {
+        position: relative;
+        top: 20%;
+        transform: translateY(-50%);
+    }
+
+    .hour:focus {
+        background-color: rgb(92, 184, 92);
+        border-color: rgb(76, 174, 76);
+        color: #fff;
+    }
+
+    .schedule-btn {
+        border-radius: 5px !important;
+        margin-top: 20px;
+        margin-bottom: 20px !important;
+        background-color: rgba(103, 183, 179, 0.87);
+        color: #fff;
+        font-size: 20px !important;
+    }
+
+    .schedule-btn:hover {
+        background-color: rgb(103, 183, 178);
+    }
+
+    .schedule-card {
+        border: 1px solid #b1b1b0;
+        padding: 0px !important;
+        border-radius: 10px;
+    }
+
+    .card-schedule-days {
+        padding: 20px 0 0 0;
+        border-bottom: 1px solid #b1b1b0;
+    }
+
+    .schedule-day-week {
+        background: transparent;
+        text-transform: capitalize;
+        border: none;
+        width: 14.28%;
+        float: left;
+        font-size: 20px;
+        color: #fff;
+        text-align: center;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        font-family: 'Circular std book', sans-serif !important;
+    }
+
+    .schedule-day-week:hover {
+        color: rgba(103, 183, 179, 0.87) !important;
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    .active {
+        color: rgba(103, 183, 179, 0.87) !important;
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    .schedule-day-week:focus {
+        outline: thin dotted;
+        outline: 0px auto -webkit-focus-ring-color;
+        outline-offset: 0px;
+    }
+
+    .card-schedule-header {
+        height: 40px;
+        width: 100%;
+        background-color: rgba(103, 183, 179, 0.87);
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    .card-schedule-header>div:hover {
+        color: #fff !important;
+        cursor: default;
+    }
+
+    .container-schedule {
+        padding-right: 30px;
+        padding-left: 30px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .schedule {
+        background-color: #fff !important;
+    }
+
+    .schedule p {
+        font-size: 17px;
+    }
+
+    .schedule img {
+        max-width: 100%;
+    }
+
+    .title-img {
+        font-size: 15px;
+    }
+
+    .grey-text {
+        color: #b1b1b0;
+        font-size: 14px;
+    }
+
+    .description-img {
+        font-size: 12px !important;
+    }
+
+    .circular-orange {
+        background-color: #f1ad30;
+        color: #fff;
+        border-radius: 50%;
+        width: 38px;
+        height: 38px;
+        padding-left: 10px;
+        font-size: 30px;
+    }
+
+    .first {
+        padding-left: 14px;
+    }
+
+    .title-circular {
+        margin: 7px 0 10px 0;
+    }
+
+    .cirular-text {
+        padding: 0px 0px 20px 0px;
+    }
+
+    .p20 {
+        padding: 20px 0 20px 0;
+    }
+
+    .container-check {
+        margin: 20px;
+        width: 160px;
+        height: 160px;
+        pointer-events: none;
+        user-select: none;
+    }
+
+    .bkground-check {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        width: 160px;
+        height: 160px;
+    }
+
+    .bkground-check div {
+        width: 160px;
+        height: 160px;
+        background-color: #5f447b;
+        border-radius: 100px;
+    }
+
+    .tick {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        width: 160px;
+        height: 160px;
+    }
+
+    .tick div {
+        color: #fff;
+        font-size: 120px;
+        font-weight: bold;
+    }
+
+    @media(max-width:1002px) {
+        .hour {
+            margin: 2px !important;
+        }
+    }
+
+    @media(max-width:992px) {
+        .card-schedule-days {
+            padding: 20px 0 20px 0 !important;
+        }
+        .hour {
+            margin: 10px !important;
+        }
+    }
+
+    @media(max-width:768px) {
+        .clear-visit {
+            margin-top: 250px;
+        }
+        .circular-orange {
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .cirular-text {
+            text-align: center;
+        }
+        .title-circular {
+            text-align: center;
+        }
+    }
+
+    @media(max-width:752px) {
+        .card-schedule-days {
+            padding: 20px 0 20px 0 !important;
+        }
+        .hour {
+            margin: 3px !important;
+        }
+    }
+
+    @media(max-width:562px) {
+        .clear-visit {
+            margin-top: 300px;
+        }
+    }
+
+    @media(max-width:435px) {
+        .clear-visit {
+            margin-top: 400px;
+        }
+    }
+
+    @media(max-width:379px) {
+        .clear-visit {
+            margin-top: 450px;
+        }
+        .schedule-day-week {
+            font-size: 14px !important;
+        }
+        .hour {
+            font-size: 10px !important;
+        }
+    }
+
+    @media(max-width:332px) {
+        .clear-visit {
+            margin-top: 550px;
+        }
+        .hour {
+            margin: 1px !important;
+        }
+    }
+</style>

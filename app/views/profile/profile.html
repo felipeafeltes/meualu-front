@@ -1,0 +1,49 @@
+<section>
+  <header></header>
+
+  <div class="container-fluid">
+    <div class="row row-list-details text-gray">
+      <div class="col-md-12 property-list">
+        <div class="col-sm-12 col-md-2 col-lg-2 profile-details">
+          <div class="profile">
+            <div class="profile-img panel panel-default" ng-show="current_user.picture_url">
+              <img ng-src="{{current_user.picture_url}}"  class="img-responsive img-profile">
+            </div>
+            <div class="profile-header">
+              <h3 class="h3-header text-green bold">{{current_user.first_name}} {{current_user.last_name}}</h3>
+              <span>{{current_user.email}}</span>
+            </div>
+
+            <div class="profile-links">
+              <a ui-sref-active="active" ui-sref="perfil.info" class="links">
+                Meus Imóveis
+              </a>
+              <a ui-sref-active="active" ui-sref="perfil.editar" class="links">
+                Editar Perfil
+              </a>
+              <!--               <a ui-sref-active="active" class="links">
+                Contratos
+              </a> -->
+              <a ui-sref-active="active" class="links" ui-sref="perfil.cadastrarImovel.address">
+                Cadastrar Imóvel           
+              </a>
+              <a ui-sref-active="active" class="links" ui-sref="perfil.scheduleds">
+                Visitas Marcadas          
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-7 col-lg-7 profile-properties-details">
+
+          <div ui-view>
+
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+<footer></footer>

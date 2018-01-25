@@ -1,0 +1,33 @@
+{
+  "name": "meualu-front",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "grunt-angular-builder": "^1.0.0"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-angular-builder": "^1.0.0",
+    "grunt-contrib-clean": "^1.1.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-cssmin": "^2.2.1",
+    "grunt-contrib-htmlmin": "^2.4.0",
+    "grunt-contrib-uglify": "^3.3.0",
+    "grunt-ng-annotate": "^3.0.0",
+    "grunt-usemin": "^3.1.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://cacianokroth@bitbucket.org/weitech/meualu-front.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/weitech/meualu-front#readme"
+}
