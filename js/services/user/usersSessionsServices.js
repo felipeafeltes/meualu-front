@@ -5,7 +5,7 @@
         .module('usersSessionServices', ['ngResource', 'ngRoute'])
         .factory('User', User)
         .factory('RecoverService', RecoverService)
-        .factory('MySelf', MySelf);
+        .factory('MySelf', MySelf)
 
     User.$inject = ['$resource', 'config'];
     MySelf.$inject = ['$resource', 'config'];
@@ -53,4 +53,5 @@
 
         return recoverPassword;
     }
+
 })();

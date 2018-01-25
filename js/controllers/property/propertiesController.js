@@ -74,7 +74,7 @@
     $scope.hasData = false;
     $scope.moreCondominium = false;
     $scope.moreImmobile = false;
-
+    $scope.similarProperties;
     $scope.scrollToFixedOptions = {
       preFixed: function () {
       },
@@ -110,14 +110,17 @@
       }
     );
 
+    $scope.details = function (id) {
+      $state.go('propertiesDetails', { id: id });
+    }
+
     SimilarService.get(
       { id: $stateParams.id },
       function (data) {
         console.log(data)
+        $scope.similarProperties = data.properties;
+        console.log($scope.similarProperties.length)
       },
-      function (data) {
-        console.log(data)
-      }
     )
 
 
@@ -158,4 +161,4 @@
     }
   };
 
-})()
+})();

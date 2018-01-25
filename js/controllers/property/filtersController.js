@@ -42,4 +42,4 @@
         { value: 4, label: "4+", selected: false }]
     }
   }
-})()
+})();

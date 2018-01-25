@@ -27,4 +27,4 @@
       $uibModalInstance.close();
     }
   }
-})()
+})();

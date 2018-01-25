@@ -2,20 +2,27 @@ module.exports = function (grunt) {
     //grunt wrapper function 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        dir: {
+            app: './app',
+            dist: './dist'
+        },
         clean: {
             dist: {
                 files: [{
                     dot: true,
                     src: [
-                        '.dist/*'
+                        '<%= dir.dist %>/*'
                     ]
                 }]
             }
         },
-        less: {
+        cssmin: {
             development: {
+                options: {
+                    yuicompress: true
+                },
                 files: {
-                    "./dist/css/app.css": "./assets/*.css"
+                    "<%= dir.dist %>/assets/styles.css": "./assets/*.css"
                 }
             },
             production: {
@@ -23,23 +30,40 @@ module.exports = function (grunt) {
                     yuicompress: true
                 },
                 files: {
-                    "./dist/css/app.css": "./assets/*.css"
+                    "<%= dir.dist %>/assets/app.css": "<%= dir.app %>/assets/*.css"
                 }
             }
+        },
+        useminPrepare: {
+            html: 'index.html',
+            options: {
+                dest: 'dist'
+            }
+        },
+        usemin: {
+            html: ['dist/index.html']
         },
         concat: {
             js: {
                 files: {
-                    './dist/min/min.js': ['./js/controllers/**/*.js'],
-                    './dist/min/directives.js': ['./js/directives/**/*.js'],
-                    './dist/min/services.js': ['./js/services/**/*.js'],
+                    '<%= dir.dist %>/js/controllers.js': ['./js/controllers/**/*.js'],
+                    '<%= dir.dist %>/js/directives.js': ['./js/directives/**/*.js'],
+                    '<%= dir.dist %>/js/services.js': ['./js/services/**/*.js'],
+                    '<%= dir.dist %>/js/app.js': ['./js/app.js'],
+                    '<%= dir.dist %>/js/app.js': ['./js/ angular-locale_pt-br'],
+                   
                 }
             }
         },
         uglify: {
             js: {
-                src: ['./dist/min/app.js'],
-                dest: './dist/main.js'
+                files: {
+                    //'<%= dir.dist %>/js/controllers.js': ['<%= dir.dist %>/js/controllers.js'],
+                    '<%= dir.dist %>/js/directives.js': ['<%= dir.dist %>/js/directives.js'],
+                    '<%= dir.dist %>/js/services.js': ['<%= dir.dist %>/js/services.js'],
+                    '<%= dir.dist %>/js/app.js': ['<%= dir.dist %>/js/app.js'],
+                    '<%= dir.dist %>/js/app.js': ['<%= dir.dist %>/js/ angular-locale_pt-br'],
+                }
             }
         },
         htmlmin: {
@@ -53,8 +77,8 @@ module.exports = function (grunt) {
                 },
                 files: [{
                     expand: true,
-                    src: ['./views/*.html'],
-                    dest: './dist/views'
+                    src: ['./views/**/*.html'],
+                    dest: '<%= dir.dist %>'
                 }]
             }
         },
@@ -63,15 +87,19 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     dot: true,
-                    cwd: './*',
-                    dest: './dist',
+                    dest: '<%= dir.dist %>',
                     src: [
                         '*.html',
                         '*.{ico,txt}',
                         '.htaccess',
-                        //'components/**/*',
-                        'img/{,*/}*.{gif,webp}',
-                        'css/fonts/*'
+                        'assets/imagens/{,*/}*.*',
+                        'assets/fonts/**/*',
+                        'assets/font-awesome-4.7.0/**/*',
+                        'assets/bootstrap/**/*',
+                        'assets/OwlCarousel2-2.2.1/**/*',
+                        'assets/**/*.js',
+                        'node_modules/**/*',
+                        'bower_components/**/*'
                     ]
                 }]
             }
@@ -81,23 +109,23 @@ module.exports = function (grunt) {
     //load grunt tasks
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
-
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-htmlmin');
+    grunt.loadNpmTasks('grunt-usemin');
     //register grunt default task
-    grunt.registerTask('build', ['concat']);
-    grunt.registerTask('min', ['uglify']);
-
-
-    // Default task.
     grunt.registerTask('build', [
         'clean:dist',
-        'less:production',
-        'concat',
-        'cssmin',
         'copy',
+        'useminPrepare',
+        'concat',
         'uglify',
+        'cssmin',
         'usemin',
         'htmlmin'
     ]);
 
-    grunt.registerTask('default', ['build']);
+
+
 }

@@ -28,7 +28,7 @@ h1, h2, h3, h4, h5, h6{font-family:'Circular std book', sans-serif;}
 .m-b-10{margin-bottom: 10px;}
 .m-b-30{margin-bottom: 30px;}
 .m-b-50{margin-bottom: 50px;}
-.f-13{font-size:13px};
+.f-13{font-size:13px;}
 .p-t-10-p{padding-top:10%;}
 .p-t-15-p{padding-top:15%;}
 .p-t-0{padding-top: 0px !important;}
@@ -42,9 +42,8 @@ h1, h2, h3, h4, h5, h6{font-family:'Circular std book', sans-serif;}
 .p-b-60{padding-bottom:60px;}
 .p-b-80{padding-bottom:80px;}
 .no-padding{padding: 0px !important;}
-.my-header{}
 .bg-purple{background:#5f447b !important;color:#fff;}
-.bg-white{background: #fff};
+.bg-white{background: #fff;}
 .bg-yellow{background:#f4cc6a;color:#fff; }
 .bg-green{background:#67b7b4;color:#fff;}
 .bg-gray{background:#f1f1f1;color:#b1b1b0;}

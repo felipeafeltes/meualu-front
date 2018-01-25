@@ -30,4 +30,4 @@
             $scope.validationErrors.push('Não foi possível completar o login do usuário');
         };
     }
-})()
+})();
