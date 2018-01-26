@@ -4,14 +4,13 @@ app.directive('negative', function () {
         require: 'ngModel',
         link: function ($scope, $element, $attrs, ngModel) {
             $scope.$watch($attrs.ngModel, function (value) {
-                var isValid;
-                if (value >= 0) {
-                    isValid = true;
-                    ngModel.$setValidity('negative', isValid);
-                } else if(value < 0){
-                    isValid = false;
-                    ngModel.$setValidity('negative', isValid);
+                var er = /[^0-9.]/;
+                er.lastIndex = 0;
+                var campo = num;
+                if (er.test(campo.value)) {
+                    campo.value = "";
                 }
+
             });
         }
     };

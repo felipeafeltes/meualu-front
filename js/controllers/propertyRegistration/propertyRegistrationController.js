@@ -230,7 +230,6 @@
                         $scope.formAddress.street = data.logradouro;
                     });
                     xhr.send();
-
                 }
             }
         }

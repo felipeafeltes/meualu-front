@@ -91,9 +91,20 @@
                                                 <p ng-show="formAdd.email.$error.email" class="help-block error">Email não é válido.</p>
                                             </div>
                                         </div>
+                                        <div class="form-group">
+                                            <label for="sex">Sexo</label>
+                                            <select name="sex" class="form-control input-lg redondend-border" ng-model="user.sex" required>
+                                                <option ng-selected="user.sex === null" disabled value="">Selecione o sexo</option>
+                                                <option ng-repeat="option in sexOptions" value="{{option.value}}"
+                                                ng-selected="user.sex">{{option.label}}</option>
+                                            </select>
+                                            <div ng-show="formEdit.$submitted || formEdit.sex.$touched">
+                                                <p ng-show="formEdit.sex.$error.required" class="help-block error">Sexo é obrigatório.</p>
+                                            </div>
+                                        </div>
                                         <div class="form-group m-b-10">
                                             <label>Telefone</label>
-                                            <input type="text" number-only name="phone_primary" ng-model="user.phone_primary" class="form-control input-lg redondend-border"
+                                            <input type="text" name="phone_primary" ng-model="user.phone_primary" class="form-control input-lg redondend-border" ui-br-phone-number-mask
                                                 placeholder="Telefone">
                                         </div>
                                         <div class="form-group">
@@ -124,7 +135,7 @@
                                                 <select name="month" ng-model="month_birthday" class="form-control input-lg redondend-border" required>
                                                     <option value="">Mês</option>
                                                     <option ng-repeat="m in months" value="{{m.val}}">{{m.name}}</option>
-                                                </select>        
+                                                </select>
                                                 <div ng-show="formAdd.$submitted || formAdd.month.$touched">
                                                     <p ng-show="formAdd.month.$error.required" class="f-13 help-block error">Obrigatório.</p>
                                                 </div>
@@ -133,7 +144,7 @@
                                                 <select name="year" ng-model="year_birthday" class="form-control input-lg redondend-border" required>
                                                     <option value="">Ano</option>
                                                     <option ng-repeat="y in years" value="{{y}}">{{y}}</option>
-                                                </select>                 
+                                                </select>
                                                 <div ng-show="formAdd.$submitted || formAdd.year.$touched">
                                                     <p ng-show="formAdd.year.$error.required" class="f-13 help-block error">Obrigatório.</p>
                                                 </div>

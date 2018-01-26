@@ -2,7 +2,7 @@
     'use strict';
     app.controller('ScheduledController', ScheduledController);
 
-    function ScheduledController($scope, $rootScope, mySelfVisits, ScheduleCancelJustifications, ScheduledCancel) {
+    function ScheduledController($scope, $rootScope, mySelfVisits, ScheduleCancelJustifications, ScheduledCancel, $state) {
         $scope.hasProperties = false;
         $scope.properties = [];
         $scope.cancelReason;
@@ -29,6 +29,10 @@
                     }
                 }
             )
+        }
+
+        $scope.details = function (id) {
+            $state.go('propertiesDetails', { id: id });
         }
 
         $scope.send = function (isValid) {

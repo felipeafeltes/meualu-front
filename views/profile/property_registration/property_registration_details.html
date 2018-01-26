@@ -6,59 +6,52 @@
 
 <div class="form-group col-md-6">
     <label for="total_area">Área Útil (m²) (*)  </label>
-    <input type="number" class="form-control redondend-border" name="total_area" ng-model="propertie.total_area" min="0" required>
+    <input type="text" class="form-control redondend-border" name="total_area" ng-model="propertie.total_area" numbers-only required>
     <div ng-show="fillDetails || formProperty.total_area.$touched">
         <p ng-show="formProperty.total_area.$error.required" class="help-block error">Área total é obrigatório.</p>
-        <p ng-show="formProperty.total_area.$error.min" class="help-block error">Valor inválido.</p>
     </div>
 </div>
 <div class="form-group col-md-6">
     <label for="bedrooms">Dormitórios</label>
-    <input type="number" class="form-control redondend-border" name="bedrooms" ng-model="propertie.bedrooms" min="0" required>
+    <input type="text" class="form-control redondend-border" name="bedrooms" ng-model="propertie.bedrooms" numbers-only required>
     <div ng-show="fillDetails || formProperty.bedrooms.$touched">
         <p ng-show="formProperty.bedrooms.$error.required" class="help-block error">Dormitórios é obrigatório.</p>
-        <p ng-show="formProperty.bedrooms.$error.min" class="help-block error">Valor inválido.</p>
     </div>
 </div>
 <div class="form-group col-md-6">
     <label for="suites">Quantas são Suíte?</label>
-    <input type="number" class="form-control redondend-border" name="suites" ng-model="propertie.suites" min="0" required>
+    <input type="text" class="form-control redondend-border" name="suites" ng-model="propertie.suites" numbers-only required>
     <div ng-show="fillDetails || formProperty.suites.$touched">
         <p ng-show="formProperty.suites.$error.required" class="help-block error">Suítes é obrigatório.</p>
-        <p ng-show="formProperty.suites.$error.min" class="help-block error">Valor inválido.</p>
     </div>
 </div>
 <div class="form-group col-md-6">
     <label for="bathrooms">Banheiros</label>
-    <input type="number" class="form-control redondend-border" name="bathrooms" ng-model="propertie.bathrooms"  min="0" required>
+    <input type="text" class="form-control redondend-border" name="bathrooms" ng-model="propertie.bathrooms"  numbers-only required>
     <div ng-show="fillDetails || formProperty.bathrooms.$touched">
         <p ng-show="formProperty.bathrooms.$error.required" class="help-block error">Banheiros é obrigatório.</p>
-        <p ng-show="formProperty.bathrooms.$error.min" class="help-block error">Valor inválido.</p>
     </div>
 </div>
 <div class="form-group col-md-6">
     <label for="floor">Andar do Imóvel</label>
-    <input type="number" class="form-control redondend-border" name="floor" ng-model="propertie.floor"  min="0" required>
+    <input type="text" class="form-control redondend-border" name="floor" ng-model="propertie.floor"  numbers-only required>
     <div ng-show="fillDetails || formProperty.floor.$touched">
         <p ng-show="formProperty.floor.$error.required" class="help-block error">Andar é obrigatório.</p>
-        <p ng-show="formProperty.floor.$error.min" class="help-block error">Valor inválido.</p>
     </div>
 </div>
 <div class="form-group col-md-6">
     <label for="garages">Vagas Cobertas</label>
-    <input type="number" class="form-control redondend-border" name="garages" ng-model="propertie.garages"  min="0" required>
+    <input type="text" class="form-control redondend-border" numbers-only name="garages" ng-model="propertie.garages" required>
     <div ng-show="fillDetails || formProperty.garages.$touched">
         <p ng-show="formProperty.garages.$error.required" class="help-block error">Vagas Cobertas é obrigatório.</p>
-        <p ng-show="formProperty.garages.$error.min" class="help-block error">Valor inválido.</p>
     </div>
 </div>
 <div class="form-group col-md-6">
     <label for="not_covered_garages">Vagas Descobertas</label>
-    <input type="number" class="form-control redondend-border" name="not_covered_garages"  min="0" ng-model="propertie.not_covered_garages"
+    <input type="text" class="form-control redondend-border" numbers-only name="not_covered_garages"  ng-model="propertie.not_covered_garages"
         required>
     <div ng-show="fillDetails || formProperty.not_covered_garages.$touched">
         <p ng-show="formProperty.not_covered_garages.$error.required" class="help-block error">Vagas Descobertas é obrigatório.</p>
-        <p ng-show="formProperty.not_covered_garages    .$error.min" class="help-block error">Valor inválido.</p>
     </div>
 </div>
 

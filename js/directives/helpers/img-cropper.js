@@ -94,13 +94,13 @@ angular.module("angular-img-cropper", []).directive("imageCropper", ["$document"
                         (this.over || this.drag) && (b = 12);
                         var c = 1,
                             d = 1;
-                      
+
                     }, b.prototype.drawCornerFill = function (a) {
                         var b = 10;
                         (this.over || this.drag) && (b = 12);
                         var c = 1,
                             d = 1;
-                        
+
                     }, b.prototype.moveX = function (a) {
                         this.setPosition(a, this.position.y)
                     }, b.prototype.moveY = function (a) {
@@ -396,18 +396,24 @@ angular.module("angular-img-cropper", []).directive("imageCropper", ["$document"
 }]), angular.module("angular-img-cropper").directive("imgCropperFileread", ["$timeout", function (a) {
 
     return {
-
         scope: {
             image: "="
         },
         link: function (b, c) {
             c.bind("change", function (c) {
-                $('#croppImage').modal({backdrop:'static',keyboard:false, show:true});
                 var d = new FileReader;
                 d.onload = function (c) {
-                    a(function () {
-                        b.image = c.target.result
-                    }, 0)
+                    var t = c.target.result.split(';');
+                    t = t[0].replace('data:', '');
+                    if ((t == 'image/png') || (t == 'image/jpeg') || (t == 'image/jpg')) {
+                        a(function () {
+                            b.image = c.target.result
+                        }, 0)
+                        $('#croppImage').modal({ backdrop: 'static', keyboard: false, show: true });
+                    } else {
+                        toastr.info("Formato inválido de arquivo!");
+                        return true;
+                    }
                 }, c.target.files[0] && d.readAsDataURL(c.target.files[0])
             })
         },

@@ -28,9 +28,10 @@ var app = angular
     'td.easySocialShare',
     'angularUtils.directives.dirPagination',
     'infinite-scroll',
-    'similarPropertyService'
+    'similarPropertyService',
+    'ui.utils.masks'
   ]);
-  
+
 app.constant('config', {
   apiUrl: 'https://api.meualu.com/'
   /* apiUrl: 'http://meualuapi.brazilsouth.cloudapp.azure.com/' */
@@ -88,6 +89,14 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
     .state('home', {
       url: '/',
       templateUrl: 'views/home/home.html',
+      resolve: {
+        deps: [
+          '$ocLazyLoad', function ($ocLazyLoad) {
+            return $ocLazyLoad.load('js/directives/header-property/header-property.js'),
+              $ocLazyLoad.load('js/directives/footer/footer.js')
+          }
+        ],
+      }
     })
     .state('template', {
       url: '/template',

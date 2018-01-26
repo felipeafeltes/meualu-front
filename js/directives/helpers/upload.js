@@ -17,11 +17,10 @@ angular.module('app.controller.app',[])
 angular.module('app.directive.dropzone',[])
     .directive('dropZone',[
         function(){
-    
-            
+               
             var config = {
                 template:'<label class="drop-zone">'+
-                         '<input type="file" multiple accept="jpg" />'+
+                         '<input type="file" multiple accept="image/png, image/jpeg" />'+
                          '<div ng-transclude></div>'+       // <= transcluded stuff
                          '</label>',
                 transclude:true,

@@ -16,8 +16,11 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-88" style="background:transparent;margin-top:0px !important">
           <ul class="nav navbar-nav collabpse-navbar p-t-15">
-            <li class="bold text-uppercase">
+            <li class="bold text-uppercase" ng-hide="current_user">
               <a class="text-yellow" ui-sref="proprietario">Anuncie seu apê</a>
+            </li>
+            <li class="bold text-uppercase" ng-hide="!current_user">
+              <a class="text-yellow" ui-sref="perfil.cadastrarImovel.address">Anuncie seu apê</a>
             </li>
             <li class="bold text-uppercase cursor-pointer" ng-hide="current_user">
               <a class="text-white" data-toggle="modal" data-target="#modalLogin">
@@ -134,6 +137,5 @@
     </div>
   </div>
 </section>
-
-<div ng-include="'views/shared/_footer.html'"></div>
+<footer></footer>
 <div ng-include="'views/home/_sign_in_modal.html'"></div>

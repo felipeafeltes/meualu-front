@@ -1,5 +1,5 @@
-    <h4 align="center" class="black-text">Endereço</h4>
-    <small class="padding-15">O endereço é de extrema importância para a busca, revise os campos para que contenham as informações corretas.</small>
+<h4 align="center" class="black-text">Endereço</h4>
+<small class="padding-15">O endereço é de extrema importância para a busca, revise os campos para que contenham as informações corretas.</small>
 <div class="form-group col-md-12">
     <label for="description">Descrição Curta do Imóvel (*)</label>
     <input type="text" class="form-control redondend-border" name="description" ng-model="propertie.description" placeholder="Ex: Charmoso Apê no Moinho de Vento"
@@ -11,14 +11,11 @@
 
 <div class="form-group col-md-6">
     <label for="zip_code">CEP (*)</label>
-    <input type="number" class="form-control redondend-border" 
-        name="zip_code" 
-        ng-model="formAddress.zip_code" 
-        ng-change="searchCep(formAddress.zip_code)"
+    <input type="text" class="form-control redondend-border" ui-br-cep-mask name="zip_code" ng-model="formAddress.zip_code" ng-change="searchCep(formAddress.zip_code)"
         required>
     <div ng-show="fillAddress || formProperty.zip_code.$touched">
         <p ng-show="formProperty.zip_code.$error.required" class="help-block error">CEP é obrigatório.</p>
-    </div>  
+    </div>
 </div>
 
 <div class="form-group col-md-6">
@@ -31,7 +28,7 @@
 
 <div class="form-group col-md-12">
     <label for="street">Rua (*)</label>
-    <input type="text" class="form-control redondend-border" name="street" ng-model="formAddress.street" required>         
+    <input type="text" class="form-control redondend-border" name="street" ng-model="formAddress.street" required>
     <div ng-show="fillAddress || formProperty.street.$touched">
         <p ng-show="formProperty.street.$error.required" class="help-block error">Rua é obrigatório.</p>
     </div>
@@ -56,10 +53,10 @@
 
 <div class="form-group col-md-6">
     <label for="number">Número (*)</label>
-    <input type="number" class="form-control redondend-border" name="number" ng-model="formAddress.number" min="1" required>
+
+    <input type="text" class="form-control redondend-border" numbers-only name="number" ng-model="formAddress.number" required>
     <div ng-show="fillAddress || formProperty.number.$touched">
         <p ng-show="formProperty.number.$error.required" class="help-block error">Número é obrigatório.</p>
-        <p ng-show="formProperty.number.$error.min" class="help-block error">Inválido.</p>
     </div>
 </div>
 

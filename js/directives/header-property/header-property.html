@@ -26,8 +26,11 @@
           </form>
         </div>
         <ul class="nav navbar-nav navbar-right p-t-10" id="bs-example-navbar-collapse-1">
-          <li class="bold text-uppercase">
+          <li class="bold text-uppercase" ng-hide="current_user">
             <a class="text-purple" ui-sref="proprietario">Anuncie seu apê</a>
+          </li>
+          <li class="bold text-uppercase" ng-hide="!current_user">
+            <a class="text-purple" ui-sref="perfil.cadastrarImovel.address">Anuncie seu apê</a>
           </li>
           <li class="bold text-uppercase cursor-pointer" ng-hide="current_user">
             <li class="bold text-uppercase cursor-pointer" ng-hide="current_user">

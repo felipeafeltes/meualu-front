@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "angular-input-masks": "^4.1.0",
     "grunt": "^0.4.5",
     "grunt-angular-builder": "^1.0.0"
   },

@@ -87,6 +87,14 @@
         ];
         $scope.years = [];
 
+        $scope.sexOptions = [{
+            value: 'male',
+            label: 'Masculino',
+        }, {
+            value: 'female',
+            label: 'Feminino',
+        }];
+
         for (let i = 1; i <= 31; i++) {
             $scope.days.push(i);
         }
