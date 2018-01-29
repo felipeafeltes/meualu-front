@@ -65,7 +65,7 @@ app.directive('actuallydate', function () {
                 if (value >= new Date()) {
                     isValid = true;
                     ngModel.$setValidity('actuallydate', isValid);
-                } else if(value < new Date()) {
+                } else if (value < new Date()) {
                     isValid = false;
                     ngModel.$setValidity('actuallydate', isValid);
                 }

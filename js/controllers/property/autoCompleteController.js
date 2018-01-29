@@ -30,7 +30,8 @@
       new google.maps.LatLng(-29.963159, -51.096578));
 
     $scope.autocompleteOptions = {
-      componentRestrictions: { country: 'br'},
+      componentRestrictions: { country: 'br' },
+      location: (-30.255998, -51.224980),
       bounds: PoABounds,
       types: ['address']
     }
