@@ -42,6 +42,9 @@
             {}, {
                 recover: {
                     method: 'POST',
+                },
+                reset: {
+                    method: 'PUT',
                     transformRequest: _transform_request
                 }
             });
@@ -50,8 +53,8 @@
             data = { "user": data }
             return angular.toJson(data);
         }
-
         return recoverPassword;
     }
+
 
 })();

@@ -92,8 +92,19 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $aut
       resolve: {
         deps: [
           '$ocLazyLoad', function ($ocLazyLoad) {
-            return $ocLazyLoad.load('js/directives/header-property/header-property.js'),
-              $ocLazyLoad.load('js/directives/footer/footer.js')
+            return $ocLazyLoad.load('js/directives/footer/footer.js')
+          }
+        ],
+      }
+    })
+    .state('recover', {
+      url: '/recuperar/:token',
+      templateUrl: 'views/home/recover_user.html',
+      controller: 'UserRecoverPassword',
+      resolve: {
+        deps: [
+          '$ocLazyLoad', function ($ocLazyLoad) {
+            return $ocLazyLoad.load('js/directives/footer/footer.js')
           }
         ],
       }

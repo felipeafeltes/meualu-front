@@ -31,9 +31,9 @@
 
     $scope.autocompleteOptions = {
       componentRestrictions: { country: 'br' },
-      location: (-30.255998, -51.224980),
       bounds: PoABounds,
-      types: ['address']
+      types: ['address'],
+      
     }
   }
 })();

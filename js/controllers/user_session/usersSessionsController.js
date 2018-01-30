@@ -4,8 +4,7 @@
     app.controller('UserSessionsSignOut', UserSessionsSignOut);
     app.controller('UserSessionsRegister', UserSessionsRegister);
     app.controller('UserResetPassword', UserResetPassword);
-
-    var modalRecover;
+    app.controller('UserRecoverPassword', UserRecoverPassword);
 
     function UserSessionsSignIn($scope, User, $rootScope, $uibModal, $state, $http, MySelf) {
         $scope.user = new User();
@@ -48,20 +47,54 @@
 
     function UserResetPassword($scope, RecoverService) {
         $scope.email;
+        $scope.response = true;
         $scope.recover = function (isValid) {
             if (isValid) {
+                $scope.response = false;
                 RecoverService.recover(
                     { email: $scope.email },
                     function (data) {
-                        console.log(data);
                         $('#modalRecover').modal('hide');
-                        toastr.info("Link de recuperação enviado ao e-mail.")
+                        toastr.info("Link de recuperação enviado ao e-mail.");
+                        $scope.response = true;
                     },
                     function (data) {
                         toastr.error("Email não existe.")
                     }
                 )
             }
+        }
+    }
+
+    function UserRecoverPassword($scope, RecoverService, $stateParams, $state) {
+        $scope.user = {
+            password: '',
+            passwordConfirm: ''
+        }
+        $scope.response = true;
+        $scope.recover = function (isValid) {
+            if (isValid) {
+                $scope.respons = false;
+                RecoverService.reset(
+                    {
+                        token: $stateParams.token,
+                        password: $scope.user.password,
+                        password_confirmation: $scope.user.passwordConfirm
+                    },
+                    function (data) {
+                        $state.go('home');
+                        toastr.success("Senha Atualizada!")
+                        $scope.response = true;
+                    },
+                    function(data){
+                        toastr.error("Erro ao trocar de senha, por favor pessa uma nova redefinição!")
+                    }
+                )
+            }
+        }
+
+        $scope.openLogin = function () {
+            $("#modalLogin").modal('show');
         }
     }
 
