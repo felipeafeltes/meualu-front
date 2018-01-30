@@ -61,7 +61,7 @@
               <i class="fa fa-search fa-2x prefix" ng-click="searchPropertie()"></i>
             </div>
           </form> 
-          <p class="text-center text-uppercase"><b>COMECE AQUI</b> A ALUGAR SUA PRÓXIMA MORADIA<br> ALUGAR UM APÊ É MAIS FÁCIL QUE VOCÊ IMAGINA.</p>
+          <p class="text-center text-uppercase"><b>COMECE AQUI</b> A ALUGAR SUA PRÓXIMA MORADIA <br> ALUGAR UM APÊ É MAIS FÁCIL QUE VOCÊ IMAGINA.</p>
         </div>
       </div>
     </div>
@@ -133,7 +133,8 @@
         <p class="font-18">
           Anuncie na Alu, use nossas ferramentas e continue tendo tudo na sua mão, com mais agilidade, transparência e segurança.
         </p>
-        <a class="btn btn-lg btn-purple full m-t-30 font-18" ui-sref="proprietario" role="button">TORNAR-ME UM LOCADOR ALU</a>
+        <a class="btn btn-lg btn-purple full m-t-30 font-18" ng-hide="current_user" ui-sref="proprietario" role="button">TORNAR-ME UM LOCADOR ALU</a>
+        <a class="btn btn-lg btn-purple full m-t-30 font-18" ng-hide="!current_user" ui-sref="perfil.cadastrarImovel.address" role="button">TORNAR-ME UM LOCADOR ALU</a>
       </div>
     </div>
   </div>
