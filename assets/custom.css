@@ -474,12 +474,12 @@ h1.rental {
 span.min{
   float: left;
   line-height: 5;
-  margin-right: 10px;
+  margin-right: 5px;
 }
 
 span.max{
   line-height: 5;
-  margin-left: 10px;
+  margin-left: 5px;
 }
 
 li.total-area-filter .slider{
