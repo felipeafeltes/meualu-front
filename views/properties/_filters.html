@@ -1,5 +1,5 @@
-<div class="btn-group filters bg-purple" role="group" aria-label="...">
-  <div ng-repeat="(key, filter) in range_filters" class="btn-group">
+<div class="btn-group filters" role="group" aria-label="...">
+  <div ng-repeat="(key, filter) in range_filters" class="btn-group  bg-purple">
     <a class="btn btn-grey dropdown-toggle {{ (filters[key.toString()].length)? 'used' : '' }}" data-toggle="dropdown" ng-click="refreshSlider();">
       <i class="fa {{filter.icon}}"></i>
       {{ filter_translation(key.toString()) | capitalize | pluralize }}
@@ -15,7 +15,7 @@
       </li>
     </ul>
   </div>
-  <div ng-repeat="(key, data) in simple_filters" class="btn-group">
+  <div ng-repeat="(key, data) in simple_filters" class="btn-group  bg-purple">
     <a class="btn btn-grey dropdown-toggle {{ (filters[key.toString()].length)? 'used' : '' }}" data-toggle="dropdown">
       <i class="fa {{data[1]}}"></i>
       {{ filter_translation(key.toString()) | capitalize | pluralize }}
@@ -34,7 +34,7 @@
       </li>
     </ul>
   </div>
-  <div ng-repeat="(key, data) in boolean_filters" class="btn-group">
+  <div ng-repeat="(key, data) in boolean_filters" class="btn-group  bg-purple">
     <a class="btn btn-grey dropdown-toggle {{ (filters[key.toString()].length)? 'used' : '' }}" data-toggle="dropdown">
       <i class="fa {{data[1]}}"></i>
       {{ filter_translation(key.toString()) | capitalize | pluralize }}
@@ -53,7 +53,7 @@
     </ul>
   </div>
 
-  <div class="btn-group">
+  <div class="btn-group  bg-purple">
     <a class="btn btn-grey dropdown-toggle {{ (filters['extra_infos'].length)? 'used' : '' }}" data-toggle="dropdown">
       Outros
       <span class="caret"></span>
@@ -68,7 +68,7 @@
     </ul>
   </div>
 
-  <div class="btn-group">
+  <div class="btn-group  bg-purple">
 
     <a class="btn btn-grey dropdown-toggle" ng-click="cleanFilters()">
       Limpar Filtros

@@ -7,6 +7,7 @@
         PropertyService,
         PropertyRentalService,
         $scope,
+        $state,
         PropertyPrivate,
         editPropertyPrivate,
         $window,
@@ -79,10 +80,10 @@
             $('#modalRentalProperty').modal('show');
         }
 
-        $scope.editProperty = function (isValid,i,id) {
+        $scope.editProperty = function (isValid, i, id) {
             if (isValid) {
                 $scope.editRequest = false;
-                editPropertyPrivate.update({ id: id, rental:$scope.rental}).$promise.then(
+                editPropertyPrivate.update({ id: id, rental: $scope.rental }).$promise.then(
                     function (response) {
                         $scope.editRequest = true;
                         toastr.success("Valores atualizados!");
@@ -105,12 +106,16 @@
             );
         }
 
-        function newRental(){
+        function newRental() {
             $scope.rental = {};
             $scope.rentalResponse;
             $scope.rental.iptu_type = 'Mensal';
             $scope.rental.iptu = '0,00'
             $scope.checked = false;
+        }
+
+        $scope.details = function (id) {
+            $state.go('propertiesDetails', { id: id });
         }
 
 

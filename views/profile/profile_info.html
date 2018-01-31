@@ -6,7 +6,7 @@
         <img ng-show="!hasProperties" src="assets/imagens/loading.gif" width="100" height="100" class="loading-img" style="position:relative;left:50%;transform:translateX(-50%)">
         <span class="col-sm-12" ng-show="noPropertie">{{noPropertie}}</span>
         <div class="col-sm-12 panel-ngFor-divs" dir-paginate="property in properties|itemsPerPage:5">
-            <div class="col-md-6 no-padding responsive-properties-div">
+            <div class="col-md-6 no-padding responsive-properties-div" ng-click="details(property.id)">
                 <div class="box">
                     <img ng-src="{{property.pictures[0].url}}" class="img-responsive">
                 </div>
@@ -168,18 +168,3 @@
         </div>
     </div>
 </div>
-
-<style>
-    .box {
-        display: table-cell;
-        text-align: center;
-        vertical-align: middle;
-        width: 100%;
-        height: 325px;
-        background: rgba(236, 236, 236, 0.36);
-    }
-
-    .box * {
-        vertical-align: middle;
-    }
-</style>

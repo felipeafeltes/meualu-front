@@ -95,13 +95,15 @@
     $scope.similarProperties;
     $scope.scrollToFixedOptions = {
       preFixed: function () {
+        
       },
       postFixed: function () {
       },
       preAbsolute: function () {
+        
       },
       limit: function () {
-        var limit = $('#maps').offset().top - $('#rental-fix').outerHeight(true) - 10;
+        var limit = $('#maps').offset().top - $('#rental-fix').outerHeight(true) - 5;
         return limit;
       },
       removeOffsets: true,

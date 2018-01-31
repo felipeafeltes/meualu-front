@@ -3,13 +3,14 @@
 <div ng-if="!hasData" class="loading-div">
   <img class="loading-data" width="130" src="assets/imagens/loading.gif">
 </div>
+<textarea id="clip" style="position:absolute;left:-999999999999"></textarea>
 <div ng-if="hasData">
   <section class="bg-white">
     <div class="container-fluid">
       <div id="pictures" class="row">
         <slick ng-if="propertyDetails.pictures.length" arrows="false" slides-to-show="1" id="slide-full" arrows="false" slides-to-scroll="1"
           infinite="true" draggable="false">
-          <div ng-repeat="img in propertyDetails.pictures">
+          <div ng-repeat="img in propertyDetails.pictures" class="m-t--70">
             <img ng-src="{{img.url}}" class="slider-full-img" alt="Responsive image">
           </div>
         </slick>
@@ -17,6 +18,7 @@
       <div class="dropdown share-button">
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Compartilhar
         <span class="caret"></span></button>
+        
         <ul class="dropdown-menu">
           <li>
             <div class="face-link" share-square="true" share-links="Facebook" share-title="{{propertyDetails.description}}"></div>
@@ -24,7 +26,6 @@
           <li class="pointer-cursor"><a class="text-purple" ng-click="copyText()">Copiar Link</a></li>
         </ul>
       </div>
-      <textarea id="clip" style="display:hidden;"></textarea>
     </div>
     <div class="container">
       <div class="row row-slider-full">
@@ -237,6 +238,8 @@
       font-size: 20px;
     }
   }
+
+
 
   .navbar-proprietario {
     margin-bottom: 0px !important;

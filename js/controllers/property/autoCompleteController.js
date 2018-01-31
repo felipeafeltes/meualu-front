@@ -20,7 +20,7 @@
         $rootScope.lat = "-30.0490415";
         $rootScope.lng = "-51.1916632";
         $state.go('properties', {
-          address_string: ''
+          address_string: 'Porto Alegre, RS, Brasil'
         });
       }
     }
@@ -28,12 +28,12 @@
     var PoABounds = new google.maps.LatLngBounds(
       new google.maps.LatLng(-30.255998, -51.224980),
       new google.maps.LatLng(-29.963159, -51.096578));
+      
 
     $scope.autocompleteOptions = {
       componentRestrictions: { country: 'br' },
-      bounds: PoABounds,
-      types: ['address'],
-      
+      location: new google.maps.LatLng(-30.255998, -51.224980),
+      radius:5000,
     }
   }
 })();

@@ -7,54 +7,54 @@
     <nav class="navbar filters text-center m-t-20">
       <div class="filters-container" ng-controller="searchController" ng-include="'views/properties/_filters.html'"></div>
     </nav>
-    <div class="row row-list-details text-gray">
-      <div class="col-md-5 property-list">
-        <div>
-          <h2>
-            <span class="text-green bold" ng-if="properties.length > 0">Encontramos {{ properties.length }} {{(properties.length === 1)? 'apê' : 'apês' }}</span>
-            <span class="text-green bold" ng-if="properties.length === 0">Não encontramos nenhum apartamento nesse endereço.</span>
-            <!--<button type="button" class="btn btn-green-full btn-sm pull-right">Adicionar alerta</button>-->
-          </h2>
-          <p>Nos ajude a ser mais preciso, utilize os filtros acima.</p>
-          <p>{{full_adress}}</p>
-          <div class="dropdown">
-            <span>Order por</span>
-            <a class="text-green dropdown-toggle order-properties" type="button" id="dropdownPreco" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="true">
+    <div class="row text-gray">
+      <div class="col-md-5 property-list" style="overflow-y: auto;height: calc(100vh - 130px)">
+        <h2>
+          <span class="text-green bold" ng-if="properties.length > 0">Encontramos {{ properties.length }} {{(properties.length === 1)? 'apê' : 'apês' }}</span>
+          <span class="text-green bold" ng-if="properties.length === 0">Não encontramos nenhum apartamento nesse endereço.</span>
+          <!--<button type="button" class="btn btn-green-full btn-sm pull-right">Adicionar alerta</button>-->
+        </h2>
+        <p>Nos ajude a ser mais preciso, utilize os filtros acima.</p>
+        <p>{{full_adress}}</p>
+        <div class="dropdown">
+          <span>Order por</span>
+          <a class="text-green dropdown-toggle order-properties" type="button" id="dropdownPreco" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="true">
               {{ (properties_order)? "menor preço" : "maior preço" }}
               <span class="caret"></span>
             </a>
-            <ul class="dropdown-menu" aria-labelledby="dropdownPreco">
-              <li><a ng-click="properties_order = true">menor preço</a></li>
-              <li><a ng-click="properties_order = false">maior preço</a></li>
-            </ul>
-          </div>
-          <div class="panel panel-default" dir-paginate="property in properties | orderBy:rental.value:properties_order|itemsPerPage:5"
-            ng-click='details(property.id)'>
-            <div class="panel-body imovel-desc">
-              <div class="col-md-5">
-                <h4 class="text-dark">{{ property.description }}</h4>
-                <p>Nº {{property.address.number}}</p>
-                <ul class="properties-details" style="padding-left: 10px;">
-                  <li><i class="fa fa-bed"></i> {{ property.bedrooms }} dorms</li>
-                  <li><i class="fa fa-car"></i> {{ property.garages }} vagas</li>
-                  <li><i class="fa fa-regua"></i> {{ property.total_area }} m²</li>
-                </ul>
-                <hr />
-                <p class="text-green">
-                  Aluguel: {{ property.rental.value | currency }}
-                </p>
-                <p class="text-green">
-                  Valor total: {{ property.rental.package_value | currency }}
-                </p>
-              </div>
-              <div class="col-md-7 no-padding">
-                <img ng-src="{{ property.pictures[0].url }}" class="img-full" alt="Responsive image">
+          <ul class="dropdown-menu" aria-labelledby="dropdownPreco">
+            <li><a ng-click="properties_order = true">menor preço</a></li>
+            <li><a ng-click="properties_order = false">maior preço</a></li>
+          </ul>
+        </div>
+        <div class="panel panel-default" dir-paginate="property in properties | orderBy:rental.value:properties_order|itemsPerPage:5"
+          ng-click='details(property.id)'>
+          <div class="panel-body imovel-desc">
+            <div class="col-md-5">
+              <h4 class="text-dark">{{ property.description }}</h4>
+              <p>Nº {{property.address.number}}</p>
+              <ul class="properties-details" style="padding-left: 10px;">
+                <li><i class="fa fa-bed"></i> {{ property.bedrooms }} dorms</li>
+                <li><i class="fa fa-car"></i> {{ property.garages }} vagas</li>
+                <li><i class="fa fa-regua"></i> {{ property.total_area }} m²</li>
+              </ul>
+              <hr />
+              <p class="text-green">
+                Aluguel: {{ property.rental.value | currency }}
+              </p>
+              <p class="text-green">
+                Valor total: {{ property.rental.package_value | currency }}
+              </p>
+            </div>
+            <div class="col-md-7 no-padding">
+              <div class="box">
+                <img ng-src="{{ property.pictures[0].url }}" class="img-full-bg" alt="Responsive image">
               </div>
             </div>
           </div>
-          <dir-pagination-controls max-size="4" boundary-links="true" class="pull-right"></dir-pagination-controls>
         </div>
+        <dir-pagination-controls max-size="4" boundary-links="true" class="pull-right"></dir-pagination-controls>
       </div>
       <div class="col-md-7 no-padding">
         <ui-gmap-google-map center='map.center' zoom='map.zoom'>
@@ -67,3 +67,13 @@
 </section>
 <footer></footer>
 <div ng-include="'views/home/_sign_in_modal.html'"></div>
+
+<style>
+  .img-full-bg {
+    width: 100%;
+    display: block;
+  }
+  .box{
+    height:200px !important;
+  }
+</style>
