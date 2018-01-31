@@ -4,19 +4,20 @@
 
   var modalContato;
 
-  function searchController($scope, $rootScope, $state, ExtraInfo, $timeout, $filter, $uibModal) {
+  function searchController($scope, $rootScope, $state, ExtraInfo, $timeout, $filter, $uibModal, $stateParams) {
     $scope.$watch('address', function (address) {
       if (address) {
         if (address.formatted_address != undefined && $rootScope.address_string != address.formatted_address) {
           setup_search_filters();
           $rootScope.filters = _setup_filters();
           $rootScope.address_string = address.formatted_address;
+          $stateParams.address_string = address.formatted_address;
         }
         if (address.geometry != undefined) {
           $rootScope.lng = address.geometry.location.lng();
           $rootScope.lat = address.geometry.location.lat();
         }
-        searchProperties($rootScope.address_string);
+        searchProperties($stateParams.address_string);
       }
     });
 
@@ -36,7 +37,7 @@
         var index = $rootScope.filters[filterName].indexOf(filterObj.value);
         $rootScope.filters[filterName].splice(index, 1);
       }
-      searchProperties($rootScope.address_string);
+      searchProperties($stateParams.address_string);
     }
 
     var searchProperties = function (address) {
@@ -74,7 +75,7 @@
         $rootScope.filters.extra_infos = nv.map(function (info) {
           return info.id;
         });
-        searchProperties($rootScope.address_string);
+        searchProperties($stateParams.address_string);
       }, true);
     }
 
@@ -91,7 +92,7 @@
           onEnd: function () {
             var rangeFilter = $rootScope.range_filters[filterName];
             $rootScope.filters[filterName] = rangeFilter.minValue + "," + rangeFilter.maxValue;
-            searchProperties($rootScope.address_string);
+            searchProperties($stateParams.address_string);
           }
         },
         icon: icon,
@@ -129,18 +130,18 @@
       $rootScope.filters = _setup_filters();
     }
 
-    function showModal() {
-      if (modalContato === undefined || modalContato.$closed) {
-        modalContato = $uibModal.open({
-          templateUrl: '/views/properties/_contato_modal.html',
-          size: 'lg',
-          controller: 'rentalNewsletterController',
-          backdrop: true,
-        });
-      }
-    }
-
-    showModal();
+    /*     function showModal() {
+          if (modalContato === undefined || modalContato.$closed) {
+            modalContato = $uibModal.open({
+              templateUrl: '/views/properties/_contato_modal.html',
+              size: 'lg',
+              controller: 'rentalNewsletterController',
+              backdrop: true,
+            });
+          }
+        }
+    
+        showModal(); */
   }
 
   function _filter_name_translation(filterName) {

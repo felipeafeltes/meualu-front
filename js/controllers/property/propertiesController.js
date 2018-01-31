@@ -7,7 +7,10 @@
     $scope.hasData = false;
     $rootScope.coords = null;
     $scope.properties = [];
+    $scope.markers = [];
+    $scope.properties_order = true;
     var filters = $stateParams.filters || {};
+
     getProperties(filters);
     function getProperties(filters) {
       $scope.hasData = false;
@@ -29,18 +32,61 @@
         function (data) {
           $scope.properties = data.properties;
           if ($scope.properties.length > 0) {
-            $scope.markers = _setupMarkers([data]);
             var address = data.properties[0].address;
+            data.properties.forEach(function (element) {
+              var mark = {
+                id: element.id,
+                coords:
+                {
+                  latitude: element.address.latitude,
+                  longitude: element.address.longitude
+                },
+                options: {
+                  icon: {
+                    url: '/assets/imagens/gmap-pin.png',
+                    size: new google.maps.Size(40, 40),
+                    origin: new google.maps.Point(0, 0),
+                    anchor: new google.maps.Point(0, 10)
+                  },
+                }
+              }
+              $scope.markers.push(mark);
+            }, this);
             $scope.full_adress = `${address.street + ', ' + address.district + ', ' + address.city + '/' + address.state}`;
           }
           $scope.hasData = true;
+          $scope.map = {
+            center: {
+              latitude: (data.properties[0]) ? data.properties[0].address.latitude : -30.0490415,
+              longitude: (data.properties[0]) ? data.properties[0].address.longitude : -51.1916632
+            },
+            zoom: 11
+          };
         },
       );
+    }
+
+    $scope.shots = function (id) {
+      $state.go('propertiesDetails', { id: id });
     }
 
     $scope.details = function (id) {
       $state.go('propertiesDetails', { id: id });
     }
+
+    /*     $scope.markerEvents = {
+          events: {
+            mouseover: function(marker) {
+              marker.model.show = !marker.model.show;
+            },
+            mouseout: function(marker) {
+              marker.model.show = !marker.model.show;
+            },
+            click: function(marker) {
+              $scope.openInfoWindow(marker.model);
+            }
+          }
+        }; */
 
     $scope.cleanFilters = function () {
       var filters = {
@@ -53,33 +99,10 @@
         total_area: "",
         rental: ""
       }
+      $rootScope.filters = filters;
       getProperties(filters);
     }
-    $scope.map = { center: { latitude: $rootScope.lat, longitude: $rootScope.lng }, zoom: 11 };
-    $scope.properties_order = true;
 
-    function _setupMarkers(properties) {
-      var markers = [];
-      markers = properties.map(function (prop) {
-        return {
-          id: prop.properties[0].id,
-          coords:
-          {
-            latitude: prop.properties[0].address.latitude,
-            longitude: prop.properties[0].address.longitude
-          },
-          options: {
-            icon: {
-              url: '/assets/imagens/gmap-pin.png',
-              size: new google.maps.Size(40, 40),
-              origin: new google.maps.Point(0, 0),
-              anchor: new google.maps.Point(0, 10)
-            }
-          }
-        }
-      });
-      return markers
-    }
   }
 
   function PropertiesDetailsController($scope, $stateParams, $state,
@@ -95,12 +118,12 @@
     $scope.similarProperties;
     $scope.scrollToFixedOptions = {
       preFixed: function () {
-        
+
       },
       postFixed: function () {
       },
       preAbsolute: function () {
-        
+
       },
       limit: function () {
         var limit = $('#maps').offset().top - $('#rental-fix').outerHeight(true) - 5;

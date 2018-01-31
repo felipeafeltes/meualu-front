@@ -325,7 +325,6 @@ input.search-header:focus {
 
 .panel-body.imovel-desc {
   padding: 5px;
-  display: flex;
   font-size: 14px;
   margin-bottom: 0px;
 }

@@ -7,7 +7,7 @@
     <nav class="navbar filters text-center m-t-20">
       <div class="filters-container" ng-controller="searchController" ng-include="'views/properties/_filters.html'"></div>
     </nav>
-    <div class="row text-gray">
+    <div class="row text-gray" >
       <div class="col-md-5 property-list" style="overflow-y: auto;height: calc(100vh - 130px)">
         <h2>
           <span class="text-green bold" ng-if="properties.length > 0">Encontramos {{ properties.length }} {{(properties.length === 1)? 'apê' : 'apês' }}</span>
@@ -27,12 +27,11 @@
             <li><a ng-click="properties_order = false">maior preço</a></li>
           </ul>
         </div>
-        <div class="panel panel-default" dir-paginate="property in properties | orderBy:rental.value:properties_order|itemsPerPage:5"
-          ng-click='details(property.id)'>
+        <div class="panel panel-default" dir-paginate="property in properties | orderBy:rental.value:properties_order|itemsPerPage:5">
           <div class="panel-body imovel-desc">
-            <div class="col-md-5">
+            <div class="col-md-5 col-sm-12 col-xs-12">
               <h4 class="text-dark">{{ property.description }}</h4>
-              <p>Nº {{property.address.number}}</p>
+              <!-- <span class="text-green localization-span" ng-click="setupMark(property)">Ver Localização  <img src="/assets/imagens/gmap-pin.png" width="20"></span> -->
               <ul class="properties-details" style="padding-left: 10px;">
                 <li><i class="fa fa-bed"></i> {{ property.bedrooms }} dorms</li>
                 <li><i class="fa fa-car"></i> {{ property.garages }} vagas</li>
@@ -46,7 +45,7 @@
                 Valor total: {{ property.rental.package_value | currency }}
               </p>
             </div>
-            <div class="col-md-7 no-padding">
+            <div class="col-md-7 col-sm-12 col-xs-12 no-padding" ng-click='details(property.id)'>
               <div class="box">
                 <img ng-src="{{ property.pictures[0].url }}" class="img-full-bg" alt="Responsive image">
               </div>
@@ -57,7 +56,9 @@
       </div>
       <div class="col-md-7 no-padding">
         <ui-gmap-google-map center='map.center' zoom='map.zoom'>
-          <ui-gmap-marker ng-repeat="marker in markers" idKey="marker.id" coords="marker.coords" options="marker.options">
+          <ui-gmap-marker click="shots(marker.id)"
+          events="markerEvents.events"
+          ng-repeat="marker in markers" idKey="marker.id" coords="marker.coords" options="marker.options">
           </ui-gmap-marker>
         </ui-gmap-google-map>
       </div>
@@ -75,5 +76,11 @@
 
   .box {
     height: 200px !important;
+  }
+  .localization-span:focus{
+    outline: none;
+  }
+  .localization-span:hover{
+    color:#5f447b !important;
   }
 </style>

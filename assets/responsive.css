@@ -107,6 +107,21 @@
   .collabpse-navbar{
     float:left ;
   }
+  .m-t--70{
+    margin-top: 0px;
+  }
+}
+
+@media(max-width:600px){
+  .filter-btn-div{
+    width:50%;
+  }
+  .filter-btn-div-slider{
+    width:100%;
+  }
+  .filter-btn{
+    width: 100%;
+  }
 }
 
 @media(max-width:480px) {

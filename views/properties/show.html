@@ -1,12 +1,9 @@
-<meta property="og:image" content="{{propertyDetails.pictures[0].url}}" />
-<meta property="og:title" content="Alu" />
-<meta property="og:description" content="{{propertyDetails.description}}" />
-
 <header></header>
+
 <div ng-if="!hasData" class="loading-div">
   <img class="loading-data" width="130" src="assets/imagens/loading.gif">
 </div>
-<textarea id="clip" style="position:absolute;left:-999999999999"></textarea>
+<textarea id="clip" style="position:absolute;left:-99999px"></textarea>
 <div ng-if="hasData">
   <section class="bg-white">
     <div class="container-fluid">
@@ -21,7 +18,7 @@
       <div class="dropdown share-button">
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Compartilhar
         <span class="caret"></span></button>
-
+        
         <ul class="dropdown-menu">
           <li>
             <div class="face-link" share-square="true" share-links="Facebook" share-title="{{propertyDetails.description}}"></div>
@@ -217,7 +214,7 @@
             <div class="panel-body properties-related">
               <h3 class="resized-h">{{p.description}}</h3>
               <h5>{{p.address.street}}, {{p.address.district}} - {{p.address.number}}, {{p.address.city}}/{{p.address.state}}</h5>
-              <h4>R$ {{p.rental.package_value}}</h4>
+              <h4>{{p.rental.package_value | currency}}</h4>
             </div>
           </div>
 
