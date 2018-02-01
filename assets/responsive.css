@@ -97,6 +97,31 @@
   }
 }
 
+@media (max-width:1020px){
+  .extra-info-filter {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+    left:0px !important;
+  }
+}
+
+@media(max-width:1020px) and (min-width:768px){
+  .extra-info-filter {
+    width:500px;
+  }
+}
+
+@media(max-width:768px) and (min-width:600px){
+  .extra-info-filter {
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+    column-count: 1;
+    width:250px;
+  }
+}
+
+
 @media (max-width:768px) {
   .profile-properties-details {
     margin-top: 60px;
