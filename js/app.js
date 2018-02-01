@@ -29,7 +29,9 @@ var app = angular
     'angularUtils.directives.dirPagination',
     'infinite-scroll',
     'similarPropertyService',
-    'ui.utils.masks'
+    'ui.utils.masks',
+    'ngAccountKit',
+    'verifyService'
   ]);
 
 app.constant('config', {
@@ -53,11 +55,20 @@ app.filter('pluralize', function () {
 
 
 
-app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $authProvider, $ocLazyLoadProvider) {
+app.config(function (
+  $stateProvider,
+  $urlRouterProvider,
+  $locationProvider,
+  $authProvider,
+  $ocLazyLoadProvider,
+  accountKitProvider
+) {
 
   $ocLazyLoadProvider.config({
     events: true
   });
+
+  accountKitProvider.configure("914533272017680", "v1.0", "{{csrf}}");
 
   $authProvider.facebook({
     url: 'https://api.meualu.com/auth/facebook/callback',
@@ -313,20 +324,25 @@ app.run(function ($transitions, $state, $rootScope, MySelf) {
   $rootScope.processedTerms = false;
 
   if (localStorage.getItem('token')) {
+    $rootScope.loadingDataPerfil = false;
     //DADOS DO USUARIOO
     MySelf.get(
       {},
       function (data) {
         $rootScope.current_user = data.renter;
         ($rootScope.current_user.birthday !== null) ? $rootScope.current_user.birthday = new Date(data.renter.birthday) : '';
+        $rootScope.loadingDataPerfil = true;
       },
       function (data) {
         toastr.warning("Faça login novamente!");
         localStorage.removeItem('token');
         $rootScope.current_user = null;
+        $rootScope.loadingDataPerfil = true;
         $state.go('home');
       }
     );
+  } else {
+    $rootScope.loadingDataPerfil = true;
   }
 
   //TRATAMENTO DE ROTAS

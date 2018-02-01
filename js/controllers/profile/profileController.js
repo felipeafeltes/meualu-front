@@ -2,7 +2,7 @@
     'use strict';
     app.controller('profileController', profileController);
 
-    function profileController($rootScope, MySelf, $scope, $state, $window) {
+    function profileController($rootScope, MySelf, $scope, $state, $window, $accountKit, myselfVerify) {
         if ($rootScope.current_user === undefined || $rootScope.current_user === null || $rootScope.current_user.id) {
             if (localStorage.getItem('token')) {
                 $scope.hasData = false;
@@ -17,6 +17,21 @@
                 );
             }
         }
-        
+
+        $scope.verifyAccount = function () {
+            $accountKit.loginWithSMS()
+                .then(
+                function (res) {
+                    myselfVerify.put(
+                        { code: res.code },
+                        function (data) {
+                            toastr.success("Conta verificada com sucesso!");
+                        }
+                    )
+                }, function (err) {
+                    toastr.error("Erro ao verificar a conta, tente novamente!");
+                });
+        }
+
     }
 })();

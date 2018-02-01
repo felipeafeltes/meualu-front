@@ -40,6 +40,8 @@
           <div class="col-sm-12 p-b-50">
             <h2 class="m-t-5 property-description">{{propertyDetails.description}}</h2>
             <h3 class="m-t-5">{{propertyDetails.address.district}}</h3>
+            <h4 class="m-t-5">{{propertyDetails.address.street}}, {{propertyDetails.address.number}}</h4>
+            <h5>{{propertyDetails.address.city}}/{{propertyDetails.address.state}}</h5>
 
             <div class="profile-img2 text-center">
               <img ng-src="{{(propertyDetails.user.picture_url)? propertyDetails.user.picture_url :'assets/imagens/perfil.png'}}" class="img-circle">
@@ -157,7 +159,8 @@
             <h4 class="">{{(propertyDetails.user.city)? propertyDetails.user.city + ', ' + propertyDetails.user.state : 'Usuário ainda
               não atualizou os dados!'}}</h4>
             <h4 class="">Cadastrou em {{propertyDetails.user.created_at | date:"MMMM"}} de {{propertyDetails.user.created_at | date:"yyyy"}}</h4>
-            <img src="https://icon-icons.com/icons2/259/PNG/128/ic_verified_user_128_28798.png" width="60">Verificado
+            <div ng-show="propertyDetails.user.verified"><img src="assets/imagens/verify.png" width="60">Verificado</div>
+            <div ng-show="!propertyDetails.user.verified">Verificação de perfil pendente.</div>
             <div class="profile-img2 text-center">
               <img ng-src="{{(propertyDetails.user.picture_url)? propertyDetails.user.picture_url :'assets/imagens/perfil.png'}}" class="img-circle">
               <span>{{propertyDetails.user.first_name}}</span>

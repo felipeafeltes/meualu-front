@@ -8,7 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta property="og:image" content="assets/imagens/icones/logo meu alu - roxo branco.png" />
   <meta property="og:title" content="Alu" />
-  <meta property="og:description" content="COMECE AQUI A ALUGAR SUA PRÓXIMA MORADIA, POIS ALUGAR UM APÊ É MAIS FÁCIL QUE VOCÊ IMAGINA." />
+  <meta property="og:description" content="COMECE AQUI A ALUGAR SUA PRÓXIMA MORADIA, POIS ALUGAR UM APÊ É MAIS FÁCIL QUE VOCÊ IMAGINA."
+  />
   <link rel="icon" type="image/png" href="assets/imagens/icones/logo meu alu - roxo branco.png">
   <title>MeuAlu</title>
 
@@ -65,8 +66,7 @@
   <script src="js/services/user/userService.js"></script>
   <script src="js/services/myself/mySelfPropertiesService.js"></script>
   <script src="js/services/upload/uploadImageService.js"></script>
-
-
+  <script src="js/services/myself/mySelfVerify.js"></script>
 
   <!--Controllers-->
   <script src="js/controllers/user_session/usersSessionsController.js"></script>
@@ -99,9 +99,6 @@
   <script src="js/directives/helpers/registration-property-directives.js"></script>
   <script src="js/directives/helpers/equalInputs.js"></script>
 
-
-
-
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-97989541-1"></script>
   <script>
@@ -115,6 +112,9 @@
 </head>
 
 <body ng-cloak>
+  <div ng-if="!loadingDataPerfil" class="loading-div">
+    <img class="loading-data" width="130" src="assets/imagens/loading.gif">
+  </div>
   <div ui-view autoscroll="true"></div>
 </body>
 
@@ -137,5 +137,6 @@
 <script src="bower_components/typed.js/lib/typed.js"></script>
 <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.min.js"></script>
 <script src="node_modules/angular-input-masks/releases/angular-input-masks-standalone.min.js"></script>
+<script src="js/directives/helpers/ng-account-kit.js"></script>
 
 </html>

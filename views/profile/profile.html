@@ -1,4 +1,5 @@
 <section>
+
   <header></header>
 
   <div class="container-fluid">
@@ -33,6 +34,15 @@
               <a ui-sref-active="active" class="links" ui-sref="perfil.scheduleds">
                 Visitas Marcadas          
               </a>
+
+              <div ng-show="!current_user.verified">
+                <button ng-click="verifyAccount()" type="button" class="btn btn-purple full btn-verify">Verificar Conta <img src="assets/imagens/verify.png" width="30"></button>
+              </div> 
+
+              <span class="links text-green" ng-show="current_user.verified" title="Essa conta foi verificada">
+                  Verificado <img src="assets/imagens/verify.png" width="30">
+              </span>
+
             </div>
           </div>
         </div>
