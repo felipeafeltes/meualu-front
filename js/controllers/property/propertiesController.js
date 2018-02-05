@@ -74,6 +74,10 @@
       $state.go('propertiesDetails', { id: id });
     }
 
+    $scope.mobileFilters = function () {
+      $("#filters").toggle("slow");
+    }
+
     /*     $scope.markerEvents = {
           events: {
             mouseover: function(marker) {

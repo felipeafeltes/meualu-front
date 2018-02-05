@@ -13,7 +13,6 @@ var app = angular
     'myPropertiesService',
     'propertiesSearchServices',
     'userService',
-    'oauthSessionsServices',
     'extraInfosServices',
     'propertiesServices',
     'searchPropertiesServices',
@@ -61,7 +60,8 @@ app.config(function (
   $locationProvider,
   $authProvider,
   $ocLazyLoadProvider,
-  accountKitProvider
+  accountKitProvider,
+  config
 ) {
 
   $ocLazyLoadProvider.config({
@@ -71,23 +71,19 @@ app.config(function (
   accountKitProvider.configure("914533272017680", "v1.0", "{{csrf}}");
 
   $authProvider.facebook({
-    url: 'https://api.meualu.com/auth/facebook/callback',
+    url: config.apiUrl + 'auth/facebook/callback',
     clientId: '914533272017680',
     authorizationEndpoint: 'https://www.facebook.com/v2.6/dialog/oauth',
-    baseUrl: 'https://api.meualu.com/'
+    baseUrl: config.apiUrl
   });
 
-  /*   $authProvider.facebook({
-      url: 'http://meualuapi.brazilsouth.cloudapp.azure.com/auth/facebook/callback',
-      clientId: '914533272017680',
-      authorizationEndpoint: 'https://www.facebook.com/v2.6/dialog/oauth',
-      baseUrl: 'http://meualuapi.brazilsouth.cloudapp.azure.com'
-    }); */
-
   $authProvider.google({
-    url: 'http://meualuapi.brazilsouth.cloudapp.azure.com/auth/google/callback',
+    url: config.apiUrl + 'omniauth/google_oauth2/callback',
     clientId: '1083734615013-3bff0193jcdueh30bimq5coekmoiec1d.apps.googleusercontent.com',
-    baseUrl: 'http://meualuapi.brazilsouth.cloudapp.azure.com'
+    baseUrl: config.apiUrl,
+    headers:{
+      'teste':'teste'
+    }
   });
 
   $urlRouterProvider.otherwise('/');
@@ -135,7 +131,7 @@ app.config(function (
       resolve: {
         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
           return $ocLazyLoad.load('js/directives/header-property/header-property.js'),
-            $ocLazyLoad.load('js/directives/footer/footer.js')
+                 $ocLazyLoad.load('js/directives/footer/footer.js')
         }]
       }
     })
@@ -154,7 +150,7 @@ app.config(function (
       resolve: {
         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
           return $ocLazyLoad.load('js/directives/header-property/header-property.js'),
-            $ocLazyLoad.load('js/directives/footer/footer.js')
+                 $ocLazyLoad.load('js/directives/footer/footer.js')
         }]
       }
     })
@@ -173,7 +169,7 @@ app.config(function (
       resolve: {
         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
           return $ocLazyLoad.load('js/directives/header-property/header-property.js'),
-            $ocLazyLoad.load('js/directives/footer/footer.js')
+                 $ocLazyLoad.load('js/directives/footer/footer.js')
         }]
       }
     })
@@ -184,7 +180,7 @@ app.config(function (
       resolve: {
         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
           return $ocLazyLoad.load('js/directives/header-property/header-property.js'),
-            $ocLazyLoad.load('js/directives/footer/footer.js')
+                 $ocLazyLoad.load('js/directives/footer/footer.js')
         }]
       }
     })
@@ -209,7 +205,7 @@ app.config(function (
       resolve: {
         deps: ['$ocLazyLoad', function ($ocLazyLoad) {
           return $ocLazyLoad.load('js/directives/header-property/header-property.js'),
-            $ocLazyLoad.load('js/directives/footer/footer.js')
+                 $ocLazyLoad.load('js/directives/footer/footer.js')
         }]
       },
       protected: true

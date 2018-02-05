@@ -8,7 +8,7 @@
       <div class="filters-container" ng-controller="searchController" ng-include="'views/properties/_filters.html'"></div>
     </nav>
     <div class="row text-gray" >
-      <div class="col-md-5 property-list" style="overflow-y: auto;height: calc(100vh - 130px)">
+      <div class="col-md-5 property-list list">
         <h2>
           <span class="text-green bold" ng-if="properties.length > 0">Encontramos {{ properties.length }} {{(properties.length === 1)? 'apê' : 'apês' }}</span>
           <span class="text-green bold" ng-if="properties.length === 0">Não encontramos nenhum apartamento nesse endereço.</span>

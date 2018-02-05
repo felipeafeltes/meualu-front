@@ -70,6 +70,8 @@ a.text-yellow:hover{color:#f4cc6a;}
 .margin-top-50{margin-top:50px}
 .no-top{margin-top:0px;margin-bottom: 0px}
 .bold{font-family: 'Circular std bold' }
+.btn-filter{background:#5f447b;margin:10px;color:#fff;padding:5px}
+.btn-filter:hover{background:rgba(95, 68, 123, 0.77);margin:10px;border-radius: 10px;color:#fff}
 .btn-purple{color:#fff;background-color:transparent;border-color:#fff;border:2px solid #fff;border-radius:2px;font-weight:bold;padding:10px 30px;}
 .btn-purple.full{background:#5f447b;border:0px;padding-top: 15px; padding-bottom: 15px; font-size: 18px;}
 .btn-purple:hover,.btn-purple:active,.btn-purple:focus {color:#fff;background:#4a4275;}
@@ -506,6 +508,14 @@ li.rental-filter span.max:before{
   color: #b1b1b0;
 }
 
+#filters{
+  display: inline-block;
+}
+
+.mobile-filters{
+  display: none;
+}
+
 .extra-info-filter {
   -webkit-column-count: 3;
   -moz-column-count: 3;
@@ -689,6 +699,11 @@ p.error {
 .property-list {
   padding-right: 100px !important;
   padding-left: 100px !important;
+}
+
+.list{
+  overflow-y: auto;
+  height: calc(100vh - 130px);
 }
 
 .img-profile {

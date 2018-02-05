@@ -135,6 +135,15 @@
   .m-t--70{
     margin-top: 0px;
   }
+  #filters{
+    display: none;
+  }
+  .lists{
+    display: none;
+  }
+  .mobile-filters{
+    display: block;
+  }
 }
 
 @media(max-width:600px){
