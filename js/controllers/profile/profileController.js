@@ -12,7 +12,13 @@
                     function (data) {
                         $scope.hasData = true;
                         $rootScope.current_user = data.renter;
-                        ($rootScope.current_user.birthday !== null) ? $rootScope.current_user.birthday = new Date(data.renter.birthday) : '';
+                        if ($rootScope.current_user.birthday !== null) {
+                            var d = new Date(data.renter.birthday);
+                            var day = ("0" + (d.getDate() + 1)).slice(-2);
+                            var month = ("0" + (d.getMonth() + 1)).slice(-2);
+                            var date = `${day}/${month}/${d.getFullYear()}`
+                            $rootScope.current_user.birthday = date;
+                        }
                     },
                 );
             }

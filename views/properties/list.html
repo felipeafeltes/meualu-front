@@ -27,7 +27,11 @@
             <li><a ng-click="properties_order = false">maior preço</a></li>
           </ul>
         </div>
-        <div class="panel panel-default" dir-paginate="property in properties | orderBy:rental.value:properties_order|itemsPerPage:5">
+        <div class="panel panel-default" 
+        ng-mouseenter="hover(property.id)"
+        ng-mouseleave="hoverLeave(property.id)"
+        ng-click='details(property.id)'
+        dir-paginate="property in properties | orderBy:rental.value:properties_order|itemsPerPage:5">
           <div class="panel-body imovel-desc">
             <div class="col-md-5 col-sm-12 col-xs-12">
               <h4 class="text-dark">{{ property.description }}</h4>
@@ -45,7 +49,7 @@
                 Valor total: {{ property.rental.package_value | currency }}
               </p>
             </div>
-            <div class="col-md-7 col-sm-12 col-xs-12 no-padding" ng-click='details(property.id)'>
+            <div class="col-md-7 col-sm-12 col-xs-12 no-padding" >
               <div class="box">
                 <img ng-src="{{ property.pictures[0].url }}" class="img-full-bg" alt="Responsive image">
               </div>

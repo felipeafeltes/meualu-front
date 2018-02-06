@@ -18,7 +18,7 @@
       <div class="dropdown share-button">
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Compartilhar
         <span class="caret"></span></button>
-        
+
         <ul class="dropdown-menu">
           <li>
             <div class="face-link" share-square="true" share-links="Facebook" share-title="{{propertyDetails.description}}"></div>
@@ -44,7 +44,7 @@
             <h5>{{propertyDetails.address.city}}/{{propertyDetails.address.state}}</h5>
 
             <div class="profile-img2 text-center">
-              <img ng-src="{{(propertyDetails.user.picture_url)? propertyDetails.user.picture_url :'assets/imagens/perfil.png'}}" class="img-circle">
+              <img ng-src="{{(propertyDetails.user.picture_url)? propertyDetails.user.picture_url :'assets/imagens/perfil.jpg'}}" class="img-circle">
               <span>{{propertyDetails.user.first_name}}</span>
             </div>
           </div>
@@ -82,6 +82,11 @@
               <span>móveis</span><br>
               <div><img src="assets/imagens/icones/moveis.png" width="25px"></div>
               <small>{{(propertyDetails.furniture === true)? 'mobiliado' : 'sem mobilia'}}</small>
+            </div>
+            <div class="characteristic">
+              <span>móveis</span><br>
+              <div><img src="assets/imagens/icones/bus.png" width="25px"></div>
+              <small>{{(propertyDetails.public_transportation === true)? 'transporte' : 's/ transporte '}}</small>
             </div>
 
           </div>
@@ -162,7 +167,7 @@
             <div ng-show="propertyDetails.user.verified"><img src="assets/imagens/verify.png" width="60">Verificado</div>
             <div ng-show="!propertyDetails.user.verified">Verificação de perfil pendente.</div>
             <div class="profile-img2 text-center">
-              <img ng-src="{{(propertyDetails.user.picture_url)? propertyDetails.user.picture_url :'assets/imagens/perfil.png'}}" class="img-circle">
+              <img ng-src="{{(propertyDetails.user.picture_url)? propertyDetails.user.picture_url :'assets/imagens/perfil.jpg'}}" class="img-circle">
               <span>{{propertyDetails.user.first_name}}</span>
             </div>
           </div>
@@ -321,7 +326,7 @@
   }
 
   .characteristic {
-    width: 14.2857%;
+    width: 12.5%;
     text-align: center;
     float: left;
     color: rgba(0, 0, 0, 0.52);
@@ -469,6 +474,9 @@
     }
     .panel-rental {
       margin-top: 300px;
+    }
+    .characteristic>div {
+      padding: 0px;
     }
   }
 

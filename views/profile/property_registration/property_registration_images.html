@@ -19,7 +19,7 @@
 <div ng-include="'views/profile/property_registration/_cropp_modal.html'"></div>
 
 <div class="form-group row">
-    <div class="col-md-8 col-md-offset-4">
+    <div class="col-xs-12 col-md-8 col-md-offset-4">
         <div class="col-md-6">
             <a ui-sref="perfil.cadastrarImovel.rental" class="btn btn-block bg-green" ng-click="backForm()">
                 Anterior <span class="glyphicon glyphicon-circle-arrow-left"></span>
@@ -32,3 +32,19 @@
         </div>
     </div>
 </div>
+
+<style>
+    @media(max-width:590px) and (min-width:379px) {
+        canvas {
+            width: 300px;
+            height: 170px;
+        }
+    }
+
+    @media(max-width:378px) {
+        canvas {
+            width: 200px;
+            height: 180px;
+        }
+    }
+</style>

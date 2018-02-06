@@ -2,54 +2,61 @@
 
 <div class="form-group col-md-12">
     <h4 class="black-text">Como é a <strong>moradia</strong> neste imóvel?</h4>
-    <span class="count-caracteres">Restam {{countCaracteres(propertie.dwelling_description)}} caracteres</span>
-    <textarea type="text" class="form-control redondend-border" name="dwelling_description" rows="6" ng-model="propertie.dwelling_description"
+
+    <textarea class="form-control redondend-border" name="dwelling_description" rows="5" ng-model="propertie.dwelling_description"
         placeholder="Conte-nos um pouco sobre os benefícios deste imóvel e o que o motivou a comprá-lo.
     Ex:O que há de melhor no Moinhos de Vento. Imóvel na medida certa para seu sonho de morar em uma das ruas mais desejadas e charmosas da Capital Gaúcha. São 59m² distrubuídos por um amplo living, estar íntimo com lareira, 2 suites. 
-    Cozinha, area de serviço e dependência igualmente generosas..." ng-maxlength="240" required></textarea>
+    Cozinha, area de serviço e dependência igualmente generosas..." ng-trim="false" maxlength="240" required></textarea>
     <div ng-show="fillAdvertisement || formProperty.dwelling_description.$touched">
         <p ng-show="formProperty.dwelling_description.$error.required" class="help-block error">Campo é obrigatório.</p>
         <p ng-show="formProperty.dwelling_description.$error.maxlength" class="help-block error">Máximo de 240 caracteres.</p>
     </div>
+    <span class="count-caracteres">Restam {{countCaracteres(propertie.dwelling_description)}} caracteres</span>
     <p>Capriche aqui! Este texto estará visível no anúncio do imóvel.</p>
 </div>
 
 <div class="form-group col-md-12">
     <h4 class="black-text">Como é o <strong>bairro</strong> onde este imóvel fica localizado?</h4>
-    <span class="count-caracteres">Restam {{countCaracteres(propertie.district_description)}} caracteres</span>
-    <textarea type="text" class="form-control redondend-border" name="district_description" rows="6" ng-model="propertie.district_description"
+
+    <textarea class="form-control redondend-border" name="district_description" rows="5" ng-model="propertie.district_description"
         placeholder="Conte-nos um pouco sobre as coisas que você costuma fazer no bairro onde mora.
-        Ex:Este apartamento fixa próximo à melhor padaria do bairro, ideal para quem gosta de um pão bem quentinho pela manhã..." ng-maxlength="240" required></textarea>
+        Ex:Este apartamento fixa próximo à melhor padaria do bairro, ideal para quem gosta de um pão bem quentinho pela manhã..."
+        ng-trim="false" maxlength="240" required></textarea>
     <div ng-show="fillAdvertisement || formProperty.district_description.$touched">
         <p ng-show="formProperty.district_description.$error.required" class="help-block error">Campo é obrigatório.</p>
         <p ng-show="formProperty.district_description.$error.maxlength" class="help-block error">Máximo de 240 caracteres.</p>
     </div>
+    <span class="count-caracteres">Restam {{countCaracteres(propertie.district_description)}} caracteres</span>
     <p>Capriche aqui! Este texto estará visível no anúncio do imóvel.</p>
 </div>
 
 <div class="form-group col-md-12">
     <h4 class="black-text">Descreva sobre a <strong>mobilidade</strong> no entorno do imóvel</h4>
-    <span class="count-caracteres">Restam {{countCaracteres(propertie.mobility_description)}} caracteres</span>
-    <textarea type="text" class="form-control redondend-border" name="mobility_description" rows="6" ng-model="propertie.mobility_description"
-        placeholder="Ex:Rua de fácil acesso com ponto de ônibus próximo...." ng-maxlength="240" required></textarea>
+
+    <textarea class="form-control redondend-border" name="mobility_description" rows="5" ng-model="propertie.mobility_description"
+        placeholder="Ex:Rua de fácil acesso com ponto de ônibus próximo...." ng-trim="false" maxlength="240" required></textarea>
     <div ng-show="fillAdvertisement || formProperty.mobility_description.$touched">
         <p ng-show="formProperty.mobility_description.$error.required" class="help-block error">Campo é obrigatório.</p>
         <p ng-show="formProperty.mobility_description.$error.maxlength" class="help-block error">Máximo de 240 caracteres.</p>
     </div>
+    <span class="count-caracteres">Restam {{countCaracteres(propertie.mobility_description)}} caracteres</span>
     <p>Capriche aqui! Este texto estará visível no anúncio do imóvel.</p>
 </div>
 
 <div class="form-group col-md-12">
     <h4 class="black-text">Como você imagina o perfil de um <strong>inquilino ideal</strong> para este imóvel?</h4>
-    <span class="count-caracteres" style="bottom:50px">Restam {{countCaracteres(propertie.ideal_tenant_profile)}} caracteres</span>
-    <textarea type="text" class="form-control redondend-border" name="ideal_tenant_profile" rows="6" ng-model="propertie.ideal_tenant_profile"
+
+    <textarea class="form-control redondend-border" name="ideal_tenant_profile" rows="5" ng-model="propertie.ideal_tenant_profile"
         placeholder="Ex:Este é um apê ideal para casais que buscam tranquilidade e boas opções de lazer.
-        Ex:Apartamento ótimo para advogados por conta da proximidade de órgãos jurídicos." ng-maxlength="240" required></textarea>
+        Ex:Apartamento ótimo para advogados por conta da proximidade de órgãos jurídicos." ng-trim="false" maxlength="240"
+        required></textarea>
     <div ng-show="fillAdvertisement || formProperty.ideal_tenant_profile.$touched">
         <p ng-show="formProperty.ideal_tenant_profile.$error.required" class="help-block error">Campo é obrigatório.</p>
         <p ng-show="formProperty.ideal_tenant_profile.$error.maxlength" class="help-block error">Máximo de 240 caracteres.</p>
     </div>
-    <p>Essa informação ajudará a plataforma a encontrar os inquilinos que mais se assemelham às características citadas por você. Essa informação não será divulgada no anúncio.</p>
+    <span class="count-caracteres" style="bottom:50px">Restam {{countCaracteres(propertie.ideal_tenant_profile)}} caracteres</span>
+    <p>Essa informação ajudará a plataforma a encontrar os inquilinos que mais se assemelham às características citadas por
+        você. Essa informação não será divulgada no anúncio.</p>
 </div>
 
 
@@ -72,7 +79,7 @@
 </div>
 
 <div class="form-group row">
-    <div class="col-md-8 col-md-offset-4">
+    <div class="col-xs-12 col-md-8 col-md-offset-4">
         <div class="col-md-6">
             <a ui-sref="perfil.cadastrarImovel.details" class="btn btn-block bg-green" ng-click="backForm()">
                 Anterior <span class="glyphicon glyphicon-circle-arrow-left"></span>
@@ -85,3 +92,10 @@
         </div>
     </div>
 </div>
+
+<style>
+    p {
+        margin-top: 14px !important;
+        margin-bottom: 14px !important;
+    }
+</style>

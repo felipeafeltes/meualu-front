@@ -46,13 +46,13 @@
                     url: '/assets/imagens/gmap-pin.png',
                     size: new google.maps.Size(40, 40),
                     origin: new google.maps.Point(0, 0),
-                    anchor: new google.maps.Point(0, 10)
+                    anchor: new google.maps.Point(0, 10),
                   },
                 }
               }
               $scope.markers.push(mark);
             }, this);
-            $scope.full_adress = `${address.street + ', ' + address.district + ', ' + address.city + '/' + address.state}`;
+            $scope.full_adress = $stateParams.address_string;
           }
           $scope.hasData = true;
           $scope.map = {
@@ -64,6 +64,16 @@
           };
         },
       );
+    }
+
+    $scope.hover = function (id) {
+      var index = $scope.markers.findIndex(x => x.id == id);
+      $scope.markers[index].options.icon.url = '/assets/imagens/gmap-pin2.png';
+    }
+
+    $scope.hoverLeave = function (id) {
+      var index = $scope.markers.findIndex(x => x.id == id);
+      $scope.markers[index].options.icon.url = '/assets/imagens/gmap-pin.png';
     }
 
     $scope.shots = function (id) {

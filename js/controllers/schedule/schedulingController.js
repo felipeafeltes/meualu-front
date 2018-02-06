@@ -46,7 +46,7 @@
                             $scope.schuduled = true;
                         },
                         function (data) {
-                            toastr.error("Não foi possível agendar este horário!")
+                            toastr.error(data.message)
                             $scope.request = false;
                         }
                     )

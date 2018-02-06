@@ -10,16 +10,6 @@
   div#pictures {
     height: calc(100vh - 350px);
   }
-
-
-  .footer-social {
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  .footer-social div{
-    text-align: center;
-  }
 }
 
 @media (max-width: 768px) {
@@ -64,11 +54,6 @@
     text-align: left;
   }
 
-  .logo-footer {
-    display: flex;
-    justify-content: center;
-  }
-
   .footer-social {
     text-align: center;
   }
@@ -106,6 +91,28 @@
   }
 }
 
+@media (max-width:992px){
+    .text-footer-center{
+      text-align:center;
+  }
+  .logo-footer{
+    display: flex;
+    justify-content: center;
+  }
+  .footer-social {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .footer-social div{
+    text-align: center;
+  }
+  .btn-block{
+    margin:5px 0px 5px 0px;
+  }
+}
+
 @media(max-width:1020px) and (min-width:768px){
   .extra-info-filter {
     width:500px;
@@ -118,16 +125,20 @@
     -moz-column-count: 1;
     column-count: 1;
     width:250px;
+    height: 300px;
+    overflow: auto;
   }
 }
 
 
+
 @media (max-width:768px) {
   .profile-properties-details {
-    margin-top: 60px;
+    margin-top: 120px;
   }
   .text-responsive-center {
     text-align: center;
+    margin-left:0px;
   }
   .collabpse-navbar{
     float:left ;
@@ -144,6 +155,9 @@
   .mobile-filters{
     display: block;
   }
+  .box{
+    height: 100%;
+  }
 }
 
 @media(max-width:600px){
@@ -155,6 +169,18 @@
   }
   .filter-btn{
     width: 100%;
+  }
+  .input-div {
+    padding: 5px 15px 5px 15px !important;
+  }
+}
+
+@media(max-width:599px) and (min-width:525px){
+  .extra-info-filter {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+    width:100%;;
   }
 }
 
@@ -176,5 +202,35 @@
   }
   .panel-body-edit > div{
     padding:5px;
+  }
+  .logo-heigth{
+    height: 30px;
+  }
+  h1{
+    font-size: 25px;
+  }
+  .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9{
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  .font-size-20{
+    font-size: 14px !important;
+  }
+  .rzslide-filter{
+    width: 80%;
+  }
+  .extra-info-filter {
+    -webkit-column-count:1;
+    -moz-column-count: 1;
+    column-count: 1;
+    width:100%;
+    height: 300px;
+    overflow: auto;
+  }
+  .share-button{
+        position: relative !important; 
+        top: 50px;
+        right: 0;
+        float: right;
   }
 }

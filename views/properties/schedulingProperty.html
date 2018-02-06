@@ -91,28 +91,6 @@
                 </div>
                 <div class="col-md-4 col-md-offset-1 col-sm-12 clear-visit">
                     <div class="col-md-12 schedule-card">
-                        <div class="clear-content animated fadeIn" ng-show="request">
-                            <div ng-show="schuduled" class="animated fadeIn">
-                                <div class='tick-text'>
-                                    Visita agendada<br>Dia <span class="text-purple bold">{{selectedHour | date :"dd/MM"}}</span>                                    às <span class="text-purple bold">{{selectedHour | date: "hh:mm"}}</span>.
-                                </div>
-                                <div class="check-div">
-                                    <div class="container-check animated infinite rubberBand">
-                                        <div class='bkground-check'>
-                                            <div></div>
-                                        </div>
-
-                                        <div class='tick'>
-                                            <div>✔</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class='tick-text bottom-align'>
-                                    <a style="color:#f4cc6a" ui-sref="perfil.scheduleds">Ver Visitas</a>
-                                </div>
-                            </div>
-                            <img ng-show="request && !schuduled" class="loading-data" width="160" src="assets/imagens/loadingRipple.gif">
-                        </div>
 
                         <div class="card-schedule-header">
                             <div class="col-md-10 col-md-offset-1 card-schedule-header" style="background:transparent">
@@ -128,7 +106,7 @@
                             <h4 class="text-gray" style="text-transform: capitalize">{{selectedDay | date: "EEEE"}}, {{selectedDay | date: "dd/yyyy"}}, {{selectedHour | date:"HH:mm"}}</h4>
                         </div>
                         <div class="col-md-12">
-                            <div class="col-md-10 text-center col-md-offset-1 hours">
+                            <div class="col-md-10 text-center col-md-offset-1">
                                 <button type="button" ng-click="selectHour(h.date)" ng-repeat="h in hours" class="hour" ng-class="{'green-btn':h.free}" ng-disabled="h.free === false">
                                     <span>{{h.date | date : "HH:mm"}}</span>
                                 </button>
@@ -139,6 +117,28 @@
                             </div>
                         </div>
                     </div>
+                    <div class="clear-content animated fadeIn" ng-show="request">
+                        <div ng-show="schuduled" class="animated fadeIn">
+                            <div class='tick-text'>
+                                Visita agendada<br>Dia <span class="text-purple bold">{{selectedHour | date :"dd/MM"}}</span>                                às <span class="text-purple bold">{{selectedHour | date: "HH:mm"}}</span>.
+                            </div>
+                            <div class="check-div">
+                                <div class="container-check animated infinite rubberBand">
+                                    <div class='bkground-check'>
+                                        <div></div>
+                                    </div>
+
+                                    <div class='tick'>
+                                        <div>✔</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='tick-text bottom-align'>
+                                <a style="color:#f4cc6a" ui-sref="perfil.scheduleds">Ver Visitas</a>
+                            </div>
+                        </div>
+                        <img ng-show="request && !schuduled" class="loading-data" width="160" src="assets/imagens/loadingRipple.gif">
+                    </div>
                 </div>
             </div>
         </div>
@@ -147,6 +147,38 @@
 <footer></footer>
 <div ng-include="'views/home/_sign_in_modal.html'"></div>
 <style>
+    .col-lg-1,
+    .col-lg-10,
+    .col-lg-11,
+    .col-lg-12,
+    .col-lg-2,
+    .col-lg-3,
+    .col-lg-4,
+    .col-lg-5,
+    .col-lg-6,
+    .col-lg-7,
+    .col-lg-8,
+    .col-lg-9,
+    .col-md-1,
+    .col-md-10,
+    .col-md-11,
+    .col-md-12,
+    .col-md-2,
+    .col-md-3,
+    .col-md-4,
+    .col-md-5,
+    .col-md-6,
+    .col-md-7,
+    .col-md-8,
+    .col-md-9,
+    .col-sm-1,
+    .col-xs-9 {
+        position: inherit !important;
+        min-height: 1px;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+
     .check-div {
         position: absolute;
         left: 50%;
@@ -155,12 +187,13 @@
     }
 
     .clear-content {
-        width: 99.996%;
-        height: 100%;
+        width: 100%;
+        height: 400px;
         border-radius: 10px;
         z-index: 9;
         background: #fff;
-        position: absolute;
+        border: 1px solid #b1b1b0;
+        position: relative;
     }
 
     .tick-text {
@@ -401,6 +434,9 @@
         .hour {
             margin: 10px !important;
         }
+        .clear-content {
+            margin-top: -380px;
+        }
     }
 
     @media(max-width:768px) {
@@ -417,6 +453,15 @@
         }
         .title-circular {
             text-align: center;
+        }
+        .clear-content {
+            margin-top: -320px;
+        }
+        .container-schedule {
+            padding-right:3px;
+            padding-left: 3px;
+            margin-right: auto;
+            margin-left: auto;
         }
     }
 

@@ -341,7 +341,12 @@ input.search-header:focus {
   margin-top: 5px;
   margin-bottom: 5px;
 }
-
+.ul-footer>li>a:hover{
+  color: #5f447b;
+}
+.purple-hover:hover{
+  color: #5f447b;
+}
 .img-full {
   display: block;
   width: 100%;
@@ -381,6 +386,10 @@ ul.properties-details {
 ul.without-style{
   list-style-type: none;
   -webkit-padding-start: 0px;
+}
+
+.rzslide-filter{
+  width: 390px;
 }
 
 .fixed {
@@ -479,7 +488,7 @@ span.max{
 }
 
 li.total-area-filter .slider{
-  width: 70%;
+  width: 60%;
   float: left;
 }
 
@@ -963,10 +972,8 @@ span.round-tab:hover {
   border-radius: 4px;
 }
 .count-caracteres{
-  position:absolute;
-  bottom:30px;
-  right:30px;
-  z-index:2
+  float: right;
+  color: #000;
 }
 
 .input-div {

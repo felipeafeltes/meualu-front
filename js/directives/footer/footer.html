@@ -4,12 +4,12 @@
       <img src="assets/imagens/icones/logo_alu_branco_beta.png" class="img-responsive logo-heigth">
     </div>
     <div class="col-md-6">
-      <div class="row">
+      <div class="row text-footer-center">
         <div class="col-md-4">
           <h4 class="text-uppercase bold">acesse</h4>
           <ul class="ul-footer">
-            <li>
-              <a ui-sref="home">Buscar imóveis</a>
+            <li ng-controller="InformationsController">
+              <a ng-click="search()">Buscar imóveis</a>
             </li>
             <li ng-hide="current_user">
               <a ui-sref="proprietario">Anúnciar imóveis</a>
@@ -37,7 +37,10 @@
           <h4 class="text-uppercase bold">alu</h4>
           <ul class="ul-footer">
             <li>
-              <a target="_blank" href="https://meualuhelp.zendesk.com/hc/pt-br">Dúvidas Frequentes?</a>
+              <a target="_blank" href="https://meualuhelp.zendesk.com/hc/pt-br">Dúvidas Frequentes</a>
+            </li>
+            <li>
+              <a target="_blank" href="http://blog.meualu.com">Blog</a>
             </li>
           </ul>
         </div>
@@ -47,10 +50,10 @@
       <div>
         <h4 class="text-uppercase bold">siga-nos</h4>
         <a href="https://www.facebook.com/meualu/" class="text-white" target="_blank">
-            <i class="fa fa-facebook-official m-r-15 fa-2x"></i>
+            <i class="fa fa-facebook-official m-r-15 fa-2x purple-hover"></i>
           </a>
         <a href="https://www.instagram.com/meualu/" class="text-white" target="_blank">
-            <i class="fa fa-instagram m-r-15 fa-2x"></i>
+            <i class="fa fa-instagram m-r-15 fa-2x purple-hover"></i>
           </a>
       </div>
     </div>

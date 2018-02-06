@@ -11,7 +11,7 @@
       {{ filter_translation(key.toString()) | capitalize | pluralize }}
       <span class="caret"></span>
     </a>
-    <ul class="dropdown-menu filters" ng-click="$event.stopPropagation();" style="width: 390px !important;">
+    <ul class="dropdown-menu filters rzslide-filter" ng-click="$event.stopPropagation();">
       <li class="{{filter.class}}">
         <span class="min">{{filter.translate}}{{filter.minValue}}</span>
         <div class="slider">

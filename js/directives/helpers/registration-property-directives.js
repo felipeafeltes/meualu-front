@@ -6,25 +6,16 @@ app.directive("bedroomsvalue", function () {
         },
         link: function (scope, element, attrs, ctrl) {
             scope.$watch(function () {
-                var combined;
-                if (scope.bedroomsvalue || ctrl.$viewValue) {
-                    combined = scope.bedroomsvalue + '_' + ctrl.$viewValue;
+                if (scope.bedroomsvalue && ctrl.$viewValue) {
+                    if (scope.bedroomsvalue < parseInt(ctrl.$viewValue)) {
+                        ctrl.$setValidity("bigger", false);
+                        return false;
+                    } else {
+                        ctrl.$setValidity("bigger", true);
+                        return true;
+                    }
                 }
-                return combined;
-            }, function (value) {
-                if (value) {
-                    ctrl.$parsers.unshift(function (viewValue) {
-                        var origin = scope.bedroomsvalue;
-                        if (origin < viewValue) {
-                            ctrl.$setValidity("bigger", false);
-                            return undefined;
-                        } else {
-                            ctrl.$setValidity("bigger", true);
-                            return viewValue;
-                        }
-                    });
-                }
-            });
+            })
         }
     };
 });
