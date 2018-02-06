@@ -228,9 +228,9 @@
     overflow: auto;
   }
   .share-button{
-        position: relative !important; 
-        top: 50px;
-        right: 0;
-        float: right;
+    position: relative !important; 
+    top: 50px;
+    right: 0;
+    float: right;
   }
 }
