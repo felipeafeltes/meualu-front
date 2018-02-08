@@ -78,7 +78,7 @@ app.config(function (
   });
 
   $authProvider.google({
-    url: config.apiUrl + 'omniauth/google_oauth2/callback',
+    url: config.apiUrl + 'auth/google/callback',
     clientId: '961442445641-s1tpnabddkm0m1djhpcu2s46di8s5qsi.apps.googleusercontent.com',
     baseUrl: config.apiUrl,
     headers: {
@@ -328,10 +328,13 @@ app.run(function ($transitions, $state, $rootScope, MySelf) {
         $rootScope.current_user = data.renter;
         if ($rootScope.current_user.birthday !== null) {
           var d = new Date(data.renter.birthday);
-          var day = ("0" + (d.getDate() + 1)).slice(-2);
-          var month = ("0" + (d.getMonth() + 1)).slice(-2);
-          var date = `${day}/${month}/${d.getFullYear()}`
-          $rootScope.current_user.birthday = date;
+          var day = (d.getDate() + 1);
+          var month = (d.getMonth() + 1);
+          var year = d.getFullYear();
+          $rootScope.current_user.day_birthday = day;
+          $rootScope.current_user.month_birthday = month;
+          $rootScope.current_user.year_birthday = year;
+          $rootScope.current_user.birthday = `${day}/${month}/${year}`;
         }
         $rootScope.loadingDataPerfil = true;
       },
@@ -356,48 +359,48 @@ app.run(function ($transitions, $state, $rootScope, MySelf) {
     }
 
     //Wizard Cadastro de Imovel caso f5 na pagina
-    /*     if (transition.to().processed) {
-          switch (transition.to().name) {
-            case 'perfil.cadastrarImovel.details':
-              if (!$rootScope.processedAddress) {
-                return $state.target('perfil.cadastrarImovel.address');
-              }
-              break;
-            case 'perfil.cadastrarImovel.advertisement':
-              if (!$rootScope.processedAddress ||
-                !$rootScope.processedDetails) {
-                return $state.target('perfil.cadastrarImovel.address');
-              }
-              break;
-            case 'perfil.cadastrarImovel.rental':
-              if (!$rootScope.processedAddress ||
-                !$rootScope.processedDetails ||
-                !$rootScope.processedAdvertisement) {
-                return $state.target('perfil.cadastrarImovel.address');
-              }
-              break;
-            case 'perfil.cadastrarImovel.images':
-              if (
-                !$rootScope.processedAddress ||
-                !$rootScope.processedDetails ||
-                !$rootScope.processedAdvertisement ||
-                !$rootScope.processedRental) {
-                return $state.target('perfil.cadastrarImovel.address');
-              }
-              break;
-            case 'perfil.cadastrarImovel.terms':
-              if (!$rootScope.processedAddress ||
-                !$rootScope.processedDetails ||
-                !$rootScope.processedAdvertisement ||
-                !$rootScope.processedRental ||
-                !$rootScope.processedImages) {
-                return $state.target('perfil.cadastrarImovel.address');
-              }
-              break;
+    if (transition.to().processed) {
+      switch (transition.to().name) {
+        case 'perfil.cadastrarImovel.details':
+          if (!$rootScope.processedAddress) {
+            return $state.target('perfil.cadastrarImovel.address');
           }
-    
-        }
-     */
+          break;
+        case 'perfil.cadastrarImovel.advertisement':
+          if (!$rootScope.processedAddress ||
+            !$rootScope.processedDetails) {
+            return $state.target('perfil.cadastrarImovel.address');
+          }
+          break;
+        case 'perfil.cadastrarImovel.rental':
+          if (!$rootScope.processedAddress ||
+            !$rootScope.processedDetails ||
+            !$rootScope.processedAdvertisement) {
+            return $state.target('perfil.cadastrarImovel.address');
+          }
+          break;
+        case 'perfil.cadastrarImovel.images':
+          if (
+            !$rootScope.processedAddress ||
+            !$rootScope.processedDetails ||
+            !$rootScope.processedAdvertisement ||
+            !$rootScope.processedRental) {
+            return $state.target('perfil.cadastrarImovel.address');
+          }
+          break;
+        case 'perfil.cadastrarImovel.terms':
+          if (!$rootScope.processedAddress ||
+            !$rootScope.processedDetails ||
+            !$rootScope.processedAdvertisement ||
+            !$rootScope.processedRental ||
+            !$rootScope.processedImages) {
+            return $state.target('perfil.cadastrarImovel.address');
+          }
+          break;
+      }
+
+    }
+
   });
 
 });

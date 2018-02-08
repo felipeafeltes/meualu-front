@@ -14,10 +14,13 @@
                         $rootScope.current_user = data.renter;
                         if ($rootScope.current_user.birthday !== null) {
                             var d = new Date(data.renter.birthday);
-                            var day = ("0" + (d.getDate() + 1)).slice(-2);
-                            var month = ("0" + (d.getMonth() + 1)).slice(-2);
-                            var date = `${day}/${month}/${d.getFullYear()}`
-                            $rootScope.current_user.birthday = date;
+                            var day = (d.getDate() + 1);
+                            var month = (d.getMonth() + 1);
+                            var year = d.getFullYear();
+                            $rootScope.current_user.day_birthday = day;
+                            $rootScope.current_user.month_birthday = parseInt(month);
+                            $rootScope.current_user.year_birthday = year;
+                            $rootScope.current_user.birthday = `${day}/${month}/${year}`;
                         }
                     },
                 );

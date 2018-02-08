@@ -214,7 +214,7 @@
           <h3 class="text-center"><i class="fa fa-frown-o "></i> Nenhum apartamento encontrado</h3>
         </div>
 
-        <slick ng-if="similarProperties.length" arrows="true" slides-to-show="3" slides-to-scroll="1" infinite="true" focus-on-select="true">
+        <slick ng-if="similarProperties.length" arrows="true" slides-to-show="{{countShowSimilares}}" slides-to-scroll="{{countShowSimilares}}" infinite="true" focus-on-select="true">
           <div class="panel panel-default properties-related" ng-repeat="p in similarProperties" ng-click='details(p.id)'>
             <div class="panel-heading properties-related">
               <img ng-src="{{p.pictures[0].url}}" class="img-full" alt="Responsive image">

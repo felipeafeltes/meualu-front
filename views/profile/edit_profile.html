@@ -25,19 +25,46 @@
                         <select name="sex" class="form-control" ng-model="user.sex" required>
                             <option disabled value="" selected>Selecione o sexo</option>
                             <option ng-repeat="option in sexOptions" value="{{option.value}}"
-                            ng-selected="user.sex">{{option.label}}</option>
+                            selected="user.sex == option.value">{{option.label}}</option>
                         </select>
                         <div ng-show="formEdit.$submitted || formEdit.sex.$touched">
                             <p ng-show="formEdit.sex.$error.required" class="help-block error">Sexo é obrigatório.</p>
                         </div>
                     </div>
-                    <div class="form-group form-edit-profile col-md-6">
-                        <label for="birthday">Data de Nascimento</label>
-                        <input type="text" class="form-control" id="birthday" name="birthday" ng-model="user.birthday" ui-date-mask="DD/MM/YYYY" parse="false" required>
-                        <div ng-show="formEdit.$submitted || formEdit.birthday.$touched">
-                            <p ng-show="formEdit.birthday.$error.required" class="help-block error">Data de nascimento é obrigatório.</p>
+
+                    <div class="form-group">
+                        <label class="col-md-6">Data de Nascimento</label>  
+                        <div class="col-md-6">
+                            <div class="col-md-3" style="padding-left: 0px;padding-right: 0px;">
+                                <select name="day" ng-model="user.day_birthday" ng-options="d for d in days" class="form-control" required>
+                                    <option disabled value="">Dia</option>                 
+                                </select>
+                                <div ng-show="formAdd.$submitted || formAdd.day.$touched">
+                                    <p ng-show="formAdd.day.$error.required" class="f-13 help-block error">Obrigatório.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-5 no-p-xs">
+                                <select name="month_birthday" ng-model="user.month_birthday" 
+                                ng-options="m.id as m.name for m in months"
+                                class="form-control" required>
+                                    <option disabled value="">Mês</option>
+
+                                </select>
+                                <div ng-show="formAdd.$submitted || formAdd.month_birthday.$touched">
+                                    <p ng-show="formAdd.month_birthday.$error.required" class="f-13 help-block error">Obrigatório.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4" style="padding-left: 0px;padding-right: 0px;">
+                                <select name="year" ng-model="user.year_birthday" ng-options="y for y in years" class="form-control" required>
+                                    <option disabled value="">Ano</option>
+                                </select>
+                                <div ng-show="formAdd.$submitted || formAdd.year.$touched">
+                                    <p ng-show="formAdd.year.$error.required" class="f-13 help-block error">Obrigatório.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
                     <div class="form-group form-edit-profile col-md-12">
                         <label for="inputEmail">Email</label>
                         <input type="email" class="form-control" id="inputEmail" name="inputEmail" ng-model="user.email" required>

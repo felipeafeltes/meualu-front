@@ -151,6 +151,7 @@
                 WizardLine();
                 $rootScope.processedRental = true;
                 $state.go('perfil.cadastrarImovel.images');
+                $("html, body").animate({ scrollTop: 100 }, "slow");
             } else {
                 toastr.warning('Campos obrigatórios precisam ser preenchidos!');
             }
@@ -164,6 +165,7 @@
                 WizardLine();
                 $rootScope.processedAdvertisement = true;
                 $state.go('perfil.cadastrarImovel.rental');
+                $("html, body").animate({ scrollTop: 100 }, "slow");
             } else {
                 toastr.warning('Campos obrigatórios precisam ser preenchidos!');
             }
@@ -179,6 +181,7 @@
                 WizardLine();
                 $rootScope.processedImages = true;
                 $state.go('perfil.cadastrarImovel.terms');
+                $("html, body").animate({ scrollTop: 100 }, "slow");
             }
         }
 
@@ -190,6 +193,7 @@
                 $('#addressForm').addClass('completed');
                 WizardLine();
                 $state.go('perfil.cadastrarImovel.details');
+                $("html, body").animate({ scrollTop: 100 }, "slow");
             } else {
                 toastr.warning('Campos obrigatórios precisam ser preenchidos!');
             }
@@ -202,6 +206,7 @@
                 WizardLine();
                 $rootScope.processedDetails = true;
                 $state.go('perfil.cadastrarImovel.advertisement');
+                $("html, body").animate({ scrollTop: 100 }, "slow");
             } else {
                 toastr.warning('Campos obrigatórios precisam ser preenchidos!');
             }
@@ -209,6 +214,7 @@
 
         $scope.backForm = function () {
             BackWiazardLine();
+            $("html, body").animate({ scrollTop: 100 }, "slow");
         }
 
         //ENDERECO

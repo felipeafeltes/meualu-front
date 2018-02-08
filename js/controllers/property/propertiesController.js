@@ -11,6 +11,7 @@
     $scope.properties_order = true;
     var filters = $stateParams.filters || {};
 
+
     getProperties(filters);
     function getProperties(filters) {
       $scope.hasData = false;
@@ -125,11 +126,23 @@
     SimilarService
   ) {
 
+    $scope.$on('$viewContentLoaded', function () {
+      if (window.innerWidth < 992 && window.innerWidth > 768) {
+        $scope.countShowSimilares = 2;
+      } else if (window.innerWidth < 768) {
+        $scope.countShowSimilares = 1;
+      } else {
+        $scope.countShowSimilares = 3;
+      }
+    });
+
     $scope.propertyDetails = {};
     $scope.hasData = false;
     $scope.moreCondominium = false;
     $scope.moreImmobile = false;
     $scope.similarProperties;
+    $scope.countShowSimilares;
+
     $scope.scrollToFixedOptions = {
       preFixed: function () {
 

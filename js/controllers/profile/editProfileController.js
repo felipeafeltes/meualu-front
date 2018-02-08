@@ -13,8 +13,34 @@
             label: 'Feminino',
         }];
 
+        $scope.days = [];
+        $scope.months = [
+            { id: 1, name: 'Janeiro' },
+            { id: 2, name: 'Fevereiro' },
+            { id: 3, name: 'Março' },
+            { id: 4, name: 'Abril' },
+            { id: 5, name: 'Maio' },
+            { id: 6, name: 'Junho' },
+            { id: 7, name: 'Julho' },
+            { id: 8, name: 'Agosto' },
+            { id: 9, name: 'Setembro' },
+            { id: 10, name: 'Outubro' },
+            { id: 11, name: 'Novembro' },
+            { id: 12, name: 'Dezembro' }
+        ];
+        $scope.years = [];
+        for (let i = 1; i <= 31; i++) {
+            $scope.days.push(i);
+            
+        }
+
+        for (let i = new Date().getFullYear(); i >= 1918; i--) {
+            $scope.years.push(i);
+        }
+
         $scope.edit = function (isValid) {
             if (isValid) {
+                $scope.user.birthday = $scope.user.day_birthday + '-' + $scope.user.month_birthday + '-' + $scope.user.year_birthday;
                 $scope.response = false;
                 UpdateUsersService.update($scope.user).$promise.then(
                     function (data) {
