@@ -117,31 +117,29 @@
                             </div>
                         </div>
                     </div>
-                    <div class="clear-content animated fadeIn" ng-show="request">
-                        <div ng-show="schuduled" class="animated fadeIn">
-                            <div class='tick-text'>
-                                Visita agendada<br>Dia <span class="text-purple bold">{{selectedHour | date :"dd/MM"}}</span>                                às <span class="text-purple bold">{{selectedHour | date: "HH:mm"}}</span>.
+                    <div class="clear-content animated fadeIn" >
+                        <div class="animated fadeIn" >
+                            <div class="tick-text">
+                                <span class="black-text font-25 col-sm-12" style="width:100%">Requerimento de visita para o dia</span>
+                                <span style="width:100%" class="col-sm-12 "><span class="text-purple bold">{{selectedHour | date :"dd/MM"}}</span> às <span class="text-purple bold">{{selectedHour | date: "HH:mm"}}</span>.</span>
+                                <span style="width:100%" class="black-text font-25 col-sm-12">realizado com sucesso!</span>
                             </div>
                             <div class="check-div">
-                                <div class="container-check animated infinite rubberBand">
-                                    <div class='bkground-check'>
-                                        <div></div>
-                                    </div>
-
-                                    <div class='tick'>
-                                        <div>✔</div>
-                                    </div>
+                                <div class="container-check">
+                                    O proprietário possui até 24 horas para confirmar este horário, ou a visista é automaticamente cancelada. Não se preocupe,
+                                    você receberá todas as atualizações por e-mail, ou pode acompanhar pelo link abaixo.
                                 </div>
                             </div>
-                            <div class='tick-text bottom-align'>
-                                <a style="color:#f4cc6a" ui-sref="perfil.scheduleds.renter">Ver Visitas</a>
+                            <div class="tick-text bottom-align">
+                                <u><a class="text-purple" ui-sref="perfil.scheduleds.renter">Ver minhas visitas</a></u>
                             </div>
                         </div>
-                        <img ng-show="request && !schuduled" class="loading-data" width="160" src="assets/imagens/loadingRipple.gif">
                     </div>
+                    <img ng-show="request && !schuduled" class="loading-data" width="160" src="assets/imagens/loadingRipple.gif">
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </section>
 <footer></footer>
@@ -180,6 +178,7 @@
     }
 
     .check-div {
+        width: 70%;
         position: absolute;
         left: 50%;
         top: 55%;
@@ -196,15 +195,19 @@
         position: relative;
     }
 
+
+
     .tick-text {
-        font-size: 40px;
+        width: 100%;
+        font-size: 35px;
         text-align: center;
         position: absolute;
         font-family: 'Circular std book', sans-serif;
         color: rgba(103, 183, 179, 0.87);
-        position: relative;
-        left: 50%;
-        transform: translateX(-50%);
+    }
+
+    .font-25 {
+        font-size: 20px;
     }
 
     .bottom-align {
@@ -383,42 +386,10 @@
     }
 
     .container-check {
-        margin: 20px;
-        width: 160px;
-        height: 160px;
         pointer-events: none;
+        text-align: center;
         user-select: none;
-    }
-
-    .bkground-check {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: absolute;
-        width: 160px;
-        height: 160px;
-    }
-
-    .bkground-check div {
-        width: 160px;
-        height: 160px;
-        background-color: #5f447b;
-        border-radius: 100px;
-    }
-
-    .tick {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: absolute;
-        width: 160px;
-        height: 160px;
-    }
-
-    .tick div {
-        color: #fff;
-        font-size: 120px;
-        font-weight: bold;
+        border: 1px solid #000;
     }
 
     @media(max-width:1002px) {
@@ -458,7 +429,7 @@
             margin-top: -320px;
         }
         .container-schedule {
-            padding-right:3px;
+            padding-right: 3px;
             padding-left: 3px;
             margin-right: auto;
             margin-left: auto;
