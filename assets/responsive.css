@@ -112,8 +112,8 @@
     margin:5px 0px 5px 0px;
   }
   .no-p-xs{
-    padding-left: 0px;
-    padding-right: 0px;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
   }
 }
 

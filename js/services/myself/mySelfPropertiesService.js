@@ -4,10 +4,12 @@
     angular
         .module('myPropertiesService', ['ngResource', 'ngRoute'])
         .factory('myPropertie', myPropertie)
-        .factory('mySelfVisits', mySelfVisits);
+        .factory('mySelfVisitsLandlord', mySelfVisitsLandlord)
+        .factory('mySelfVisitsRenter', mySelfVisitsRenter);
 
     myPropertie.$inject = ['$resource', 'config'];
-    mySelfVisits.$inject = ['$resource', 'config'];
+    mySelfVisitsLandlord.$inject = ['$resource', 'config'];
+    mySelfVisitsRenter.$inject = ['$resource', 'config'];
 
     function myPropertie($resource, config) {
 
@@ -22,9 +24,22 @@
         return myselfProperties;
     }
 
-    function mySelfVisits($resource, config) {
+    function mySelfVisitsLandlord($resource, config) {
 
-        var myself = $resource(config.apiUrl + 'myself/visits',
+        var myself = $resource(config.apiUrl + 'myself/visits/landlord',
+            {}, {
+                get: {
+                    method: 'GET',
+                },
+            });
+
+
+        return myself;
+    }
+
+    function mySelfVisitsRenter($resource, config) {
+
+        var myself = $resource(config.apiUrl + 'myself/visits/renter',
             {}, {
                 get: {
                     method: 'GET',

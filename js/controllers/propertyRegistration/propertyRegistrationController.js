@@ -42,6 +42,11 @@
         $scope.propertyInfos;
         $scope.condominiumInfos;
 
+        if (!$rootScope.current_user.profile_completed) {
+            toastr.warning("Necessário completar o perfil!");
+            $state.go('perfil.editar');
+        }
+
         ExtraInfoProperty.get().$promise.then(
             function (data) {
                 $scope.propertyInfos = data.extra_infos;
@@ -78,7 +83,7 @@
         //Aluguel
         $scope.rental = {};
         $scope.rentalResponse;
-        $scope.rental.iptu_type = 'Mensal';
+        $scope.rental.iptu_type = 'Anual';
         $scope.rental.iptu = '0,00'
         $scope.checked = false;
         $scope.iptuSelect = function () {

@@ -24,6 +24,7 @@ var app = angular
     'slick',
     'ui.bootstrap',
     'angular-img-cropper',
+    'ngImgCrop',
     'td.easySocialShare',
     'angularUtils.directives.dirPagination',
     'infinite-scroll',
@@ -228,6 +229,20 @@ app.config(function (
       controller: 'ScheduledController',
       url: '/visitas',
       templateUrl: 'views/profile/scheduledVisits.html',
+      protected: true
+    })
+
+    .state('perfil.scheduleds.landlord', {
+      controller: 'ScheduledControllerLandlord',
+      url: '/propostas',
+      templateUrl: 'views/profile/scheduledVisitsLandlord.html',
+      protected: true
+    })
+
+    .state('perfil.scheduleds.renter', {
+      controller: 'ScheduledControllerRenter',
+      url: '/quero',
+      templateUrl: 'views/profile/scheduledVisitsRender.html',
       protected: true
     })
 

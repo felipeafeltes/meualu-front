@@ -1,0 +1,70 @@
+<div class="panel-body">
+    <img ng-show="!hasProperties" src="assets/imagens/loading.gif" width="100" height="100" class="loading-img" style="position:relative;left:50%;transform:translateX(-50%)">
+    <span class="col-sm-12" ng-show="noPropertie">{{noPropertie}}</span>
+    <div class="col-sm-12 panel-ngFor-divs" dir-paginate="v in properties|itemsPerPage:5" ng-show="hasProperties">
+        <div class="col-md-5 no-padding" ng-click="details(v.property.id)">
+            <img ng-src="{{v.pictures[0].url}}" class="img-bordered img-responsive" style="max-width: 100%">
+        </div>
+        <div class="col-md-7">
+            <div class="schuled-visits">
+                <div class="col-md-12">
+                    <span class="black-text" style="text-transform:capitalize">{{v.date | date:"EEE"}}({{v.date | date:"dd/MM"}}) às {{v.date | date :"HH:mm"}} hrs</span>
+                </div>
+                <div class="col-md-12">
+                    <strong class="text-green">{{v.property.description}}</strong>
+                </div>
+                <div class="col-md-12">
+                    <span>{{v.address.street}}, {{v.address.number}}, {{v.address.district}}</span>
+                    <span>{{v.address.city}}/{{v.address.state}}</span>
+                </div>
+            </div>
+            <div class="col-md-12 schuled-btns text-center" ng-if="v.status === 'pending'">
+                <div class="col-md-6 p-r-6">
+                    <button type="button" class="btn btn-block schuled-btn" ng-click="openReasons(v.id, $index)">Cancelar Visita</button>
+                </div>
+            </div>
+            <div class="col-md-12 schuled-btns p15" ng-if="v.status === 'cancelled'">
+                <span class="text-purple">{{v.justification_description}}</span>
+                <span class="text-purple">{{v.justification_complement}}</span>
+            </div>
+            <div class="col-md-12 schuled-btns p15" ng-if="v.status === 'accepted'">
+                <span class="text-green">Visita agendada!</span>
+            </div>
+        </div>
+    </div>
+    <dir-pagination-controls max-size="4" boundary-links="true" class="pull-right"></dir-pagination-controls>
+</div>
+
+<div class="modal" tabindex="-1" role="dialog" id="cancelScheduled">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form name="formCancel" ng-submit="send(formCancel.$valid)" novalidate>
+                <div class="modal-header bg-green">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h3 class="modal-title text-center upcase">Cancelar Visita</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group" ng-repeat="j in justifications">
+                        <label>
+                            <input type="radio" name="reason" value="{{j.id}}" ng-model="$parent.cancelReason" ng-required="cancelReason === undefined">
+                            {{j.description}}
+                        </label>
+                        <div ng-show="j.requires_complement && cancelReason == 10">
+                            <textarea name="otherReason" class="col-md-12 m-b-30" rows="4" ng-required="cancelReason == 3" ng-model="$parent.otherReason"
+                                ng-maxlength="100"></textarea>
+                        </div>
+                    </div>
+                    <div ng-show="formCancel.$submitted || formCancel.reason.$touched">
+                        <p ng-show="formCancel.reason.$error.required" class="help-block error">É obrigatório selecionar uma justificativa.</p>
+                        <p ng-show="formCancel.otherReason.$error.maxlength" class="help-block error">Máximo de 100 caracteres.</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-transparent" data-dismiss="modal">Fechar</button>
+                    <button type="submit" class="btn btn-danger" ng-disabled="cancelVisit">Cancelar</button>
+                    <img ng-if="cancelVisit" src="assets/imagens/loading.gif" width="30" height="30" class="pull-right loading-img">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

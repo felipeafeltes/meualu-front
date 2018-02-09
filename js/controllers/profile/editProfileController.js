@@ -4,7 +4,12 @@
 
     function editProfileController($rootScope, UpdateUsersService, $scope, $state, $http, viaCep) {
         $scope.response = true;
-        $scope.user = $rootScope.current_user;
+
+        setTimeout(function () {
+            $scope.user = $rootScope.current_user;
+            $scope.$apply();
+        }, 400);
+        
         $scope.sexOptions = [{
             value: 'male',
             label: 'Masculino',
@@ -31,20 +36,38 @@
         $scope.years = [];
         for (let i = 1; i <= 31; i++) {
             $scope.days.push(i);
-            
+
         }
 
         for (let i = new Date().getFullYear(); i >= 1918; i--) {
             $scope.years.push(i);
         }
 
+        $scope.myImage = '';
+        $scope.myCroppedImage = '';
+
+        var handleFileSelect = function (evt) {
+            var file = evt.currentTarget.files[0];
+            var reader = new FileReader();
+            reader.onload = function (evt) {
+                $scope.$apply(function ($scope) {
+                    $scope.myImage = evt.target.result;
+                });
+            };
+            reader.readAsDataURL(file);
+        };
+        angular.element(document.querySelector('#fileInput')).on('change', handleFileSelect);
+
+
         $scope.edit = function (isValid) {
             if (isValid) {
+                $scope.user.picture_base64 = $scope.myCroppedImage;
                 $scope.user.birthday = $scope.user.day_birthday + '-' + $scope.user.month_birthday + '-' + $scope.user.year_birthday;
                 $scope.response = false;
                 UpdateUsersService.update($scope.user).$promise.then(
                     function (data) {
                         $scope.response = true;
+                        $rootScope.current_user.picture_url = $scope.myCroppedImage;
                         toastr.success("Cadastro atualizado!");
                     },
                     function (err) {
