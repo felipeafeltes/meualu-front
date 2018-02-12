@@ -6,10 +6,12 @@
         .factory('User', User)
         .factory('RecoverService', RecoverService)
         .factory('MySelf', MySelf)
+        .factory('ConfirmAccountService', ConfirmAccountService)
 
     User.$inject = ['$resource', 'config'];
     MySelf.$inject = ['$resource', 'config'];
     RecoverService = ['$resource', 'config'];
+    ConfirmAccountService = ['$resource', 'config'];
 
     function User($resource, config) {
         var login = $resource(config.apiUrl + 'users/sign_in',
@@ -54,6 +56,17 @@
             return angular.toJson(data);
         }
         return recoverPassword;
+    }
+
+    function ConfirmAccountService($resource, config) {
+        var confirm = $resource(config.apiUrl + 'users/confirmation?confirmation_token=:token',
+            { token: '@token' }, {
+                get: {
+                    method: 'GET',
+                },
+            });
+
+        return confirm;
     }
 
 

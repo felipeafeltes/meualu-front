@@ -5,6 +5,7 @@
     app.controller('UserSessionsRegister', UserSessionsRegister);
     app.controller('UserResetPassword', UserResetPassword);
     app.controller('UserRecoverPassword', UserRecoverPassword);
+    app.controller('UserConfirm', UserConfirm);
 
     function UserSessionsSignIn($scope, User, $rootScope, $uibModal, $state, $http, MySelf) {
         $scope.user = new User();
@@ -43,6 +44,20 @@
             $rootScope.current_user = null;
             $state.go('home');
         };
+    }
+
+    function UserConfirm($scope, $state, $stateParams, ConfirmAccountService, $location) {
+        ConfirmAccountService.get(
+            { token: $location.search().confirmation_token },
+            function (data) {
+                $state.go('home');
+                toastr.success("Conta confirmada, faça login!");
+            }, function (data) {
+                toastr.error(data.message);
+                $state.go('home');
+            }
+        )
+
     }
 
     function UserResetPassword($scope, RecoverService) {
@@ -86,7 +101,7 @@
                         toastr.success("Senha Atualizada!")
                         $scope.response = true;
                     },
-                    function(data){
+                    function (data) {
                         toastr.error("Erro ao trocar de senha, por favor pessa uma nova redefinição!")
                     }
                 )
@@ -150,10 +165,9 @@
                     .$promise.then(
                     // success
                     function (success) {
-                        toastr.success("Cadastrado com sucesso!");
-                        localStorage.setItem('token', success.meta.auth_token);
+                        toastr.info("Cadastrado efetuado, enviamos um e-mail para o endereço informado, por favor confime sua conta!");
                         $('#modalLogin').modal('hide');
-                        $state.go('perfil.info');
+                        $state.go('home');
                         $scope.response = true;
                         $scope.registered = true;
                     },

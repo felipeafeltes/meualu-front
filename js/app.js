@@ -117,6 +117,11 @@ app.config(function (
         ],
       }
     })
+    .state('confirmation', {
+      url: '/confirmacao',
+      controller: 'UserConfirm',
+      templateUrl: 'views/home/confirmationAccount.html',
+    })
     .state('template', {
       url: '/template',
       templateUrl: 'index.html',
@@ -340,9 +345,9 @@ app.run(function ($transitions, $state, $rootScope, MySelf) {
     MySelf.get(
       {},
       function (data) {
-        $rootScope.current_user = data.renter;
+        $rootScope.current_user = data.user;
         if ($rootScope.current_user.birthday !== null) {
-          var d = new Date(data.renter.birthday);
+          var d = new Date(data.user.birthday);
           var day = (d.getDate() + 1);
           var month = (d.getMonth() + 1);
           var year = d.getFullYear();

@@ -11,9 +11,9 @@
                     {},
                     function (data) {
                         $scope.hasData = true;
-                        $rootScope.current_user = data.renter;
+                        $rootScope.current_user = data.user;
                         if ($rootScope.current_user.birthday !== null) {
-                            var d = new Date(data.renter.birthday);
+                            var d = new Date(data.user.birthday);
                             var day = (d.getDate() + 1);
                             var month = (d.getMonth() + 1);
                             var year = d.getFullYear();
