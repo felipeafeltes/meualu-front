@@ -39,8 +39,8 @@
                                 <select name="day" ng-model="user.day_birthday" ng-options="d for d in days" class="form-control" required>
                                     <option disabled value="">Dia</option>                 
                                 </select>
-                                <div ng-show="formAdd.$submitted || formAdd.day.$touched">
-                                    <p ng-show="formAdd.day.$error.required" class="f-13 help-block error">Obrigatório.</p>
+                                <div ng-show="formEdit.$submitted || formEdit.day.$touched">
+                                    <p ng-show="formEdit.day.$error.required" class="f-13 help-block error">Obrigatório.</p>
                                 </div>
                             </div>
                             <div class="col-md-5 no-p-xs">
@@ -49,16 +49,16 @@
                                     <option disabled value="">Mês</option>
 
                                 </select>
-                                <div ng-show="formAdd.$submitted || formAdd.month_birthday.$touched">
-                                    <p ng-show="formAdd.month_birthday.$error.required" class="f-13 help-block error">Obrigatório.</p>
+                                <div ng-show="formEdit.$submitted || formEdit.month_birthday.$touched">
+                                    <p ng-show="formEdit.month_birthday.$error.required" class="f-13 help-block error">Obrigatório.</p>
                                 </div>
                             </div>
                             <div class="col-md-4" style="padding-left: 0px;padding-right: 0px;">
                                 <select name="year" ng-model="user.year_birthday" ng-options="y for y in years" class="form-control" required>
                                     <option disabled value="">Ano</option>
                                 </select>
-                                <div ng-show="formAdd.$submitted || formAdd.year.$touched">
-                                    <p ng-show="formAdd.year.$error.required" class="f-13 help-block error">Obrigatório.</p>
+                                <div ng-show="formEdit.$submitted || formEdit.year.$touched">
+                                    <p ng-show="formEdit.year.$error.required" class="f-13 help-block error">Obrigatório.</p>
                                 </div>
                             </div>
                         </div>
