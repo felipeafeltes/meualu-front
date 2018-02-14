@@ -34,6 +34,7 @@
                     myselfVerify.put(
                         { code: res.code },
                         function (data) {
+                            $rootScope.current_user.verified = true;
                             toastr.success("Conta verificada com sucesso!");
                         }
                     )
