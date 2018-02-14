@@ -9,7 +9,7 @@
             $scope.user = $rootScope.current_user;
             $scope.$apply();
         }, 400);
-        
+
         $scope.sexOptions = [{
             value: 'male',
             label: 'Masculino',
@@ -45,6 +45,7 @@
 
         $scope.myImage = '';
         $scope.myCroppedImage = '';
+        $scope.hasImage = false;
 
         var handleFileSelect = function (evt) {
             var file = evt.currentTarget.files[0];
@@ -52,6 +53,7 @@
             reader.onload = function (evt) {
                 $scope.$apply(function ($scope) {
                     $scope.myImage = evt.target.result;
+                    $scope.hasImage = true;
                 });
             };
             reader.readAsDataURL(file);
@@ -61,13 +63,18 @@
 
         $scope.edit = function (isValid) {
             if (isValid) {
-                $scope.user.picture_base64 = $scope.myCroppedImage;
+                if ($scope.hasImage) {
+                    $scope.user.picture_base64 = $scope.myCroppedImage;
+                }
                 $scope.user.birthday = $scope.user.day_birthday + '-' + $scope.user.month_birthday + '-' + $scope.user.year_birthday;
                 $scope.response = false;
                 UpdateUsersService.update($scope.user).$promise.then(
                     function (data) {
                         $scope.response = true;
-                        $rootScope.current_user.picture_url = $scope.myCroppedImage;
+                        if ($scope.hasImage) {
+                            $rootScope.current_user.picture_url = $scope.myCroppedImage;
+                        }
+                        $rootScope.current_user.profile_completed = true;
                         toastr.success("Cadastro atualizado!");
                     },
                     function (err) {
@@ -81,7 +88,7 @@
 
                     }
                 );
-            }else{
+            } else {
                 toastr.warning("Preenche todos os campos!");
             }
         };
