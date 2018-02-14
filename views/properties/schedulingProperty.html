@@ -117,7 +117,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="clear-content animated fadeIn" ng-show="request">
+                    <div class="clear-content animated fadeIn" >
                         <div class="animated fadeIn" ng-show="schuduled">
                             <div class="tick-text">
                                 <span class="black-text font-25 col-sm-12" style="width:100%">Requerimento de visita para o dia</span>
@@ -135,7 +135,7 @@
                             </div>
                         </div>
                     </div>
-                    <img ng-show="request && !schuduled" class="loading-data" width="160" src="assets/imagens/loadingRipple.gif">
+                    <img class="loading-schedule" width="160" src="assets/imagens/loadingRipple.gif">
                 </div>
             </div>
         </div>
@@ -175,6 +175,14 @@
         min-height: 1px;
         padding-right: 15px;
         padding-left: 15px;
+    }
+
+    .loading-schedule{
+        position: relative;
+        z-index: 9;
+        top:-250px;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
     .check-div {
