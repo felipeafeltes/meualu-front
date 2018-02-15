@@ -113,6 +113,7 @@
                         $scope.others_net_value = response.rental.others_net_value
                         $scope.package_value = response.rental.package_value
                         $scope.rentalResponse = response.rental;
+                        $scope.checked = false;
                     })
             }
         }
@@ -222,6 +223,13 @@
             $("html, body").animate({ scrollTop: 100 }, "slow");
         }
 
+        $scope.disabledDate = function () {
+            $scope.formProperty.moving_house_date.$setValidity('actuallydate', true);
+            if ($scope.propertie.moving_house_available) {
+                $scope.propertie.moving_house_date = undefined;
+            }
+        }
+
         //ENDERECO
         $scope.searchCep = function (cepValue) {
             if (cepValue !== undefined) {
@@ -239,6 +247,7 @@
                         $scope.formAddress.number = data.gia;
                         $scope.formAddress.state = data.uf;
                         $scope.formAddress.street = data.logradouro;
+                        $scope.$apply();
                     });
                     xhr.send();
                 }

@@ -61,13 +61,13 @@
 
 
 <h4 class="black-text">Quando este imóvel estará disponível para <strong>mudança</strong>?</h4>
-<div class="form-group checkbox padding-15 col-md-6">
+<div class="form-group checkbox padding-15 col-md-12">
     <label>
-        <input type="checkbox" name="moving_house_available" ng-model="propertie.moving_house_available">Está disponível para mudança.
+        <input type="checkbox" name="moving_house_available" ng-click="disabledDate()" ng-model="propertie.moving_house_available">Está disponível para mudança.
     </label>
 </div>
-<div class="form-group padding-15 col-md-6">
-    <label class="col-sm-7 col-form-label" style="padding-right: 0px;padding-left: 0px;padding-top:5px;">Data em que ficará disponível</label>
+<div class="form-group padding-15 col-md-12">
+    <label class="col-sm-7 col-form-label" style="padding-right: 0px;padding-left: 0px;padding-top:5px;">Data em que ficará disponível:</label>
     <div class="col-sm-5" style="padding-left: 0px;padding-right: 0px;">
         <input type="date" actuallyDate ng-disabled="propertie.moving_house_available === true" ng-required="!propertie.moving_house_available"
             class="form-control redondend-border" name="moving_house_date" ng-model="propertie.moving_house_date">
@@ -75,6 +75,7 @@
     <div ng-show="fillAdvertisement || formProperty.moving_house_date.$touched">
         <p ng-show="formProperty.moving_house_date.$error.required" class="help-block error">Campo é obrigatório.</p>
         <p style="margin-top:50px" ng-show="formProperty.moving_house_date.$error.actuallydate" class="help-block error">Data de disponibilidade do imóvel não pode ser inferior à data de hoje.</p>
+        <p style="margin-top:50px" ng-show="formProperty.moving_house_date.$error.invalidyear" class="help-block error">Ano inválido.</p>
     </div>
 </div>
 

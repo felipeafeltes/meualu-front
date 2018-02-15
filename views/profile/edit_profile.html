@@ -23,7 +23,7 @@
                     <div class="form-group form-edit-profile col-md-6">
                         <label for="sex">Sexo</label>
                         <select name="sex" class="form-control" ng-model="user.sex" required>
-                            <option disabled value="" selected>Selecione o sexo</option>
+                            <option disabled value="" ng-selected='user.sex == "not_know"'>Selecione o sexo</option>
                             <option ng-repeat="option in sexOptions" value="{{option.value}}"
                             selected="user.sex == option.value">{{option.label}}</option>
                         </select>

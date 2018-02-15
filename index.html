@@ -114,7 +114,7 @@
   <div ng-if="!loadingDataPerfil" class="loading-div">
     <img class="loading-data" width="130" src="assets/imagens/loading.gif">
   </div>
-  <div ui-view autoscroll="true"></div>
+  <div ng-if="loadingDataPerfil" ui-view autoscroll="true"></div>
 </body>
 
 <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">

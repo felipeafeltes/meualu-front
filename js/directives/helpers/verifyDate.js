@@ -59,16 +59,20 @@ app.directive('actuallydate', function () {
     return {
         restrict: 'A',
         require: 'ngModel',
-        link: function ($scope, $element, $attrs, ngModel) {
+        link: function ($scope, $element, $attrs, ngModel, $filter) {
             $scope.$watch($attrs.ngModel, function (value) {
                 var isValid;
-                if (value >= new Date()) {
+                var d = new Date(value).toLocaleDateString();
+                var valDate = new Date().toLocaleDateString();
+
+                if (d >= valDate) {
                     isValid = true;
                     ngModel.$setValidity('actuallydate', isValid);
-                } else if (value < new Date()) {
+                } else if (d < valDate) {
                     isValid = false;
                     ngModel.$setValidity('actuallydate', isValid);
                 }
+
             });
         }
     };

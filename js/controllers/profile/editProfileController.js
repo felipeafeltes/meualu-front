@@ -4,12 +4,7 @@
 
     function editProfileController($rootScope, UpdateUsersService, $scope, $state, $http, viaCep) {
         $scope.response = true;
-
-        setTimeout(function () {
-            $scope.user = $rootScope.current_user;
-            $scope.$apply();
-        }, 400);
-
+        $scope.user = $rootScope.current_user;
         $scope.sexOptions = [{
             value: 'male',
             label: 'Masculino',
@@ -109,6 +104,7 @@
                         $scope.user.address.number = cep.gia;
                         $scope.user.address.state = cep.uf;
                         $scope.user.address.street = cep.logradouro;
+                        $scope.$apply();
                     });
                     xhr.send();
                 }

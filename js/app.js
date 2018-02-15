@@ -345,16 +345,18 @@ app.run(function ($transitions, $state, $rootScope, MySelf) {
     MySelf.get(
       {},
       function (data) {
-        $rootScope.current_user = data.user;
-        if ($rootScope.current_user.birthday !== null) {
-          var d = new Date(data.user.birthday);
-          var day = (d.getDate() + 1);
-          var month = (d.getMonth() + 1);
-          var year = d.getFullYear();
-          $rootScope.current_user.day_birthday = day;
-          $rootScope.current_user.month_birthday = month;
-          $rootScope.current_user.year_birthday = year;
-          $rootScope.current_user.birthday = `${day}/${month}/${year}`;
+        if (data.user) {
+          $rootScope.current_user = data.user;
+          if ($rootScope.current_user.birthday !== null) {
+            var d = new Date(data.user.birthday);
+            var day = (d.getDate() + 1);
+            var month = (d.getMonth() + 1);
+            var year = d.getFullYear();
+            $rootScope.current_user.day_birthday = day;
+            $rootScope.current_user.month_birthday = month;
+            $rootScope.current_user.year_birthday = year;
+            $rootScope.current_user.birthday = `${day}/${month}/${year}`;
+          }
         }
         $rootScope.loadingDataPerfil = true;
       },
