@@ -10,7 +10,7 @@
 
     }
 
-    function ScheduledControllerLandlord($state,$scope, ScheduledCancel, mySelfVisitsLandlord, ScheduleCancelJustificationsL, ScheduledAccept) {
+    function ScheduledControllerLandlord($state, $scope, ScheduledCancel, mySelfVisitsLandlord, ScheduleCancelJustificationsL, ScheduledAccept) {
         $scope.properties = [];
         $scope.justifications = [];
         $scope.cancelReason;
@@ -98,7 +98,7 @@
         }
     }
 
-    function ScheduledControllerRenter($state,$scope, mySelfVisitsRenter, ScheduleCancelJustificationsR, ScheduledCancel) {
+    function ScheduledControllerRenter($state, $scope, mySelfVisitsRenter, ScheduleCancelJustificationsR, ScheduledCancel) {
         $scope.properties = [];
         $scope.justifications = [];
         $scope.cancelReason;
