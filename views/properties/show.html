@@ -84,9 +84,9 @@
               <small>{{(propertyDetails.furniture === true)? 'mobiliado' : 'sem mobilia'}}</small>
             </div>
             <div class="characteristic">
-              <span>móveis</span><br>
+              <span>transporte</span><br>
               <div><img src="assets/imagens/icones/bus.png" width="25px"></div>
-              <small>{{(propertyDetails.public_transportation === true)? 'transporte' : 's/ transporte '}}</small>
+              <small>{{(propertyDetails.public_transportation === true)? 'perto' : 'longe'}}</small>
             </div>
 
           </div>
@@ -215,7 +215,7 @@
         </div>
 
         <slick ng-if="similarProperties.length" arrows="true" slides-to-show="{{countShowSimilares}}" slides-to-scroll="{{countShowSimilares}}" infinite="true" focus-on-select="true">
-          <div class="panel panel-default properties-related" ng-repeat="p in similarProperties" ng-click='details(p.id)'>
+          <div class="panel panel-default properties-related" ng-repeat="p in similarProperties" ng-click='details(p.id)' style="min-height: 340px">
             <div class="panel-heading properties-related">
               <img ng-src="{{p.pictures[0].url}}" class="img-full" alt="Responsive image">
             </div>

@@ -8,7 +8,7 @@ h1, h2, h3, h4, h5, h6{font-family:'Circular std book', sans-serif;}
 .logo-heigth{height:50px;}
 .chat-logo{width:30px;height:30px;}
 .full-heigth{height:100%;min-height:100vh;}
-.footer-heigth{min-height:20vh;}
+.footer-heigth{min-height:200px;}
 .m-r-5{margin-right:5px;}
 .m-r-10{margin-right:10px;}
 .m-r-15{margin-right:15px;}
@@ -1085,7 +1085,6 @@ span.round-tab:hover {
   vertical-align: middle;
   width: 100%;
   height: 325px;
-  background: rgba(236, 236, 236, 0.36);
 }
 
 .box * {

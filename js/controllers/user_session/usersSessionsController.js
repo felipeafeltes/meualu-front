@@ -26,11 +26,31 @@
                     function (response) {
                         localStorage.setItem('token', response.auth_token);
                         $('#modalLogin').modal('hide');
-                        $state.go('perfil.info');
+                        $rootScope.loadingDataPerfil = false;
+                        MySelf.get(
+                            {},
+                            function (data) {
+                                if (data.user) {
+                                    $rootScope.current_user = data.user;
+                                    if ($rootScope.current_user.birthday !== null) {
+                                        var d = new Date(data.user.birthday);
+                                        var day = (d.getDate() + 1);
+                                        var month = (d.getMonth() + 1);
+                                        var year = d.getFullYear();
+                                        $rootScope.current_user.day_birthday = day;
+                                        $rootScope.current_user.month_birthday = parseInt(month);
+                                        $rootScope.current_user.year_birthday = year;
+                                        $rootScope.current_user.birthday = `${day}/${month}/${year}`;
+                                    }
+                                }
+                                $rootScope.loadingDataPerfil = true;
+                            },
+                        );
                     },
                     function (data) {
                         if (data.errors !== undefined) { toastr.error(data.errors[0]) }
                         else { toastr.warning(data.error) }
+                        $rootScope.loadingDataPerfil = true;
                     }
                     )
             }

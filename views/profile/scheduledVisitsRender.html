@@ -18,17 +18,20 @@
                     <span>{{v.address.city}}/{{v.address.state}}</span>
                 </div>
             </div>
-            <div class="col-md-12 schuled-btns text-center" ng-if="v.status === 'pending'">
-                <div class="col-md-6 p-r-6">
-                    <button type="button" class="btn btn-block schuled-btn" ng-click="openReasons(v.id, $index)">Cancelar Visita</button>
-                </div>
-            </div>
             <div class="col-md-12 schuled-btns p15" ng-if="v.status === 'cancelled'">
                 <span class="text-purple">{{v.justification_description}}</span>
                 <span class="text-purple">{{v.justification_complement}}</span>
             </div>
+            <div class="col-md-12 schuled-btns p15" ng-if="v.status === 'pending'">
+                <span class="text-purple">Esperando confirmação</span>
+            </div>
             <div class="col-md-12 schuled-btns p15" ng-if="v.status === 'accepted'">
                 <span class="text-green">Visita agendada!</span>
+            </div>
+            <div class="col-md-12 schuled-btns" ng-if="v.status === 'pending' || v.status === 'accepted'">
+                <div class="col-md-6 p-r-6">
+                    <button type="button" class="btn btn-block schuled-btn" ng-click="openReasons(v.id, $index)">Cancelar Visita</button>
+                </div>
             </div>
         </div>
     </div>
@@ -61,7 +64,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn-transparent" data-dismiss="modal">Fechar</button>
-                    <button type="submit" class="btn btn-danger" ng-disabled="cancelVisit">Cancelar</button>
+                    <button type="submit" class="btn btn-success" ng-disabled="cancelVisit">Confirmar</button>
                     <img ng-if="cancelVisit" src="assets/imagens/loading.gif" width="30" height="30" class="pull-right loading-img">
                 </div>
             </form>

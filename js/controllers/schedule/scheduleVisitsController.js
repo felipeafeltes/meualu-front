@@ -38,7 +38,8 @@
             }
         )
 
-        $scope.acceptVisit = function (id) {
+        $scope.acceptVisit = function (id, a) {
+            a.target.innerHTML = '<img src="assets/imagens/loadRoxo.gif" width="20" height="20">';
             $scope.acceptRequest = true;
             ScheduledAccept.put(
                 { id: id },
