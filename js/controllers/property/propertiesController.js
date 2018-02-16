@@ -45,9 +45,9 @@
                 options: {
                   icon: {
                     url: '/assets/imagens/gmap-pin.png',
-                    size: new google.maps.Size(40, 40),
+                    size: new google.maps.Size(25, 30),
                     origin: new google.maps.Point(0, 0),
-                    anchor: new google.maps.Point(0, 10),
+                    anchor: new google.maps.Point(0, 30),
                   },
                 }
               }
