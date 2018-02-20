@@ -46,6 +46,7 @@
         <div class="modal-content">
             <form name="formCancel" ng-submit="send(formCancel.$valid)" novalidate>
                 <div class="modal-header bg-green">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h3 class="modal-title text-center upcase">Cancelar Visita</h3>
                 </div>
                 <div class="modal-body">
@@ -65,7 +66,6 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn-transparent" data-dismiss="modal">Fechar</button>
                     <button type="submit" class="btn btn-success" ng-disabled="cancelVisit">Confirmar</button>
                     <img ng-if="cancelVisit" src="assets/imagens/loading.gif" width="30" height="30" class="pull-right loading-img">
                 </div>
