@@ -32,7 +32,6 @@
         ng-mouseleave="hoverLeave(property.id)"
         ng-click='details(property.id)'
         dir-paginate="property in properties | orderBy:'rental.value':!properties_order|itemsPerPage:5">
-        {{property.rental.value}}
           <div class="panel-body imovel-desc">
             <div class="col-md-5 col-sm-12 col-xs-12">
               <h4 class="text-dark">{{ property.description }}</h4>
