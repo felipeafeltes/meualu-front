@@ -33,7 +33,6 @@
         function (data) {
           $scope.properties = data.properties;
           if ($scope.properties.length > 0) {
-            console.log(data)
             data.properties.forEach(function (element) {
               var mark = {
                 id: element.id,
