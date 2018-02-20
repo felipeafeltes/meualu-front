@@ -66,6 +66,38 @@
         $scope.fillRental = false;
         $scope.fillImages = false;
 
+        $scope.date = {
+            day: null,
+            month: null,
+            year: null
+        }
+        $scope.invalidDateMoving = false;
+
+        $scope.days = [];
+        $scope.months = [
+            { id: 1, name: 'Janeiro' },
+            { id: 2, name: 'Fevereiro' },
+            { id: 3, name: 'Março' },
+            { id: 4, name: 'Abril' },
+            { id: 5, name: 'Maio' },
+            { id: 6, name: 'Junho' },
+            { id: 7, name: 'Julho' },
+            { id: 8, name: 'Agosto' },
+            { id: 9, name: 'Setembro' },
+            { id: 10, name: 'Outubro' },
+            { id: 11, name: 'Novembro' },
+            { id: 12, name: 'Dezembro' }
+        ];
+        $scope.years = [];
+        for (let i = 1; i <= 31; i++) {
+            $scope.days.push(i);
+
+        }
+
+        for (let i = new Date().getFullYear() + 50; i >= new Date().getFullYear(); i--) {
+            $scope.years.push(i);
+        }
+
         // Toggle selection checkbox list
         $scope.toggleSelection = function toggleSelection(extraInfo, checkbox1) {
             let check;
@@ -166,7 +198,19 @@
 
         $scope.processAdvertisement = function (isValid) {
             $scope.fillAdvertisement = true;
-            if (isValid) {
+
+            if (!$scope.propertie.moving_house_available || $scope.propertie.moving_house_available == undefined) {
+                $scope.propertie.moving_house_date = $scope.date.year + '-' + $scope.date.month + '-' + $scope.date.day;
+                var actDate = new Date();
+                var movingDate = new Date($scope.propertie.moving_house_date);
+                if (movingDate > actDate) {
+                    $scope.invalidDateMoving = false;
+                } else {
+                    $scope.invalidDateMoving = true;
+                }
+            }
+
+            if (isValid && !$scope.invalidDateMoving) {
                 $('#advertisementForm').addClass('completed');
                 WizardLine();
                 $rootScope.processedAdvertisement = true;
@@ -224,8 +268,11 @@
         }
 
         $scope.disabledDate = function () {
-            $scope.formProperty.moving_house_date.$setValidity('actuallydate', true);
             if ($scope.propertie.moving_house_available) {
+                $scope.invalidDateMoving = false;
+                $scope.date.day = null;
+                $scope.date.month = null;
+                $scope.date.year = null;
                 $scope.propertie.moving_house_date = undefined;
             }
         }

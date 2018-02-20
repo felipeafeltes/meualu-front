@@ -15,3 +15,20 @@ app.directive('negative', function () {
         }
     };
 });
+
+app.directive('minum', function () {
+    return {
+        restrict: 'A',
+        require: 'ngModel',
+        link: function ($scope, $element, $attrs, ngModel) {
+            $scope.$watch($attrs.ngModel, function (value) {
+                if (parseInt(value) < 1) {
+                    ngModel.$setValidity('minum', false);
+                } else {
+                    ngModel.$setValidity('minum', true);
+                }
+            });
+        }
+    };
+});
+
