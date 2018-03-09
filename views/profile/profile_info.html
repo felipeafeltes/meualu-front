@@ -1,6 +1,9 @@
 <div class="panel panel-imoveis">
     <div class="panel-header">
-        <h2 class="bold text-responsive-center">Imóveis Cadastrados</h2>
+        <div class="col-md-12">
+            <h2 class="bold text-responsive-center col-md-6">Imóveis Cadastrados</h2>
+            <button type="button" ui-sref="perfil.cadastrarImovel.address" class="btn btn-new btn-success">Cadastrar Novo</button>
+        </div>
     </div>
     <div class="panel-body">
         <img ng-show="!hasProperties" src="assets/imagens/loading.gif" width="100" height="100" class="loading-img" style="position:relative;left:50%;transform:translateX(-50%)">
@@ -79,8 +82,8 @@
                         <label for="value">Valor do Aluguel </label>
                         <div class="input-group">
                             <span class="input-group-addon">R$</span>
-                            <input type="text" class="form-control redondend-border" format="number" minvalue maxvalue name="value" ng-model="rental.value" ng-value="rental.value"
-                                required>
+                            <input type="text" class="form-control redondend-border" format="number" minvalue maxvalue name="value" ng-model="rental.value"
+                                ng-value="rental.value" required>
                         </div>
                         <div ng-show="formProperty.$submitted || formProperty.value.$touched">
                             <p ng-show="formProperty.value.$error.minval || formProperty.value.$error.maxval" class="help-block error">Valor inválido.</p>
@@ -168,3 +171,16 @@
         </div>
     </div>
 </div>
+
+
+<style>
+    .btn-new{
+        margin-top: 20px;
+    }
+
+    @media(max-width:991px){
+        .btn-new{
+            margin-left: 45px;
+        }
+    }
+</style>
