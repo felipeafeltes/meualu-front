@@ -24,7 +24,7 @@
         $rootScope.lng = "-51.1916632";
         $state.go('properties', {
           address_string: 'Porto Alegre, RS, Brasil',
-          geo_lat: "-29.9565731,-29.9565731",
+          geo_lat: "-29.963159,-30.255998",
           geo_lng: "-51.267284700000005,-51.08699920000004",
         });
       }
