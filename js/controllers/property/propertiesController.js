@@ -8,7 +8,7 @@
     $rootScope.coords = null;
     $scope.properties = [];
     $scope.markers = [];
-    $scope.properties_order = true;
+    $scope.properties_order = 0;
     var filters = $stateParams.filters || {};
 
 
@@ -28,7 +28,10 @@
             total_area: filters.total_area,
             rental: filters.rental,
             extra_infos: filters.extra_infos
-          }
+          },
+          geo_lat: $stateParams.geo_lat,
+          geo_lng: $stateParams.geo_lng,
+
         },
         function (data) {
           $scope.properties = data.properties;
@@ -64,6 +67,26 @@
           };
         },
       );
+    }
+
+
+    $scope.orderBy = function (data) {
+      data.sort(function (a, b) {
+        var valA = parseFloat(a.rental.package_value);
+        var valB = parseFloat(b.rental.package_value);
+        return valA < valB ? -1 : valA > valB ? 1 : 0;
+      });
+      $scope.properties_order = 1;
+    }
+
+    $scope.orderByReverse = function (data) {
+      data.reverse();
+      $scope.properties_order = 2;
+    }
+
+    $scope.noOrder = function () {
+      getProperties(filters);
+      $scope.properties_order = 0;
     }
 
     $scope.hover = function (id) {
@@ -168,7 +191,6 @@
         var markers = _setupMarkers([data]);
         $scope.marker = markers[0];
         $scope.map = { center: angular.copy(markers[0].coords), zoom: 15 };
-
         ExtraPropertyInfos.get(
           { id: $stateParams.id },
           function (data) {

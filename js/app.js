@@ -161,9 +161,11 @@ app.config(function (
       }
     })
     .state('properties', {
-      url: '/imoveis/:address_string?{filters:json}',
+      url: '/imoveis/:address_string?{filters:json}?:geo_lat:?:geo_lng',
       params: {
         address_string: null,
+        geo_lat:null,
+        geo_lng:null,
         filters: {
           value: null,
           squash: true,

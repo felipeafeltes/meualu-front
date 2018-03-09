@@ -63,7 +63,7 @@
       };
       $rootScope.range_filters = {
         total_area: setup_range_filters('total_area', 15, 500, 'fa-regua', 'total-area-filter'),
-        rental: setup_range_filters('rental', 800, 20000, 'fa-money', 'rental-filter')
+        rental: setup_range_filters('rental', 800, 10000, 'fa-money', 'rental-filter')
       };
       $rootScope.extra_info_filters = []
       ExtraInfo.get(

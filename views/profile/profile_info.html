@@ -79,14 +79,14 @@
                         <label for="value">Valor do Aluguel </label>
                         <div class="input-group">
                             <span class="input-group-addon">R$</span>
-                            <input type="text" class="form-control redondend-border" format="number" minvalue name="value" ng-model="rental.value" ng-value="rental.value"
+                            <input type="text" class="form-control redondend-border" format="number" minvalue maxvalue name="value" ng-model="rental.value" ng-value="rental.value"
                                 required>
                         </div>
                         <div ng-show="formProperty.$submitted || formProperty.value.$touched">
-                            <p ng-show="formProperty.value.$error.minval" class="help-block error">Valor inválido.</p>
+                            <p ng-show="formProperty.value.$error.minval || formProperty.value.$error.maxval" class="help-block error">Valor inválido.</p>
                             <p ng-show="formProperty.value.$error.required" class="help-block error">Valor do Aluguel é obrigatório.</p>
                         </div>
-                        <small>Valor do aluguel mínimo R$ 1.500,00</small>
+                        <small>Valor do aluguel min R$ 800,00 e max de R$ 10.000</small>
                     </div>
 
                     <div class="form-group col-md-6 h110">

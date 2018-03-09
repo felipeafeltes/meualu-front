@@ -7,7 +7,7 @@
     <nav class="navbar filters text-center m-t-20">
       <div class="filters-container" ng-controller="searchController" ng-include="'views/properties/_filters.html'"></div>
     </nav>
-    <div class="row text-gray" >
+    <div class="row text-gray">
       <div class="col-md-5 property-list list">
         <h2>
           <span class="text-green bold" ng-if="properties.length > 0">Encontramos {{ properties.length }} {{(properties.length === 1)? 'apê' : 'apês' }}</span>
@@ -19,20 +19,19 @@
           <span>Order por</span>
           <a class="text-green dropdown-toggle order-properties" type="button" id="dropdownPreco" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="true">
-            
-              {{ (properties_order)? "menor preço" : "maior preço" }}
+              <span ng-if="properties_order == 1">menor preço</span>
+              <span ng-if="properties_order == 2">maior preço</span>
+              <span ng-if="properties_order == 0">s/ ordenação</span>
               <span class="caret"></span>
             </a>
           <ul class="dropdown-menu" aria-labelledby="dropdownPreco">
-            <li><a ng-click="properties_order = true">menor preço</a></li>
-            <li><a ng-click="properties_order = false">maior preço</a></li>
+            <li><a ng-click="noOrder(properties)">s/ ordenação</a></li>
+            <li><a ng-click="orderBy(properties)">menor preço</a></li>
+            <li><a ng-click="orderByReverse(properties)">maior preço</a></li>
           </ul>
         </div>
-        <div class="panel panel-default" 
-        ng-mouseenter="hover(property.id)"
-        ng-mouseleave="hoverLeave(property.id)"
-        ng-click='details(property.id)'
-        dir-paginate="property in properties | orderBy:'rental.value':!properties_order|itemsPerPage:5">
+        <div class="panel panel-default" ng-mouseenter="hover(property.id)" ng-mouseleave="hoverLeave(property.id)" ng-click='details(property.id)'
+          dir-paginate="property in properties | itemsPerPage:5">
           <div class="panel-body imovel-desc">
             <div class="col-md-5 col-sm-12 col-xs-12">
               <h4 class="text-dark">{{ property.description }}</h4>
@@ -50,7 +49,7 @@
                 Valor total: {{ property.rental.package_value | currency }}
               </p>
             </div>
-            <div class="col-md-7 col-sm-12 col-xs-12 no-padding" >
+            <div class="col-md-7 col-sm-12 col-xs-12 no-padding">
               <div class="box">
                 <img ng-src="{{ property.pictures[0].url }}" class="img-full-bg" alt="Responsive image">
               </div>
@@ -61,9 +60,8 @@
       </div>
       <div class="col-md-7 no-padding">
         <ui-gmap-google-map center='map.center' zoom='map.zoom'>
-          <ui-gmap-marker click="shots(marker.id)"
-          events="markerEvents.events"
-          ng-repeat="marker in markers" idKey="marker.id" coords="marker.coords" options="marker.options">
+          <ui-gmap-marker click="shots(marker.id)" events="markerEvents.events" ng-repeat="marker in markers" idKey="marker.id" coords="marker.coords"
+            options="marker.options">
           </ui-gmap-marker>
         </ui-gmap-google-map>
       </div>
@@ -82,10 +80,12 @@
   .box {
     height: 200px !important;
   }
-  .localization-span:focus{
+
+  .localization-span:focus {
     outline: none;
   }
-  .localization-span:hover{
-    color:#5f447b !important;
+
+  .localization-span:hover {
+    color: #5f447b !important;
   }
 </style>
