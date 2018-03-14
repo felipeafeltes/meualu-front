@@ -55,7 +55,7 @@
 
             <form ng-submit="searchPropertie()" ng-controller="autoCompleteController">
               <div class="search-wrapper">
-                <input  ng-model="address" type="text" class="form-control search-home m-t-30"
+                <input g-places-autocomplete ng-model="address" options="autocompleteOptions" type="text" class="form-control search-home m-t-30"
                   placeholder="Busque por rua ou bairro">
                 <i class="fa fa-search fa-2x prefix" ng-click="searchPropertie()"></i>
               </div>
