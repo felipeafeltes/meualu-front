@@ -4,9 +4,9 @@
 
   function autoCompleteController($scope, $rootScope, $state) {
     $scope.searchPropertie = function () {
+      $scope.address = null;
       var address = $scope.address;
       if (address) {
-        console.log(address)
         if (address.formatted_address != undefined && $rootScope.address_string != address.formatted_address) {
           $rootScope.address_string = address.formatted_address;
         }
@@ -39,6 +39,7 @@
       componentRestrictions: { country: 'br' },
       location: new google.maps.LatLng(-30.255998, -51.224980),
       radius: 5000,
+      
     }
   }
 })();

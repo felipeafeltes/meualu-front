@@ -37,7 +37,7 @@
       </div>
     </nav>
 
-    <div class="m-a" ng-controller="autoCompleteController">
+    <div class="m-a">
       <div class="row">
 
 
@@ -53,14 +53,16 @@
             <p>e transparência.</p>
           </div>
 
-          <form ng-submit="searchPropertie()">
-            <div class="search-wrapper">
-              <input g-places-autocomplete ng-model="address" options="autocompleteOptions" type="text" class="form-control search-home m-t-30"
-                placeholder="Busque por rua ou bairro">
-              </input>
-              <i class="fa fa-search fa-2x prefix" ng-click="searchPropertie()"></i>
-            </div>
-          </form>
+            <form ng-submit="searchPropertie()" ng-controller="autoCompleteController">
+              <div class="search-wrapper">
+                <input  ng-model="address" type="text" class="form-control search-home m-t-30"
+                  placeholder="Busque por rua ou bairro">
+                <i class="fa fa-search fa-2x prefix" ng-click="searchPropertie()"></i>
+              </div>
+              <style>
+            </style>
+            </form>
+  
           <p class="text-center text-uppercase"><b>COMECE AQUI</b> A ALUGAR SUA PRÓXIMA MORADIA <br> ALUGAR UM APÊ É MAIS FÁCIL QUE VOCÊ IMAGINA.</p>
         </div>
       </div>
@@ -98,7 +100,8 @@
           <div class="circular">3</div>
         </h3>
         <p>
-          Visite, tire dúvidas e negocie condições com os anunciantes proprietários. Fornecemos ferramentas para que você se preocupe apenas com a mudança e tudo fique na sua mão.
+          Visite, tire dúvidas e negocie condições com os anunciantes proprietários. Fornecemos ferramentas para que você se preocupe
+          apenas com a mudança e tudo fique na sua mão.
         </p>
       </div>
     </div>
@@ -110,8 +113,8 @@
       <div class="col-md-6">
         <h1 class="my-header">Proprietário, <br class="hidden-sm hidden-xs"> quer alugar seu apartamento?</h1>
         <p class="l-h-1.7 m-t-30 font-18">
-          Encontre um inquilino. Conhecemos muitas pessoas que estão em busca de um novo lar, mais próximo do trabalho, da escola
-          dos filhos, da faculdade. Seu imóvel pode ser perfeito para elas.
+          Encontre um inquilino. Conhecemos muitas pessoas que estão em busca de um novo lar, mais próximo do trabalho, da escola dos
+          filhos, da faculdade. Seu imóvel pode ser perfeito para elas.
         </p>
         <p class="font-18">
           Nascemos porque vimos muitos proprietários alugando seus imóveis diretamente, sem muita segurança e garantia.
