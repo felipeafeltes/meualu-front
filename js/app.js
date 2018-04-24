@@ -88,10 +88,7 @@ app.config(function (
   });
 
   $urlRouterProvider.otherwise('/');
-  // Utilizando o HTML5 History API
-  /*   $locationProvider.html5Mode(true); */
-
-
+  $locationProvider.html5Mode(true)
 
   $stateProvider
     .state('home', {
