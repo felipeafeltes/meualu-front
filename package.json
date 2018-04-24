@@ -51,7 +51,9 @@
     "start": "serve -s -p $PORT",
     "dev": "serve -s -o",
     "postinstall": "bower install",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "coverage": "jest --updateSnapshot --coverage --collectCoverageFrom=js/**/*.js"
   },
   "repository": {
     "type": "git",
