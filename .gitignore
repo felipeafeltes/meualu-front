@@ -43,3 +43,6 @@ npm-debug.log
 .vscode
 *.log
 *.stackdump
+.wakatime-project
+package-lock.json
+yarn.lock

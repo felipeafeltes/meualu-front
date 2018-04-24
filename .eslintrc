@@ -1,0 +1,11 @@
+{
+  "extends": "angular",
+  "globals": {
+    "angular": true,
+    "ga": true,
+    "it": true,
+    "expect": true,
+    "jest": true,
+    "beforeEach": true
+  }
+}
