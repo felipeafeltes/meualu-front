@@ -14,10 +14,10 @@ Anuncie na Alu, use nossas ferramentas e continue tendo tudo na sua mão, com ma
 
 ### Dependências do projeto
 
-[nodejs](https://nodejs.org/en/download/ "Download nodejs")
+"node": ">=8.x"
+"npm": "~5.7.1"
 
 ## Instalação
 
 git clone `git@github.com:meualu/meualu-front.git`
 npm install
-bower install
