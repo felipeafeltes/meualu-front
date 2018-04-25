@@ -46,7 +46,7 @@
                 },
                 options: {
                   icon: {
-                    url: '/assets/imagens/gmap-pin.png',
+                    url: 'https://s3.amazonaws.com/meualu-bucket/app_images/gmap-pin.png',
                     size: new google.maps.Size(25, 30),
                     origin: new google.maps.Point(0, 0),
                     anchor: new google.maps.Point(0, 30),
@@ -91,12 +91,12 @@
 
     $scope.hover = function (id) {
       var index = $scope.markers.findIndex(x => x.id == id);
-      $scope.markers[index].options.icon.url = '/assets/imagens/gmap-pin2.png';
+      $scope.markers[index].options.icon.url = 'https://s3.amazonaws.com/meualu-bucket/app_images/gmap-pin2.png';
     }
 
     $scope.hoverLeave = function (id) {
       var index = $scope.markers.findIndex(x => x.id == id);
-      $scope.markers[index].options.icon.url = '/assets/imagens/gmap-pin.png';
+      $scope.markers[index].options.icon.url = 'https://s3.amazonaws.com/meualu-bucket/app_images/gmap-pin.png';
     }
 
     $scope.shots = function (id) {
@@ -238,7 +238,7 @@
           },
           options: {
             icon: {
-              url: '/assets/imagens/gmap-pin.png',
+              url: 'https://s3.amazonaws.com/meualu-bucket/app_images/gmap-pin.png',
               size: new google.maps.Size(40, 40),
               origin: new google.maps.Point(0, 0),
               anchor: new google.maps.Point(0, 30)

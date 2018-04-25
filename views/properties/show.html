@@ -1,7 +1,7 @@
 <header></header>
 
 <div ng-if="!hasData" class="loading-div">
-  <img class="loading-data" width="130" src="assets/imagens/loading.gif">
+  <img class="loading-data" width="130" src="https://s3.amazonaws.com/meualu-bucket/app_images/loading.gif">
 </div>
 <textarea id="clip" style="position:absolute;left:-99999px"></textarea>
 <div ng-if="hasData">
@@ -9,14 +9,14 @@
     <div class="container-fluid">
       <div id="pictures" class="row">
         <slick ng-if="propertyDetails.pictures.length" arrows="false" slides-to-show="1" id="slide-full" arrows="false" slides-to-scroll="1"
-          infinite="true" draggable="false">
-          <div ng-repeat="img in propertyDetails.pictures" class="m-t--70">
-            <img ng-src="{{img.url}}" class="slider-full-img" alt="Responsive image">
-          </div>
-        </slick>
-      </div>
-      <div class="dropdown share-button">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Compartilhar
+        infinite="true" draggable="false">
+        <div ng-repeat="img in propertyDetails.pictures" class="m-t--70">
+          <img ng-src="{{img.url}}" class="slider-full-img" alt="Responsive image">
+        </div>
+      </slick>
+    </div>
+    <div class="dropdown share-button">
+      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Compartilhar
         <span class="caret"></span></button>
 
         <ul class="dropdown-menu">
@@ -31,206 +31,206 @@
       <div class="row row-slider-full">
         <div class="col-md-7 col-sm-7 propertie-title">
           <slick ng-if="propertyDetails.pictures.length" arrows="true" slides-to-show="4" id="slide-nav" as-nav-for="#slide-full" slides-to-scroll="1"
-            infinite="true" focus-on-select="true">
-            <div class="image" ng-repeat="img in propertyDetails.pictures">
-              <img ng-src="{{img.url}}" class="slider-nav-img" alt="Responsive image">
-            </div>
-          </slick>
-
-          <div class="col-sm-12 p-b-50">
-            <h2 class="m-t-5 property-description">{{propertyDetails.description}}</h2>
-            <h3 class="m-t-5">{{propertyDetails.address.district}}</h3>
-            <h4 class="m-t-5">{{propertyDetails.address.street}}, {{propertyDetails.address.number}}</h4>
-            <h5>{{propertyDetails.address.city}}/{{propertyDetails.address.state}}</h5>
-
-            <div class="profile-img2 text-center">
-              <img ng-src="{{(propertyDetails.user.picture_url)? propertyDetails.user.picture_url :'assets/imagens/perfil.jpg'}}" class="img-circle">
-              <span>{{propertyDetails.user.first_name}}</span>
-            </div>
+          infinite="true" focus-on-select="true">
+          <div class="image" ng-repeat="img in propertyDetails.pictures">
+            <img ng-src="{{img.url}}" class="slider-nav-img" alt="Responsive image">
           </div>
-
-          <div class="col-sm-12 characteristics">
-
-            <div class="characteristic">
-              <span>área útil(m²)</span><br>
-              <div>{{propertyDetails.total_area}}</div>
-            </div>
-            <div class="characteristic">
-              <span>dormitórios</span><br>
-              <div>{{propertyDetails.bedrooms}}</div>
-            </div>
-            <div class="characteristic">
-              <span>garagem</span><br>
-              <div>{{propertyDetails.garages}}</div>
-            </div>
-            <div class="characteristic">
-              <span>banheiros</span><br>
-              <div>{{propertyDetails.bathrooms}}</div>
-            </div>
-            <div class="characteristic">
-              <span>andar</span><br>
-              <div>{{propertyDetails.floor}}</div>
-            </div>
-            <div class="characteristic">
-              <span>animais</span><br>
-              <div>
-                <img src="assets/imagens/icones/pet.png" width="25px">
-              </div>
-              <small>{{(propertyDetails.pets_allowed === true)? 'aceita pet' : 'não aceita'}}</small>
-            </div>
-            <div class="characteristic">
-              <span>móveis</span><br>
-              <div><img src="assets/imagens/icones/moveis.png" width="25px"></div>
-              <small>{{(propertyDetails.furniture === true)? 'mobiliado' : 'sem mobilia'}}</small>
-            </div>
-            <div class="characteristic">
-              <span>transporte</span><br>
-              <div><img src="assets/imagens/icones/bus.png" width="25px"></div>
-              <small>{{(propertyDetails.public_transportation === true)? 'perto' : 'longe'}}</small>
-            </div>
-
-          </div>
-        </div>
-
-        <div class="col-md-4 col-md-offset-1 col-sm-6 propertie-rental">
-          <div id="rental-fix" class="panel panel-rental hidden-sm hidden-xs" scroll-to-fixed="scrollToFixedOptions">
-            <div ng-include="'views/properties/_painel_valor_fixo.html'"></div>
-          </div>
-          <div class="panel panel-rental hidden-lg hidden-md ">
-            <div ng-include="'views/properties/_painel_valor_fixo.html'"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="bg-white">
-    <div class="container">
-      <div class="row row-slider-full">
-        <div class="col-md-7 div-descriptions m-b-15">
-
-          <div class="col-sm-12 p0">
-            <h3 class="m-t-5 bold">A moradia</h3>
-            <p class="home-description">
-              {{propertyDetails.dwelling_description}}
-            </p>
-          </div>
-
-          <div class="col-sm-12 p0 m-b-30">
-            <div class="col-sm-6  immobile-characteristics">
-              <h5>Imóvel</h5>
-              <div ng-repeat="e in extraInfos" class="pt-5-pb-5" ng-if="e.kind === 'property' && e.has">
-                <span>
-                  <i class="fa fa-check m-r-10 active-icon"></i> {{e.description}}
-                </span>
-                <br>
-              </div>
-
-              <div ng-show="moreImmobile" ng-repeat="c in extraInfos" class="pt-5-pb-5 fadeIn" ng-class="{'animated':moreImmobile}" ng-if="c.kind === 'property' && !c.has">
-                <span>
-                  <i class="fa fa-times m-r-15"></i> {{c.description}}
-                </span>
-                <br>
-              </div>
-
-              <span ng-show="!moreImmobile" class="more-informations p-l-25" ng-click="moreImmobile = true">+Mais informações</span>
-              <span ng-show="moreImmobile" class="more-informations p-l-25" ng-click="moreImmobile = false">-Menos informações</span>
-
-            </div>
-            <div class="col-sm-6 condominium-characteristics">
-              <h5>Condomínio</h5>
-              <div ng-repeat="c in extraInfos" class="pt-5-pb-5" ng-if="c.kind === 'condominium' && c.has">
-                <span>
-                  <i class="fa fa-check m-r-10 active-icon"></i> {{c.description}}
-                </span>
-                <br>
-              </div>
-
-              <div ng-show="moreCondominium" ng-repeat="m in extraInfos" class="pt-5-pb-5 fadeIn" ng-class="{'animated':moreCondominium}"
-                ng-if="m.kind === 'condominium' && !m.has">
-                <span>
-                    <i class="fa fa-times m-r-15"></i> {{m.description}}
-                  </span>
-                <br>
-              </div>
-
-              <span ng-show="!moreCondominium" class="more-informations p-l-25" ng-click="moreCondominium = true">+Mais informações</span>
-              <span ng-show="moreCondominium" class="more-informations p-l-25" ng-click="moreCondominium = false">-Menos informações</span>
-
-            </div>
-          </div>
-
-          <div class="col-sm-12 p0 border-t-b">
-            <h4 class="">{{(propertyDetails.user.city)? propertyDetails.user.city + ', ' + propertyDetails.user.state : 'Usuário ainda
-              não atualizou os dados!'}}</h4>
-            <h4 class="">Cadastrou em {{propertyDetails.user.created_at | date:"MMMM"}} de {{propertyDetails.user.created_at | date:"yyyy"}}</h4>
-            <div ng-show="propertyDetails.user.verified"><img src="assets/imagens/verify.png" width="60">Verificado</div>
-            <div ng-show="!propertyDetails.user.verified">Verificação de perfil pendente.</div>
-            <div class="profile-img2 text-center">
-              <img ng-src="{{(propertyDetails.user.picture_url)? propertyDetails.user.picture_url :'assets/imagens/perfil.jpg'}}" class="img-circle">
-              <span>{{propertyDetails.user.first_name}}</span>
-            </div>
-          </div>
-
-          <div class="col-sm-12 p0">
-            <h3 class="m-t-5 bold">O bairro</h3>
-            <p class="home-description">
-              {{propertyDetails.district_description}}
-            </p>
-          </div>
-
-          <div class="col-sm-12 p0">
-            <h4 class="m-t-5 bold">Mobilidade</h4>
-            <p class="home-description">
-              {{propertyDetails.mobility_description}}
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </section>
-
-
-
-  <section id="maps">
-    <div class="container-fluid">
-      <div class="row">
-        <ui-gmap-google-map center='map.center' zoom='map.zoom'>
-          <ui-gmap-marker idKey="marker.id" coords="marker.coords" options="marker.options">
-          </ui-gmap-marker>
-        </ui-gmap-google-map>
-      </div>
-    </div>
-  </section>
-
-
-  <section class="bg-white">
-    <div class="container p-t-30 p-b-30">
-      <div class="row">
-        <h1 class="m-b-50">Anúncios parecidos</h1>
-
-        <div ng-if="similarProperties.length === 0">
-          <h3 class="text-center"><i class="fa fa-frown-o "></i> Nenhum apartamento encontrado</h3>
-        </div>
-
-        <slick ng-if="similarProperties.length" arrows="true" slides-to-show="{{countShowSimilares}}" slides-to-scroll="{{countShowSimilares}}" infinite="true" focus-on-select="true">
-          <div class="panel panel-default properties-related" ng-repeat="p in similarProperties" ng-click='details(p.id)' style="min-height: 340px">
-            <div class="panel-heading properties-related">
-              <img ng-src="{{p.pictures[0].url}}" class="img-full" alt="Responsive image">
-            </div>
-            <div class="panel-body properties-related">
-              <h3 class="resized-h">{{p.description}}</h3>
-              <h5>{{p.address.street}}, {{p.address.district}} - {{p.address.number}}, {{p.address.city}}/{{p.address.state}}</h5>
-              <h4>{{p.rental.package_value | currency}}</h4>
-            </div>
-          </div>
-
         </slick>
 
+        <div class="col-sm-12 p-b-50">
+          <h2 class="m-t-5 property-description">{{propertyDetails.description}}</h2>
+          <h3 class="m-t-5">{{propertyDetails.address.district}}</h3>
+          <h4 class="m-t-5">{{propertyDetails.address.street}}, {{propertyDetails.address.number}}</h4>
+          <h5>{{propertyDetails.address.city}}/{{propertyDetails.address.state}}</h5>
+
+          <div class="profile-img2 text-center">
+            <img ng-src="{{(propertyDetails.user.picture_url)? propertyDetails.user.picture_url :'https://s3.amazonaws.com/meualu-bucket/app_images/perfil.jpg'}}" class="img-circle">
+            <span>{{propertyDetails.user.first_name}}</span>
+          </div>
+        </div>
+
+        <div class="col-sm-12 characteristics">
+
+          <div class="characteristic">
+            <span>área útil(m²)</span><br>
+            <div>{{propertyDetails.total_area}}</div>
+          </div>
+          <div class="characteristic">
+            <span>dormitórios</span><br>
+            <div>{{propertyDetails.bedrooms}}</div>
+          </div>
+          <div class="characteristic">
+            <span>garagem</span><br>
+            <div>{{propertyDetails.garages}}</div>
+          </div>
+          <div class="characteristic">
+            <span>banheiros</span><br>
+            <div>{{propertyDetails.bathrooms}}</div>
+          </div>
+          <div class="characteristic">
+            <span>andar</span><br>
+            <div>{{propertyDetails.floor}}</div>
+          </div>
+          <div class="characteristic">
+            <span>animais</span><br>
+            <div>
+              <img src="assets/imagens/icones/pet.png" width="25px">
+            </div>
+            <small>{{(propertyDetails.pets_allowed === true)? 'aceita pet' : 'não aceita'}}</small>
+          </div>
+          <div class="characteristic">
+            <span>móveis</span><br>
+            <div><img src="https://s3.amazonaws.com/meualu-bucket/app_images/icones/moveis.png" width="25px"></div>
+            <small>{{(propertyDetails.furniture === true)? 'mobiliado' : 'sem mobilia'}}</small>
+          </div>
+          <div class="characteristic">
+            <span>transporte</span><br>
+            <div><img src="https://s3.amazonaws.com/meualu-bucket/app_images/icones/bus.png" width="25px"></div>
+            <small>{{(propertyDetails.public_transportation === true)? 'perto' : 'longe'}}</small>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-md-4 col-md-offset-1 col-sm-6 propertie-rental">
+        <div id="rental-fix" class="panel panel-rental hidden-sm hidden-xs" scroll-to-fixed="scrollToFixedOptions">
+          <div ng-include="'views/properties/_painel_valor_fixo.html'"></div>
+        </div>
+        <div class="panel panel-rental hidden-lg hidden-md ">
+          <div ng-include="'views/properties/_painel_valor_fixo.html'"></div>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+<section class="bg-white">
+  <div class="container">
+    <div class="row row-slider-full">
+      <div class="col-md-7 div-descriptions m-b-15">
+
+        <div class="col-sm-12 p0">
+          <h3 class="m-t-5 bold">A moradia</h3>
+          <p class="home-description">
+            {{propertyDetails.dwelling_description}}
+          </p>
+        </div>
+
+        <div class="col-sm-12 p0 m-b-30">
+          <div class="col-sm-6  immobile-characteristics">
+            <h5>Imóvel</h5>
+            <div ng-repeat="e in extraInfos" class="pt-5-pb-5" ng-if="e.kind === 'property' && e.has">
+              <span>
+                <i class="fa fa-check m-r-10 active-icon"></i> {{e.description}}
+              </span>
+              <br>
+            </div>
+
+            <div ng-show="moreImmobile" ng-repeat="c in extraInfos" class="pt-5-pb-5 fadeIn" ng-class="{'animated':moreImmobile}" ng-if="c.kind === 'property' && !c.has">
+              <span>
+                <i class="fa fa-times m-r-15"></i> {{c.description}}
+              </span>
+              <br>
+            </div>
+
+            <span ng-show="!moreImmobile" class="more-informations p-l-25" ng-click="moreImmobile = true">+Mais informações</span>
+            <span ng-show="moreImmobile" class="more-informations p-l-25" ng-click="moreImmobile = false">-Menos informações</span>
+
+          </div>
+          <div class="col-sm-6 condominium-characteristics">
+            <h5>Condomínio</h5>
+            <div ng-repeat="c in extraInfos" class="pt-5-pb-5" ng-if="c.kind === 'condominium' && c.has">
+              <span>
+                <i class="fa fa-check m-r-10 active-icon"></i> {{c.description}}
+              </span>
+              <br>
+            </div>
+
+            <div ng-show="moreCondominium" ng-repeat="m in extraInfos" class="pt-5-pb-5 fadeIn" ng-class="{'animated':moreCondominium}"
+            ng-if="m.kind === 'condominium' && !m.has">
+            <span>
+              <i class="fa fa-times m-r-15"></i> {{m.description}}
+            </span>
+            <br>
+          </div>
+
+          <span ng-show="!moreCondominium" class="more-informations p-l-25" ng-click="moreCondominium = true">+Mais informações</span>
+          <span ng-show="moreCondominium" class="more-informations p-l-25" ng-click="moreCondominium = false">-Menos informações</span>
+
+        </div>
+      </div>
+
+      <div class="col-sm-12 p0 border-t-b">
+        <h4 class="">{{(propertyDetails.user.city)? propertyDetails.user.city + ', ' + propertyDetails.user.state : 'Usuário ainda
+          não atualizou os dados!'}}</h4>
+          <h4 class="">Cadastrou em {{propertyDetails.user.created_at | date:"MMMM"}} de {{propertyDetails.user.created_at | date:"yyyy"}}</h4>
+          <div ng-show="propertyDetails.user.verified"><img src="https://s3.amazonaws.com/meualu-bucket/app_images/verify.png" width="60">Verificado</div>
+          <div ng-show="!propertyDetails.user.verified">Verificação de perfil pendente.</div>
+          <div class="profile-img2 text-center">
+            <img ng-src="{{(propertyDetails.user.picture_url)? propertyDetails.user.picture_url :'https://s3.amazonaws.com/meualu-bucket/app_images/perfil.jpg'}}" class="img-circle">
+            <span>{{propertyDetails.user.first_name}}</span>
+          </div>
+        </div>
+
+        <div class="col-sm-12 p0">
+          <h3 class="m-t-5 bold">O bairro</h3>
+          <p class="home-description">
+            {{propertyDetails.district_description}}
+          </p>
+        </div>
+
+        <div class="col-sm-12 p0">
+          <h4 class="m-t-5 bold">Mobilidade</h4>
+          <p class="home-description">
+            {{propertyDetails.mobility_description}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+
+<section id="maps">
+  <div class="container-fluid">
+    <div class="row">
+      <ui-gmap-google-map center='map.center' zoom='map.zoom'>
+        <ui-gmap-marker idKey="marker.id" coords="marker.coords" options="marker.options">
+        </ui-gmap-marker>
+      </ui-gmap-google-map>
+    </div>
+  </div>
+</section>
+
+
+<section class="bg-white">
+  <div class="container p-t-30 p-b-30">
+    <div class="row">
+      <h1 class="m-b-50">Anúncios parecidos</h1>
+
+      <div ng-if="similarProperties.length === 0">
+        <h3 class="text-center"><i class="fa fa-frown-o "></i> Nenhum apartamento encontrado</h3>
+      </div>
+
+      <slick ng-if="similarProperties.length" arrows="true" slides-to-show="{{countShowSimilares}}" slides-to-scroll="{{countShowSimilares}}" infinite="true" focus-on-select="true">
+        <div class="panel panel-default properties-related" ng-repeat="p in similarProperties" ng-click='details(p.id)' style="min-height: 340px">
+          <div class="panel-heading properties-related">
+            <img ng-src="{{p.pictures[0].url}}" class="img-full" alt="Responsive image">
+          </div>
+          <div class="panel-body properties-related">
+            <h3 class="resized-h">{{p.description}}</h3>
+            <h5>{{p.address.street}}, {{p.address.district}} - {{p.address.number}}, {{p.address.city}}/{{p.address.state}}</h5>
+            <h4>{{p.rental.package_value | currency}}</h4>
+          </div>
+        </div>
+
+      </slick>
+
+    </div>
+  </div>
+</section>
 </div>
 <footer></footer>
 <div ng-include="'views/home/_sign_in_modal.html'"></div>

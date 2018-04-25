@@ -1,206 +1,206 @@
 <div class="panel panel-default">
-    <div class="panel-imoveis">
-        <div class="panel-header">
-            <h2 class="bold text-dark text-responsive-center">Editar Perfil</h2>
-        </div>
-        <div class="panel-body panel-body-edit">
-            <form name="formEdit" ng-submit="edit(formEdit.$valid)" novalidate>
-                <div class="form-row">
-                    <div class="form-group form-edit-profile col-md-6">
-                        <label for="firstName">Primeiro Nome</label>
-                        <input type="text" class="form-control" id="firstName" ng-model="user.first_name" name="firstName" required>
-                        <div ng-show="formEdit.$submitted || formEdit.firstName.$touched">
-                            <p ng-show="formEdit.firstName.$error.required" class="help-block error">Nome é obrigatório.</p>
-                        </div>
-                    </div>
-                    <div class="form-group form-edit-profile col-md-6">
-                        <label for="lastName">Sobrenome</label>
-                        <input type="text" class="form-control" id="lastName" ng-model="user.last_name" name="lastName" required>
-                        <div ng-show="formEdit.$submitted || formEdit.lastName.$touched">
-                            <p ng-show="formEdit.lastName.$error.required" class="help-block error">Sobrenome é obrigatório.</p>
-                        </div>
-                    </div>
-                    <div class="form-group form-edit-profile col-md-6">
-                        <label for="sex">Sexo</label>
-                        <select name="sex" class="form-control" ng-model="user.sex" required>
-                            <option disabled value="" ng-selected='user.sex == "not_know"'>Selecione o sexo</option>
-                            <option ng-repeat="option in sexOptions" value="{{option.value}}"
-                            selected="user.sex == option.value">{{option.label}}</option>
-                        </select>
-                        <div ng-show="formEdit.$submitted || formEdit.sex.$touched">
-                            <p ng-show="formEdit.sex.$error.required" class="help-block error">Sexo é obrigatório.</p>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-md-6">Data de Nascimento</label>
-                        <div class="col-md-6">
-                            <div class="col-md-3" style="padding-left: 0px;padding-right: 0px;">
-                                <select name="day" ng-model="user.day_birthday" ng-options="d for d in days" class="form-control" required>
-                                    <option disabled value="">Dia</option>                 
-                                </select>
-                                <div ng-show="formEdit.$submitted || formEdit.day.$touched">
-                                    <p ng-show="formEdit.day.$error.required" class="f-13 help-block error">Obrigatório.</p>
-                                </div>
-                            </div>
-                            <div class="col-md-5 no-p-xs">
-                                <select name="month_birthday" ng-model="user.month_birthday" ng-options="m.id as m.name for m in months" class="form-control"
-                                    required>
-                                    <option disabled value="">Mês</option>
-
-                                </select>
-                                <div ng-show="formEdit.$submitted || formEdit.month_birthday.$touched">
-                                    <p ng-show="formEdit.month_birthday.$error.required" class="f-13 help-block error">Obrigatório.</p>
-                                </div>
-                            </div>
-                            <div class="col-md-4" style="padding-left: 0px;padding-right: 0px;">
-                                <select name="year" ng-model="user.year_birthday" ng-options="y for y in years" class="form-control" required>
-                                    <option disabled value="">Ano</option>
-                                </select>
-                                <div ng-show="formEdit.$submitted || formEdit.year.$touched">
-                                    <p ng-show="formEdit.year.$error.required" class="f-13 help-block error">Obrigatório.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group form-edit-profile col-md-12">
-                        <label for="inputEmail">Email</label>
-                        <input type="email" class="form-control" id="inputEmail" name="inputEmail" ng-model="user.email" required>
-                        <div ng-show="formEdit.$submitted || formEdit.inputEmail.$touched">
-                            <p ng-show="formEdit.inputEmail.$error.required" class="help-block error">Email é obrigatório.</p>
-                            <p ng-show="formEdit.inputEmail.$error.email" class="help-block error">Email não é válido.</p>
-                        </div>
-                    </div>
-                    <div class="form-group form-edit-profile col-md-6">
-                        <label for="phone">Telefone Celular</label>
-                        <input type="text" ui-br-phone-number-mask class="form-control" id="phone" name="phone" ng-model="user.phone_primary" required>
-                        <div ng-show="formEdit.$submitted || formEdit.phone.$touched">
-                            <p ng-show="formEdit.phone.$error.required" class="help-block error">Telefone é obrigatório.</p>
-                        </div>
-                    </div>
-                    <div class="form-group form-edit-profile col-md-6">
-                        <label for="phone_secondary">Telefone Celular 2 (Opcional)</label>
-                        <input type="text" ui-br-phone-number-mask class="form-control" id="phone_secondary" name="phone_secondary" ng-model="user.phone_secondary">
-                    </div>
-                    <div class="form-group form-edit-profile col-md-4">
-                        <label for="cep">CEP</label>
-                        <input type="text" class="form-control" id="cep" name="cep" ui-br-cep-mask ng-model="user.address.zip_code" ng-change="searchCep(user.address.zip_code)"
-                            required>
-                        <div ng-show="formEdit.$submitted || formEdit.cep.$touched">
-                            <p ng-show="formEdit.cep.$error.required" class="help-block error">CEP é obrigatório.</p>
-                            <p ng-show="formEdit.cep.$error.negative" class="help-block error">Inválido.</p>
-                        </div>
-                    </div>
-                    <div class="form-group form-edit-profile col-md-4">
-                        <label for="city">Cidade</label>
-                        <input type="text" class="form-control" id="city" name="city" ng-model="user.address.city" required>
-                        <div ng-show="formEdit.$submitted || formEdit.city.$touched">
-                            <p ng-show="formEdit.city.$error.required" class="help-block error">Cidade é obrigatório.</p>
-                        </div>
-                    </div>
-                    <div class="form-group form-edit-profile col-md-4">
-                        <label for="city">Estado</label>
-                        <input type="text" class="form-control" id="state" name="state" ng-model="user.address.state" required>
-                        <div ng-show="formEdit.$submitted || formEdit.state.$touched">
-                            <p ng-show="formEdit.state.$error.required" class="help-block error">Estado é obrigatório.</p>
-                        </div>
-                    </div>
-                    <div class="form-group form-edit-profile col-md-12">
-                        <label for="street">Endereço</label>
-                        <input type="text" class="form-control" id="street" name="street" ng-model="user.address.street" required>
-                        <div ng-show="formEdit.$submitted || formEdit.street.$touched">
-                            <p ng-show="formEdit.street.$error.required" class="help-block error">Endereço é obrigatório.</p>
-                        </div>
-                    </div>
-                    <div class="form-group form-edit-profile col-md-5">
-                        <label for="district">Bairro</label>
-                        <input type="text" class="form-control" id="district" name="district" ng-model="user.address.district" required>
-                        <div ng-show="formEdit.$submitted || formEdit.district.$touched">
-                            <p ng-show="formEdit.district.$error.required" class="help-block error">Bairro é obrigatório.</p>
-                        </div>
-                    </div>
-                    <div class="form-group form-edit-profile col-md-2">
-                        <label for="number">Número</label>
-                        <input type="text" class="form-control" id="number" name="number" numbers-only ng-model="user.address.number" required>
-                        <div ng-show="formEdit.$submitted || formEdit.number.$touched">
-                            <p ng-show="formEdit.number.$error.required" class="help-block error">Número é obrigatório.</p>
-                        </div>
-                    </div>
-                    <div class="form-group form-edit-profile col-md-5">
-                        <label for="complement">Complemento</label>
-                        <input type="text" class="form-control" id="complement" name="complement" ng-model="user.address.complement">
-                    </div>
-                    <div class="form-group  col-md-12">
-                        <label for="about">Descreva-se</label>
-                        <textarea class="form-control" id="about" rows="3" ng-model="user.about"></textarea>
-                    </div>
-
-                    <div class="form-group col-md-12">
-
-                        <div class="col-sm-6">
-                            <div class="upload-btn-wrapper">
-                                <button class="btn btn-green-full">Adicionar imagem</button>
-                                <input type="file" id="fileInput" accept="image/png, image/jpeg" />
-                            </div>
-                            <div class="cropArea ">
-                                <img-crop image="myImage" result-image="myCroppedImage" area-size="200" area-type="square"></img-crop>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6">
-                            Visualização:
-                            <div class="col-sm-12" style="margin-top:22px;">
-                                <img ng-src="{{myCroppedImage}}" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group col-md-12">
-                        <p class="form-text text-muted text-center">A Alu é construída a partir de relacionamentos. Ajude outras pessoas a saber um pouco mais sobre
-                            você.
-                        </p>
-                    </div>
-
-
-
-                </div>
-                <button type="submit" class="btn btn-send-contato btn-success pull-right">Enviar</button>
-                <img ng-if="!response" src="assets/imagens/loading.gif" width="50" height="50" class="pull-right loading-img">
-            </form>
-        </div>
+  <div class="panel-imoveis">
+    <div class="panel-header">
+      <h2 class="bold text-dark text-responsive-center">Editar Perfil</h2>
     </div>
+    <div class="panel-body panel-body-edit">
+      <form name="formEdit" ng-submit="edit(formEdit.$valid)" novalidate>
+        <div class="form-row">
+          <div class="form-group form-edit-profile col-md-6">
+            <label for="firstName">Primeiro Nome</label>
+            <input type="text" class="form-control" id="firstName" ng-model="user.first_name" name="firstName" required>
+            <div ng-show="formEdit.$submitted || formEdit.firstName.$touched">
+              <p ng-show="formEdit.firstName.$error.required" class="help-block error">Nome é obrigatório.</p>
+            </div>
+          </div>
+          <div class="form-group form-edit-profile col-md-6">
+            <label for="lastName">Sobrenome</label>
+            <input type="text" class="form-control" id="lastName" ng-model="user.last_name" name="lastName" required>
+            <div ng-show="formEdit.$submitted || formEdit.lastName.$touched">
+              <p ng-show="formEdit.lastName.$error.required" class="help-block error">Sobrenome é obrigatório.</p>
+            </div>
+          </div>
+          <div class="form-group form-edit-profile col-md-6">
+            <label for="sex">Sexo</label>
+            <select name="sex" class="form-control" ng-model="user.sex" required>
+              <option disabled value="" ng-selected='user.sex == "not_know"'>Selecione o sexo</option>
+              <option ng-repeat="option in sexOptions" value="{{option.value}}"
+              selected="user.sex == option.value">{{option.label}}</option>
+            </select>
+            <div ng-show="formEdit.$submitted || formEdit.sex.$touched">
+              <p ng-show="formEdit.sex.$error.required" class="help-block error">Sexo é obrigatório.</p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-md-6">Data de Nascimento</label>
+            <div class="col-md-6">
+              <div class="col-md-3" style="padding-left: 0px;padding-right: 0px;">
+                <select name="day" ng-model="user.day_birthday" ng-options="d for d in days" class="form-control" required>
+                  <option disabled value="">Dia</option>
+                </select>
+                <div ng-show="formEdit.$submitted || formEdit.day.$touched">
+                  <p ng-show="formEdit.day.$error.required" class="f-13 help-block error">Obrigatório.</p>
+                </div>
+              </div>
+              <div class="col-md-5 no-p-xs">
+                <select name="month_birthday" ng-model="user.month_birthday" ng-options="m.id as m.name for m in months" class="form-control"
+                required>
+                <option disabled value="">Mês</option>
+
+              </select>
+              <div ng-show="formEdit.$submitted || formEdit.month_birthday.$touched">
+                <p ng-show="formEdit.month_birthday.$error.required" class="f-13 help-block error">Obrigatório.</p>
+              </div>
+            </div>
+            <div class="col-md-4" style="padding-left: 0px;padding-right: 0px;">
+              <select name="year" ng-model="user.year_birthday" ng-options="y for y in years" class="form-control" required>
+                <option disabled value="">Ano</option>
+              </select>
+              <div ng-show="formEdit.$submitted || formEdit.year.$touched">
+                <p ng-show="formEdit.year.$error.required" class="f-13 help-block error">Obrigatório.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group form-edit-profile col-md-12">
+          <label for="inputEmail">Email</label>
+          <input type="email" class="form-control" id="inputEmail" name="inputEmail" ng-model="user.email" required>
+          <div ng-show="formEdit.$submitted || formEdit.inputEmail.$touched">
+            <p ng-show="formEdit.inputEmail.$error.required" class="help-block error">Email é obrigatório.</p>
+            <p ng-show="formEdit.inputEmail.$error.email" class="help-block error">Email não é válido.</p>
+          </div>
+        </div>
+        <div class="form-group form-edit-profile col-md-6">
+          <label for="phone">Telefone Celular</label>
+          <input type="text" ui-br-phone-number-mask class="form-control" id="phone" name="phone" ng-model="user.phone_primary" required>
+          <div ng-show="formEdit.$submitted || formEdit.phone.$touched">
+            <p ng-show="formEdit.phone.$error.required" class="help-block error">Telefone é obrigatório.</p>
+          </div>
+        </div>
+        <div class="form-group form-edit-profile col-md-6">
+          <label for="phone_secondary">Telefone Celular 2 (Opcional)</label>
+          <input type="text" ui-br-phone-number-mask class="form-control" id="phone_secondary" name="phone_secondary" ng-model="user.phone_secondary">
+        </div>
+        <div class="form-group form-edit-profile col-md-4">
+          <label for="cep">CEP</label>
+          <input type="text" class="form-control" id="cep" name="cep" ui-br-cep-mask ng-model="user.address.zip_code" ng-change="searchCep(user.address.zip_code)"
+          required>
+          <div ng-show="formEdit.$submitted || formEdit.cep.$touched">
+            <p ng-show="formEdit.cep.$error.required" class="help-block error">CEP é obrigatório.</p>
+            <p ng-show="formEdit.cep.$error.negative" class="help-block error">Inválido.</p>
+          </div>
+        </div>
+        <div class="form-group form-edit-profile col-md-4">
+          <label for="city">Cidade</label>
+          <input type="text" class="form-control" id="city" name="city" ng-model="user.address.city" required>
+          <div ng-show="formEdit.$submitted || formEdit.city.$touched">
+            <p ng-show="formEdit.city.$error.required" class="help-block error">Cidade é obrigatório.</p>
+          </div>
+        </div>
+        <div class="form-group form-edit-profile col-md-4">
+          <label for="city">Estado</label>
+          <input type="text" class="form-control" id="state" name="state" ng-model="user.address.state" required>
+          <div ng-show="formEdit.$submitted || formEdit.state.$touched">
+            <p ng-show="formEdit.state.$error.required" class="help-block error">Estado é obrigatório.</p>
+          </div>
+        </div>
+        <div class="form-group form-edit-profile col-md-12">
+          <label for="street">Endereço</label>
+          <input type="text" class="form-control" id="street" name="street" ng-model="user.address.street" required>
+          <div ng-show="formEdit.$submitted || formEdit.street.$touched">
+            <p ng-show="formEdit.street.$error.required" class="help-block error">Endereço é obrigatório.</p>
+          </div>
+        </div>
+        <div class="form-group form-edit-profile col-md-5">
+          <label for="district">Bairro</label>
+          <input type="text" class="form-control" id="district" name="district" ng-model="user.address.district" required>
+          <div ng-show="formEdit.$submitted || formEdit.district.$touched">
+            <p ng-show="formEdit.district.$error.required" class="help-block error">Bairro é obrigatório.</p>
+          </div>
+        </div>
+        <div class="form-group form-edit-profile col-md-2">
+          <label for="number">Número</label>
+          <input type="text" class="form-control" id="number" name="number" numbers-only ng-model="user.address.number" required>
+          <div ng-show="formEdit.$submitted || formEdit.number.$touched">
+            <p ng-show="formEdit.number.$error.required" class="help-block error">Número é obrigatório.</p>
+          </div>
+        </div>
+        <div class="form-group form-edit-profile col-md-5">
+          <label for="complement">Complemento</label>
+          <input type="text" class="form-control" id="complement" name="complement" ng-model="user.address.complement">
+        </div>
+        <div class="form-group  col-md-12">
+          <label for="about">Descreva-se</label>
+          <textarea class="form-control" id="about" rows="3" ng-model="user.about"></textarea>
+        </div>
+
+        <div class="form-group col-md-12">
+
+          <div class="col-sm-6">
+            <div class="upload-btn-wrapper">
+              <button class="btn btn-green-full">Adicionar imagem</button>
+              <input type="file" id="fileInput" accept="image/png, image/jpeg" />
+            </div>
+            <div class="cropArea ">
+              <img-crop image="myImage" result-image="myCroppedImage" area-size="200" area-type="square"></img-crop>
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+            Visualização:
+            <div class="col-sm-12" style="margin-top:22px;">
+              <img ng-src="{{myCroppedImage}}" />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group col-md-12">
+          <p class="form-text text-muted text-center">A Alu é construída a partir de relacionamentos. Ajude outras pessoas a saber um pouco mais sobre
+            você.
+          </p>
+        </div>
+
+
+
+      </div>
+      <button type="submit" class="btn btn-send-contato btn-success pull-right">Enviar</button>
+      <img ng-if="!response" src="https://s3.amazonaws.com/meualu-bucket/app_images/icones/loading.gif" width="50" height="50" class="pull-right loading-img">
+    </form>
+  </div>
+</div>
 </div>
 
 <style>
-    .cropArea {
-        background: #E4E4E4;
-        overflow: hidden;
-        width: 200px;
-        height: 200px;
-    }
+  .cropArea {
+    background: #E4E4E4;
+    overflow: hidden;
+    width: 200px;
+    height: 200px;
+  }
 
-    .upload-btn-wrapper {
-        position: relative;
-        overflow: hidden;
-        display: inline-block;
-    }
+  .upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+  }
 
-    .btn {
-        border: 2px solid gray;
-        color: gray;
-        background-color: white;
-        padding: 8px 20px;
-        border-radius: 8px;
-        font-size: 20px;
-        font-weight: bold;
-    }
+  .btn {
+    border: 2px solid gray;
+    color: gray;
+    background-color: white;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: bold;
+  }
 
-    .upload-btn-wrapper input[type=file] {
-        font-size: 100px;
-        position: absolute;
-        left: 0;
-        top: 0;
-        opacity: 0;
-    }
+  .upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+  }
 </style>

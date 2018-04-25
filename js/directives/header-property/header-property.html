@@ -2,15 +2,15 @@
   <div class="container-nav">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-        aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
+      aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
       <a class="navbar-brand" ui-sref="home">
-          <img src="assets/imagens/icones/logo_alu_roxo_beta.png" class="img-responsive logo-heigth">
-        </a>
+        <img src="https://s3.amazonaws.com/meualu-bucket/app_images/icones/logo_alu_roxo_beta.png" class="img-responsive logo-heigth">
+      </a>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <div class="col-md-10 col-sm-9">
@@ -24,22 +24,22 @@
             </div>
           </form>
         </div>
-        <ul class="nav navbar-nav navbar-right p-t-10" id="bs-example-navbar-collapse-1">
-          <li class="bold text-uppercase" ng-hide="current_user">
-            <a class="text-purple" ui-sref="proprietario">Anuncie seu apê</a>
-          </li>
-          <li class="bold text-uppercase" ng-hide="!current_user">
-            <a class="text-purple" ui-sref="perfil.cadastrarImovel.address">Anuncie seu apê</a>
-          </li>
+      <ul class="nav navbar-nav navbar-right p-t-10" id="bs-example-navbar-collapse-1">
+        <li class="bold text-uppercase" ng-hide="current_user">
+          <a class="text-purple" ui-sref="proprietario">Anuncie seu apê</a>
+        </li>
+        <li class="bold text-uppercase" ng-hide="!current_user">
+          <a class="text-purple" ui-sref="perfil.cadastrarImovel.address">Anuncie seu apê</a>
+        </li>
 
-          <li class="bold text-uppercase cursor-pointer" ng-hide="current_user">
-            <a class="text-purple" data-toggle="modal" data-target="#modalLogin">
-              <img src="assets/imagens/icones/account.png" width="15" height="15" class="margin-bottom-5">
-                  Entrar
-              </a>
-          </li>
-          <li class="bold text-uppercase cursor-pointer" style="margin-left:10px;" ng-show="current_user">
-            <a class="text-purple" ui-sref="perfil.info">  
+        <li class="bold text-uppercase cursor-pointer" ng-hide="current_user">
+          <a class="text-purple" data-toggle="modal" data-target="#modalLogin">
+            <img src="https://s3.amazonaws.com/meualu-bucket/app_images/icones/account.png" width="15" height="15" class="margin-bottom-5">
+            Entrar
+          </a>
+        </li>
+        <li class="bold text-uppercase cursor-pointer" style="margin-left:10px;" ng-show="current_user">
+          <a class="text-purple" ui-sref="perfil.info">
             {{current_user.first_name}}</a>
           </li>
           <li class="bold text-uppercase cursor-pointer" style="margin-left:10px;" ng-show="current_user" ng-controller="UserSessionsSignOut">

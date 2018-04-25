@@ -48,14 +48,18 @@ h1, h2, h3, h4, h5, h6{font-family:'Circular std book', sans-serif;}
 .bg-yellow{background:#f4cc6a;color:#fff; }
 .bg-green{background:#67b7b4;color:#fff;}
 .bg-gray{background:#f1f1f1;color:#b1b1b0;}
-.bg-principal{background:url('imagens/backgrounds/principal.jpg') no-repeat center center;-webkit-background-size: 100% 100%;-moz-background-size: 100% 100%;-o-background-size: 100% 100% ;background-size: 100% 100%;}
-.bg-proprietario{background:url('imagens/backgrounds/proprietario_optimized.jpg') no-repeat center center;-webkit-background-size: 100% 100%;-moz-background-size: 100% 100%;-o-background-size: 100% 100% ;background-size: 100% 100%;}
-.bg-door{background:url('imagens/backgrounds/door_optimized.jpg') no-repeat center center;-webkit-background-size: 100% 100%;-moz-background-size: 100% 100%;-o-background-size: 100% 100% ;background-size: 100% 100%;}
-.bg-man{background:url('imagens/backgrounds/bg-man.jpg') no-repeat;-webkit-background-size: 100% 100%;-moz-background-size: 100% 100%;-o-background-size: 100% 100%;background-size: 100% 100%;padding-bottom: 70px; padding-top: 50px;}
+.bg-principal{background:url('https://s3.amazonaws.com/meualu-bucket/app_images/backgrounds/principal.jpg') no-repeat center center;-webkit-background-size: 100% 100%;-moz-background-size: 100% 100%;-o-background-size: 100% 100% ;background-size: 100% 100%;}
+.bg-proprietario{background:url('https://s3.amazonaws.com/meualu-bucket/app_images/backgrounds/proprietario_optimized.jpg') no-repeat center center;-webkit-background-size: 100% 100%;-moz-background-size: 100% 100%;-o-background-size: 100% 100% ;background-size: 100% 100%;}
+.bg-door{background:url('https://s3.amazonaws.com/meualu-bucket/app_images/backgrounds/door_optimized.jpg') no-repeat center center;-webkit-background-size: 100% 100%;-moz-background-size: 100% 100%;-o-background-size: 100% 100% ;background-size: 100% 100%;}
+.bg-man{background:url('https://s3.amazonaws.com/meualu-bucket/app_images/backgrounds/bg-man.jpg') no-repeat;-webkit-background-size: 100% 100%;-moz-background-size: 100% 100%;-o-background-size: 100% 100%;background-size: 100% 100%;padding-bottom: 70px; padding-top: 50px;}
+
+/* Estas imagens não existem na pasta images da aplicação */
 .bg-building{background:url('imagens/backgrounds/bn-anunciar-bottom.jpg') no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;}
 .bg-chair{background:url('imagens/backgrounds/bn-anunciar-top.jpg') no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;}
 .bg-thank-inquilino{background:url('imagens/backgrounds/Agradecimentos.jpg') no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;}
 .bg-thank-proprietario{background:url('imagens/backgrounds/Agradecimentos2.jpg') no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;}
+/**/
+
 .text-yellow{color:#f4cc6a;}
 a.text-yellow:hover{color:#f4cc6a;}
 .text-yellow:visited, .text-yellow:focus{color:#f4cc6a;}
@@ -312,7 +316,7 @@ input.search-header:focus {
 }
 
 .register-form{
-  color:#b1b1b0; 
+  color:#b1b1b0;
 }
 
 .navbar-purple {
@@ -650,7 +654,7 @@ a {
 }
 
 .fa-regua {
-  background-image: url('imagens/icones/icon-regua.svg');
+  background-image: url('https://s3.amazonaws.com/meualu-bucket/app_images/icones/icon-regua.svg');
   background-position: 0 4px;
   width: 22px;
   height: 14px;
@@ -1155,21 +1159,21 @@ span.round-tab:hover {
 /* left and right added to ensure full width */
 #form-views.ng-enter,
 #form-views.ng-leave      { position:absolute; left:30px; right:30px;
-    transition:0.5s all ease; -moz-transition:0.5s all ease; -webkit-transition:0.5s all ease; 
+    transition:0.5s all ease; -moz-transition:0.5s all ease; -webkit-transition:0.5s all ease;
 }
 
 /* enter animation */
-#form-views.ng-enter            { 
+#form-views.ng-enter            {
     -webkit-animation:slideInRight 0.5s both ease;
     -moz-animation:slideInRight 0.5s both ease;
-    animation:slideInRight 0.5s both ease; 
+    animation:slideInRight 0.5s both ease;
 }
 
 /* leave animation */
-#form-views.ng-leave            { 
+#form-views.ng-leave            {
     -webkit-animation:slideOutLeft 0.5s both ease;
     -moz-animation:slideOutLeft 0.5s both ease;
-    animation:slideOutLeft 0.5s both ease;   
+    animation:slideOutLeft 0.5s both ease;
 }
 
 /* ANIMATIONS
@@ -1178,7 +1182,7 @@ span.round-tab:hover {
 @keyframes slideOutLeft {
     to      { transform: translateX(-200%); }
 }
-@-moz-keyframes slideOutLeft {  
+@-moz-keyframes slideOutLeft {
     to      { -moz-transform: translateX(-200%); }
 }
 @-webkit-keyframes slideOutLeft {

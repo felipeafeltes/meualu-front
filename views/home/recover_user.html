@@ -1,56 +1,56 @@
 <header></header>
 <section class="full-heigth text-white bg-yellow bg-principal font-18" style="position:relative">
-    <div class="bg-full-purple"></div>
-    <div class="container-video container">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="col-md-6 col-md-offset-3 p-t-50" >
-                    <div class="panel panel-imoveis">
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-md-12 register-form">
-                                    <form name="formRecover" ng-submit="recover(formRecover.$valid)" class="form-horizontal" novalidate>
-                                        <div class="form-group" style="margin-bottom:0px;">
-                                            <h3 class="text-purple no-top">Recuperar Senha</h3>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Nova Senha</label>
-                                            <input type="password" name="password" ng-model="user.password" ng-minlength="6" class="form-control input-lg redondend-border"
-                                                placeholder="Senha" required>
-                                            <div ng-show="formRecover.$submitted || formRecover.password.$touched">
-                                                <p ng-show="formRecover.password.$error.required" class="f-13 help-block error">Senha é obrigatório.</p>
-                                                <p ng-show="formRecover.password.$error.minlength" class="f-13 help-block error">Mínimo de 6 caracteres.</p>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label>Confirmar nova senha</label>
-                                            <input type="password" name="passwordConfirm" ng-model="user.passwordConfirm" data-password-confirm="user.password"  class="form-control input-lg redondend-border"
-                                                placeholder="Senha" required>
-                                            <div ng-show="formRecover.$submitted || formRecover.passwordConfirm.$touched">
-                                                <p ng-show="formRecover.passwordConfirm.$error.required" class="f-13 help-block error">Senha é obrigatório.</p>
-                                                <p ng-show="formRecover.passwordConfirm.$error.passwordConfirm" class="f-13 help-block error">Senhas não conferem.</p>                                                                            
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <button type="submit" ng-disabled="!response" class="btn btn-block btn-lg btn-green login redondend-border">Recuperar</button>
-                                            <img ng-if="!response" src="assets/imagens/loading.gif" width="50" height="50" class="loading-img img-center">
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="col-md-12 text-center">
-                                                <p>Já possui conta? <a ng-click="openLogin()">Acesse Aqui</a></p>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+  <div class="bg-full-purple"></div>
+  <div class="container-video container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="col-md-6 col-md-offset-3 p-t-50" >
+          <div class="panel panel-imoveis">
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-12 register-form">
+                  <form name="formRecover" ng-submit="recover(formRecover.$valid)" class="form-horizontal" novalidate>
+                    <div class="form-group" style="margin-bottom:0px;">
+                      <h3 class="text-purple no-top">Recuperar Senha</h3>
                     </div>
+                    <div class="form-group">
+                      <label>Nova Senha</label>
+                      <input type="password" name="password" ng-model="user.password" ng-minlength="6" class="form-control input-lg redondend-border"
+                      placeholder="Senha" required>
+                      <div ng-show="formRecover.$submitted || formRecover.password.$touched">
+                        <p ng-show="formRecover.password.$error.required" class="f-13 help-block error">Senha é obrigatório.</p>
+                        <p ng-show="formRecover.password.$error.minlength" class="f-13 help-block error">Mínimo de 6 caracteres.</p>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label>Confirmar nova senha</label>
+                      <input type="password" name="passwordConfirm" ng-model="user.passwordConfirm" data-password-confirm="user.password"  class="form-control input-lg redondend-border"
+                      placeholder="Senha" required>
+                      <div ng-show="formRecover.$submitted || formRecover.passwordConfirm.$touched">
+                        <p ng-show="formRecover.passwordConfirm.$error.required" class="f-13 help-block error">Senha é obrigatório.</p>
+                        <p ng-show="formRecover.passwordConfirm.$error.passwordConfirm" class="f-13 help-block error">Senhas não conferem.</p>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <button type="submit" ng-disabled="!response" class="btn btn-block btn-lg btn-green login redondend-border">Recuperar</button>
+                      <img ng-if="!response" src="https://s3.amazonaws.com/meualu-bucket/app_images/icones/loading.gif" width="50" height="50" class="loading-img img-center">
+                    </div>
+                    <div class="form-group">
+                      <div class="col-md-12 text-center">
+                        <p>Já possui conta? <a ng-click="openLogin()">Acesse Aqui</a></p>
+                      </div>
+                    </div>
+                  </form>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 
 </section>
 <div ng-include="'views/home/_sign_in_modal.html'"></div>

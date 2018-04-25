@@ -9,7 +9,7 @@
               <img ng-src="{{current_user.picture_url}}" class="img-responsive img-profile">
             </div>
             <div class="profile-img panel panel-default" ng-show="!current_user.picture_url">
-              <img ng-src="assets/imagens/perfil.jpg" class="img-responsive img-profile">
+              <img ng-src="https://s3.amazonaws.com/meualu-bucket/app_images/perfil.jpg" class="img-responsive img-profile">
             </div>
             <div class="profile-header">
               <h3 class="h3-header text-green bold">{{current_user.first_name}} {{current_user.last_name}}</h3>
@@ -27,18 +27,18 @@
                 Contratos
               </a> -->
               <a ui-sref-active="active" class="links" ui-sref="perfil.cadastrarImovel.address">
-                Cadastrar Imóvel           
+                Cadastrar Imóvel
               </a>
               <a ui-sref-active="active" class="links" ui-sref="perfil.scheduleds.renter">
-                Visitas Marcadas          
+                Visitas Marcadas
               </a>
 
               <div ng-show="!current_user.verified">
-                <button ng-click="verifyAccount()" type="button" class="btn btn-purple full btn-verify">Verificar Conta <img src="assets/imagens/verify.png" width="30"></button>
+                <button ng-click="verifyAccount()" type="button" class="btn btn-purple full btn-verify">Verificar Conta <img src="https://s3.amazonaws.com/meualu-bucket/app_images/verify.png" width="30"></button>
               </div>
 
               <span class="links text-green" ng-show="current_user.verified" title="Essa conta foi verificada">
-                  Verificado <img src="assets/imagens/verify.png" width="30">
+                Verificado <img src="https://s3.amazonaws.com/meualu-bucket/app_images/verify.png" width="30">
               </span>
 
             </div>

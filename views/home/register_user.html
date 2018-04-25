@@ -1,182 +1,182 @@
 <section class="full-heigth text-white bg-yellow bg-principal font-18" style="position:relative">
-    <div class="bg-full-purple"></div>
-    <div class="container-video container">
-        <nav class="navbar navbar-home">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" ui-sref="home">
-                    <img src="assets/imagens/icones/logo_alu_amarelo_beta.png" class="img-responsive logo-heigth">
-                </a>
-                </div>
-                <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-8">
-                    <ul class="nav navbar-nav">
-                        <li class="bold text-uppercase">
-                            <a class="text-yellow" ui-sref="proprietario">Anuncie aqui</a>
-                        </li>
-                        <li class="bold text-uppercase cursor-pointer" ng-hide="current_user">
-                            <a class="text-white" ng-click="openLogin()">
-                            <img src="assets/imagens/icones/account.png" width="15" height="15" class="margin-bottom-5">
-                                Entrar
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <div class="row">
-            <div class="col-sm-12" ng-show="registered">
-                <div class="col-md-8 col-md-offset-2 margin-top-50">
-                    <h1 class="text-center">Muito obrigado<br>por se cadastrar no meualu.com</h1>
-                    <p class="margin-top-10 text-center">É com as pessoas como você que queremos desenvolver novas soluções que transformarão o mercado imobiliário.</p>
-                    <p class="margin-top-10 text-center">Para continuar nosso contato, enviamos para seu e-mail um infográfico que te apresenta um pouco mais
-                        sobre a ALU.</p>
-                    <p class="margin-top-10 text-center">Fique à vontade para conversar conosco por e-mail.</p>
-                    <p class="margin-top-10 text-center">Até logo.</p>
-                </div>
-
-            </div>
-            <div class="col-sm-12" ng-show="!registered">
-                <div class="col-md-6 margin-top-50">
-                    <h1 class="text-yellow">Achamos o aluguel tão complicado que resolvemos simplificar até no nome.</h1>
-                    <h1>Muito prazer, somos a ALU.</h1>
-                    <p class="margin-top-50">Todas as pessoas devem ter o direito e o acesso fácil às opções de moradia. A única preocupação deveria
-                        ser escolher o melhor lugar para viver. Bom, nós acreditamos que seja possível deixar tudo mais leve,
-                        diminuir drasticamente a burocracia, digitalizar os processos e deixar o poder em suas mãos...</p>
-                    <h1 class="text-yellow">Quer fazer parte disto?</h1>
-                </div>
-                <div class="col-md-5 col-md-offset-1">
-                    <div class="panel panel-imoveis">
-                        <div class="panel-header" ng-controller="OauthSessionsAuthenticate">
-                            <button class="btn btn-block btn-primary btn-lg m-t-20 redondend-border" ng-click="authenticate('facebook')">Acessar com Facebook</button>
-                            <button class="btn btn-block btn-danger btn-lg m-t-10 redondend-border" ng-click="authenticate('google')">Acessar com Google+</button>
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <hr>
-                                </div>
-                                <div class="col-md-2 text-center p-t-8 black-text">OU</div>
-                                <div class="col-md-5">
-                                    <hr>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-md-12 register-form" ng-controller="UserSessionsRegister">
-                                    <form name="formAdd" ng-submit="register(formAdd.$valid)" class="form-horizontal" novalidate>
-                                        <div class="form-group" style="margin-bottom:0px;">
-                                            <h3 class="text-purple no-top">Criar Conta</h3>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Nome</label>
-                                            <input type="text" name="first_name" ng-model="user.first_name" class="form-control input-lg redondend-border" placeholder="Nome"
-                                                required>
-                                            <div ng-show="formAdd.$submitted || formAdd.first_name.$touched">
-                                                <p ng-show="formAdd.first_name.$error.required" class="help-block error">Nome é obrigatório.</p>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Sobrenome</label>
-                                            <input type="text" name="last_name" ng-model="user.last_name" class="form-control input-lg redondend-border" placeholder="Sobrenome"
-                                                required>
-                                            <div ng-show="formAdd.$submitted || formAdd.last_name.$touched">
-                                                <p ng-show="formAdd.last_name.$error.required" class="help-block error">Sobrenome é obrigatório.</p>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Seu Email</label>
-                                            <input type="email" name="email" ng-model="user.email" class="form-control input-lg redondend-border" placeholder="E-mail"
-                                                required>
-                                            <div ng-show="formAdd.$submitted || formAdd.email.$touched">
-                                                <p ng-show="formAdd.email.$error.required" class="help-block error">Email é obrigatório.</p>
-                                                <p ng-show="formAdd.email.$error.email" class="help-block error">Email não é válido.</p>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="sex">Sexo</label>
-                                            <select name="sex" class="form-control input-lg redondend-border" ng-model="user.sex" required>
-                                                <option ng-selected="user.sex === null" disabled value="">Selecione o sexo</option>
-                                                <option ng-repeat="option in sexOptions" value="{{option.value}}"
-                                                ng-selected="user.sex">{{option.label}}</option>
-                                            </select>
-                                            <div ng-show="formEdit.$submitted || formEdit.sex.$touched">
-                                                <p ng-show="formEdit.sex.$error.required" class="help-block error">Sexo é obrigatório.</p>
-                                            </div>
-                                        </div>
-                                        <div class="form-group m-b-10">
-                                            <label>Telefone</label>
-                                            <input type="text" name="phone_primary" ng-model="user.phone_primary" class="form-control input-lg redondend-border" ui-br-phone-number-mask
-                                                placeholder="Telefone">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Criar Senha</label>
-                                            <input type="password" name="password" ng-model="user.password" ng-minlength="6" class="form-control input-lg redondend-border"
-                                                placeholder="Senha" required>
-                                            <div ng-show="formAdd.$submitted || formAdd.password.$touched">
-                                                <p ng-show="formAdd.password.$error.required" class="f-13 help-block error">Senha é obrigatório.</p>
-                                                <p ng-show="formAdd.password.$error.minlength" class="f-13 help-block error">Mínimo de 6 caracteres.</p>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <h3 class="text-purple no-top">Aniversário</h3>
-                                            <small style="font-size:80%">Informe seu Aniversário.</small>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="col-md-3" style="padding-left: 0px;">
-
-                                                <select name="day" ng-model="day_birthday" class="form-control input-lg redondend-border" required>
-                                                    <option value="">Dia</option>
-                                                    <option ng-repeat="d in days" value="{{d}}">{{d}}</option>
-                                                </select>
-                                                <div ng-show="formAdd.$submitted || formAdd.day.$touched">
-                                                    <p ng-show="formAdd.day.$error.required" class="f-13 help-block error">Obrigatório.</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-5" style="padding-left: 0px;padding-right:0px;">
-                                                <select name="month" ng-model="month_birthday" class="form-control input-lg redondend-border" required>
-                                                    <option value="">Mês</option>
-                                                    <option ng-repeat="m in months" value="{{m.val}}">{{m.name}}</option>
-                                                </select>
-                                                <div ng-show="formAdd.$submitted || formAdd.month.$touched">
-                                                    <p ng-show="formAdd.month.$error.required" class="f-13 help-block error">Obrigatório.</p>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <select name="year" ng-model="year_birthday" class="form-control input-lg redondend-border" required>
-                                                    <option value="">Ano</option>
-                                                    <option ng-repeat="y in years" value="{{y}}">{{y}}</option>
-                                                </select>
-                                                <div ng-show="formAdd.$submitted || formAdd.year.$touched">
-                                                    <p ng-show="formAdd.year.$error.required" class="f-13 help-block error">Obrigatório.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="checkbox p-t-0">
-                                                <label>
-                                                <input type="checkbox" name="newsletter" ng-model="user.newsletter" ng-checked="formAdd.first_name.$touched"> 
-                                                Gostaria de receber cupons, promoções, pesquisas e novidades por e-mail sobre o MeuAlu.
-                                            </label>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <button type="submit" ng-disabled="!response" class="btn btn-block btn-lg btn-green login redondend-border">Cadastrar</button>
-                                            <img ng-if="!response" src="assets/imagens/loading.gif" width="50" height="50" class="loading-img img-center">
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="col-md-12 text-center">
-                                                <p>Já possui conta? <a ng-click="openLogin()">Acesse Aqui</a></p>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <div class="bg-full-purple"></div>
+  <div class="container-video container">
+    <nav class="navbar navbar-home">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" ui-sref="home">
+            <img src="https://s3.amazonaws.com/meualu-bucket/app_images/icones/logo_alu_amarelo_beta.png" class="img-responsive logo-heigth">
+          </a>
         </div>
+        <div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-8">
+          <ul class="nav navbar-nav">
+            <li class="bold text-uppercase">
+              <a class="text-yellow" ui-sref="proprietario">Anuncie aqui</a>
+            </li>
+            <li class="bold text-uppercase cursor-pointer" ng-hide="current_user">
+              <a class="text-white" ng-click="openLogin()">
+                <img src="https://s3.amazonaws.com/meualu-bucket/app_images/icones/account.png" width="15" height="15" class="margin-bottom-5">
+                Entrar
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="row">
+      <div class="col-sm-12" ng-show="registered">
+        <div class="col-md-8 col-md-offset-2 margin-top-50">
+          <h1 class="text-center">Muito obrigado<br>por se cadastrar no meualu.com</h1>
+          <p class="margin-top-10 text-center">É com as pessoas como você que queremos desenvolver novas soluções que transformarão o mercado imobiliário.</p>
+          <p class="margin-top-10 text-center">Para continuar nosso contato, enviamos para seu e-mail um infográfico que te apresenta um pouco mais
+            sobre a ALU.</p>
+          <p class="margin-top-10 text-center">Fique à vontade para conversar conosco por e-mail.</p>
+          <p class="margin-top-10 text-center">Até logo.</p>
+        </div>
+
+      </div>
+      <div class="col-sm-12" ng-show="!registered">
+        <div class="col-md-6 margin-top-50">
+          <h1 class="text-yellow">Achamos o aluguel tão complicado que resolvemos simplificar até no nome.</h1>
+          <h1>Muito prazer, somos a ALU.</h1>
+          <p class="margin-top-50">Todas as pessoas devem ter o direito e o acesso fácil às opções de moradia. A única preocupação deveria
+            ser escolher o melhor lugar para viver. Bom, nós acreditamos que seja possível deixar tudo mais leve,
+            diminuir drasticamente a burocracia, digitalizar os processos e deixar o poder em suas mãos...</p>
+            <h1 class="text-yellow">Quer fazer parte disto?</h1>
+          </div>
+          <div class="col-md-5 col-md-offset-1">
+            <div class="panel panel-imoveis">
+              <div class="panel-header" ng-controller="OauthSessionsAuthenticate">
+                <button class="btn btn-block btn-primary btn-lg m-t-20 redondend-border" ng-click="authenticate('facebook')">Acessar com Facebook</button>
+                <button class="btn btn-block btn-danger btn-lg m-t-10 redondend-border" ng-click="authenticate('google')">Acessar com Google+</button>
+                <div class="row">
+                  <div class="col-md-5">
+                    <hr>
+                  </div>
+                  <div class="col-md-2 text-center p-t-8 black-text">OU</div>
+                  <div class="col-md-5">
+                    <hr>
+                  </div>
+                </div>
+              </div>
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-md-12 register-form" ng-controller="UserSessionsRegister">
+                    <form name="formAdd" ng-submit="register(formAdd.$valid)" class="form-horizontal" novalidate>
+                      <div class="form-group" style="margin-bottom:0px;">
+                        <h3 class="text-purple no-top">Criar Conta</h3>
+                      </div>
+                      <div class="form-group">
+                        <label>Nome</label>
+                        <input type="text" name="first_name" ng-model="user.first_name" class="form-control input-lg redondend-border" placeholder="Nome"
+                        required>
+                        <div ng-show="formAdd.$submitted || formAdd.first_name.$touched">
+                          <p ng-show="formAdd.first_name.$error.required" class="help-block error">Nome é obrigatório.</p>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label>Sobrenome</label>
+                        <input type="text" name="last_name" ng-model="user.last_name" class="form-control input-lg redondend-border" placeholder="Sobrenome"
+                        required>
+                        <div ng-show="formAdd.$submitted || formAdd.last_name.$touched">
+                          <p ng-show="formAdd.last_name.$error.required" class="help-block error">Sobrenome é obrigatório.</p>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label>Seu Email</label>
+                        <input type="email" name="email" ng-model="user.email" class="form-control input-lg redondend-border" placeholder="E-mail"
+                        required>
+                        <div ng-show="formAdd.$submitted || formAdd.email.$touched">
+                          <p ng-show="formAdd.email.$error.required" class="help-block error">Email é obrigatório.</p>
+                          <p ng-show="formAdd.email.$error.email" class="help-block error">Email não é válido.</p>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="sex">Sexo</label>
+                        <select name="sex" class="form-control input-lg redondend-border" ng-model="user.sex" required>
+                          <option ng-selected="user.sex === null" disabled value="">Selecione o sexo</option>
+                          <option ng-repeat="option in sexOptions" value="{{option.value}}"
+                          ng-selected="user.sex">{{option.label}}</option>
+                        </select>
+                        <div ng-show="formEdit.$submitted || formEdit.sex.$touched">
+                          <p ng-show="formEdit.sex.$error.required" class="help-block error">Sexo é obrigatório.</p>
+                        </div>
+                      </div>
+                      <div class="form-group m-b-10">
+                        <label>Telefone</label>
+                        <input type="text" name="phone_primary" ng-model="user.phone_primary" class="form-control input-lg redondend-border" ui-br-phone-number-mask
+                        placeholder="Telefone">
+                      </div>
+                      <div class="form-group">
+                        <label>Criar Senha</label>
+                        <input type="password" name="password" ng-model="user.password" ng-minlength="6" class="form-control input-lg redondend-border"
+                        placeholder="Senha" required>
+                        <div ng-show="formAdd.$submitted || formAdd.password.$touched">
+                          <p ng-show="formAdd.password.$error.required" class="f-13 help-block error">Senha é obrigatório.</p>
+                          <p ng-show="formAdd.password.$error.minlength" class="f-13 help-block error">Mínimo de 6 caracteres.</p>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <h3 class="text-purple no-top">Aniversário</h3>
+                        <small style="font-size:80%">Informe seu Aniversário.</small>
+                      </div>
+                      <div class="form-group">
+                        <div class="col-md-3" style="padding-left: 0px;">
+
+                          <select name="day" ng-model="day_birthday" class="form-control input-lg redondend-border" required>
+                            <option value="">Dia</option>
+                            <option ng-repeat="d in days" value="{{d}}">{{d}}</option>
+                          </select>
+                          <div ng-show="formAdd.$submitted || formAdd.day.$touched">
+                            <p ng-show="formAdd.day.$error.required" class="f-13 help-block error">Obrigatório.</p>
+                          </div>
+                        </div>
+                        <div class="col-md-5" style="padding-left: 0px;padding-right:0px;">
+                          <select name="month" ng-model="month_birthday" class="form-control input-lg redondend-border" required>
+                            <option value="">Mês</option>
+                            <option ng-repeat="m in months" value="{{m.val}}">{{m.name}}</option>
+                          </select>
+                          <div ng-show="formAdd.$submitted || formAdd.month.$touched">
+                            <p ng-show="formAdd.month.$error.required" class="f-13 help-block error">Obrigatório.</p>
+                          </div>
+                        </div>
+                        <div class="col-md-4">
+                          <select name="year" ng-model="year_birthday" class="form-control input-lg redondend-border" required>
+                            <option value="">Ano</option>
+                            <option ng-repeat="y in years" value="{{y}}">{{y}}</option>
+                          </select>
+                          <div ng-show="formAdd.$submitted || formAdd.year.$touched">
+                            <p ng-show="formAdd.year.$error.required" class="f-13 help-block error">Obrigatório.</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="checkbox p-t-0">
+                          <label>
+                            <input type="checkbox" name="newsletter" ng-model="user.newsletter" ng-checked="formAdd.first_name.$touched">
+                            Gostaria de receber cupons, promoções, pesquisas e novidades por e-mail sobre o MeuAlu.
+                          </label>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <button type="submit" ng-disabled="!response" class="btn btn-block btn-lg btn-green login redondend-border">Cadastrar</button>
+                        <img ng-if="!response" src="https://s3.amazonaws.com/meualu-bucket/app_images/icones/loading.gif" width="50" height="50" class="loading-img img-center">
+                      </div>
+                      <div class="form-group">
+                        <div class="col-md-12 text-center">
+                          <p>Já possui conta? <a ng-click="openLogin()">Acesse Aqui</a></p>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-</section>
-<footer></footer>
-<div ng-include="'views/home/_sign_in_modal.html'"></div>
+  </section>
+  <footer></footer>
+  <div ng-include="'views/home/_sign_in_modal.html'"></div>
