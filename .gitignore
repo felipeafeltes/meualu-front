@@ -46,3 +46,4 @@ npm-debug.log
 .wakatime-project
 package-lock.json
 yarn.lock
+assets/css/*.css
