@@ -713,6 +713,7 @@ p.error {
 .list{
   overflow-y: auto;
   height: calc(100vh - 130px);
+  overflow-x: hidden;
 }
 
 .img-profile {

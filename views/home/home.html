@@ -56,11 +56,9 @@
             <form ng-submit="searchPropertie()" ng-controller="autoCompleteController">
               <div class="search-wrapper">
                 <input g-places-autocomplete ng-model="address" options="autocompleteOptions" type="text" class="form-control search-home m-t-30"
-                  placeholder="Busque por rua ou bairro">
+                       placeholder="Busque por rua ou bairro" ng-blur="searchPropertie()">
                 <i class="fa fa-search fa-2x prefix" ng-click="searchPropertie()"></i>
               </div>
-              <style>
-            </style>
             </form>
   
           <p class="text-center text-uppercase"><b>COMECE AQUI</b> A ALUGAR SUA PRÓXIMA MORADIA <br> ALUGAR UM APÊ É MAIS FÁCIL QUE VOCÊ IMAGINA.</p>
