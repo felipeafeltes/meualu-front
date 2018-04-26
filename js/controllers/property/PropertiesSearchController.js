@@ -1,6 +1,7 @@
 app.controller('PropertiesSearchController', PropertiesSearchController)
 
 function PropertiesSearchController($scope, $rootScope, PropertySearch, $stateParams, $state) {
+  const RIGHT = 1, LEFT = -1
   $scope.hasData = false
   $rootScope.coords = null
   $scope.properties = []
@@ -55,25 +56,17 @@ function PropertiesSearchController($scope, $rootScope, PropertySearch, $statePa
     }
   }
 
-  $scope.nextImage = function (event, property) {
+  $scope.nextImage = function (event, property, direction = RIGHT) {
     const currentIndex = property.imageIndex || 0
-    if (angular.isUndefined(property.pictures[currentIndex + 1])) {
+    if (angular.isUndefined(property.pictures[currentIndex + direction])) {
       $scope.setImageByIndex(event, property)(0)
     }
     else {
-      $scope.setImageByIndex(event, property)(currentIndex + 1)
+      $scope.setImageByIndex(event, property)(currentIndex + direction)
     }
   }
 
-  $scope.prevImage = function (event, property) {
-    const currentIndex = property.imageIndex || 0
-    if (angular.isUndefined(property.pictures[currentIndex - 1])) {
-      $scope.setImageByIndex(event, property)(property.pictures.length - 1)
-    }
-    else {
-      $scope.setImageByIndex(event, property)(currentIndex - 1)
-    }
-  }
+  $scope.prevImage = (event, property) => $scope.nextImage(event, property, LEFT)
 
   $scope.propertyImageIndex = property => {
     return property.imageIndex || 0
@@ -103,18 +96,8 @@ function PropertiesSearchController($scope, $rootScope, PropertySearch, $statePa
   function getProperties(filters) {
     $scope.hasData = false
     PropertySearch.get({
+      filters,
       address_string: $stateParams.address_string,
-      filters: {
-        bedrooms: filters.bedrooms,
-        bathrooms: filters.bathrooms,
-        garages: filters.garages,
-        furnished: filters.furnished,
-        pets_allowed: filters.pets_allowed,
-        public_transportation: filters.public_transportation,
-        total_area: filters.total_area,
-        rental: filters.rental,
-        extra_infos: filters.extra_infos
-      },
       geo_lat: $stateParams.geo_lat,
       geo_lng: $stateParams.geo_lng,
     }, getPropertiesResolve)
