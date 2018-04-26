@@ -1,6 +1,14 @@
 {
+  "parserOptions": {
+    "ecmaVersion": 6
+  },
   "extends": "angular",
+  "rules": {
+    "angular/controller-as": "off",
+    "angular/module-getter": "off"
+  },
   "globals": {
+    "app": true,
     "angular": true,
     "ga": true,
     "it": true,

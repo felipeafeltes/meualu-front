@@ -29,7 +29,8 @@
     "eslint-plugin-angular": "^3.3.0",
     "grunt": "^0.4.5",
     "grunt-angular-builder": "^1.0.0",
-    "serve": "^6.5.6"
+    "serve": "^6.5.6",
+    "stylus": "^0.54.5"
   },
   "devDependencies": {
     "eslint": "^4.18.2",
@@ -50,7 +51,9 @@
   "scripts": {
     "start": "serve -s -p $PORT",
     "dev": "serve -s -o",
-    "postinstall": "bower install",
+    "css": "stylus -o assets/css stylus",
+    "css:watch": "stylus -w -o assets/css stylus",
+    "postinstall": "bower install && npm run css",
     "test": "jest",
     "test:watch": "jest --watch",
     "coverage": "jest --updateSnapshot --coverage --collectCoverageFrom=js/**/*.js"

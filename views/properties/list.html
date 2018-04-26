@@ -1,91 +1,89 @@
 <section>
-  <header></header>
-  <div ng-if="!hasData" class="loading-div">
-    <img class="loading-data" width="130" src="assets/imagens/loading.gif">
-  </div>
-  <div class="container-fluid" ng-if="hasData">
-    <nav class="navbar filters text-center m-t-20">
-      <div class="filters-container" ng-controller="searchController" ng-include="'views/properties/_filters.html'"></div>
-    </nav>
-    <div class="row text-gray">
-      <div class="col-md-5 property-list list">
-        <h2>
-          <span class="text-green bold" ng-if="properties.length > 0">Encontramos {{ properties.length }} {{(properties.length === 1)? 'apê' : 'apês' }}</span>
-          <span class="text-green bold" ng-if="properties.length === 0">Não encontramos nenhum apartamento nesse endereço.</span>
-        </h2>
-        <p>Nos ajude a ser mais preciso, utilize os filtros acima.</p>
-        <p>{{full_adress}}</p>
-        <div class="dropdown">
-          <span>Order por</span>
-          <a class="text-green dropdown-toggle order-properties" type="button" id="dropdownPreco" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="true">
-              <span ng-if="properties_order == 1">menor preço</span>
-              <span ng-if="properties_order == 2">maior preço</span>
-              <span ng-if="properties_order == 0">s/ ordenação</span>
-              <span class="caret"></span>
-            </a>
-          <ul class="dropdown-menu" aria-labelledby="dropdownPreco">
-            <li><a ng-click="noOrder(properties)">s/ ordenação</a></li>
-            <li><a ng-click="orderBy(properties)">menor preço</a></li>
-            <li><a ng-click="orderByReverse(properties)">maior preço</a></li>
-          </ul>
-        </div>
-        <div class="panel panel-default" ng-mouseenter="hover(property.id)" ng-mouseleave="hoverLeave(property.id)" ng-click='details(property.id)'
-          dir-paginate="property in properties | itemsPerPage:5">
-          <div class="panel-body imovel-desc">
-            <div class="col-md-5 col-sm-12 col-xs-12">
-              <h4 class="text-dark">{{ property.description }}</h4>
-              <!-- <span class="text-green localization-span" ng-click="setupMark(property)">Ver Localização  <img src="/assets/imagens/gmap-pin.png" width="20"></span> -->
-              <ul class="properties-details" style="padding-left: 10px;">
-                <li><i class="fa fa-bed"></i> {{ property.bedrooms }} dorms</li>
-                <li><i class="fa fa-car"></i> {{ property.garages }} vagas</li>
-                <li><i class="fa fa-regua"></i> {{ property.total_area }} m²</li>
-              </ul>
-              <hr />
-              <p class="text-green">
-                Aluguel: {{ property.rental.value | currency }}
-              </p>
-              <p class="text-green">
-                Valor total: {{ property.rental.package_value | currency }}
-              </p>
-            </div>
-            <div class="col-md-7 col-sm-12 col-xs-12 no-padding">
-              <div class="box">
-                <img ng-src="{{ property.pictures[0].url }}" class="img-full-bg" alt="Responsive image">
-              </div>
-            </div>
-          </div>
-        </div>
-        <dir-pagination-controls max-size="4" boundary-links="true" class="pull-right"></dir-pagination-controls>
-      </div>
-      <div class="col-md-7 no-padding">
-        <ui-gmap-google-map center='map.center' zoom='map.zoom'>
-          <ui-gmap-marker click="shots(marker.id)" events="markerEvents.events" ng-repeat="marker in markers" idKey="marker.id" coords="marker.coords"
-            options="marker.options">
-          </ui-gmap-marker>
-        </ui-gmap-google-map>
-      </div>
+    <header></header>
+    <div ng-if="!hasData" class="loading-div">
+        <img class="loading-data" width="130" src="assets/imagens/loading.gif">
     </div>
-  </div>
+    <div class="container-fluid" ng-if="hasData">
+        <nav class="navbar filters text-center m-t-20">
+            <div class="filters-container" ng-controller="searchController"
+                 ng-include="'views/properties/_filters.html'"></div>
+        </nav>
+        <div class="row text-gray">
+            <div class="col-md-5 property-list list">
+                <h2>
+                    <span class="text-green bold" ng-if="properties.length > 0">Encontramos {{ properties.length }} {{(properties.length === 1)? 'apê' : 'apês' }}</span>
+                    <span class="text-green bold" ng-if="properties.length === 0">Não encontramos nenhum apartamento nesse endereço.</span>
+                </h2>
+                <p>Nos ajude a ser mais preciso, utilize os filtros acima.</p>
+                <p>{{full_adress}}</p>
+                <div class="dropdown">
+                    <span>Order por</span>
+                    <a class="text-green dropdown-toggle order-properties" type="button" id="dropdownPreco"
+                       data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="true">
+                        <span>{{ orderLabels[properties_order] }}</span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownPreco">
+                        <li ng-repeat="label in orderLabels">
+                            <a ng-click="reorder($index)">{{ label }}</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="panel panel-default" ng-mouseenter="hover(property.id)"
+                     ng-mouseleave="hoverLeave(property.id)" ng-click='details(property.id)'
+                     dir-paginate="property in properties | itemsPerPage:5">
+                    <div class="panel-body imovel-desc">
+                        <div class="col-md-5 col-sm-12 col-xs-12">
+                            <h4 class="text-dark">{{ property.description }}</h4>
+                            <ul class="properties-details" style="padding-left: 10px;">
+                                <li><i class="fa fa-bed"></i> {{ property.bedrooms }} dorms</li>
+                                <li><i class="fa fa-car"></i> {{ property.garages }} vagas</li>
+                                <li><i class="fa fa-regua"></i> {{ property.total_area }} m²</li>
+                            </ul>
+                            <hr/>
+                            <p class="text-green">
+                                Aluguel: {{ property.rental.value | currency }}
+                            </p>
+                            <p class="text-green">
+                                Valor total: {{ property.rental.package_value | currency }}
+                            </p>
+                        </div>
+                        <div class="col-md-7 col-sm-12 col-xs-12 no-padding">
+                            <div class="box small-image-slider">
+                                <img ng-repeat="image in property.pictures" ng-src="{{ image.url }}"
+                                     class="small-image-slider-main"
+                                     ng-class="{active: propertyImageIndex(property) === $index}"
+                                     alt="Imagem do imóvel"/>
+
+                                <div class="small-image-slider-next-btn" ng-click="nextImage($event, property)"></div>
+                                <div class="small-image-slider-prev-btn" ng-click="prevImage($event, property)"></div>
+                            </div>
+                            <div>
+                                <div class="small-image-thumb-slider">
+                                    <img ng-repeat="image in property.pictures" ng-src="{{ image.url }}"
+                                         ng-click="setImageByIndex($event, property)($index)"
+                                         class="small-image-slider-thumb"
+                                         ng-class="{active: propertyImageIndex(property) === $index}"
+                                         alt="Imagem do imóvel"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <dir-pagination-controls max-size="4" boundary-links="true"
+                                         class="pull-right"></dir-pagination-controls>
+            </div>
+            <div class="col-md-7 no-padding">
+                <ui-gmap-google-map center='map.center' zoom='map.zoom'>
+                    <ui-gmap-marker click="shots(marker.id)" events="markerEvents.events" ng-repeat="marker in markers"
+                                    idKey="marker.id" coords="marker.coords"
+                                    options="marker.options">
+                    </ui-gmap-marker>
+                </ui-gmap-google-map>
+            </div>
+        </div>
+    </div>
 </section>
 <footer></footer>
 <div ng-include="'views/home/_sign_in_modal.html'"></div>
-
-<style>
-  .img-full-bg {
-    width: 100%;
-    display: block;
-  }
-
-  .box {
-    height: 200px !important;
-  }
-
-  .localization-span:focus {
-    outline: none;
-  }
-
-  .localization-span:hover {
-    color: #5f447b !important;
-  }
-</style>
